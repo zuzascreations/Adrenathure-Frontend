@@ -1,38 +1,37 @@
 * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
+
 .divHeaderFooter {
-    color: white;
-    background-color: rgb(50, 59, 56);
+  color: white;
+  background-color: rgb(50, 59, 56);
 }
+
 .headerFooter {
-    padding-top: 10px;
-    height: 200px;
-    display: flex;
-    justify-content: space-between;
-    padding-left: 30px;
-    padding-right: 30px;
+  padding-top: 10px;
+  height: 200px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 30px;
+  padding-right: 30px;
 }
+
 #clientSpaceFooter {
-   text-decoration: none;
-   color:white;
+  text-decoration: none;
+  color: white;
 }
-navFooter {
-    display: flex;
-    justify-content: space-around;
-    padding-left: 500px;
-    padding-bottom: 20px;
-}
+
 .navLinksFooter {
-    text-decoration: none;
-    color: white;
+  text-decoration: none;
+  color: white;
 }
+
 .emergenteFooter {
-    border-radius: 20px;
-    padding: 10px;
-    background-color: rgb(88, 72, 72);
-    position: fixed;
-    color: white;
+  border-radius: 20px;
+  padding: 10px;
+  background-color: rgb(88, 72, 72);
+  position: fixed;
+  color: white;
 }

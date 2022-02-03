@@ -1,9 +1,9 @@
 import { combineReducers } from "redux"
 
-const emailReducer = (state = null, action) => {
+const userReducer = (state = null, action) => {
   switch (action.type) {
     case 'login':
-      return action.em
+      return (action.user)
     default:
       return state
   }
@@ -28,9 +28,9 @@ const modalReducer = (state = null, action) => {
 }
 
 const rootReducer = combineReducers({
-  email: emailReducer,
+  user: userReducer,
   modal: modalReducer,
-  register: registerReducer
+  registered: registerReducer,
 })
 
 export default rootReducer

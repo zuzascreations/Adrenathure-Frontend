@@ -7,27 +7,24 @@ import reportWebVitals from './reportWebVitals';
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux';
 import rootReducer from './reducer';
-import ErrorBoundary from './ErrorBoundary';
 
 const localStorageMiddleware = store => next => action => {
   let result = next(action)
-  localStorage.setItem('session', JSON.stringify(store.getState().email))
+  localStorage.setItem('session', JSON.stringify(store.getState().user))
   return result
 }
 
 const saved = localStorage.getItem('session')
-const initialStore = { email: saved ? JSON.parse(saved) : undefined }
+const initialStore = { user: saved ? JSON.parse(saved) : undefined }
 const store = createStore(rootReducer, initialStore, applyMiddleware(localStorageMiddleware))
 
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-    <Provider store={store}>
-    <ErrorBoundary>
-    <App />
-    </ErrorBoundary>
-    </Provider>
+      <Provider store={store}>
+        <App />
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

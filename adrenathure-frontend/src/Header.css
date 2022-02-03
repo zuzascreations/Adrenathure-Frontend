@@ -1,64 +1,59 @@
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=BioRhyme+Expanded:wght@300&family=Montserrat:wght@300;700&family=Open+Sans:wght@400;700&family=Roboto:ital,wght@0,700;1,400;1,700&display=swap');
 
 * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
-.titulo-logo {
-    font-family: BioRhyme Expanded;
-    
-    font-size: xx-large;
-    text-decoration: none;
-    color: black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+.title {
+  font-family: BioRhyme Expanded;
+  font-size: xx-large;
+  text-decoration: none;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.cabecera {
-    
-    /* background-image: url('https://cdn.pixabay.com/photo/2018/09/18/19/58/via-iron-port-3687097__340.jpg');
-    background-repeat: no-repeat;
-    background-size: cover; */
-    
-}
+
 .header {
-    /* background-color: rgb(124, 218, 186, 0.7); */
-    display: flex;
-    justify-content: center;
-    padding-top: 0px;
-    height: 250px;
-    display: flex;
-    padding-left: 30px;
-    padding-right: 30px;
+  display: flex;
+  justify-content: center;
+  padding-top: 0px;
+  height: 250px;
+  display: flex;
+  padding-left: 30px;
+  padding-right: 30px;
 }
+
 .clientSpace {
-    padding-top: 50px;
-    padding-right: 75px;
-   text-decoration: none;
-   color:black;
+  padding-top: 50px;
+  padding-right: 75px;
+  text-decoration: none;
+  color: black;
 }
+
 nav {
-    height: 50px;
-    /* background-color: rgb(124, 218, 186, 0.7); */
-    display: flex;
-    gap: 10px;
-    justify-content: space-around;
-    /* padding-left: 500px; */
-    padding-bottom: 20px;
-    align-items: flex-end;
-    border-top: 1px solid black ;
-    border-bottom: 1px solid black;
+  height: 50px;
+  display: flex;
+  gap: 10px;
+  justify-content: space-around;
+  padding-bottom: 20px;
+  align-items: flex-end;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }
+
 .navLinks {
-    padding-right: 50px;
-    text-decoration: none;
-    color: black;
+  padding-right: 50px;
+  text-decoration: none;
+  color: black;
 }
+
 .emergente {
-    border-radius: 20px;
-    padding: 10px;
-    background-color: rgb(88, 72, 72);
-    position: fixed;
-    color: white;
+  border-radius: 20px;
+  padding: 10px;
+  background-color: rgb(88, 72, 72);
+  position: fixed;
+  color: white;
 }
