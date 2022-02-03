@@ -1,15 +1,14 @@
-import { useState } from "react"
+import { Suspense, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { useRegister, useSetEmail } from "./hooks"
-
-
+import { useRegister, useSetUser } from "./hooks"
+import Loading from "./Loading"
 
 function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState(null)
   const navigate = useNavigate()
-  const setEm = useSetEmail()
+  const setUser = useSetUser()
   const registered = useRegister()
 
   const handleSubmit = async e => {
@@ -23,33 +22,39 @@ function Login() {
     })
     const data = await res.json()
     if (res.ok) {
-      setEm(data)
+      setUser(data)
       navigate('/')
     } else {
       setError(data.error)
     }
   }
 
-    return(
+  return (
 
-            <div className='divLogin'>
-                {registered &&
-                <div>Enhorabuena tu cuenta ha sido creada con éxito</div>
-                }
-                <div>
-                    <h1>ACCESO</h1>
-                </div>
-                <form onSubmit={handleSubmit}>
-                    <input type='email' value={email} onChange={(e) => setEmail(e.target.value)}></input>
-                    <input type='password' value={password} onChange={(e) => setPassword(e.target.value)}></input>
-                    <button>ACCESO</button>
-                    {error && <div className="error">{error}</div>}
-                </form>
-                <nav>
-                    <Link to="/register" className='linkRegister'>aun no te has registrado?</Link>
-                </nav>
-            </div>
-        )
+    <div className='divLogin'>
+      {registered &&
+        <div>enhorabuena tu cuenta ha sido creada con éxito</div>
+      }
+      <div>
+        <h1>acceso</h1>
+      </div>
+      <form onSubmit={handleSubmit}>
+        <input type='email' value={email} onChange={(e) => setEmail(e.target.value)}></input>
+        <input type='password' value={password} onChange={(e) => setPassword(e.target.value)}></input>
+        <button>acceso</button>
+        {error && <div className="error">{error}</div>}
+      </form>
+      <nav>
+        <Link to="/register" className='linkRegister'>aun no te has registrado?</Link>
+      </nav>
+    </div>
+  )
 }
 
-export default Login
+const LoginWrapper = () =>
+  <Suspense fallback={<Loading className='page' />}>
+    <Login />
+  </Suspense>
+
+
+export default LoginWrapper
