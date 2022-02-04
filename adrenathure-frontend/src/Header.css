@@ -33,6 +33,13 @@
   color: black;
 }
 
+.logout {
+  padding-top: 50px;
+  padding-right: 75px;
+  text-decoration: none;
+  color: black;
+}
+
 nav {
   height: 50px;
   display: flex;

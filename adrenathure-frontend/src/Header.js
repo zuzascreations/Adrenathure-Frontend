@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom"
 import { useUser } from "./hooks"
 import './Header.css'
+import { useDispatch } from "react-redux"
 
 function Header() {
+  const dispatch = useDispatch()
   const user = useUser()
-  console.log(user)
   return (
     <div>
       <div className="header">
@@ -13,11 +14,13 @@ function Header() {
           <Link to='/login' className="clientSpace" >espacio cliente</Link>
         }
         {user &&
-          <Link to="/" className="clientSpace">{user.user}</Link>
+          <>
+            <Link to="/profile" className="clientSpace">{user.user}</Link>
+            <span class="logout" className="logout"onClick={() => dispatch({ type: 'logout' })}>salir</span>
+          </>
         }
       </div>
       <nav>
-        <Link to="/users/profile" className="navLinks">datos personales:</Link>
         <Link to="/experiences" className='navLinks'>experiences </Link>
         <Link to="/places" className='navLinks'>destinos</Link>
         <Link to="/about" className='navLinks'>sobre nosotros</Link>
