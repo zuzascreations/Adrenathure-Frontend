@@ -11,6 +11,8 @@ import Profile from './profile/Profile'
 import SidebarPlaces from './places/Places'
 import Place from './places/Place'
 import SidebarExperiencesPlaceId from './places/SidebarExperiencesPlaceId'
+import SearchBar from './SearchBar'
+import SearchPage from './SearchPage'
 import './Loading.css'
 
 
@@ -23,12 +25,13 @@ function App() {
         <Route path="/experiences/*" element={<Experiences />} />
         <Route path="experiences/:id" element={<ExperienceId />}/>
         <Route path="/login/" element={<Login />} />
-        <Route path="/" element={<Portada />} />
+        <Route path="/" element={<><SearchBar /><Portada /></>} />
         <Route path="/register/" element={<Register />} />
         <Route path="profile/*" element={<Profile />} />
         <Route path="places" element={<SidebarPlaces />} />
         <Route path="places/:id" element={<Place />} />
         <Route path="places/:id" element={<SidebarExperiencesPlaceId />} />
+        <Route path="/:place&:price&:date" element={<SearchPage />} />
         <Route path="*" element={<h2>404 - Not found</h2>} />
       </Routes>
       <Footer />
