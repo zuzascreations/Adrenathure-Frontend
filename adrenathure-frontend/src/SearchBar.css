@@ -1,0 +1,29 @@
+.searchBar {
+  padding: 10px;
+  height: 200px;
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+}
+
+.emergentSearch {
+  width: 150px;
+  height: 30px;
+  cursor: pointer;
+  border-radius: 3px;
+  background-color: rgb(5, 5, 5);
+  color: white;
+}
+
+.resetSearch {
+  width: 150px;
+  height: 30px;
+  cursor: pointer;
+  border-radius: 3px;
+  background-color: rgb(85, 81, 81);
+  color: white;
+}
+
+.contentSearch {
+  display: block;
+}
