@@ -1,0 +1,12 @@
+
+
+.imgPortada {
+    width: 600px; 
+    height: 300px
+}
+
+#idPortada {
+    display: flex;
+    align-items: center;
+    padding: 10px
+}
