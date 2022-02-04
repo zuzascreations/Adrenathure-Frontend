@@ -1,0 +1,16 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-profile {
+  display: flex;
+  height: 50px;
+  gap: 30px;
+  justify-content: left;
+  align-items: left;
+  padding-bottom: 20px;
+  border-bottom: 1px solid black;
+  padding-right: 50px;
+}

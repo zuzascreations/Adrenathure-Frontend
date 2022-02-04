@@ -6,7 +6,6 @@ import './Experiences.css'
 
 function Experiences() {
   const experiences = useFetch('http://localhost:3000/experiences')
-  console.log(experiences)
   return experiences && (
     <div className='experiences'>
       <div className='articles'>

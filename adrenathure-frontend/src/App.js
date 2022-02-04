@@ -3,8 +3,15 @@ import { Routes, Route } from 'react-router-dom'
 import Header from './Header'
 import Footer from './Footer'
 import Experiences from './Experiences'
+import ExperienceId from './ExperienceId'
 import Login from './Login'
 import Register from './Register'
+import Portada from './Portada'
+import Profile from './profile/Profile'
+import SidebarPlaces from './places/Places'
+import Place from './places/Place'
+import SidebarExperiencesPlaceId from './places/SidebarExperiencesPlaceId'
+import './Loading.css'
 
 
 function App() {
@@ -13,9 +20,16 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/experiences/" element={<Experiences />} />
+        <Route path="/experiences/*" element={<Experiences />} />
+        <Route path="experiences/:id" element={<ExperienceId />}/>
         <Route path="/login/" element={<Login />} />
+        <Route path="/" element={<Portada />} />
         <Route path="/register/" element={<Register />} />
+        <Route path="profile/*" element={<Profile />} />
+        <Route path="places" element={<SidebarPlaces />} />
+        <Route path="places/:id" element={<Place />} />
+        <Route path="places/:id" element={<SidebarExperiencesPlaceId />} />
+        <Route path="*" element={<h2>404 - Not found</h2>} />
       </Routes>
       <Footer />
     </div>
