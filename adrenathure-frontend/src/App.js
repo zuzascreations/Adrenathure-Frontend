@@ -16,14 +16,16 @@ import SearchPage from './SearchPage'
 import './Loading.css'
 
 
+
 function App() {
 
   return (
     <div className="App">
       <Header />
       <Routes>
+        <Route path="/" element={<Portada />} />
         <Route path="/experiences/*" element={<Experiences />} />
-        <Route path="experiences/:id" element={<ExperienceId />}/>
+        <Route path="experiences/:id" element={<ExperienceId />} />
         <Route path="/login/" element={<Login />} />
         <Route path="/" element={<><SearchBar /><Portada /></>} />
         <Route path="/register/" element={<Register />} />
