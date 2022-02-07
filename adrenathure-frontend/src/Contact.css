@@ -1,0 +1,41 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.contact {
+    display: flex;
+}
+
+.contact-header {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.left-side {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.formulario {
+    display: inline-flex;
+    flex-direction: column;
+    background-color:darkgray;
+    text-transform: uppercase;
+    align-content: left;
+    justify-content: center;
+    padding: 20px;
+    margin: 10px;
+}
+
+.address {
+    display:inline-flex;
+    flex-direction: column;
+    align-content: left;
+    justify-content: left;
+    padding: 10px;
+    list-style: none;
+}
