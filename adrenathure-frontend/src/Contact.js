@@ -1,13 +1,15 @@
 import MapContact from './MapContact'
 import './Contact.css'
-import SenderForm from './SenderForm'
+// import SenderForm from './SenderForm'
+import ContactUs from './ContactUS'
 
 
 function Contact() {
     return(
         <div className='contact'>
             <aside clasName="left-side">
-                {<SenderForm />}
+                {<ContactUs />}
+                {/* {<SenderForm />} */}
                 {/* <form className='formulario'>
                     <label>Nombre*</label>
                     <input type="text"></input>
