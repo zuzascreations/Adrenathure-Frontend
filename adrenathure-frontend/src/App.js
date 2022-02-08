@@ -13,8 +13,8 @@ import Place from './places/Place'
 import SidebarExperiencesPlaceId from './places/SidebarExperiencesPlaceId'
 import SearchBar from './SearchBar'
 import SearchPage from './SearchPage'
-import About from '.about/About'
-import Contact from '.contact/Contact'
+import About from './About'
+import Contact from './Contact'
 import './Loading.css'
 
 

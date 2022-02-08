@@ -1,6 +1,6 @@
-import MapContact from '.contact/MapContact'
-import '.contact/Contact.css'
-import ContactUs from '.contact/ContactUS'
+import MapContact from './MapContact'
+import './Contact.css'
+import ContactUs from './ContactUs'
 
 
 function Contact() {
