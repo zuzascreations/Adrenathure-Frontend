@@ -13,6 +13,8 @@ import Place from './places/Place'
 import SidebarExperiencesPlaceId from './places/SidebarExperiencesPlaceId'
 import SearchBar from './SearchBar'
 import SearchPage from './SearchPage'
+import About from './About'
+import Contact from './Contact'
 import './Loading.css'
 
 
@@ -34,6 +36,8 @@ function App() {
         <Route path="places/:id" element={<Place />} />
         <Route path="places/:id" element={<SidebarExperiencesPlaceId />} />
         <Route path="/:place&:price&:date" element={<SearchPage />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<h2>404 - Not found</h2>} />
       </Routes>
       <Footer />

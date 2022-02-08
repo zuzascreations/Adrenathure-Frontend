@@ -1,0 +1,29 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.nosotros {
+    display: flex;
+}
+
+.main-header {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+}
+
+.secondHeader {
+    padding: 10px;
+    justify-content: center;
+    text-transform: uppercase;
+}
+
+.foto {
+    display: flex;
+    
+  }
