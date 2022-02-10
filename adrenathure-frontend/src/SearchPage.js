@@ -34,7 +34,7 @@ function SearchPage() {
 
 
   const experiences = useFetch(url)
-  console.log(experiences)
+ 
 
   return (
 

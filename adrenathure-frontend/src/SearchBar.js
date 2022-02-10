@@ -3,13 +3,16 @@ import './SearchBar.css'
 import useFetch from 'fetch-suspense'
 import { Link } from 'react-router-dom'
 import Loading from './Loading'
+import './Modal.css'
+import { useDispatch } from 'react-redux'
 
 function SearchBar() {
+  const dispatch = useDispatch()
   const [experiences, setExperiences] = useState([])
   const [places, setPlaces] = useState(null)
 
-  const [showExperiences, setShowExperiences] = useState(false)
-  const [showPlaces, setShowPlaces] = useState(false)
+  const [showPrices, setShowPrices] = useState(false)
+  const [showPlaces, setShowPlaces] = useState(true)
   const [showDates, setShowDates] = useState(false)
 
   const initialValuePlace = 'Destinos'
@@ -17,8 +20,8 @@ function SearchBar() {
   const initialValueDate = 'Fechas'
 
   const [valuePlace, setValuePlace] = useState(initialValuePlace)
-  const [valuePrice, setValue3] = useState(initialValuePrice)
-  const [valueDate, setValue4] = useState(initialValueDate)
+  const [valuePrice, setValuePrice] = useState(initialValuePrice)
+  const [valueDate, setValueDate] = useState(initialValueDate)
 
   const experienceData = useFetch('http://localhost:3000/experiences')
   const placesData = useFetch('http://localhost:3000/places')
@@ -28,43 +31,68 @@ function SearchBar() {
     setPlaces(placesData)
   }, [experienceData, placesData])
 
+  const showOff = () => {
+    setShowPrices(false)
+    setShowPlaces(false)
+    setShowDates(false)
+  }
+  function Modal1() {
+    return (
+      <>
+      <p className='emergentSearch'>{valuePlace}</p>
+      {
+        places.map(place =>
+          <p className='place' onClick={() => setValuePlace(place.placeName)}>{place.placeName}</p>
+        )}
+    </>)
+    
+  }
+  function Modal2() {
+    return (
+      <>
+      <p className='emergentSearch'>{valuePrice}</p>
+      {
+        experiences.map(experience =>
+          <p className='price' onClick={() => setValuePrice(experience.price)}>{experience.price}</p>
+        )}
+    </>)
+    
+  }
+  function Modal3() {
+    return (
+      <>
+      <p className='emergentSearch'>{valuePlace}</p>
+      {experiences.map(experience =>
+          <p className='date' onClick={() => setValueDate(experience.experienceDate)}>{experience.experienceDate.substring(0, 10)}</p>
+        )}
+    </>)
+    
+  }
+
   return (
     <>
       <div className='searchBar'>
-        <div onClick={() => setShowExperiences(!showExperiences)}>
-          <p className='emergentSearch'>{valuePlace}</p>
-          {showExperiences &&
-            places.map(place =>
-              <p onClick={() => setValuePlace(place.placeName)}>{place.placeName}</p>
-            )}
+        <div onClick={() => dispatch({type:'modal', modal: <Modal1/>})  }>
+            {valuePlace}
+          
         </div>
-        <div onClick={() => setShowPlaces(!showPlaces)} >
-          <p className='emergentSearch'>{valuePrice}</p>
-          {showPlaces &&
-            experiences.map(experience =>
-              <p onClick={() => setValue3(experience.price)}>{experience.price}</p>
-            )}
+        <div onClick={() => dispatch({type:'modal', modal: <Modal2/>})} >
+          {valuePrice}
+          
         </div>
-        <div onClick={() => setShowDates(!showDates)}>
-          <p className='emergentSearch'>{valueDate}</p>
-          {showDates &&
-            experiences.map(experience =>
-              <p onClick={() => setValue4(experience.experienceDate.substring(0, 10))}>{experience.experienceDate.substring(0, 10)}</p>
-            )}
+        <div onClick={() => dispatch({type:'modal', modal: <Modal3/>}) }>
+          {valueDate.substring(0, 10)}
+         
         </div>
         <div className='emergentSearch' onClick={() => {
-          setShowExperiences(false)
-          setShowPlaces(false)
-          setShowDates(false)
+          showOff()
         }}><Link to={`/${valuePlace}&${valuePrice}&${valueDate}`}>buscar</Link>
         </div>
         <p className='resetSearch' onClick={() => {
           setValuePlace(initialValuePlace)
-          setValue3(initialValuePrice)
-          setValue4(initialValueDate)
-          setShowExperiences(false)
-          setShowPlaces(false)
-          setShowDates(false)
+          setValuePrice(initialValuePrice)
+          setValueDate(initialValueDate)         
+          showOff()
         }}>reset Filtros</p>
       </div>
     </>

@@ -13,10 +13,10 @@ import Place from './places/Place'
 import SidebarExperiencesPlaceId from './places/SidebarExperiencesPlaceId'
 import SearchBar from './SearchBar'
 import SearchPage from './SearchPage'
+import './Loading.css'
+import Modal from './Modal'
 import About from './About'
 import Contact from './Contact'
-import './Loading.css'
-
 
 
 function App() {
@@ -24,10 +24,10 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <Modal />
       <Routes>
-        <Route path="/" element={<Portada />} />
         <Route path="/experiences/*" element={<Experiences />} />
-        <Route path="experiences/:id" element={<ExperienceId />} />
+        <Route path="experiences/:id" element={<ExperienceId />}/>
         <Route path="/login/" element={<Login />} />
         <Route path="/" element={<><SearchBar /><Portada /></>} />
         <Route path="/register/" element={<Register />} />

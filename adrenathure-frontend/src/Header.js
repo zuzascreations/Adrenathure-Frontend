@@ -1,24 +1,41 @@
 import { Link } from "react-router-dom"
-import { useUser } from "./hooks"
+import { useSetUser, useUser } from "./hooks"
 import './Header.css'
-import { useDispatch } from "react-redux"
+
 
 function Header() {
-  const dispatch = useDispatch()
+ 
   const user = useUser()
+  const setUser = useSetUser()
   return (
-    <div>
+    <div className="allHeader">
+      <div className="transparencia">
       <div className="header">
+        <div></div>
         <Link to='/' className="title">adrenathure</Link>
-        {!user &&
+        <div className="dropdown">
+          {!user &&
+            <button className='buttonUsername'>espacio cliente</button>}
+          {user &&
+            <button className='buttonUsername'>{user.user}</button>}
+            <div className="dropdown-content">
+            <Link to={'/Profile'}>Mi Perfil</Link>
+            {user &&
+            <Link to={'/'} onClick={() => setUser(null)}>Cerrar Sesion</Link>}
+            {!user &&
+            <Link to={'/login'}>iniciar sesión</Link>
+            }
+            </div>
+          </div>
+        {/* {!user &&
           <Link to='/login' className="clientSpace" >espacio cliente</Link>
         }
         {user &&
           <>
-            <Link to="/profile" className="clientSpace">{user.user}</Link>
-            <span class="logout" className="logout"onClick={() => dispatch({ type: 'logout' })}>salir</span>
-          </>
-        }
+            <Link to="/profile" className="clientSpace">{user.user}</Link> */}
+            {/* <span className="logout"onClick={() => dispatch({ type: 'logout' })}>salir</span> */}
+          {/* </> */}
+        {/* } */}
       </div>
       <nav>
         <Link to="/experiences" className='navLinks'>experiences </Link>
@@ -26,6 +43,7 @@ function Header() {
         <Link to="/about" className='navLinks'>sobre nosotros</Link>
         <Link to="/contact" className='navLinks'>contacto</Link>
       </nav>
+      </div>
     </div>
   )
 }

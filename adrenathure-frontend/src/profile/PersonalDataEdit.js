@@ -23,7 +23,7 @@ function PersonalDataEdit() {
       }
     })
     const data = await res.json()
-    console.log(data)
+   
     if (res.ok) {
       setError('Updated successfully')
       navigate('/')
