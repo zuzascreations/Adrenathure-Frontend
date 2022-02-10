@@ -6,7 +6,7 @@ function Avatar() {
   const avatar = useFetch('http://localhost:3000/users/profile')
   return avatar && (
     <div className="avatar">
-      <img src={avatar.avatar} alt="avatar" />
+      <img src={`http://localhost:3000/${avatar.avatar}`} alt="avatar" />
     </div>
   )
 }

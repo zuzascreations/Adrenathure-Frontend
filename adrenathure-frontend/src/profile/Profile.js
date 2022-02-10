@@ -6,6 +6,7 @@ import BookingId from './BookingId'
 import NavProfile from './NavProfile'
 import ErrorBoundary from '../ErrorBoundary'
 import PersonalDataEdit from './PersonalDataEdit'
+import Admin from './Admin'
 
 function Profile() {
   const user = useUser()
@@ -22,6 +23,8 @@ function Profile() {
           <Route path="editar" element={<PersonalDataEdit />} />
           <Route path="bookings" element={<Bookings />} />
           <Route path="bookings/:id" element={<BookingId />} />
+          <Route path="admin/*" element={<Admin />} />
+
         </Routes>
       </ErrorBoundary>
     </section>
