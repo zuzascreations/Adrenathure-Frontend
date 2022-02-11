@@ -14,6 +14,7 @@ function ExperienceId() {
         <Sidebar />
         <img src={experienceId[0].photo} alt="City"/>
         <h2>{experienceId[0].experienceName}</h2>
+        <span>puntuación: {experienceId[0].AVGVote}</span>
         <p>{experienceId[0].experienceDescription}</p>
         <p>Precio: {experienceId[0].price}€</p>
         <p>Plazas libres: {experienceId[0].totalSeats}</p>

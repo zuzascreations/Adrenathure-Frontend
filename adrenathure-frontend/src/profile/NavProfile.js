@@ -4,7 +4,7 @@ import './NavProfile.css'
 
 function NavProfile() {
   const user = useUser()
-  
+
   return (
     <div>
       <nav className="nav-profile">

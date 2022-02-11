@@ -4,9 +4,9 @@ function NavAdmin() {
   return (
     <div>
       <nav>
-        <Link to="/profile/admin/newExperience">crear nueva experiencia</Link>
+        <Link to="/profile/admin">todas las experiencias</Link>
         <Link to="/profile/admin/allBookings">todas las reservas</Link>
-
+        <Link to="/profile/admin/allPlaces">todos los places</Link>
       </nav>
     </div>
   )
