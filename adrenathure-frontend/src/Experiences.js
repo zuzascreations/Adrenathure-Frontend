@@ -15,6 +15,7 @@ function Experiences() {
             <Link to={'/experiences/' + experience.id} className='title-experience'>
               {experience.experienceName}
             </Link>
+            <span>puntuación: {experience.AVGVote}</span>
             <p>...</p>
             <p>{experience.experienceDescription}</p>
           </article>
