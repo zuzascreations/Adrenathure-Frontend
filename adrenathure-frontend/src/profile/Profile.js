@@ -6,7 +6,7 @@ import BookingId from './BookingId'
 import NavProfile from './NavProfile'
 import ErrorBoundary from '../ErrorBoundary'
 import PersonalDataEdit from './PersonalDataEdit'
-import Admin from './Admin'
+import Admin from './admin/Admin'
 
 function Profile() {
   const user = useUser()

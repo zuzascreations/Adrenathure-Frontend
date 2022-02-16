@@ -1,6 +1,6 @@
 import { Suspense } from 'react'
-import Loading from '../Loading'
-import useFetch from "../useFetch"
+import Loading from '../../Loading'
+import useFetch from "../../useFetch"
 import { Link } from "react-router-dom"
 
 function AllExperiences() {
