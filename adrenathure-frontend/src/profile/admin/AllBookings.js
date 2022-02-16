@@ -1,6 +1,6 @@
-import useFetch from '../useFetch'
+import useFetch from '../../useFetch'
 import { Suspense } from 'react'
-import Loading from '../Loading'
+import Loading from '../../Loading'
 import { Link } from 'react-router-dom'
 
 

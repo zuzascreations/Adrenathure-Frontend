@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { useUser } from '../hooks'
-import ErrorBoundary from '../ErrorBoundary'
+import { useUser } from '../../hooks'
+import ErrorBoundary from '../../ErrorBoundary'
 import AllExperiences from './AllExperiences'
 import EditExperience from './EditExperience'
 import CreateExperience from './CreateExperience'
