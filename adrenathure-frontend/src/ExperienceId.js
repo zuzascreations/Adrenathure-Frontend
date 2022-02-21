@@ -8,18 +8,19 @@ import Loading from "./Loading"
 function ExperienceId() {
   const { id } = useParams()
   const experienceId = useFetch('http://localhost:3000/experiences/' + id)
-  console.log(experienceId)
+  const dates = useFetch('http://localhost:3000/dates/' + id)
+
   return experienceId && (
     <div className="experience">
-        <Sidebar />
-        <img src={experienceId[0].photo} alt="City"/>
-        <h2>{experienceId[0].experienceName}</h2>
-        <span>puntuación: {experienceId[0].AVGVote}</span>
-        <p>{experienceId[0].experienceDescription}</p>
-        <p>Precio: {experienceId[0].price}€</p>
-        <p>Plazas libres: {experienceId[0].totalSeats}</p>
-        <p>Fecha: {experienceId[0].experienceDate}</p>
-        <p>Hora: {experienceId[0].experienceHour}</p>
+      <Sidebar />
+      <img className='photoExperience' src={`http://localhost:3000/${experienceId[0].photo}`} alt='foto experiencia'></img>
+      <h2>{experienceId[0].experienceName}</h2>
+      <span>puntuación: {experienceId[0].AVGVote}</span>
+      <p>{experienceId[0].experienceDescription}</p>
+      <p>Precio: {experienceId[0].price}€</p>
+      <p>Plazas libres: {dates[0].totalSeats}</p>
+      <p>Fecha: {dates[0].experienceDate.substring(0, 10)}</p>
+      <p>Hora: {dates[0].experienceHour.substring(0, 5)}</p>
     </div>
   )
 }

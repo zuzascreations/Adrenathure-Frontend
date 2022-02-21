@@ -19,23 +19,23 @@ import About from './About'
 import Contact from './Contact'
 
 
-function App() {
 
+function App() {
   return (
     <div className="App">
       <Header />
-      <Modal />
+      <Modal/>
       <Routes>
         <Route path="/experiences/*" element={<Experiences />} />
         <Route path="experiences/:id" element={<ExperienceId />}/>
         <Route path="/login/" element={<Login />} />
-        <Route path="/" element={<><SearchBar /><Portada /></>} />
+        <Route path="/" element={<><SearchBar/><Portada /></>} />
         <Route path="/register/" element={<Register />} />
         <Route path="profile/*" element={<Profile />} />
         <Route path="places" element={<SidebarPlaces />} />
         <Route path="places/:id" element={<Place />} />
         <Route path="places/:id" element={<SidebarExperiencesPlaceId />} />
-        <Route path="/:place&:price&:date" element={<SearchPage />} />
+        <Route path="/:place&:price&:date" element={<><SearchBar /><SearchPage /></>} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<h2>404 - Not found</h2>} />

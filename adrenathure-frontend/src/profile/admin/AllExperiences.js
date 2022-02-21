@@ -1,25 +1,56 @@
-import { Suspense } from 'react'
+import { Suspense, useState } from 'react'
 import Loading from '../../Loading'
 import useFetch from "../../useFetch"
 import { Link } from "react-router-dom"
+import { useUser } from '../../hooks'
 
 function AllExperiences() {
+
+  const user = useUser()
+  const [error, setError] = useState(null)
   const experiences = useFetch('http://localhost:3000/experiences')
+  const handleClick = async (e) => {
+    const expId = e.target.value
+    const res = await fetch('http://localhost:3000/experiences', {
+      method: 'DELETE',
+      body: JSON.stringify({ expId }),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + user.token
+      }
+    })
+    if (res.ok) {
+      // const data = await res.json()
+      setError('Deleted successfully')
+      window.location.reload(true)
+    } else {
+      if (res.status === 404) {
+        setError('No se ha podido borrar//Error desconocido')
+
+      }
+    }
+  }
+
   return experiences && (
     <div>
       <ul>
         {experiences.map(experience =>
-          <li key={experience.id}>
-              <p>{experience.experienceName}</p>
-              <p>{experience.experienceDate.substring(0, 10)}</p>
-              <p>{experience.price}</p>
-              <p>{experience.totalSeats}</p>
-              <p>{experience.photo}</p>
-              <p>{experience.place_id}</p>
-              <button><Link to={"/profile/admin/editExperience/" + experience.id }>editar experiencia</Link></button>
-
-          </li>
+          <>
+            <li key={experience.id}>
+              <img className='experience-photo' src={`http://localhost:3000/${experience.photo}`} alt="avatar" />
+              <p>nombre: {experience.experienceName}</p>
+              <p>precio: {experience.price}€</p>
+              <p>destino: {experience.placeName}</p>
+              <p>plazas totales: {experience.totalSeats}</p>
+              <button><Link to={"/profile/admin/editExperience/" + experience.id}>editar experiencia</Link></button>
+              <button value={experience.id} onClick={handleClick}>borrar experiencia</button>
+            </li>
+          </>
         )}
+     
+
+
+        {error && <div className="error">{error}</div>}
       </ul>
       <button><Link to={"/profile/admin/newExperience"}>añadir nueva experiencia</Link>
       </button>

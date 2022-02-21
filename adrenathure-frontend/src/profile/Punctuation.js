@@ -7,7 +7,7 @@ function Punctuation() {
   const [error, setError] = useState(null)
   const user = useUser()
   const { id } = useParams()
-console.log(id)
+
   const handleSubmit = async e => {
     e.preventDefault()
     const res = await fetch('http://localhost:3000/reviews/' + id, {
@@ -18,12 +18,18 @@ console.log(id)
         'Authorization': 'Bearer ' + user.token
       }
     })
-    const data = await res.json()
-    console.log(data)
+    // const data = await res.json()
+
     if (res.ok) {
-      setError('Updated successfully')
+      setError('Voto guardado con éxito')
+
     } else {
-      setError(data?.error || 'Error desconocido')
+      if (res.status === 403) {
+        setError('Este voto ya existe')
+      }
+      if (res.status === 500) {
+        setError('Database Error')
+      }
     }
   }
 

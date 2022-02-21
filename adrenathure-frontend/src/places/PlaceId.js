@@ -8,7 +8,7 @@ function PlaceId() {
   const placeId = useFetch('http://localhost:3000/places/' + id)
   return placeId && (
     <div className="place-id">
-      <img src={placeId.photo} alt="City" />
+      <img className='photoExperience' src={`http://localhost:3000/${placeId.photo}`} alt='foto experiencia'></img>
       <h2>{placeId.placeName}</h2>
       <p>{placeId.placeDescription}</p>
     </div>

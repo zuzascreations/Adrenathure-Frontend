@@ -2,6 +2,7 @@ import { Suspense, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useRegister, useSetUser } from "./hooks"
 import Loading from "./Loading"
+import './Login.css'
 
 function Login() {
   const [email, setEmail] = useState('')
@@ -20,12 +21,21 @@ function Login() {
         'Content-Type': 'application/json'
       }
     })
-    const data = await res.json()
+
     if (res.ok) {
+      const data = await res.json()
       setUser(data)
       navigate('/')
     } else {
-      setError(data.error)
+      if (res.status === 400 ){
+        setError('rellena los campos')
+      }
+      if (res.status === 401 ){
+        setError('Contraseña y/o email incorrecto')
+      }
+      if (res.status === 409 ){
+        setError('Consulta tu email y activa tu cuenta')
+      }
     }
   }
 
@@ -39,8 +49,12 @@ function Login() {
         <h1>acceso</h1>
       </div>
       <form onSubmit={handleSubmit}>
-        <input type='email' value={email} onChange={(e) => setEmail(e.target.value)}></input>
-        <input type='password' value={password} onChange={(e) => setPassword(e.target.value)}></input>
+        <label>email:
+          <input type='email' value={email} onChange={(e) => setEmail(e.target.value)}></input>
+        </label>
+        <label>password:
+          <input type='password' value={password} onChange={(e) => setPassword(e.target.value)}></input>
+        </label>
         <button>acceso</button>
         {error && <div className="error">{error}</div>}
       </form>

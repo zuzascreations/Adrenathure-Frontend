@@ -70,6 +70,10 @@ function EditPlace() {
           <input name="coords" value={coordsLat} onChange={e => setCoordsLat(e.target.value)} />
         </label>
         <label>
+          <span>foto:</span>
+          <img className='experience-photo' src={`http://localhost:3000/${places.photo}`} alt="avatar" />
+        </label>
+        <label>
         escoge foto destino:
         <input className="input" type='file' onChange={e => setFile(e.target.files[0])} />
         </label>

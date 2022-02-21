@@ -18,11 +18,17 @@ function CreatePlace() {
   const handleSubmit = async e => {
     e.preventDefault()
     const fd = new FormData()
-    fd.append('avatar', file)
+    if (file) {
+      fd.append('avatar', file)
+    }
     fd.append('placeName', placeName)
     fd.append('placeDescription', placeDescription)
-    fd.append('coordsLong', coordsLong)
-    fd.append('coordsLat', coordsLat)
+    if (coordsLong) {
+          fd.append('coordsLong', coordsLong)
+    }
+    if (coordsLat) {
+          fd.append('coordsLat', coordsLat)
+    }
 
     const res = await fetch('http://localhost:3000/places', {
       method: 'POST',
@@ -32,13 +38,14 @@ function CreatePlace() {
         Authorization: 'Bearer ' + user.token
       }
     })
-    const data = await res.json()
+    
 
     if (res.ok) {
+      // const data = await res.json()
       setError('Updated successfully')
       navigate('/')
     } else {
-      setError(data?.error || 'Error desconocido')
+      setError('Error desconocido')
     }
     setPlaceName('')
   }
@@ -52,11 +59,11 @@ function CreatePlace() {
       <form onSubmit={handleSubmit}>
         <label>
           <span>nombre destino:</span>
-          <input name="name" value={placeName} onChange={e => setPlaceName(e.target.value)} />
+          <input required name="name" value={placeName} onChange={e => setPlaceName(e.target.value)} />
         </label>
         <label>
           <span>descripción destino:</span>
-          <input name="description" value={placeDescription} onChange={e => setPlaceDescription(e.target.value)} />
+          <input required name="description" value={placeDescription} onChange={e => setPlaceDescription(e.target.value)} />
         </label>
         <label>
           <span>coords longitude:</span>
@@ -68,7 +75,7 @@ function CreatePlace() {
         </label>
         <label>
         escoge foto destino:
-        <input className="input" type='file' onChange={e => setFile(e.target.files[0])} />
+        <input  className="input" type='file' onChange={e => setFile(e.target.files[0])} />
       </label>
         <button>guardar</button>
         <p>{error}</p>

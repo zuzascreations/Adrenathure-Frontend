@@ -1,4 +1,16 @@
 .errorSearch {
-  height: 500px;
+ 
   color: black;
+}
+.experience-photos {
+  width: 200px;
+}
+.experiences-searched {
+  margin: 20px;
+  width: 800px;
+  
+}
+.bodyArticle {
+  border: 1px solid black;
+  padding: 10px;
 }

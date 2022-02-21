@@ -4,10 +4,9 @@ import { useParams } from 'react-router-dom'
 import Loading from './Loading'
 import './SearchPage.css'
 
-
 function SearchPage() {
   let { date, place, price } = useParams()
-  
+
   if (date === 'Fechas') {
     date = ''
   }
@@ -31,25 +30,29 @@ function SearchPage() {
   }
 
   url += conditions.join('&')
-
-
   const experiences = useFetch(url)
- 
-
   return (
 
-    <div>
-      {!experiences &&
-      <p className='errorSearch'>no se han encontrado resultados</p>}
-      {experiences &&
-        experiences.map(experience =>
-          <>
-            <h2>{experience.experienceName}:</h2>
-            <p>Descripción: {experience.experienceDescription}</p>
-            <p>Precio: {experience.price}</p>
-            <p>Fechas: {experience.experienceDate}</p>
-          </>)}
-    </div>
+    <>
+      <div className='errorSearch'>
+        {!experiences.length &&
+          <p>no se han encontrado resultados</p>}
+      </div>
+      <div className='experiences-searched'>
+       
+          {experiences &&
+            experiences.map(experience =>
+             <div className='bodyArticle'>
+                <img className='experience-photos' src={`http://localhost:3000/${experience.photo}`} alt="avatar" />
+                <h2>{experience.experienceName}:</h2>
+                <p>Descripción: {experience.experienceDescription}</p>
+                <p>Precio: {experience.price}</p>
+                <p>Fechas: {experience.experienceDate}</p>
+                </div>
+              )}
+        
+      </div>
+    </>
   )
 }
 
