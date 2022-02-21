@@ -3,6 +3,7 @@ import Loading from '../Loading'
 import useFetch from '../useFetch'
 import { Link } from 'react-router-dom'
 import Avatar from './Avatar'
+import './PersonalData.css'
 
 function PersonalData() {
   const personalData = useFetch('http://localhost:3000/users/profile')

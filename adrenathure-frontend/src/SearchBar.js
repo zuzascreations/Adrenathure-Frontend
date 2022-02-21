@@ -8,91 +8,114 @@ import { useDispatch } from 'react-redux'
 
 function SearchBar() {
   const dispatch = useDispatch()
-  const [experiences, setExperiences] = useState([])
-  const [places, setPlaces] = useState(null)
-
-  const [showPrices, setShowPrices] = useState(false)
-  const [showPlaces, setShowPlaces] = useState(true)
-  const [showDates, setShowDates] = useState(false)
 
   const initialValuePlace = 'Destinos'
-  const initialValuePrice = 'Precios'
+  const initialValuePriceLow = 'Precios '
+  const initialValuePriceHigh = ''
   const initialValueDate = 'Fechas'
 
+
+
+
   const [valuePlace, setValuePlace] = useState(initialValuePlace)
-  const [valuePrice, setValuePrice] = useState(initialValuePrice)
+
+  const [valuePriceLow, setValuePriceLow] = useState(initialValuePriceLow)
+  const [valuePriceHigh, setValuePriceHigh] = useState(initialValuePriceHigh)
   const [valueDate, setValueDate] = useState(initialValueDate)
 
   const experienceData = useFetch('http://localhost:3000/experiences')
   const placesData = useFetch('http://localhost:3000/places')
+  const dates = useFetch('http://localhost:3000/dates')
 
-  useEffect(() => {
-    setExperiences(experienceData)
-    setPlaces(placesData)
-  }, [experienceData, placesData])
 
-  const showOff = () => {
-    setShowPrices(false)
-    setShowPlaces(false)
-    setShowDates(false)
+  const showDefault = () => {
+    setValuePlace(initialValuePlace)
+    setValuePriceLow(initialValuePriceLow)
+    setValuePriceHigh(initialValuePriceHigh)
+    setValueDate(initialValueDate)
   }
   function Modal1() {
     return (
       <>
-      <p className='emergentSearch'>{valuePlace}</p>
-      {
-        places.map(place =>
-          <p className='place' onClick={() => setValuePlace(place.placeName)}>{place.placeName}</p>
-        )}
-    </>)
-    
+        <p className='emergentSearch'>Destinos</p>
+        {/* {
+          placesData.map(place =>
+            <>
+            <p key={place.id} className='place' onClick={() => setValuePlace(place.placeName)}>{place.placeName}</p>
+            
+            </>
+          )} */}
+        <select onChange={(e) => setValuePlace(e.target.value)}>
+          <option disabled selected  >elige:</option>
+          {
+            placesData.map(place =>
+              <>
+                <option key={place.id} className='place' value={place.placeName} >{place.placeName}</option>
+              </>
+            )
+          }
+        </select>
+
+      </>)
   }
   function Modal2() {
     return (
       <>
-      <p className='emergentSearch'>{valuePrice}</p>
-      {
-        experiences.map(experience =>
-          <p className='price' onClick={() => setValuePrice(experience.price)}>{experience.price}</p>
-        )}
-    </>)
-    
+        <p className='emergentSearch'>precios</p>
+
+        <select onChange={(e) => setValuePriceLow(e.target.value)}>
+          <option disabled selected  >desde:</option>
+          {
+            experienceData.map(experience =>
+              <>
+                <option key={experience.id} className='price' value={100 * Math.floor((experience.price) / 100)} >{100 * Math.floor((experience.price) / 100)}</option>
+              </>
+            )
+          }
+        </select>
+        <select onChange={(e) => setValuePriceHigh(e.target.value)}>
+          <option disabled selected  >hasta:</option>
+          {
+            experienceData.map(experience =>
+              <>
+                <option key={experience.id} className='price' value={100 * Math.ceil((experience.price) / 100)} >{100 * Math.ceil((experience.price) / 100)}</option>
+              </>
+            )
+          }
+        </select>
+      </>)
+
   }
   function Modal3() {
     return (
       <>
-      <p className='emergentSearch'>{valuePlace}</p>
-      {experiences.map(experience =>
-          <p className='date' onClick={() => setValueDate(experience.experienceDate)}>{experience.experienceDate.substring(0, 10)}</p>
-        )}
-    </>)
-    
+        <p className='emergentSearch'>{valueDate}</p>
+        {dates.map(date =>
+          <p key={date.id} className='date' onClick={() => setValueDate(date.experienceDate)}>{date.experienceDate.substring(0, 10)}</p>
+        )
+        }
+      </>)
+
   }
 
   return (
     <>
       <div className='searchBar'>
-        <div onClick={() => dispatch({type:'modal', modal: <Modal1/>})  }>
-            {valuePlace}
-          
+        <div onClick={() => dispatch({ type: 'modal', modal: <Modal1 /> })}>
+          {valuePlace}
         </div>
-        <div onClick={() => dispatch({type:'modal', modal: <Modal2/>})} >
-          {valuePrice}
-          
+        <div onClick={() => dispatch({ type: 'modal', modal: <Modal2 /> })} >
+          {valuePriceLow} - {valuePriceHigh}
         </div>
-        <div onClick={() => dispatch({type:'modal', modal: <Modal3/>}) }>
+        <div onClick={() => dispatch({ type: 'modal', modal: <Modal3 /> })}>
           {valueDate.substring(0, 10)}
-         
         </div>
         <div className='emergentSearch' onClick={() => {
-          showOff()
-        }}><Link to={`/${valuePlace}&${valuePrice}&${valueDate}`}>buscar</Link>
+          showDefault()
+        }}><Link to={`/${valuePlace}&${valuePriceLow}&${valuePriceHigh}&${valueDate}`}>buscar</Link>
         </div>
         <p className='resetSearch' onClick={() => {
-          setValuePlace(initialValuePlace)
-          setValuePrice(initialValuePrice)
-          setValueDate(initialValueDate)         
-          showOff()
+          showDefault()
         }}>reset Filtros</p>
       </div>
     </>

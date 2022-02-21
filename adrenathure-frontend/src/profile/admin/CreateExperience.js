@@ -2,6 +2,8 @@ import { Suspense, useState } from 'react'
 import { useNavigate, Navigate } from 'react-router-dom'
 import { useUser } from '../../hooks'
 import Loading from '../../Loading'
+import useFetch from '../../useFetch'
+
 
 
 function CreateExperience() {
@@ -17,11 +19,14 @@ function CreateExperience() {
   const [error, setError] = useState(null)
   const navigate = useNavigate()
   const user = useUser()
+  const places = useFetch('http://localhost:3000/places')
 
   const handleSubmit = async e => {
     e.preventDefault()
     const fd = new FormData()
-    fd.append('avatar', file)
+    if (file) {
+      fd.append('avatar', file)
+    }
     fd.append('experienceName', experienceName)
     fd.append('price', price)
     fd.append('experienceDescription', experienceDescription)
@@ -32,19 +37,17 @@ function CreateExperience() {
 
     const res = await fetch('http://localhost:3000/experiences', {
       method: 'POST',
-      // body: JSON.stringify({ experienceName, price, experienceDescription, place_id, experienceDate, experienceHour, totalSeats }),
       body: fd,
       headers: {
         Authorization: 'Bearer ' + user.token
       }
     })
-    const data = await res.json()
 
     if (res.ok) {
       setError('Updated successfully')
-      navigate('/')
+      navigate('/experiences')
     } else {
-      setError(data?.error || 'Error desconocido')
+      setError('Error desconocido')
     }
   }
 
@@ -57,23 +60,30 @@ function CreateExperience() {
       <form onSubmit={handleSubmit}>
         <label>
           <span>nombre experiencia:</span>
-          <input name="name" value={experienceName} onChange={e => setExperienceName(e.target.value)} />
+          <input required name="name" value={experienceName} onChange={e => setExperienceName(e.target.value)} />
         </label>
         <label>
           <span>descripción experiencia:</span>
-          <input name="description" value={experienceDescription} onChange={e => setExperienceDescription(e.target.value)} />
+          <input required name="description" value={experienceDescription} onChange={e => setExperienceDescription(e.target.value)} />
         </label>
         <label>
           <span>precio:</span>
-          <input name="price" value={price} onChange={e => setPrice(e.target.value)} />
+          <input required name="price" value={price} onChange={e => setPrice(e.target.value)} />
         </label>
         <label>
           <span>destino:</span>
-          <input name="place" value={place_id} onChange={e => setPlace_id(e.target.value)} />
+          <select onChange={e => setPlace_id(e.target.value)} name='escoge destino'>
+            <option disabled selected value>elige</option>
+            {places &&
+              places.map(place =>
+                <option required name="place" value={place.id} >{place.placeName}</option>
+              )
+            }
+          </select>
         </label>
         <label>
           <span>fechas:</span>
-          <input name="dates" value={experienceDate} onChange={e => setExperienceDate(e.target.value)} />
+          <input required name="dates" value={experienceDate} onChange={e => setExperienceDate(e.target.value)} />
         </label>
         <label>
           <span>Hora:</span>
@@ -81,12 +91,12 @@ function CreateExperience() {
         </label>
         <label>
           <span>plazas totales:</span>
-          <input name="seats" value={totalSeats} onChange={e => setTotalSeats(e.target.value)} />
+          <input required name="seats" value={totalSeats} onChange={e => setTotalSeats(e.target.value)} />
         </label>
         <label>
-        escoge foto experiencia:
-        <input className="input" type='file' onChange={e => setFile(e.target.files[0])} />
-      </label>
+          escoge foto experiencia:
+          <input className="input" type='file' onChange={e => setFile(e.target.files[0])} />
+        </label>
         <button>guardar</button>
         <p>{error}</p>
       </form>

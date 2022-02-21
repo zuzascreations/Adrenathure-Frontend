@@ -1,32 +1,34 @@
-import { Suspense, useState } from 'react'
-import { useNavigate, Navigate, useParams } from 'react-router-dom'
+import { Suspense, useEffect, useState } from 'react'
+import { useNavigate, Navigate, useParams, Link } from 'react-router-dom'
 import { useUser } from '../../hooks'
 import Loading from '../../Loading'
 import useFetch from '../../useFetch'
+import './EditExperience.css'
 
 
 function EditExperience() {
   const { id } = useParams()
-  const experiences = useFetch('http://localhost:3000/experiences/' + id )
+  const [experiences] = useFetch('http://localhost:3000/experiences/' + id)
 
-  const [experienceDescription, setExperienceDescription] = useState(experiences[0].experienceDescription || '')
-  const [experienceName, setExperienceName] = useState(experiences[0].experienceName || '')
-  const [place_id, setPlace_id] = useState(experiences[0].place_id || '')
-  const [experienceDate, setExperienceDate] = useState((experiences[0].experienceDate) || '')
-  // const [photo, setPhoto] = useState('')
-  const [totalSeats, setTotalSeats] = useState(experiences[0].totalSeats || '')
-  const [price, setPrice] = useState(experiences[0].price || '')
-  const [experienceHour, setexperienceHour] = useState(experiences[0].experienceHour || '')
+  const [experienceDescription, setExperienceDescription] = useState(experiences.experienceDescription || '')
+  const [experienceName, setExperienceName] = useState(experiences.experienceName || '')
+  const [place_id, setPlace_id] = useState(experiences.place_id || '')
+  const [experienceDate, setExperienceDate] = useState(experiences.experienceDate.substring(0, 10) || '')
+  const [totalSeats, setTotalSeats] = useState(experiences.totalSeats || '')
+  const [price, setPrice] = useState(experiences.price || '')
+  const [experienceHour, setexperienceHour] = useState(experiences.experienceHour.substring(0, 5) || '')
   const [file, setFile] = useState(null)
-
-
 
   const [error, setError] = useState(null)
   const navigate = useNavigate()
   const user = useUser()
 
+  const places = useFetch('http://localhost:3000/places')
+
   const fd = new FormData()
-  fd.append('avatar', file)
+  if (file) {
+    fd.append('avatar', file)
+  }
   fd.append('experienceName', experienceName)
   fd.append('price', price)
   fd.append('experienceDescription', experienceDescription)
@@ -35,24 +37,31 @@ function EditExperience() {
   fd.append('experienceHour', experienceHour)
   fd.append('totalSeats', totalSeats)
 
-
   const handleSubmit = async e => {
     e.preventDefault()
-    const res = await fetch('http://localhost:3000/experiences/' + id , {
+    const res = await fetch('http://localhost:3000/experiences/' + id, {
       method: 'PUT',
-      // body: JSON.stringify({ experienceName, experienceHour, place_id, experienceDate, totalSeats, price, experienceDescription }),
       body: fd,
       headers: {
-        // 'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + user.token
       }
     })
-    const data = await res.json()
+    // const data = await res.json()
     if (res.ok) {
       setError('Updated successfully')
-      navigate('/')
+      window.location.reload(true)
+
     } else {
-      setError(data?.error || 'Error desconocido')
+      if (res.status === 400) {
+        setError('rellena los campos')
+      }
+      if (res.status === 404) {
+        setError('Formato incorrecto, sigue las indicaciones en cada campo a cubrir')
+      }
+      if (res.status === 500) {
+        setError('Database Error')
+      }
+
     }
   }
 
@@ -62,40 +71,57 @@ function EditExperience() {
 
   return (
     <>
-      <form  onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
+        <h2>editar experiencia</h2>
         <label>
           <span>nombre experiencia:</span>
-          <input name="name" value={experienceName} onChange={e => setExperienceName(e.target.value)} />
+          <input required name="name" value={experienceName} onChange={e => setExperienceName(e.target.value)} />
         </label>
         <label>
           <span>descripcion experiencia:</span>
-          <input name="description" value={experienceDescription} onChange={e => setExperienceDescription(e.target.value)} />
+          <textarea required name="description" value={experienceDescription} onChange={e => setExperienceDescription(e.target.value)} />
         </label>
         <label>
           <span>destino:</span>
-          <input name="place" value={place_id} onChange={e => setPlace_id(e.target.value)} />
+          <select onChange={e => setPlace_id(e.target.value)} name='escoge destino'>
+            <option disabled selected value>elige</option>
+            {places &&
+              places.map(place =>
+                <option required name="place" value={place.id} >{place.placeName}</option>
+              )
+            }
+          </select>
         </label>
         <label>
           <span>fechas:</span>
-          <input name="dates" value={experienceDate} onChange={e => setExperienceDate(e.target.value)} />
+          <input required name="dates" value={experienceDate} onChange={e => setExperienceDate(e.target.value)} />
+          <span className='formatInputs'>formato : 'yyyy-mm-dd '</span>
         </label>
         <label>
           <span>hora:</span>
-          <input name="hour" value={experienceHour} onChange={e => setexperienceHour(e.target.value)} />
+          <input required name="hour" value={experienceHour} onChange={e => setexperienceHour(e.target.value)} />
+          <span className='formatInputs'>formato : ' 00:00 '</span>
+
         </label>
         <label>
           <span>plazas totales:</span>
-          <input name="seats" value={totalSeats} onChange={e => setTotalSeats(e.target.value)} />
+          <input required name="seats" value={totalSeats} onChange={e => setTotalSeats(e.target.value)} />
         </label>
         <label>
           <span>precio:</span>
-          <input name="price" value={price} onChange={e => setPrice(e.target.value)} />
+          <input required name="price" value={price} onChange={e => setPrice(e.target.value)} />
         </label>
         <label>
-        escoge foto experiencia:
-        <input className="input" type='file' onChange={e => setFile(e.target.files[0])} />
-      </label>
+          <span>foto:</span>
+          <img className='experience-photo' src={`http://localhost:3000/${experiences.photo}`} alt="avatar" />
+        </label>
+        <label>
+          cambiar foto:
+          <input className="input" type='file' onChange={e => setFile(e.target.files[0])} />
+        </label>
         <button>guardar</button>
+        <button><Link to={'/profile/admin'}>volver</Link></button>
+
         <p>{error}</p>
       </form>
     </>

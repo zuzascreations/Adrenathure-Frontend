@@ -1,3 +1,4 @@
+
 import { useDispatch, useSelector } from 'react-redux'
 import './Modal.css'
 
@@ -6,11 +7,12 @@ function Modal() {
   const modal = useSelector(m => m.modal)
   const dispatch = useDispatch()
   const handleClick = () => dispatch({type:'modal', modal: null})
-  const handlePropagation = e => e.stopPropagation()
+  const handleClick2 = e => e.stopPropagation()
   return modal && (
-    <div className="modal-bg" onClick={handleClick}>
-      <div className="modal-fg" >
+    <div className='modal-bg' onClick={handleClick}>
+      <div className="modal-fg"  onClick={handleClick2}>
         {modal}
+        <button onClick={handleClick}>aplicar</button>
       </div>
     </div>
   )
