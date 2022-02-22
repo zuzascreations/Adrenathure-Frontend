@@ -7,7 +7,6 @@ function Punctuation() {
   const [error, setError] = useState(null)
   const user = useUser()
   const { id } = useParams()
-
   const handleSubmit = async e => {
     e.preventDefault()
     const res = await fetch('http://localhost:3000/reviews/' + id, {
