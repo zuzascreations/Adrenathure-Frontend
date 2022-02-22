@@ -3,6 +3,7 @@ import useFetch from "./useFetch"
 import Sidebar from "./Sidebar"
 import { Suspense } from "react"
 import Loading from "./Loading"
+import { Link } from 'react-router-dom'
 
 
 function ExperienceId() {
@@ -14,13 +15,15 @@ function ExperienceId() {
     <div className="experience">
       <Sidebar />
       <img className='photoExperience' src={`http://localhost:3000/${experienceId[0].photo}`} alt='foto experiencia'></img>
-      <h2>{experienceId[0].experienceName}</h2>
+      <h2>experiencia: {experienceId[0].experienceName}</h2>
+      <h2>destino: {experienceId[0].place_id}</h2>
       <span>puntuación: {experienceId[0].AVGVote}</span>
       <p>{experienceId[0].experienceDescription}</p>
-      <p>Precio: {experienceId[0].price}€</p>
-      <p>Plazas libres: {dates[0].totalSeats}</p>
-      <p>Fecha: {dates[0].experienceDate.substring(0, 10)}</p>
-      <p>Hora: {dates[0].experienceHour.substring(0, 5)}</p>
+      <p>precio: {experienceId[0].price}€</p>
+      <p>plazas libres: {dates[0].totalSeats}</p>
+      <p>fecha: {dates[0].experienceDate.substring(0, 10)}</p>
+      <p>hora: {dates[0].experienceHour.substring(0, 5)}</p>
+      <button><Link to="/experiences/:id/book">reservar</Link></button>
     </div>
   )
 }

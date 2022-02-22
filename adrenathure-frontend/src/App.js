@@ -4,6 +4,7 @@ import Header from './Header'
 import Footer from './Footer'
 import Experiences from './Experiences'
 import ExperienceId from './ExperienceId'
+import ExperienceIdReservar from './ExperienceIdReservar'
 import Login from './Login'
 import Register from './Register'
 import Portada from './Portada'
@@ -26,15 +27,15 @@ function App() {
       <Header />
       <Modal/>
       <Routes>
-        <Route path="/experiences/*" element={<Experiences />} />
-        <Route path="experiences/:id" element={<ExperienceId />}/>
+        <Route path="/experiences/*" element={<><SearchBar /><Experiences /></>} />
+        <Route path="experiences/:id" element={<><SearchBar /><ExperienceId /></>}/>
+        <Route path="experiences/:id/book" element={<ExperienceIdReservar/>}/>
         <Route path="/login/" element={<Login />} />
         <Route path="/" element={<><SearchBar/><Portada /></>} />
         <Route path="/register/" element={<Register />} />
         <Route path="profile/*" element={<Profile />} />
-        <Route path="places" element={<SidebarPlaces />} />
-        <Route path="places/:id" element={<Place />} />
-        <Route path="places/:id" element={<SidebarExperiencesPlaceId />} />
+        <Route path="places" element={<><SearchBar /><SidebarPlaces /></>} />
+        <Route path="places/:id" element={<><SearchBar /><Place /></>} />
         <Route path="/:place&:price&:date" element={<><SearchBar /><SearchPage /></>} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
