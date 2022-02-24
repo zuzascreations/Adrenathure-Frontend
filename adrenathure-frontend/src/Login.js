@@ -43,7 +43,7 @@ function Login() {
 
     <div className='divLogin'>
       {registered &&
-        <div>enhorabuena tu cuenta ha sido creada con éxito</div>
+        <div>Enhorabuena tu cuenta ha sido creada con éxito. En breve recibirás un mensaje de correo electrónico con enlace para activarla.</div>
       }
       <div>
         <h1>acceso</h1>

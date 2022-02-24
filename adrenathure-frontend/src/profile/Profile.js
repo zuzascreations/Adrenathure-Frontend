@@ -24,7 +24,6 @@ function Profile() {
           <Route path="bookings" element={<Bookings />} />
           <Route path="bookings/:id" element={<BookingId />} />
           <Route path="admin/*" element={<Admin />} />
-
         </Routes>
       </ErrorBoundary>
     </section>

@@ -24,8 +24,7 @@ function BookingId() {
         <h4>hora experience: {bookingId.experienceHour.substring(0, 5)}</h4>
         <h4>asientos reservados: {bookingId.reservedSeats}</h4>
         <h4>precio total: {bookingId.totalPrice} €</h4>
-      </div>
-      <div>
+        <br></br>
         <Punctuation />
       </div>
     </>
