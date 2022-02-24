@@ -29,7 +29,7 @@ function App() {
       <Routes>
         <Route path="/experiences/*" element={<><SearchBar /><Experiences /></>} />
         <Route path="experiences/:id" element={<><SearchBar /><ExperienceId /></>}/>
-        <Route path="experiences/:id/book" element={<ExperienceIdReservar/>}/>
+        <Route path="experiences/:id/:date/book" element={<ExperienceIdReservar/>}/>
         <Route path="/login/" element={<Login />} />
         <Route path="/" element={<><SearchBar/><Portada /></>} />
         <Route path="/register/" element={<Register />} />

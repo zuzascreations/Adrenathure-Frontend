@@ -27,9 +27,6 @@ function BookingId() {
         <br></br>
         <Punctuation />
       </div>
-      <div>
-        <Punctuation />
-      </div>
     </>
   )
 }
