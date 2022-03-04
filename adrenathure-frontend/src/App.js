@@ -18,6 +18,7 @@ import './Loading.css'
 import Modal from './Modal'
 import About from './About'
 import Contact from './Contact'
+import YourBooking from './YourBooking'
 
 
 
@@ -34,8 +35,10 @@ function App() {
         <Route path="/" element={<><SearchBar/><Portada /></>} />
         <Route path="/register/" element={<Register />} />
         <Route path="profile/*" element={<Profile />} />
-        <Route path="places" element={<><SearchBar /><SidebarPlaces /></>} />
-        <Route path="places/:id" element={<><SearchBar /><Place /></>} />
+        <Route path="places" element={<SidebarPlaces />} />
+        <Route path="places/:id" element={<Place />} />
+        <Route path="/yourbooking/:id" element={<YourBooking />} />
+        <Route path="places/:id" element={<SidebarExperiencesPlaceId />} />
         <Route path="/:place&:price&:date" element={<><SearchBar /><SearchPage /></>} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
