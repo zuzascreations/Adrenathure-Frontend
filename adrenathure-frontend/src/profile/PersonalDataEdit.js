@@ -1,17 +1,19 @@
-import { useState } from 'react'
+import { Suspense, useState } from 'react'
 import { useNavigate, Navigate } from 'react-router-dom'
-import { useUser } from '../hooks'
+import { useSetModal, useUser } from '../hooks'
+import Loading from '../Loading'
 import useFetch from '../useFetch'
 import UploadAvatar from './UploadAvatar'
+import Avatar from './Avatar'
 
 function PersonalDataEdit() {
+  const setModal = useSetModal()
   const personalData = useFetch('http://localhost:3000/users/profile')
-
   const [firstName, setFirstName] = useState(personalData.firstName || '')
   const [lastName, setLastName] = useState(personalData.lastName || '')
   const [email, setEmail] = useState(personalData.email || '')
   const [password, setPassword] = useState('')
-  const [error, setError] = useState(null)
+  const [message, setMessage] = useState(null)
   const navigate = useNavigate()
   const user = useUser()
 
@@ -25,13 +27,22 @@ function PersonalDataEdit() {
         'Authorization': 'Bearer ' + user.token
       }
     })
-    const data = await res.json()
+    // const data = await res.json()
 
     if (res.ok) {
-      setError('Updated successfully')
-      navigate('/')
+      setMessage('Updated successfully')
+      setModal(
+        <>
+          <span>perfil actualizado correctamente</span>
+          <button onClick={() => {
+            setModal(null)
+            navigate('/Profile')
+            }}>volver</button>
+        </>
+      )
+      
     } else {
-      setError(data?.error || 'Error desconocido')
+      setMessage('Error desconocido')
     }
   }
 
@@ -41,6 +52,7 @@ function PersonalDataEdit() {
 
   return (
     <>
+      <Avatar />
       <UploadAvatar />
       <form className="page login" onSubmit={handleSubmit}>
         <label>
@@ -57,14 +69,22 @@ function PersonalDataEdit() {
         </label>
         <label>
           <span>contraseña*:</span>
-          <input type="password" name="password" value={password} onChange={e => setPassword(e.target.value)} />
+          <input required type="password" name="password" value={password} onChange={e => setPassword(e.target.value)} />
         </label>
         <p>* datos obligatorios</p>
         <button>guardar</button>
-        <p>{error}</p>
+        <p>{message}</p>
+        
+
       </form>
     </>
   )
 }
 
-export default PersonalDataEdit
+const PersonalDataEditWrapper = () =>
+  <Suspense fallback={<Loading className='page' />}>
+    <PersonalDataEdit />
+  </Suspense>
+
+
+export default PersonalDataEditWrapper

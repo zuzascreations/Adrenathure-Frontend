@@ -1,8 +1,13 @@
-import { useState } from 'react'
+import { Suspense, useState } from 'react'
 import { useUser } from '../hooks'
+import Loading from '../Loading'
+
 
 function UploadAvatar() {
+
   const [file, setFile] = useState(null)
+  const [message, setMessage] = useState(null)
+
   const user = useUser()
 
   const handleSubmit = e => {
@@ -11,21 +16,34 @@ function UploadAvatar() {
     fd.append('avatar', file)
     fd.append('Authorization', 'Bearer ' + user.token)
 
-    fetch('http://localhost:3000/users/uploads', {
+    const res = fetch('http://localhost:3000/users/uploads', {
       method: 'POST',
       body: fd,
       headers: fd
     })
+    if (res) {
+      setMessage('file uploaded succesfully')
+      window.location.reload(true)
+    }
   }
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        upload avatar
-        <input className="input" type='file' onChange={e => setFile(e.target.files[0])} />
-        <button className="subir">subir foto</button>
-      </label>
-    </form>
+    <>
+      <p>{message}</p>
+      <form onSubmit={handleSubmit}>
+        <label>
+          upload avatar
+          <input required className="input" type='file' onChange={e => setFile(e.target.files[0])} />
+          <button className="subir">subir foto</button>
+        </label>
+      </form>
+    </>
   )
 }
 
-export default UploadAvatar
+const UploadAvatarWrapper = () =>
+  <Suspense fallback={<Loading className='page' />}>
+    <UploadAvatar />
+  </Suspense>
+
+
+export default UploadAvatarWrapper

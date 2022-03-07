@@ -9,10 +9,9 @@ function Modal() {
   const handleClick = () => dispatch({type:'modal', modal: null})
   const handleClick2 = e => e.stopPropagation()
   return modal && (
-    <div className='modal-bg' onClick={handleClick}>
+    <div className='modal-bg'>
       <div className="modal-fg"  onClick={handleClick2}>
         {modal}
-        <button onClick={handleClick}>aplicar</button>
       </div>
     </div>
   )
