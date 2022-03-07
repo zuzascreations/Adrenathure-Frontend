@@ -6,7 +6,9 @@ import { useParams } from "react-router-dom"
 
 function SidebarExperiencesPlaceId() {
   const { id } = useParams()
+
   const experiencesPlaceId = useFetch('http://localhost:3000/experiences/place/' + id)
+
   return experiencesPlaceId && (
     <aside className="experience">
       <ul>

@@ -39,7 +39,7 @@ function EditExperience() {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    const res = await fetch('http://localhost:3000/experiences/' + id, {
+    const res = await fetch('http://localhost:3000/experiences/admin/' + id, {
       method: 'PUT',
       body: fd,
       headers: {
@@ -101,7 +101,6 @@ function EditExperience() {
           <span>hora:</span>
           <input required name="hour" value={experienceHour} onChange={e => setexperienceHour(e.target.value)} />
           <span className='formatInputs'>formato : ' 00:00 '</span>
-
         </label>
         <label>
           <span>plazas totales:</span>

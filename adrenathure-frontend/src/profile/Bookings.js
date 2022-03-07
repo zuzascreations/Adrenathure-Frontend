@@ -6,17 +6,17 @@ import { Link } from "react-router-dom"
 function Bookings() {
   const bookings = useFetch('http://localhost:3000/bookings')
   return bookings && (
-    <aside className="bookings">
-      <ul>
+    <div className="bookings">
         {bookings.map(booking =>
-          <li key={booking.id}>
-            <Link to={"/profile/bookings/" + booking.id}>
-              {booking.bookingNumber} - {booking.bookingDate.substring(0, 10)}
-            </Link>
-          </li>
+          <article key={booking.id}>
+            <p>nº: {booking.bookingNumber}</p>
+            <p>fecha: {booking.bookingDate.substring(0,10)}</p>
+            <p>precio total: {booking.totalPrice}</p>
+            <p>plazas reservadas: {booking.reservedSeats}</p>
+            <Link to={'/profile/bookings/' + booking.id }>Ver</Link>
+          </article>
         )}
-      </ul>
-    </aside>
+    </div>
   )
 }
 
