@@ -9,21 +9,23 @@
 .title {
   font-family: BioRhyme Expanded;
   font-size: xx-large;
-  font-weight: bold;
+  font-weight: normal;
   text-decoration: none;
   color: rgb(0, 0, 0);
   display: flex;
-  align-items: center;
+  align-items: top;
   justify-content: center;
 }
+
 .allHeader {
-  background-image: url('http://localhost:3000/oie_zagd0Yv2fsKz.jpg');
-  background-repeat: no-repeat;
+  /* background-image: url('http://localhost:3000/oie_zagd0Yv2fsKz.jpg'); */
+  /* background-repeat: no-repeat; */
   /* background-size: 100vw;
   background-size: 100vh; */
-  background-size: cover;
-  background-position: bottom;
+  /* background-size: cover; */
+  /* background-position: bottom; */
 }
+
 .transparencia {
   background-color: rgba(247, 247, 247, 0.5);
 }
@@ -32,11 +34,10 @@
   display: flex;
   justify-content: space-between;
   padding-top: 0px;
-  height: 250px;
+  height: 100px;
   display: flex;
   padding-left: 30px;
   padding-right: 30px;
-  
 }
 
 .clientSpace {
@@ -54,6 +55,7 @@
 }
 
 nav {
+  margin-bottom: 30px;
   height: 50px;
   display: flex;
   gap: 10px;
@@ -71,34 +73,66 @@ nav {
 }
 
 .buttonUsername {
-  margin-top: 10px;
+  margin-top: 50px;
   border: none;
   background-color: white;
 }
+
 .dropdown {
   display: inline-block;
   position: relative;
   min-width: 120px;
- 
 }
+
 .dropdown-content {
   background-color: white;
   display: none;
   position: absolute;
   width: 100%;
   overflow: auto;
-  box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.4);
+  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.4);
 }
+
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
 .dropdown-content a {
   display: block;
   color: #000000;
   padding: 5px;
   text-decoration: none;
 }
+
 .dropdown-content a:hover {
   color: #FFFFFF;
   background-color: #ddd;
+}
+
+.rrss {
+  padding: 20px;
+}
+
+.rrss-selector {
+  width: 25px;
+  margin-right: 10px;
+  margin-left: 0px;
+  background-color: rgb(49, 119, 119);
+  border-radius: 15px;
+}
+
+#carousel {
+  background-color: rgba(68, 65, 60, 0.1);
+  /* border: 1px solid black; */
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 30px;
+
+}
+
+.fotitos {
+
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
 }

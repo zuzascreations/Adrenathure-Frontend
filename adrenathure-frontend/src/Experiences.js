@@ -12,7 +12,7 @@ function Experiences() {
       <div className='articles'>
         {experiences.map(experience =>
           <article key={experience.id} className='articleExperience'>
-            <img className='photoExperience' src={`http://localhost:3000/${experience.photo}`} alt='foto experiencia'></img>
+            <img className='photoExperience' src={`http://localhost:3000/${experience.experiencePhoto}`} alt='foto experiencia'></img>
             <Link to={'/experiences/' + experience.id} className='title-experience'>
               {experience.experienceName}
             </Link>

@@ -15,7 +15,7 @@ function ExperienceId() {
   return experienceId && (
     <div className="experience">
       <Sidebar />
-      <img className='photoExperience' src={`http://localhost:3000/${experienceId[0].photo}`} alt='foto experiencia'></img>
+      <img className='photoExperience' src={`http://localhost:3000/${experienceId[0].experiencePhoto}`} alt='foto experiencia'></img>
       <h2>experiencia: {experienceId[0].experienceName}</h2>
       <h2>destino: {experienceId[0].placeName}</h2>
       <span>puntuación: {experienceId[0].AVGVote}</span>

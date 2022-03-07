@@ -5,10 +5,11 @@ import Loading from '../../Loading'
 import useFetch from '../../useFetch'
 
 
-
 function CreateExperience() {
   const [experienceName, setExperienceName] = useState('')
   const [experienceHour, setExperienceHour] = useState('')
+  const [experienceHour2, setExperienceHour2] = useState('')
+
   const [experienceDescription, setExperienceDescription] = useState('')
   const [price, setPrice] = useState('')
   const [place_id, setPlace_id] = useState('')
@@ -83,12 +84,13 @@ function CreateExperience() {
           </select>
         </label>
         <label>
-          <span>fechas:</span>
-          <input required name="dates" value={experienceDate} onChange={e => setExperienceDate(e.target.value)} />
-        </label>
-        <label>
-          <span>Hora:</span>
-          <input name="hour" value={experienceHour} onChange={e => setExperienceHour(e.target.value)} />
+          <span>fecha y hora de la experiencia:</span>
+          <input type='datetime-local' name="hour" value={experienceHour2} onChange={e => {
+            setExperienceHour2(e.target.value)
+            setExperienceDate(e.target.value.substring(0, 10))
+            setExperienceHour(e.target.value.substring(11, 16))
+
+          }} />
         </label>
         <label>
           <span>plazas totales:</span>

@@ -1,56 +1,57 @@
 import useFetch from 'fetch-suspense'
 import { Suspense } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import Loading from './Loading'
 import './SearchPage.css'
 
 function SearchPage() {
-  let { date, place, price } = useParams()
+
+  let { date, place, lowPrice, highPrice } = useParams()
 
   if (date === 'Fechas') {
     date = ''
   }
+
   if (place === 'Destinos') {
     place = ''
   }
-  if (price === 'Precios') {
-    price = ''
-  }
+
+  
   const conditions = []
 
   let url = ('http://localhost:3000/experiences?')
-  if (place) {
+  if (place.length) {
     conditions.push(`place=${place}`)
   }
   if (date) {
     conditions.push(`date=${date}`)
   }
-  if (price) {
-    conditions.push(`lowPrice=${price}`)
+  if (lowPrice) {
+    conditions.push(`lowPrice=${lowPrice}`)
+  }
+  if (highPrice) {
+    conditions.push(`highPrice=${highPrice}`)
   }
 
   url += conditions.join('&')
   const experiences = useFetch(url)
   return (
-
     <>
       <div className='errorSearch'>
         {!experiences.length &&
           <p>no se han encontrado resultados</p>}
       </div>
       <div className='experiences-searched'>
-       
-          {experiences &&
-            experiences.map(experience =>
-             <div className='bodyArticle'>
-                <img className='experience-photos' src={`http://localhost:3000/${experience.photo}`} alt="avatar" />
-                <h2>{experience.experienceName}:</h2>
-                <p>Descripción: {experience.experienceDescription}</p>
-                <p>Precio: {experience.price}</p>
-                <p>Fechas: {experience.experienceDate}</p>
-                </div>
-              )}
-        
+        {experiences &&
+          experiences.map(experience =>
+            <div className='bodyArticle'>
+              <img className='experience-photos' src={`http://localhost:3000/${experience.experiencePhoto}`} alt="avatar" />
+              <Link to={'/experiences/' + experience.experience_id}>{experience.experienceName}:</Link>
+              <p>Descripción: {experience.experienceDescription}</p>
+              <p>Precio: {experience.price}</p>
+              <p>Fechas: {experience.experienceDate.substring(0, 10)}</p>
+            </div>
+          )}
       </div>
     </>
   )

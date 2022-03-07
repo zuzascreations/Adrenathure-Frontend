@@ -32,7 +32,6 @@ function CreatePlace() {
 
     const res = await fetch('http://localhost:3000/places/admin', {
       method: 'POST',
-      // body: JSON.stringify({ experienceName, price, experienceDescription, place_id, experienceDate, experienceHour, totalSeats }),
       body: fd,
       headers: {
         Authorization: 'Bearer ' + user.token

@@ -38,10 +38,11 @@ function AllExperiences() {
         {experiences.map(experience =>
           <>
             <li key={experience.id}>
-              <img className='experience-photo' src={`http://localhost:3000/${experience.photo}`} alt="avatar" />
+              <img className='experience-photo' src={`http://localhost:3000/${experience.experiencePhoto}`} alt="avatar" />
               <p>nombre: {experience.experienceName}</p>
-              <p>destino: {experience.placeName}</p>
               <p>precio: {experience.price}€</p>
+              <p>destino: {experience.placeName}</p>
+              <p>plazas totales: {experience.totalSeats}</p>
               <button><Link to={"/profile/admin/editExperience/" + experience.id}>editar experiencia</Link></button>
               <button value={experience.id} onClick={handleClick}>borrar experiencia</button>
             </li>

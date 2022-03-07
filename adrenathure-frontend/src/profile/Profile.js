@@ -17,7 +17,7 @@ function Profile() {
   return (
     <section className="profile">
       <NavProfile />
-      <ErrorBoundary fallback="Navprofile in Profile is failing">
+      {/* <ErrorBoundary fallback="Navprofile in Profile is failing"> */}
         <Routes>
           <Route index element={<PersonalData />} />
           <Route path="editar" element={<PersonalDataEdit />} />
@@ -25,7 +25,7 @@ function Profile() {
           <Route path="bookings/:id" element={<BookingId />} />
           <Route path="admin/*" element={<Admin />} />
         </Routes>
-      </ErrorBoundary>
+      {/* </ErrorBoundary> */}
     </section>
   )
 }
