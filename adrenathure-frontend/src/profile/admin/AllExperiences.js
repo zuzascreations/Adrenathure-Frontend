@@ -9,9 +9,10 @@ function AllExperiences() {
   const user = useUser()
   const [error, setError] = useState(null)
   const experiences = useFetch('http://localhost:3000/experiences')
+
   const handleClick = async (e) => {
     const expId = e.target.value
-    const res = await fetch('http://localhost:3000/experiences', {
+    const res = await fetch('http://localhost:3000/experiences/admin', {
       method: 'DELETE',
       body: JSON.stringify({ expId }),
       headers: {
@@ -39,17 +40,13 @@ function AllExperiences() {
             <li key={experience.id}>
               <img className='experience-photo' src={`http://localhost:3000/${experience.photo}`} alt="avatar" />
               <p>nombre: {experience.experienceName}</p>
-              <p>precio: {experience.price}€</p>
               <p>destino: {experience.placeName}</p>
-              <p>plazas totales: {experience.totalSeats}</p>
+              <p>precio: {experience.price}€</p>
               <button><Link to={"/profile/admin/editExperience/" + experience.id}>editar experiencia</Link></button>
               <button value={experience.id} onClick={handleClick}>borrar experiencia</button>
             </li>
           </>
         )}
-     
-
-
         {error && <div className="error">{error}</div>}
       </ul>
       <button><Link to={"/profile/admin/newExperience"}>añadir nueva experiencia</Link>

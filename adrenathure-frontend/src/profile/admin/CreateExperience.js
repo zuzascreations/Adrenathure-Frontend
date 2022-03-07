@@ -35,7 +35,7 @@ function CreateExperience() {
     fd.append('experienceHour', experienceHour)
     fd.append('totalSeats', totalSeats)
 
-    const res = await fetch('http://localhost:3000/experiences', {
+    const res = await fetch('http://localhost:3000/experiences/admin', {
       method: 'POST',
       body: fd,
       headers: {
@@ -46,6 +46,7 @@ function CreateExperience() {
     if (res.ok) {
       setError('Updated successfully')
       navigate('/experiences')
+      window.location.reload(true)
     } else {
       setError('Error desconocido')
     }

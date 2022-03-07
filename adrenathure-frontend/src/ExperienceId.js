@@ -11,7 +11,6 @@ function ExperienceId() {
   const [experienceDate, setExperienceDate] = useState('')
 
   const experienceId = useFetch('http://localhost:3000/experiences/' + id)
-  // const dates = useFetch('http://localhost:3000/dates/' + id)
 
   return experienceId && (
     <div className="experience">
@@ -25,10 +24,10 @@ function ExperienceId() {
       <label>
         <span>fecha:</span>
         <select onChange={e => setExperienceDate(e.target.value)} name='escoge fecha'>
-          <option disabled selected >elige fecha de tu aventura</option>
-          {experienceId &&
-            experienceId.map(experience =>
-              <option required key={experience.id} name="date" value={experience.experienceDate.substring(0,10)} >{experience.experienceDate.substring(0,10)}</option>
+          <option disabled selected >fechas disponibles</option>
+          {experienceId.map(experience =>
+              (experience.availableSeats > 0) &&
+                <option required key={experience.id} name="date" value={experience.experienceDate.substring(0,10)} >{experience.experienceDate.substring(0,10)}</option>
             )
           }
         </select>

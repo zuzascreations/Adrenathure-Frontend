@@ -36,8 +36,12 @@ function ExperienceIdReservar() {
     })
 
     if (res.ok) {
+      window.location.reload(true)
       setError('Reservado con éxito')
     } else {
+      if (res.status === 404) {
+        setError('No se puede reservar más plazas de las que tenemos libres')
+      }
       if (res.status === 400) {
         setError('Por favor, revisa si todos los campos están rellenos correctamente o si hay suficientes plazas libres.')
       }
@@ -57,35 +61,35 @@ function ExperienceIdReservar() {
       <form  onSubmit={handleSubmit}>
         <label>
           <span>nombre experiencia:</span>
-          <input name="name" value={experienceName} onChange={e => setExperienceName(e.target.value)} />
+          <input name="name" value={experienceName} onChange={e => setExperienceName(e.target.value)} disabled/>
         </label>
         <label>
           <span>destino:</span>
-          <input name="place_id" value={place_id} onChange={e => setPlace_id(e.target.value)} />
+          <input name="place_id" value={place_id} onChange={e => setPlace_id(e.target.value)} disabled/>
         </label>
         <label>
           <span>fecha:</span>
-          <input name="fecha" value={experienceDate} onChange={e => setExperienceDate(e.target.value)} />
+          <input name="fecha" type="date" value={experienceDate} onChange={e => setExperienceDate(e.target.value)} disabled/>
         </label>
         <label>
           <span>hora:</span>
-          <input name="hour" value={experienceHour} onChange={e => setExperienceHour(e.target.value)} />
+          <input name="hour" type="time" value={experienceHour} onChange={e => setExperienceHour(e.target.value)} disabled/>
         </label>
         <label>
           <span>plazas libres:</span>
-          <input name="availableSeats" value={availableSeats} onChange={e => setAvailableSeats(e.target.value)} />
+          <input name="availableSeats" type="number" value={availableSeats} onChange={e => setAvailableSeats(e.target.value)} disabled/>
         </label>
         <label>
           <span>plazas reservadas:</span>
-          <input name="reservedSeats" placeholder="Cuantas plazas vas a necesitar?" value={reservedSeats} onChange={e => setReservedSeats(e.target.value)} />
+          <input name="reservedSeats" type="number" min="0" max={availableSeats} placeholder="Cuantas plazas vas a necesitar?" value={reservedSeats} onChange={e => setReservedSeats(e.target.value)} />
         </label>
         <label>
           <span>precio/plaza:</span>
-          <input name="price" value={price} onChange={e => setPrice(e.target.value)} />
+          <input name="price" type="number" value={price} onChange={e => setPrice(e.target.value)} disabled/>
         </label>
         <label>
           <span>precio total:</span>
-          <input name="total price" value={(price * reservedSeats)} onChange={e => setTotalPrice(e.target.value)} />
+          <input name="total price" type="number" value={(price * reservedSeats)} onChange={e => setTotalPrice(e.target.value)} disabled/>
         </label>
         <button>enviar</button>
         <p>{error}</p>

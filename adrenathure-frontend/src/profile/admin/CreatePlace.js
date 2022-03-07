@@ -30,7 +30,7 @@ function CreatePlace() {
           fd.append('coordsLat', coordsLat)
     }
 
-    const res = await fetch('http://localhost:3000/places', {
+    const res = await fetch('http://localhost:3000/places/admin', {
       method: 'POST',
       // body: JSON.stringify({ experienceName, price, experienceDescription, place_id, experienceDate, experienceHour, totalSeats }),
       body: fd,
@@ -38,12 +38,12 @@ function CreatePlace() {
         Authorization: 'Bearer ' + user.token
       }
     })
-    
 
     if (res.ok) {
       // const data = await res.json()
       setError('Updated successfully')
-      navigate('/')
+      navigate('/Places')
+      window.location.reload(true)
     } else {
       setError('Error desconocido')
     }

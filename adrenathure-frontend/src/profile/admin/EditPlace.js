@@ -28,7 +28,7 @@ function EditPlace() {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    const res = await fetch('http://localhost:3000/places/' + id , {
+    const res = await fetch('http://localhost:3000/places/admin/' + id , {
       method: 'PUT',
       // body: JSON.stringify({ experienceName, experienceHour, place_id, experienceDate, totalSeats, price, experienceDescription }),
       body: fd,

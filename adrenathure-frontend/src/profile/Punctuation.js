@@ -17,14 +17,13 @@ function Punctuation() {
         'Authorization': 'Bearer ' + user.token
       }
     })
-    // const data = await res.json()
 
     if (res.ok) {
       setError('Voto guardado con éxito')
 
     } else {
       if (res.status === 403) {
-        setError('Este voto ya existe')
+        setError('Ya votaste')
       }
       if (res.status === 500) {
         setError('Database Error')
@@ -33,17 +32,9 @@ function Punctuation() {
   }
 
   return (
-    <form class="punctuation" onSubmit={handleSubmit}>
+    <form className="punctuation" onSubmit={handleSubmit}>
       Vota
       <input type="number" value={vote} onChange={e => setVote(e.target.value)}></input>
-      {/* <select required name="punctuation">
-        <option disabled selected value>puntuación:</option>
-        <option name="one" value={vote} onChange={e => setVote(e.target.value)}>1</option>
-        <option name="two" value={vote} onChange={e => setVote(e.target.value)}>2</option>
-        <option name="three" value={vote} onChange={e => setVote(e.target.value)}>3</option>
-        <option name="four" value={vote} onChange={e => setVote(e.target.value)}>4</option>
-        <option name="five" value={vote} onChange={e => setVote(e.target.value)}>5</option>
-      </select> */}
       <button>vota</button>
       <p>{error}</p>
     </form>
