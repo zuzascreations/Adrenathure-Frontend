@@ -1,7 +1,7 @@
 import { Suspense, useState } from 'react'
 import { useNavigate, Navigate } from 'react-router-dom'
-import { useUser } from '../../hooks'
-import Loading from '../../Loading'
+import { useUser } from '../hooks'
+import Loading from '../Loading'
 
 
 function CreatePlace() {

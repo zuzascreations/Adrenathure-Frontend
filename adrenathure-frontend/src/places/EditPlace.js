@@ -1,8 +1,8 @@
 import { Suspense, useState } from 'react'
 import { useNavigate, Navigate, useParams } from 'react-router-dom'
-import { useUser } from '../../hooks'
-import Loading from '../../Loading'
-import useFetch from '../../useFetch'
+import { useUser } from '../hooks'
+import Loading from '../Loading'
+import useFetch from '../useFetch'
 
 
 function EditPlace() {

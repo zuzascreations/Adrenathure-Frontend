@@ -1,11 +1,12 @@
 import { Suspense, useState } from 'react'
-import { Navigate, useParams } from 'react-router-dom'
-import { useUser } from './hooks'
-import Loading from './Loading'
-import useFetch from './useFetch'
+import { Navigate, useNavigate, useParams } from 'react-router-dom'
+import { useUser } from '../hooks'
+import Loading from '../Loading'
+import useFetch from '../useFetch'
 
 
 function ExperienceIdReservar() {
+  const navigate = useNavigate()
   const { id, date } = useParams()
   const experiences = useFetch('http://localhost:3000/experiences/' + id + '/' + date)
 
@@ -36,7 +37,9 @@ function ExperienceIdReservar() {
     })
 
     if (res.ok) {
-      window.location.reload(true)
+      const data = await res.json()
+      console.log(data)
+      navigate('/yourBooking/'+ data.bookingId)
       setError('Reservado con éxito')
     } else {
       if (res.status === 404) {

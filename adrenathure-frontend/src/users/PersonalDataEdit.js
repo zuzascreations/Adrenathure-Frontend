@@ -37,10 +37,11 @@ function PersonalDataEdit() {
           <button onClick={() => {
             setModal(null)
             navigate('/Profile')
-            }}>volver</button>
+            window.location.reload(true)
+          }}>volver</button>
         </>
       )
-      
+
     } else {
       setMessage('Error desconocido')
     }
@@ -74,8 +75,6 @@ function PersonalDataEdit() {
         <p>* datos obligatorios</p>
         <button>guardar</button>
         <p>{message}</p>
-        
-
       </form>
     </>
   )

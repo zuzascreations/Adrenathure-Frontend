@@ -1,12 +1,13 @@
 import { Suspense } from 'react'
 import Loading from '../Loading'
 import useFetch from "../useFetch"
-import { useParams } from "react-router-dom"
-import Punctuation from './Punctuation'
+import { Link, useParams } from "react-router-dom"
+import Punctuation from '../users/Punctuation'
 
 function BookingId() {
   const { id } = useParams()
   const bookingId = useFetch('http://localhost:3000/bookings/' + id)
+  console.log(bookingId)
   return bookingId && (
     <>
       <div>
@@ -28,6 +29,7 @@ function BookingId() {
       <div>
         <Punctuation />
       </div>
+      <button><Link to='/profile/bookings'>Volver</Link></button>
     </>
   )
 }

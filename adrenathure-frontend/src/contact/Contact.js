@@ -6,7 +6,7 @@ import ContactUs from './ContactUs'
 function Contact() {
     return(
         <div className='contact'>
-            <aside clasName="left-side">
+            <aside className="left-side">
                 {<ContactUs />}
                 <ul className='address'>
                     <li className="addressHeader">Adrenathure</li>

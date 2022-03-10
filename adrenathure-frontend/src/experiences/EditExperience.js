@@ -1,15 +1,14 @@
 import { Suspense, useState } from 'react'
 import { useNavigate, Navigate, useParams, Link } from 'react-router-dom'
-import { useUser } from '../../hooks'
-import Loading from '../../Loading'
-import useFetch from '../../useFetch'
+import { useUser } from '../hooks'
+import Loading from '../Loading'
+import useFetch from '../useFetch'
 import './EditExperience.css'
 
 
 function EditExperience() {
   const { id } = useParams()
   const experiences = useFetch('http://localhost:3000/experiences/' + id)
-  console.log(experiences)
   const places = useFetch('http://localhost:3000/places')
 
 
@@ -22,14 +21,12 @@ function EditExperience() {
   const [price, setPrice] = useState(experiences[0].price || '')
   const [experienceHour, setExperienceHour] = useState('')
 
-  const [postExperienceDate, setPostExperienceDate] = useState('')
-  const [postExperienceHour, setPostExperienceHour] = useState('')
-  const [postTotalSeats, setPostTotalSeats] = useState('')
-
   const [file, setFile] = useState(null)
 
   const [message, setMessage] = useState(null)
   const [messagePost, setMessagePost] = useState(null)
+  const [messageDelete, setMessageDelete] = useState(null)
+
 
   const navigate = useNavigate()
   const user = useUser()
@@ -51,7 +48,7 @@ function EditExperience() {
 
   const handleSubmitEdit = async e => {
     e.preventDefault()
-    const res = await fetch('http://localhost:3000/experiences/' + id, {
+    const res = await fetch('http://localhost:3000/experiences/admin/' + id, {
       method: 'PUT',
       body: fd,
       headers: {
@@ -113,7 +110,7 @@ function EditExperience() {
     e.preventDefault()
     const res = await fetch('http://localhost:3000/dates/' + id, {
       method: 'POST',
-      body: JSON.stringify({ postExperienceDate, postExperienceHour, postTotalSeats }),
+      body: JSON.stringify({ experienceDate, experienceHour, totalSeats }),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + user.token
@@ -133,8 +130,9 @@ function EditExperience() {
     }
   }
 
-  const handleClick = async () => {
-    const res = await fetch('http://localhost:3000/dates', {
+  const handleDelete = async () => {
+    if (dateId) {
+      const res = await fetch('http://localhost:3000/dates', {
       method: 'DELETE',
       body: JSON.stringify({ dateId }),
       headers: {
@@ -144,17 +142,21 @@ function EditExperience() {
     })
     if (res.ok) {
       // const data = await res.json()
-      setMessage('Deleted date successfully')
+      setMessageDelete('Deleted date successfully')
       window.location.reload(true)
     } else {
       if (res.status === 404) {
-        setMessage('No se ha podido borrar date//Error desconocido')
+        setMessageDelete('No se ha podido borrar date//Error desconocido')
 
       }
+    }
+    } else {
+      setMessageDelete('escoge fecha primero')
     }
   }
 
   const handleChangeSelectDate = e => {
+    setMessageDelete('')
     setTotalSeats(experiences[e.target.selectedIndex - 1].totalSeats)
     setExperienceHour(experiences[e.target.selectedIndex - 1].experienceHour)
     setExperienceDate(e.target.value)
@@ -189,10 +191,11 @@ function EditExperience() {
 
         <label>
           <span>precio:</span>
-          <input required name="price" value={price + '€'} onChange={e => setPrice(e.target.value)} />
+          <input required name="price" value={price} onChange={e => setPrice(e.target.value)} />
+          <span>€</span>
         </label>
         <label>
-          <span>foto:</span>
+          <p>foto:</p>
           <img className='experience-photo' src={`http://localhost:3000/${experiences[0].experiencePhoto}`} alt="avatar" />
         </label>
         <label>
@@ -206,46 +209,48 @@ function EditExperience() {
       </form>
 
       <h2>fechas : </h2>
+      {experiences[0].experienceDate ?
+        <form className='editForms' onSubmit={handleSubmitEditDates}>
+          <label>
+              <h3>editar fechas :</h3>
+              <span>fechas existentes:</span>
 
-      <form className='editForms' onSubmit={handleSubmitEditDates}>
-        <label>
-          <h3>editar fechas :</h3>
-          <span>fechas existentes:</span>
-
-          <select className='select' onChange={handleChangeSelectDate} name='escoge fecha'>
-            <option disabled selected >elige fecha para editar</option>
-            {experiences &&
-              experiences.map(experience =>
-                <option required key={experience.id} id={experience.idDate} name='date' value={experience.experienceDate.substring(0, 10)} >{experience.experienceDate.substring(0, 10)}</option>
-              )
-            }
-          </select>
-          <div id='delete-date-button' onClick={handleClick}>borrar</div>
-        </label>
-        {(!experiences[0].experienceDate || !experiences[0].experienceHour || !experiences[0].totalSeats) ?
+               <select className='select' onChange={handleChangeSelectDate} name='escoge fecha'>
+                    <option disabled selected >elige fecha para editar</option>
+                  {experiences &&
+                    experiences.map(experience =>
+                    <option required key={experience.id} id={experience.idDate} name='date' value={experience.experienceDate} >{experience.experienceDate}</option>
+                    )
+                  }
+              </select>
+              <div id='delete-date-button' onClick={handleDelete}>borrar fecha</div>
+              <span>{messageDelete}</span>
+          </label>
+          {(!experiences[0].experienceDate || !experiences[0].experienceHour || !experiences[0].totalSeats) ?
           <p>No hay fechas disponibles</p> :
-          <>
-            <label>
-              <p> cambiar hora de la experiencia:</p>
-              <input clearable bordered type='time' name="hour" value={experienceHour} onChange={e => {
-                setExperienceHour(e.target.value)
-              }} />
-            </label>
-            <label>
-              <p> cambiar fecha de la experiencia:</p>
-              <input type='date' name="date" value={experienceDate} onChange={e => {
-                setExperienceDate(e.target.value)
-              }} />
-            </label>
-            <label>
-              <span>plazas totales:</span>
-              <input name="seats" value={totalSeats} onChange={e => setTotalSeats(e.target.value)} />
-            </label>
-          </>
-        }
-        <button>guardar</button>
-        <p>{message}</p>
-      </form>
+        <>
+          <label>
+            <p> cambiar hora de la experiencia:</p>
+            <input type='time' name="hour" value={experienceHour} onChange={e => {
+              setExperienceHour(e.target.value)
+            }} />
+          </label>
+          <label>
+            <p> cambiar fecha de la experiencia:</p>
+            <input type='date' name="date" value={experienceDate} onChange={e => {
+              setExperienceDate(e.target.value)
+            }} />
+          </label>
+          <label>
+            <span>plazas totales:</span>
+            <input name="seats" value={totalSeats} onChange={e => setTotalSeats(e.target.value)} />
+          </label>
+        </>
+      }
+      <button>guardar</button>
+      <p>{message}</p>
+    </form>
+    : <p>no hay fechas</p>}
 
       <h2>añadir nuevas fechas : </h2>
 
@@ -253,19 +258,19 @@ function EditExperience() {
         <label>
           <span> añadir fecha de la experiencia:</span>
           <input required type='date' name="date" onChange={e => {
-            setPostExperienceDate(e.target.value)
+            setExperienceDate(e.target.value)
           }} />
         </label>
         <label>
           <span> añadir hora de la experiencia:</span>
           <input required type='time' name="hour" onChange={e => {
-            setPostExperienceHour(e.target.value)
+            setExperienceHour(e.target.value)
           }} />
         </label>
 
         <label>
           <span> añadir plazas totales:</span>
-          <input required name="seats" onChange={e => setPostTotalSeats(e.target.value)} />
+          <input required name="seats" onChange={e => setTotalSeats(e.target.value)} />
         </label>
         <button>añadir</button>
         <p>{messagePost}</p>

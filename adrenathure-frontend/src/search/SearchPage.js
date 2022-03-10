@@ -1,7 +1,7 @@
 import useFetch from 'fetch-suspense'
 import { Suspense } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import Loading from './Loading'
+import Loading from '../Loading'
 import './SearchPage.css'
 
 function SearchPage() {
@@ -35,6 +35,7 @@ function SearchPage() {
 
   url += conditions.join('&')
   const experiences = useFetch(url)
+  console.log(experiences)
   return (
     <>
       <div className='errorSearch'>
@@ -48,8 +49,8 @@ function SearchPage() {
               <img className='experience-photos' src={`http://localhost:3000/${experience.experiencePhoto}`} alt="avatar" />
               <Link to={'/experiences/' + experience.experience_id}>{experience.experienceName}:</Link>
               <p>Descripción: {experience.experienceDescription}</p>
+              <p>Destino: {experience.placeName}</p>
               <p>Precio: {experience.price}</p>
-              <p>Fechas: {experience.experienceDate.substring(0, 10)}</p>
             </div>
           )}
       </div>

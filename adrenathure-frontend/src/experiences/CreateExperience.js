@@ -1,14 +1,13 @@
 import { Suspense, useState } from 'react'
 import { useNavigate, Navigate } from 'react-router-dom'
-import { useUser } from '../../hooks'
-import Loading from '../../Loading'
-import useFetch from '../../useFetch'
+import { useUser } from '../hooks'
+import Loading from '../Loading'
+import useFetch from '../useFetch'
 
 
 function CreateExperience() {
   const [experienceName, setExperienceName] = useState('')
   const [experienceHour, setExperienceHour] = useState('')
-  const [experienceHour2, setExperienceHour2] = useState('')
 
   const [experienceDescription, setExperienceDescription] = useState('')
   const [price, setPrice] = useState('')
@@ -84,11 +83,16 @@ function CreateExperience() {
           </select>
         </label>
         <label>
-          <span>fecha y hora de la experiencia:</span>
-          <input type='datetime-local' name="hour" value={experienceHour2} onChange={e => {
-            setExperienceHour2(e.target.value)
-            setExperienceDate(e.target.value.substring(0, 10))
-            setExperienceHour(e.target.value.substring(11, 16))
+          <span>fecha de la experiencia:</span>
+          <input type='date' name="date" value={experienceDate} onChange={e => {
+            setExperienceDate(e.target.value)
+
+          }} />
+        </label>
+        <label>
+          <span>hora de la experiencia:</span>
+          <input type='time' name="hour" value={experienceHour} onChange={e => {
+            setExperienceHour(e.target.value)
 
           }} />
         </label>

@@ -1,8 +1,8 @@
 import { Suspense, useState } from 'react'
-import Loading from '../../Loading'
-import useFetch from "../../useFetch"
+import Loading from '../Loading'
+import useFetch from "../useFetch"
 import { Link } from "react-router-dom"
-import { useUser } from '../../hooks'
+import { useUser } from '../hooks'
 
 function AllPlaces() {
   const [error, setError] = useState(null)
@@ -27,11 +27,12 @@ function AllPlaces() {
     } else {
       if (res.status === 404) {
         setError('No se ha podido borrar//Error desconocido')
-
+      }
+      if (res.status === 500) {
+        setError('Hay una experiencia existente en este destino, por favor borra primero la experiencia')
       }
     }
   }
-
   return places && (
     <div>
       <ul>

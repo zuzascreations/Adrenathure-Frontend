@@ -34,7 +34,7 @@ function Punctuation() {
   return (
     <form className="punctuation" onSubmit={handleSubmit}>
       Vota
-      <input type="number" value={vote} onChange={e => setVote(e.target.value)}></input>
+      <input min='0' max='5' type="number" value={vote} onChange={e => setVote(e.target.value)}></input>
       <button>vota</button>
       <p>{error}</p>
     </form>

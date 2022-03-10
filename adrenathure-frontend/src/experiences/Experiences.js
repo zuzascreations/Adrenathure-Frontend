@@ -1,7 +1,7 @@
 import useFetch from 'fetch-suspense'
 import { Suspense } from 'react'
 import { Link } from "react-router-dom"
-import Loading from './Loading'
+import Loading from '../Loading'
 import './Experiences.css'
 
 function Experiences() {
