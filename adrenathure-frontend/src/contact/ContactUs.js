@@ -1,11 +1,10 @@
 import emailjs from '@emailjs/browser'
 import { init } from '@emailjs/browser'
-import { useSetModal } from './hooks'
+import { useSetModal } from '../hooks'
 init("user_26UUVsLD3NfN5vGVKNa9G")
 
 function ContactUs() {
   const setModal = useSetModal()
-  const form = { firstName: '', lastName: '', emailUser: '', phoneUser: '', contactDetails: '' }
 
   const SenderForm = (e) => {
     e.preventDefault()

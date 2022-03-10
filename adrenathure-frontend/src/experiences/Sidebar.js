@@ -1,7 +1,7 @@
 import { Suspense } from "react"
 import { Link } from "react-router-dom"
-import Loading from "./Loading"
-import useFetch from "./useFetch"
+import Loading from "../Loading"
+import useFetch from "../useFetch"
 
 function Sidebar() {
   const experiences = useFetch('http://localhost:3000/experiences')

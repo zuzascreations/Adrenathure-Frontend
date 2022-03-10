@@ -1,9 +1,9 @@
 import { Suspense, useState } from 'react'
 import useFetch from 'fetch-suspense'
-import Loading from './Loading'
+import Loading from '../Loading'
 import { Link } from 'react-router-dom'
-import { useSetModal } from './hooks'
-import './Modal.css'
+import { useSetModal } from '../hooks'
+import '../Modal.css'
 import './SearchBar.css'
 
 function SearchBar() {

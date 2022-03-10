@@ -8,9 +8,12 @@ function SidebarExperiencesPlaceId() {
   const { id } = useParams()
 
   const experiencesPlaceId = useFetch('http://localhost:3000/experiences/place/' + id)
-
+  console.log(experiencesPlaceId)
   return experiencesPlaceId && (
     <aside className="experience">
+      {experiencesPlaceId.length ?
+      <>
+      <h3>experiencias en este destino: {experiencesPlaceId.placeName}</h3>
       <ul>
         {experiencesPlaceId.map(i =>
           <li key={i.id}>
@@ -20,6 +23,9 @@ function SidebarExperiencesPlaceId() {
           </li>
         )}
       </ul>
+      </>
+      : <p className='error'>en este momento no hay experiencias asociadas a este destino</p>
+    }
     </aside>
   )
 }

@@ -1,8 +1,8 @@
 import { Suspense, useState } from 'react'
-import Loading from '../../Loading'
-import useFetch from "../../useFetch"
+import Loading from '../Loading'
+import useFetch from "../useFetch"
 import { Link } from "react-router-dom"
-import { useUser } from '../../hooks'
+import { useUser } from '../hooks'
 
 function AllExperiences() {
 
@@ -42,7 +42,6 @@ function AllExperiences() {
               <p>nombre: {experience.experienceName}</p>
               <p>precio: {experience.price}€</p>
               <p>destino: {experience.placeName}</p>
-              <p>plazas totales: {experience.totalSeats}</p>
               <button><Link to={"/profile/admin/editExperience/" + experience.id}>editar experiencia</Link></button>
               <button value={experience.id} onClick={handleClick}>borrar experiencia</button>
             </li>

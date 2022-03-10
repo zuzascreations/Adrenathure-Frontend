@@ -1,8 +1,8 @@
-import useFetch from '../../useFetch'
+import useFetch from '../useFetch'
 import { Suspense, useState } from 'react'
-import Loading from '../../Loading'
+import Loading from '../Loading'
 import { Link } from 'react-router-dom'
-import { useUser } from '../../hooks'
+import { useUser } from '../hooks'
 import { Navigate } from 'react-router-dom'
 
 

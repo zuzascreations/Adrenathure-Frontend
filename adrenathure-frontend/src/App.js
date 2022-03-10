@@ -1,23 +1,24 @@
+
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
 import Header from './Header'
 import Footer from './Footer'
-import Experiences from './Experiences'
-import ExperienceId from './ExperienceId'
-import ExperienceIdReservar from './ExperienceIdReservar'
-import Login from './Login'
-import Register from './Register'
+import Experiences from './experiences/Experiences'
+import ExperienceId from './experiences/ExperienceId'
+import ExperienceIdReservar from './experiences/ExperienceIdReservar'
+import Login from './users/Login'
+import Register from './users/Register'
 import Portada from './Portada'
-import Profile from './profile/Profile'
+import Profile from './users/Profile'
 import SidebarPlaces from './places/Places'
 import Place from './places/Place'
-import SearchBar from './SearchBar'
-import SearchPage from './SearchPage'
+import SearchBar from './search/SearchBar'
+import SearchPage from './search/SearchPage'
 import './Loading.css'
 import Modal from './Modal'
 import About from './About'
-import Contact from './Contact'
-import YourBooking from './YourBooking'
+import Contact from './contact/Contact'
+import YourBooking from './bookings/YourBooking'
 
 
 
@@ -36,7 +37,7 @@ function App() {
         <Route path="profile/*" element={<Profile />} />
         <Route path="places" element={<><SearchBar /><SidebarPlaces /></>} />
         <Route path="places/:id" element={<><SearchBar /><Place /></>} />
-        <Route path="/yourbooking/:id" element={<YourBooking />} />
+        <Route path="/yourBooking/:id" element={<YourBooking />} />
         <Route path="/:place&:lowPrice&:highPrice&:date" element={<><SearchBar /><SearchPage /></>} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />

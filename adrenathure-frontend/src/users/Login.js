@@ -1,7 +1,7 @@
 import { Suspense, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { useRegister, useSetUser } from "./hooks"
-import Loading from "./Loading"
+import { useRegister, useSetUser } from "../hooks"
+import Loading from "../Loading"
 import './Login.css'
 
 function Login() {
