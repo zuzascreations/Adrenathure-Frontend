@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { useSetUser, useUser } from "./hooks"
+import { useSetRegister, useSetUser, useUser } from "./hooks"
 import './Header.css'
 import CarouselSlick from "./CarouselSlick"
 
@@ -7,6 +7,7 @@ import CarouselSlick from "./CarouselSlick"
 function Header() {
   const user = useUser()
   const setUser = useSetUser()
+  const setRegistered = useSetRegister()
   return (
     <div className="allHeader">
       <div className="transparencia">
@@ -26,7 +27,9 @@ function Header() {
             <div className="dropdown-content">
               <Link to={'/Profile'}>Mi Perfil</Link>
               {user &&
-                <Link to={'/'} onClick={() => setUser(null)}>Cerrar Sesion</Link>}
+                <Link to={'/'} onClick={() => {
+                  setRegistered(false)
+                  setUser(null)}}>Cerrar Sesion</Link>}
               {!user &&
                 <Link to={'/login'}>iniciar sesión</Link>
               }

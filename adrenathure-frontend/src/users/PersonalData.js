@@ -4,6 +4,7 @@ import useFetch from '../useFetch'
 import { Link } from 'react-router-dom'
 import Avatar from './Avatar'
 import './PersonalData.css'
+import ErrorBoundary from '../ErrorBoundary'
 
 function PersonalData() {
   const personalData = useFetch('http://localhost:3000/users/profile')
@@ -22,7 +23,9 @@ function PersonalData() {
 
 const PersonalDataWrapper = () =>
   <Suspense fallback={<Loading className='page' />}>
-    <PersonalData />
+    <ErrorBoundary fallback="PersonalData is failing">
+      <PersonalData />
+    </ErrorBoundary>
   </Suspense>
 
 

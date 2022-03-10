@@ -23,8 +23,8 @@ function SearchBar() {
   const [valueHighPrice, setValueHighPrice] = useState(initialValueHighPrice)
   const [valueDate, setValueDate] = useState(initialValueDate)
 
-  const placesData = useFetch('http://192.168.0.16:3000/places')
-  const dates = useFetch('http://192.168.0.16:3000/dates')
+  const placesData = useFetch('http://localhost:3000/places')
+  const dates = useFetch('http://localhost:3000/dates')
 
   const showDefault = () => {
     setValuePlace(initialValuePlace)

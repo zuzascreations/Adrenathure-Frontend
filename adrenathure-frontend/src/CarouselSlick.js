@@ -5,10 +5,12 @@ import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import './Header.css'
 import Loading from "./Loading"
+import ErrorBoundary from "./ErrorBoundary"
 
 
 function CarouselSlick() {
   const experiences = useFetch('http://localhost:3000/experiences')
+
   const settings = {
     dots: true,
     infinite: true,
@@ -17,26 +19,27 @@ function CarouselSlick() {
     slidesToScroll: 1,
   }
   return (
-    <Slider autoplay adaptiveHeight {...settings}>
-      <div>
-        <img className='fotitos' src={`http://localhost:3000/${experiences[0].experiencePhoto}`} alt='foto experiencia'></img>
-      </div>
-      <div>
-        <img className='fotitos' src={`http://localhost:3000/${experiences[1].experiencePhoto}`} alt='foto experiencia'></img>
-      </div>
-      <div>
-        <img className='fotitos' src={`http://localhost:3000/${experiences[2].experiencePhoto}`} alt='foto experiencia'></img>
-      </div>
-      <div>
-        <img className='fotitos' src={`http://localhost:3000/${experiences[3].experiencePhoto}`} alt='foto experiencia'></img>
-      </div>
-
-    </Slider>
+        <Slider autoplay adaptiveHeight {...settings}>
+        <div>
+          <img className='fotitos' src={`http://localhost:3000/${experiences[0].experiencePhoto}`} alt='foto experiencia'></img>
+        </div>
+        <div>
+          <img className='fotitos' src={`http://localhost:3000/${experiences[1].experiencePhoto}`} alt='foto experiencia'></img>
+        </div>
+        <div>
+          <img className='fotitos' src={`http://localhost:3000/${experiences[2].experiencePhoto}`} alt='foto experiencia'></img>
+        </div>
+        <div>
+          <img className='fotitos' src={`http://localhost:3000/${experiences[3].experiencePhoto}`} alt='foto experiencia'></img>
+        </div>
+        </Slider>
   )
 }
 const CarouselSlickWrapper = () =>
   <Suspense fallback={<Loading className='page' />}>
-    <CarouselSlick />
+    <ErrorBoundary fallback="CaruselSlick is failing">
+      <CarouselSlick />
+    </ErrorBoundary>
   </Suspense>
 
 export default CarouselSlickWrapper

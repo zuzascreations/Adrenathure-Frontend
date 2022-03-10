@@ -2,6 +2,7 @@ import { Suspense } from 'react'
 import Loading from '../Loading'
 import useFetch from 'fetch-suspense'
 import { useParams } from "react-router-dom"
+import ErrorBoundary from '../ErrorBoundary'
 
 function PlaceId() {
   const { id } = useParams()
@@ -17,7 +18,9 @@ function PlaceId() {
 
 const PlaceIdWrapper = () =>
   <Suspense fallback={<Loading className="page" />}>
-    <PlaceId />
+    <ErrorBoundary fallback="Bookings is failing">
+      <PlaceId />
+    </ErrorBoundary>
   </Suspense>
 
 export default PlaceIdWrapper
