@@ -33,6 +33,9 @@ function Login() {
       if (res.status === 401 ){
         setError('Contraseña y/o email incorrecto')
       }
+      if (res.status === 403 ){
+        setError('El usuario no existe, por favor registrate')
+      }
       if (res.status === 409 ){
         setError('Consulta tu email y activa tu cuenta')
       }

@@ -20,7 +20,7 @@ function Punctuation() {
 
     if (res.ok) {
       setError('Voto guardado con éxito')
-
+      window.location.reload(true)
     } else {
       if (res.status === 403) {
         setError('Ya votaste')

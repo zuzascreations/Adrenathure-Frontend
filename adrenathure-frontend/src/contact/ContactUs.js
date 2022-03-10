@@ -21,6 +21,7 @@ function ContactUs() {
         console.log(error.text)
         setModal(<span>Error al enviar el formulario</span>)
       })
+      console.log(e.target)
     e.target.reset()
   }
 
@@ -34,7 +35,7 @@ function ContactUs() {
         <label>Email*</label>
         <input required type='email' name='emailUser' />
         <label>Teléfono</label>
-        <input type='phone' name='phoneUser' />
+        <textarea type='phone' name='phoneUser' />
         <label>Mensaje*</label>
         <textarea required row='25' column='55' name='contactDetails' />
         <button>Enviar</button>

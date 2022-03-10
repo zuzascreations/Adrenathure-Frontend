@@ -38,7 +38,7 @@ function ExperienceIdReservar() {
 
     if (res.ok) {
       const data = await res.json()
-      console.log(data)
+
       navigate('/yourBooking/'+ data.bookingId)
       setError('Reservado con éxito')
     } else {

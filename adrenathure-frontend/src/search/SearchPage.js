@@ -35,7 +35,7 @@ function SearchPage() {
 
   url += conditions.join('&')
   const experiences = useFetch(url)
-  console.log(experiences)
+
   return (
     <>
       <div className='errorSearch'>

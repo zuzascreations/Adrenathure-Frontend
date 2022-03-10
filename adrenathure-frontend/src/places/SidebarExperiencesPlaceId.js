@@ -8,7 +8,7 @@ function SidebarExperiencesPlaceId() {
   const { id } = useParams()
 
   const experiencesPlaceId = useFetch('http://localhost:3000/experiences/place/' + id)
-  console.log(experiencesPlaceId)
+
   return experiencesPlaceId && (
     <aside className="experience">
       {experiencesPlaceId.length ?
