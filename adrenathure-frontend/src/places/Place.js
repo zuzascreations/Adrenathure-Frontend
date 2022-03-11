@@ -3,6 +3,7 @@ import SidebarExperiencesPlaceId from './SidebarExperiencesPlaceId'
 import PlaceId from "./PlaceId"
 import ErrorBoundary from "../ErrorBoundary"
 
+
 function Place() {
   return (
     <div className="place">

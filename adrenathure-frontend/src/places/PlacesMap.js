@@ -1,32 +1,34 @@
 import { Suspense } from 'react'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-import Loading from './Loading'
-import './PokeMap.css'
-import useFetch from './useFetch'
+import Loading from '../Loading'
+import './PlacesMap.css'
+import useFetch from 'fetch-suspense'
+import { useParams } from "react-router-dom"
+import { Link } from "react-router-dom"
 
-function PokeMap() {
-  const pokeparadas = useFetch('https://run.mocky.io/v3/9c4bcdd6-751e-46fd-9378-82ec8869fb5a')
+function PlacesMap() {
+  const { id } = useParams()
+  const places = useFetch('http://localhost:3000/places/')
+  const position = ""
 
   return (
-    <MapContainer center={[42.210987, -8.710830]} zoom={12}>
+    <MapContainer id="placesMap"center={[40.4310754, -3.7028892]} zoom={6}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      {pokeparadas.map(parada =>
-        <Marker position={parada.coords}>
+        url="https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png"/>
+      {places.map(place =>
+        <Marker position={ [place.coordsLong, place.coordsLat] }>
           <Popup>
-            {parada.title}
+            <Link to= {'/places/' + id}>{place.placeName}</Link>
           </Popup>
-        </Marker>
-      )}
+        </Marker>)}
     </MapContainer>
   )
 }
 
-const PokeMapWrapper = () =>
+const PlacesMapWrapper = () =>
   <Suspense fallback={<Loading />}>
-    <PokeMap />
+    <PlacesMap />
   </Suspense>
 
-export default PokeMapWrapper
+export default PlacesMapWrapper
