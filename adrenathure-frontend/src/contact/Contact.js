@@ -16,8 +16,8 @@ function Contact() {
                     <li>Pontevedra</li>
                     <li>España - Spain</li>
                 </ul>
-                {<MapContact />}
             </aside>
+            {<MapContact />}
         </div>
     )
 }
