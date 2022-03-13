@@ -12,7 +12,7 @@ function ExperienceId() {
   const [experienceDate, setExperienceDate] = useState('')
 
   const experienceId = useFetch('http://localhost:3000/experiences/' + id)
-
+console.log(experienceId)
   useEffect(() => {
     setExperienceDate(null)
   }, [experienceId])

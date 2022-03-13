@@ -10,7 +10,6 @@ import ErrorBoundary from "./ErrorBoundary"
 
 function CarouselSlick() {
   const experiences = useFetch('http://localhost:3000/experiences')
-
   const settings = {
     dots: true,
     infinite: true,
