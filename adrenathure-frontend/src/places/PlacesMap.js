@@ -17,7 +17,7 @@ function PlacesMap() {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png"/>
       {places.map(place =>
-        <Marker position={ [place.coordsLong, place.coordsLat] }>
+        <Marker key={place.id} position={ [place.coordsLong, place.coordsLat] }>
           <Popup>
             <Link to= {'/places/' + id}>{place.placeName}</Link>
           </Popup>

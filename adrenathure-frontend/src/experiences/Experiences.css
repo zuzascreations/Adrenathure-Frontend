@@ -11,32 +11,58 @@
   border-radius: 3px;
 }
 
-.articles {
+.art {
+  margin: auto;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-auto-flow: row;
+
 }
 
-.articleExperience {
+.articleExp {
+  display: flex;
   color: white;
-  max-width: 500px;
-  height: 600px;
-  background-color: rgb(68, 62, 62);
-  margin: 20px;
-  box-shadow: 10px 5px 5px black;
+  max-width: 1fr;
+  height: 500px;
+  background-color: rgb(153, 143, 143);
+  margin: 10px;
+  box-shadow: 10px 10px 10px 10px rgb(139, 137, 137);
   text-align: center;
   padding: 20px;
   text-align: left;
+  border-radius: 10px;
+  transition: background-color 1s;
+}
+
+
+
+.articleExp:hover {
+  background-color: rgb(219, 224, 218);
+  transform: scale(1.05);
 }
 
 .photoExperience {
-  width: 100%;
-  height: 50%;
+  width: 50%;
+  height: 100%;
+  border-radius: 5px;
+
 }
 
-.title-experience {
+.title-exp {
+  background-color: aqua;
+  width: 300px;
+  padding: 20px;
   color: white;
   font-style: italic;
   text-decoration: none;
   text-transform: uppercase;
+}
+.button-exp {
+  background-color: blueviolet;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+  height: fit-content;
 }

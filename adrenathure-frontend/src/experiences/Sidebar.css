@@ -1,0 +1,11 @@
+.sidebar {
+  margin: 20px;
+
+}
+.ul-sidebar {
+  list-style: none;
+}
+.link-sidebar {
+  /* padding-bottom: 5px; */
+  text-decoration: none;
+}

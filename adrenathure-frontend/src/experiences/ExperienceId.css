@@ -1,0 +1,11 @@
+.experience {
+  padding: 20px;
+  display: flex;
+}
+.exp-inside {
+ padding: 30px;
+}
+.titExp {
+  text-align: center;
+  text-transform: uppercase;
+}
