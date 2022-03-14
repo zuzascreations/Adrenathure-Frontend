@@ -5,6 +5,7 @@ import { Suspense, useEffect, useState } from "react"
 import Loading from "../Loading"
 import { Link } from 'react-router-dom'
 import './ExperienceId.css'
+import PunctuationPrintOut from "./PunctuationPrintOut"
 
 
 function ExperienceId() {
@@ -12,7 +13,6 @@ function ExperienceId() {
   const [experienceDate, setExperienceDate] = useState('')
 
   const experienceId = useFetch('http://localhost:3000/experiences/' + id)
-console.log(experienceId)
   useEffect(() => {
     setExperienceDate(null)
   }, [experienceId])
@@ -24,9 +24,9 @@ console.log(experienceId)
       <Sidebar />
       <img className='photoExperience' src={`http://localhost:3000/${experienceId[0].experiencePhoto}`} alt='foto experiencia'></img>
       <div className="exp-inside">
-        
         <h2>destino: {experienceId[0].placeName}</h2>
         <p>puntuación: {experienceId[0].avgVote}</p>
+        <PunctuationPrintOut/>
         <p>{experienceId[0].experienceDescription}</p>
         <p>precio: {experienceId[0].price}€</p>
         <label>

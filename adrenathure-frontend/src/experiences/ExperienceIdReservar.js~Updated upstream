@@ -1,22 +1,12 @@
 import { Suspense, useState } from 'react'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
-<<<<<<< Updated upstream:adrenathure-frontend/src/experiences/ExperienceIdReservar.js
 import { useUser } from '../hooks'
 import Loading from '../Loading'
 import useFetch from '../useFetch'
-=======
-import { useUser } from './hooks'
-import Loading from './Loading'
-import useFetch from './useFetch'
->>>>>>> Stashed changes:adrenathure-frontend/src/ExperienceIdReservar.js
 
 
 function ExperienceIdReservar() {
   const navigate = useNavigate()
-<<<<<<< Updated upstream:adrenathure-frontend/src/experiences/ExperienceIdReservar.js
-=======
-
->>>>>>> Stashed changes:adrenathure-frontend/src/ExperienceIdReservar.js
   const { id, date } = useParams()
   const experiences = useFetch('http://localhost:3000/experiences/' + id + '/' + date)
 
@@ -47,14 +37,10 @@ function ExperienceIdReservar() {
     })
 
     if (res.ok) {
-<<<<<<< Updated upstream:adrenathure-frontend/src/experiences/ExperienceIdReservar.js
-      const data = await res.json()
-
-      navigate('/yourBooking/'+ data.bookingId)
-=======
+      //const data = await res.json()
+      //navigate('/yourBooking/'+ data.bookingId)
       // window.location.reload(true)
       navigate('/profile/bookings')
->>>>>>> Stashed changes:adrenathure-frontend/src/ExperienceIdReservar.js
       setError('Reservado con éxito')
     } else {
       if (res.status === 404) {
