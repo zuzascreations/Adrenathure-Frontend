@@ -25,6 +25,7 @@ function SearchBar() {
 
   const placesData = useFetch('http://localhost:3000/places')
   const dates = useFetch('http://localhost:3000/dates')
+  
 
   const showDefault = () => {
     setValuePlace(initialValuePlace)
@@ -48,13 +49,11 @@ function SearchBar() {
     return (
       <>
         <p className='emergentSearch'>Destinos</p>
-        <select onChange={(e) => setValuePlace(e.target.value)}>
-          <option disabled selected  >elige:</option>
+        <select defaultValue={'elige:'} onChange={(e) => setValuePlace(e.target.value)}>
+          <option disabled  >elige:</option>
           {
             placesData.map(place =>
-              <>
-                <option key={place.id} className='place' value={place.placeName} >{place.placeName}</option>
-              </>
+              <option key={place.id} className='place' value={place.placeName} >{place.placeName}</option>
             )
           }
         </select>
@@ -66,15 +65,15 @@ function SearchBar() {
       <>
         <p className='emergentSearch'>precios</p>
 
-        <select onChange={(e) => setValueLowPrice(e.target.value)}>
-          <option disabled selected  >desde:</option>
+        <select defaultValue={'desde:'} onChange={(e) => setValueLowPrice(e.target.value)}>
+          <option disabled >desde:</option>
           <option className='price' value={100} >100</option>
           <option className='price' value={200} >200</option>
           <option className='price' value={300} >300</option>
           <option className='price' value={500} >500</option>
         </select>
-        <select onChange={(e) => setValueHighPrice(e.target.value)}>
-          <option disabled selected  >hasta:</option>
+        <select defaultValue={'hasta:'} onChange={(e) => setValueHighPrice(e.target.value)}>
+          <option disabled >hasta:</option>
           <option className='price' value={300} >300</option>
           <option className='price' value={500} >500</option>
           <option className='price' value={1000} >1000</option>
@@ -88,12 +87,12 @@ function SearchBar() {
     return (
       <>
         <p className='emergentSearch'>fechas</p>
-        <select onChange={(e) => setValueDate(e.target.value)}>
-          <option disabled selected  >elige:</option>
+        <select defaultValue={'elige:'} onChange={(e) => setValueDate(e.target.value)}>
+          <option disabled >elige:</option>
           {
-            dates.map(date =>
-              <option key={date.id} className='date' value={date.experienceDate} >{date.experienceDate.substring(0, 10)}</option>
-            )
+          dates.map(date =>
+            <option key={date.idDate} className='date' value={date.experienceDate} >{date.experienceDate}</option>
+          )
           }
         </select>
         <button onClick={handleClick3}>aplicar</button>

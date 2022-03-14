@@ -1,6 +1,6 @@
 import { Suspense, useState } from 'react'
 import { useNavigate, Navigate, useParams, Link } from 'react-router-dom'
-import { useUser } from '../hooks'
+import { useSetModal, useUser } from '../hooks'
 import Loading from '../Loading'
 import useFetch from '../useFetch'
 import './EditExperience.css'
@@ -8,8 +8,10 @@ import './EditExperience.css'
 
 function EditExperience() {
   const { id } = useParams()
+  const setModal = useSetModal()
   const experiences = useFetch('http://localhost:3000/experiences/' + id)
   const places = useFetch('http://localhost:3000/places')
+
 
 
   const [dateId, setDateId] = useState('')
@@ -57,18 +59,18 @@ function EditExperience() {
     })
     // const data = await res.json()
     if (res.ok) {
-      setMessage('Updated successfully')
+      setModal('Updated successfully')
       window.location.reload(true)
 
     } else {
       if (res.status === 400) {
-        setMessage('rellena los campos')
+        setModal('rellena los campos')
       }
       if (res.status === 404) {
-        setMessage('Formato incorrecto, sigue las indicaciones en cada campo a cubrir')
+        setModal('Formato incorrecto, sigue las indicaciones en cada campo a cubrir')
       }
       if (res.status === 500) {
-        setMessage('Database Error')
+        setModal('Database Error')
       }
 
     }
@@ -85,18 +87,18 @@ function EditExperience() {
     })
     // const data = await res.json()
     if (res.ok) {
-      setMessage('Updated successfully')
+      setModal('Updated successfully')
       window.location.reload(true)
 
     } else {
       if (res.status === 400) {
-        setMessage('rellena los campos')
+        setModal('rellena los campos')
       }
       if (res.status === 404) {
-        setMessage('Formato incorrecto, sigue las indicaciones en cada campo a cubrir')
+        setModal('Formato incorrecto, sigue las indicaciones en cada campo a cubrir')
       }
       if (res.status === 500) {
-        setMessage('Database Error')
+        setModal('Database Error')
       }
 
     }
@@ -118,13 +120,13 @@ function EditExperience() {
     })
     // const data = await res.json()
     if (res.ok) {
-      setMessagePost('Updated DATE successfully')
+      setModal('Updated DATE successfully')
       window.location.reload(true)
 
     } else {
 
       if (res.status === 500) {
-        setMessagePost('Database Error')
+        setModal('Database Error')
       }
 
     }
@@ -142,16 +144,16 @@ function EditExperience() {
     })
     if (res.ok) {
       // const data = await res.json()
-      setMessageDelete('Deleted date successfully')
+      setModal('Deleted date successfully')
       window.location.reload(true)
     } else {
       if (res.status === 404) {
-        setMessageDelete('No se ha podido borrar date//Error desconocido')
+        setModal('No se ha podido borrar date//Error desconocido')
 
       }
     }
     } else {
-      setMessageDelete('escoge fecha primero')
+      setModal('escoge fecha primero')
     }
   }
 
@@ -179,11 +181,11 @@ function EditExperience() {
         <label>
           <p>destino: {experiences[0].placeName}</p>
           <span>  cambiar destino:</span>
-          <select className='select' onChange={e => setPlace_id(e.target.value)} name='escoge destino'>
-            <option disabled selected value></option>
+          <select defaultValue={''} className='select' onChange={e => setPlace_id(e.target.value)} name='escoge destino'>
+            <option disabled></option>
             {places &&
               places.map(place =>
-                <option required name="place" value={place.id} >{place.placeName}</option>
+                <option key={place.id} required name="place" value={place.id} >{place.placeName}</option>
               )
             }
           </select>
@@ -203,7 +205,7 @@ function EditExperience() {
           <input className="input" type='file' onChange={e => setFile(e.target.files[0])} />
         </label>
         <button>guardar</button>
-        <button><Link to={'/profile/admin'}>volver</Link></button>
+       
 
         <p>{message}</p>
       </form>
@@ -215,11 +217,11 @@ function EditExperience() {
               <h3>editar fechas :</h3>
               <span>fechas existentes:</span>
 
-               <select className='select' onChange={handleChangeSelectDate} name='escoge fecha'>
-                    <option disabled selected >elige fecha para editar</option>
+               <select defaultValue={'elige fecha para editar'} className='select' onChange={handleChangeSelectDate} name='escoge fecha'>
+                    <option disabled >elige fecha para editar</option>
                   {experiences &&
                     experiences.map(experience =>
-                    <option required key={experience.id} id={experience.idDate} name='date' value={experience.experienceDate} >{experience.experienceDate}</option>
+                    <option required key={experience.idDate} id={experience.idDate} name='date' value={experience.experienceDate} >{experience.experienceDate}</option>
                     )
                   }
               </select>
@@ -270,11 +272,12 @@ function EditExperience() {
 
         <label>
           <span> añadir plazas totales:</span>
-          <input required name="seats" onChange={e => setTotalSeats(e.target.value)} />
+          <input type='number' min='1' max='20' required name="seats" onChange={e => setTotalSeats(e.target.value)} />
         </label>
         <button>añadir</button>
         <p>{messagePost}</p>
       </form>
+      <button><Link to={'/profile/admin'}>volver</Link></button>
     </>
   )
 }

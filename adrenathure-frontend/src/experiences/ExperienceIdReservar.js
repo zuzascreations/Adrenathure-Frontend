@@ -1,19 +1,21 @@
 import { Suspense, useState } from 'react'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
-import { useUser } from '../hooks'
+import { useSetModal, useUser } from '../hooks'
 import Loading from '../Loading'
 import useFetch from '../useFetch'
 
 
 function ExperienceIdReservar() {
   const navigate = useNavigate()
+  const setModal = useSetModal()
   const { id, date } = useParams()
   const experiences = useFetch('http://localhost:3000/experiences/' + id + '/' + date)
 
+  const [experiencePhoto, setExperiencePhoto] = useState(experiences[0].experiencePhoto)
   const [experienceName, setExperienceName] = useState(experiences[0].experienceName)
   const [place_id, setPlace_id] = useState(experiences[0].placeName)
   const [experienceDate, setExperienceDate] = useState(date)
-  const [experienceHour, setExperienceHour] = useState((experiences[0].experienceHour.substring(0,5)))
+  const [experienceHour, setExperienceHour] = useState((experiences[0].experienceHour))
   const [availableSeats, setAvailableSeats] = useState(experiences[0].availableSeats)
   const [reservedSeats, setReservedSeats] = useState('')
   const [price, setPrice] = useState(experiences[0].price || '')
@@ -24,12 +26,13 @@ function ExperienceIdReservar() {
 
 
   const handleSubmit = async e => {
+    
     let totalPrice = price * reservedSeats
     let availableSeats = experiences[0].availableSeats - reservedSeats
     e.preventDefault()
     const res = await fetch('http://localhost:3000/bookings/' + id , {
       method: 'POST',
-      body: JSON.stringify({ experienceName, place_id, experienceDate, experienceHour, availableSeats, reservedSeats, price, totalPrice }),
+      body: JSON.stringify({ experiencePhoto, experienceName, place_id, experienceDate, experienceHour, availableSeats, reservedSeats, price, totalPrice }),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + user.token
@@ -38,15 +41,15 @@ function ExperienceIdReservar() {
 
     if (res.ok) {
       const data = await res.json()
-
+      setModal('Reservado con éxito')
       navigate('/yourBooking/'+ data.bookingId)
-      setError('Reservado con éxito')
+       window.location.reload(true)
     } else {
       if (res.status === 404) {
-        setError('No se puede reservar más plazas de las que tenemos libres')
+        setModal(<><p>No se puede reservar más plazas de las que tenemos libres</p><button onClick={() => setModal(null)}>volver</button></>)
       }
       if (res.status === 400) {
-        setError('Por favor, revisa si todos los campos están rellenos correctamente o si hay suficientes plazas libres.')
+        setModal(<><p>Por favor, revisa si todos los campos están rellenos correctamente o si hay suficientes plazas libres.</p><button onClick={()=> setModal(null)}>volver</button></>)
       }
     }
   }
@@ -95,7 +98,7 @@ function ExperienceIdReservar() {
           <input name="total price" type="number" value={(price * reservedSeats)} onChange={e => setTotalPrice(e.target.value)} disabled/>
         </label>
         <button>enviar</button>
-        <p>{error}</p>
+        {/* <p>{error}</p> */}
       </form>
     </>
   )

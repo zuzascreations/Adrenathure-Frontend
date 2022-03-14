@@ -2,10 +2,10 @@ import { Suspense, useState } from 'react'
 import Loading from '../Loading'
 import useFetch from "../useFetch"
 import { Link } from "react-router-dom"
-import { useUser } from '../hooks'
+import { useSetModal, useUser } from '../hooks'
 
 function AllExperiences() {
-
+  const setModal = useSetModal()
   const user = useUser()
   const [error, setError] = useState(null)
   const experiences = useFetch('http://localhost:3000/experiences')
@@ -22,11 +22,11 @@ function AllExperiences() {
     })
     if (res.ok) {
       // const data = await res.json()
-      setError('Deleted successfully')
+      setModal('Deleted successfully')
       window.location.reload(true)
     } else {
       if (res.status === 404) {
-        setError('No se ha podido borrar//Error desconocido')
+        setModal(<><p>'No se ha podido borrar//Error desconocido'</p><button onClick={() => setModal(null)}>volver</button></>)
 
       }
     }
@@ -36,7 +36,6 @@ function AllExperiences() {
     <div>
       <ul>
         {experiences.map(experience =>
-          <>
             <li key={experience.id}>
               <img className='experience-photo' src={`http://localhost:3000/${experience.experiencePhoto}`} alt="avatar" />
               <p>nombre: {experience.experienceName}</p>
@@ -45,9 +44,8 @@ function AllExperiences() {
               <button><Link to={"/profile/admin/editExperience/" + experience.id}>editar experiencia</Link></button>
               <button value={experience.id} onClick={handleClick}>borrar experiencia</button>
             </li>
-          </>
         )}
-        {error && <div className="error">{error}</div>}
+        {/* {error && <div className="error">{error}</div>} */}
       </ul>
       <button><Link to={"/profile/admin/newExperience"}>añadir nueva experiencia</Link>
       </button>

@@ -2,15 +2,18 @@ import useFetch from '../useFetch'
 import { Suspense, useState } from 'react'
 import Loading from '../Loading'
 import { Link } from 'react-router-dom'
-import { useUser } from '../hooks'
+import { useSetModal, useUser } from '../hooks'
 import { Navigate } from 'react-router-dom'
+import './AllBookings.css'
 
 
 function AllBookings() {
+  const setModal = useSetModal()
   const user = useUser()
   const [error, setError] = useState(null)
 
   const bookings = useFetch('http://localhost:3000/bookings/admin/bookings')
+ 
 
 
   const handleClick = async (e) => {
@@ -25,11 +28,11 @@ function AllBookings() {
     })
     if (res.ok) {
       // const data = await res.json()
-      setError('Deleted successfully')
-      window.location.reload(true)
+      setModal(<><p>Deleted successfully</p> <button onClick={() => window.location.reload(true)}>volver</button></>)
+      // window.location.reload(true)
     } else {
       if (res.status === 404) {
-        setError('No se ha podido borrar//Error desconocido')
+        setModal(<><p>No se ha podido borrar/ error desconocido</p> <button onClick={() => window.location.reload(true)}>volver</button></>)
 
       }
     }
@@ -41,19 +44,31 @@ function AllBookings() {
 
   return bookings && (
     <>
-      <div className='articles'>
+      <div>
         {bookings.map(booking =>
-          <article key={booking.id}>
-            <p>nº: {booking.bookingNumber}</p>
-            <p>fecha: {booking.bookingDate.substring(0,10)}</p>
-            <p>precio total: {booking.totalPrice}</p>
-            <p>plazas reservadas: {booking.reservedSeats}</p>
-            <Link to={'/profile/bookings/' + booking.id }>Ver</Link>
-            <button value={booking.id}  onClick={handleClick}>borrar reserva</button>
-          </article>
+          <div key={booking.id} className='articles'>
+            <div className='fila'>experiencia :
+              <div className='columna'> {booking.experienceName}</div>
+            </div>
+            <div className='fila'>numero de reserva :
+              <div className='columna'> {booking.bookingNumber}</div>
+            </div>
+            <div className='fila'>fecha
+              <div className='columna'> {booking.bookingDate}</div>
+            </div>
+            <div className='fila'>precio total
+              <div className='columna'> {booking.totalPrice}</div>
+            </div>
+            <div className='fila'>plazas reservadas :
+              <div className='columna'> {booking.reservedSeats}</div>
+            </div>
+            <div className='fila'>
+            <Link className='button-link' to={'/profile/bookings/' + booking.id}>Ver</Link>
+            <div className='columna'><div className='button-delete' value={booking.id} onClick={handleClick}>borrar reserva</div></div>
+            </div>
+          </div>
         )}
       </div>
-      <p>{error}</p>
     </>
   )
 }

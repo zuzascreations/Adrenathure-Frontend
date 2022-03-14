@@ -45,7 +45,7 @@ function SearchPage() {
       <div className='experiences-searched'>
         {experiences &&
           experiences.map(experience =>
-            <div className='bodyArticle'>
+            <div key={experience.id} className='bodyArticle'>
               <img className='experience-photos' src={`http://localhost:3000/${experience.experiencePhoto}`} alt="avatar" />
               <Link to={'/experiences/' + experience.experience_id}>{experience.experienceName}:</Link>
               <p>Descripción: {experience.experienceDescription}</p>

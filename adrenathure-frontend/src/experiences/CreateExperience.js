@@ -1,11 +1,12 @@
 import { Suspense, useState } from 'react'
 import { useNavigate, Navigate } from 'react-router-dom'
-import { useUser } from '../hooks'
+import { useSetModal, useUser } from '../hooks'
 import Loading from '../Loading'
 import useFetch from '../useFetch'
 
 
 function CreateExperience() {
+  const setModal = useSetModal()
   const [experienceName, setExperienceName] = useState('')
   const [experienceHour, setExperienceHour] = useState('')
 
@@ -44,20 +45,32 @@ function CreateExperience() {
     })
 
     if (res.ok) {
-      setError('Updated successfully')
-      navigate('/experiences')
-      window.location.reload(true)
+      setModal('experience created successfully')
+      setTimeout(() => {
+        navigate('/experiences')
+        setModal(null)
+        window.location.reload(true)
+      }, 2000)
+
     } else {
-      setError('Error desconocido')
+      if (res.status === 404) {
+        setModal(<><p>Por favor, revisa si todo los campos están cubiertos y correctos </p><button onClick={() => setModal(null)}>volver</button></>)
+      }
+      if (res.status === 500) {
+        setModal('Database error')
+      }
     }
   }
+
+
 
   if (!user) {
     return <Navigate to="/login" />
   }
-
+  
   return (
     <>
+      <h2>crear experiencia</h2>
       <form onSubmit={handleSubmit}>
         <label>
           <span>nombre experiencia:</span>
@@ -73,11 +86,11 @@ function CreateExperience() {
         </label>
         <label>
           <span>destino:</span>
-          <select onChange={e => setPlace_id(e.target.value)} name='escoge destino'>
-            <option disabled selected value>elige</option>
+          <select defaultValue={'elige'} onChange={e => setPlace_id(e.target.value)} name='escoge destino'>
+            <option disabled >elige</option>
             {places &&
               places.map(place =>
-                <option required name="place" value={place.id} >{place.placeName}</option>
+                <option key={place.id} required name="place" value={place.id} >{place.placeName}</option>
               )
             }
           </select>
@@ -86,7 +99,6 @@ function CreateExperience() {
           <span>fecha de la experiencia:</span>
           <input type='date' name="date" value={experienceDate} onChange={e => {
             setExperienceDate(e.target.value)
-
           }} />
         </label>
         <label>
@@ -98,7 +110,7 @@ function CreateExperience() {
         </label>
         <label>
           <span>plazas totales:</span>
-          <input required name="seats" value={totalSeats} onChange={e => setTotalSeats(e.target.value)} />
+          <input type='number' min='1' max='20' required name="seats" value={totalSeats} onChange={e => setTotalSeats(e.target.value)} />
         </label>
         <label>
           escoge foto experiencia:

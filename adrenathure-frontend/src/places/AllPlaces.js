@@ -1,12 +1,13 @@
-import { Suspense, useState } from 'react'
+import { Suspense } from 'react'
 import Loading from '../Loading'
 import useFetch from "../useFetch"
 import { Link } from "react-router-dom"
-import { useUser } from '../hooks'
+import { useSetModal, useUser } from '../hooks'
+import './Allplaces.css'
 
 function AllPlaces() {
-  const [error, setError] = useState(null)
   const user = useUser()
+  const setModal = useSetModal()
 
   const places = useFetch('http://localhost:3000/places')
 
@@ -22,14 +23,14 @@ function AllPlaces() {
     })
     if (res.ok) {
       // const data = await res.json()
-      setError('Deleted successfully')
+      setModal('Deleted successfully')
       window.location.reload(true)
     } else {
       if (res.status === 404) {
-        setError('No se ha podido borrar//Error desconocido')
+        setModal('No se ha podido borrar//Error desconocido')
       }
       if (res.status === 500) {
-        setError('Hay una experiencia existente en este destino, por favor borra primero la experiencia')
+        setModal('Hay una experiencia existente en este destino, por favor borra primero la experiencia')
       }
     }
   }
@@ -38,14 +39,13 @@ function AllPlaces() {
       <ul>
         {places.map(place =>
           <li key={place.id}>
-              <img className='place-photo' src={`http://localhost:3000/${place.photo}`} alt="avatar" />
-              <p>{place.placeName}</p>
-              <button><Link to={"/profile/admin/editPlace/" + place.id }>editar destino</Link></button>
-              <button value={place.id} onClick={handleClick}>borrar destino</button>
+            <img className='place-photo' src={`http://localhost:3000/${place.photo}`} alt="avatar" />
+            <p>{place.placeName}</p>
+            <button><Link to={"/profile/admin/editPlace/" + place.id}>editar destino</Link></button>
+            <button value={place.id} onClick={handleClick}>borrar destino</button>
           </li>
         )}
       </ul>
-      {error && <div className="error">{error}</div>}
       <button><Link to={"/profile/admin/newPlace"}>añadir nuevo destino</Link>
       </button>
     </div>

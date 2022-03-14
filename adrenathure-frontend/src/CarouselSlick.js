@@ -21,16 +21,16 @@ function CarouselSlick() {
   return (
         <Slider autoplay adaptiveHeight {...settings}>
         <div>
-          <img className='fotitos' src={`http://localhost:3000/${experiences[0].experiencePhoto}`} alt='foto experiencia'></img>
+          <img className='fotitos' src={'https://drive.google.com/uc?export=view&id=1SLiULbV_ymNPjlCLDnc1u-5xL-NvZd9k'} alt='foto experiencia'></img>
         </div>
         <div>
-          <img className='fotitos' src={`http://localhost:3000/${experiences[1].experiencePhoto}`} alt='foto experiencia'></img>
+          <img className='fotitos' src={`https://drive.google.com/uc?export=view&id=1GkpxAPsr7GxltrpcpM0pTcGer9UyFDn1`} alt='foto experiencia'></img>
         </div>
         <div>
-          <img className='fotitos' src={`http://localhost:3000/${experiences[2].experiencePhoto}`} alt='foto experiencia'></img>
+          <img className='fotitos' src={`https://drive.google.com/uc?export=view&id=1o1E8R0U0halHXME-PYK30Ov_mBJjR81o`} alt='foto experiencia'></img>
         </div>
         <div>
-          <img className='fotitos' src={`http://localhost:3000/${experiences[3].experiencePhoto}`} alt='foto experiencia'></img>
+          <img className='fotitos' src={`https://drive.google.com/uc?export=view&id=1QnXvLXZq2-SDT5BD56b0KABOVtQsldpv`} alt='foto experiencia'></img>
         </div>
         </Slider>
   )

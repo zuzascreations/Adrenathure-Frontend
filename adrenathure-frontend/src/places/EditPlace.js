@@ -1,13 +1,14 @@
 import { Suspense, useState } from 'react'
 import { useNavigate, Navigate, useParams } from 'react-router-dom'
-import { useUser } from '../hooks'
+import { useSetModal, useUser } from '../hooks'
 import Loading from '../Loading'
 import useFetch from '../useFetch'
 
 
 function EditPlace() {
   const { id } = useParams()
-  const places = useFetch('http://localhost:3000/places/' + id )
+  const setModal = useSetModal()
+  const places = useFetch('http://localhost:3000/places/' + id)
 
   const [placeName, setPlaceName] = useState(places.placeName || '')
   const [placeDescription, setPlaceDescription] = useState(places.placeDescription || '')
@@ -20,7 +21,10 @@ function EditPlace() {
   const user = useUser()
 
   const fd = new FormData()
-  fd.append('avatar', file)
+  if (file) {
+    fd.append('avatar', file)
+  }
+
   fd.append('placeName', placeName)
   fd.append('placeDescription', placeDescription)
   fd.append('coordsLong', coordsLong)
@@ -28,21 +32,18 @@ function EditPlace() {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    const res = await fetch('http://localhost:3000/places/admin/' + id , {
+    const res = await fetch('http://localhost:3000/places/admin/' + id, {
       method: 'PUT',
-      // body: JSON.stringify({ experienceName, experienceHour, place_id, experienceDate, totalSeats, price, experienceDescription }),
       body: fd,
       headers: {
-        // 'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + user.token
       }
     })
-    const data = await res.json()
+    // const data = await res.json()
     if (res.ok) {
-      setError('Updated successfully')
-      navigate('/')
+      setModal(<><p>destino editado con exito</p> <button onClick={() => window.location.reload(true)}>volver</button></>)
     } else {
-      setError(data?.error || 'Error desconocido')
+      setModal(<><p>No se ha podido editar destino/ error desconocido</p> <button onClick={() => window.location.reload(true)}>volver</button></>)
     }
   }
 
@@ -52,7 +53,7 @@ function EditPlace() {
 
   return (
     <>
-      <form  onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <label>
           <span>nombre destino:</span>
           <input name="name" value={placeName} onChange={e => setPlaceName(e.target.value)} />
@@ -74,12 +75,12 @@ function EditPlace() {
           <img className='experience-photo' src={`http://localhost:3000/${places.photo}`} alt="avatar" />
         </label>
         <label>
-        escoge foto destino:
-        <input className="input" type='file' onChange={e => setFile(e.target.files[0])} />
+          cambiar foto destino:
+          <input className="input" type='file' onChange={e => setFile(e.target.files[0])} />
         </label>
         <button>guardar</button>
-        <p>{error}</p>
       </form>
+      <p>{error}</p>
     </>
   )
 }
