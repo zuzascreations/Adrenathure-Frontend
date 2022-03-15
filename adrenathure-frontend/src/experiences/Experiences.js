@@ -6,7 +6,7 @@ import './Experiences.css'
 
 function Experiences() {
   const experiences = useFetch('http://localhost:3000/experiences')
-
+console.log(experiences)
   return experiences && (
     <div className='experiences'>
       <div className='art'>
@@ -17,8 +17,8 @@ function Experiences() {
               <Link to={'/experiences/' + experience.id} className='title-exp'>
                 {experience.experienceName}
               </Link>
+              {'★★★★★☆☆☆☆☆'.substring(5 - experience.avgVote, 10 - experience.avgVote)}
               <p className='description'>{experience.experienceDescription}</p>
-              <p className='vote'>puntuación: {experience.avgVote}</p>
               <Link to={'/experiences/' + experience.id} className='button-exp'>
                 descubrir mas
               </Link>

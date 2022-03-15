@@ -12,7 +12,6 @@ function ExperienceId() {
   const [experienceDate, setExperienceDate] = useState('')
 
   const experienceId = useFetch('http://localhost:3000/experiences/' + id)
-
   useEffect(() => {
     setExperienceDate(null)
   }, [experienceId])
@@ -24,9 +23,8 @@ function ExperienceId() {
       <Sidebar />
       <img className='photoExperience' src={`http://localhost:3000/${experienceId[0].experiencePhoto}`} alt='foto experiencia'></img>
       <div className="exp-inside">
-        
         <h2>destino: {experienceId[0].placeName}</h2>
-        <p>puntuación: {experienceId[0].avgVote}</p>
+        {'★★★★★☆☆☆☆☆'.substring(5 - experienceId[0].avgVote, 10 - experienceId[0].avgVote)}
         <p>{experienceId[0].experienceDescription}</p>
         <p>precio: {experienceId[0].price}€</p>
         <label>

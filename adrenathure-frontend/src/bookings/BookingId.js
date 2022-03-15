@@ -2,7 +2,7 @@ import { Suspense } from 'react'
 import Loading from '../Loading'
 import useFetch from "../useFetch"
 import { Link, useParams } from "react-router-dom"
-import Punctuation from '../users/Punctuation'
+import PunctuationToRate from '../users/PunctuationToRate'
 
 function BookingId() {
   const { id } = useParams()
@@ -21,13 +21,13 @@ function BookingId() {
         <br></br>
         <h4>experiencia name: {bookingId.experienceName}</h4>
         <h4>destino: {bookingId.placeName}</h4>
-        <h4>fecha experiencia: {bookingId.experienceDate}</h4>
-        <h4>hora experiencia: {bookingId.experienceHour}</h4>
+        <h4>fecha experience: {bookingId.experienceDate}</h4>
+        <h4>hora experience: {bookingId.experienceHour}</h4>
         <h4>asientos reservados: {bookingId.reservedSeats}</h4>
         <h4>precio total: {bookingId.totalPrice} €</h4>
       </div>
       <div>
-        <Punctuation />
+        <PunctuationToRate />
       </div>
       <button><Link to='/profile/bookings'>Volver</Link></button>
     </>

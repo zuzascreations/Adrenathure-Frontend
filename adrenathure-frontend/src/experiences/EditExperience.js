@@ -122,7 +122,6 @@ function EditExperience() {
     if (res.ok) {
       setModal('Updated DATE successfully')
       window.location.reload(true)
-
     } else {
 
       if (res.status === 500) {
