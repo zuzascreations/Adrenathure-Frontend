@@ -5,7 +5,6 @@ import { Suspense, useEffect, useState } from "react"
 import Loading from "../Loading"
 import { Link } from 'react-router-dom'
 import './ExperienceId.css'
-import PunctuationPrintOut from "./PunctuationPrintOut"
 
 
 function ExperienceId() {
@@ -25,8 +24,7 @@ function ExperienceId() {
       <img className='photoExperience' src={`http://localhost:3000/${experienceId[0].experiencePhoto}`} alt='foto experiencia'></img>
       <div className="exp-inside">
         <h2>destino: {experienceId[0].placeName}</h2>
-        <p>puntuación: {experienceId[0].avgVote}</p>
-        <PunctuationPrintOut/>
+        {'★★★★★☆☆☆☆☆'.substring(5 - experienceId[0].avgVote, 10 - experienceId[0].avgVote)}
         <p>{experienceId[0].experienceDescription}</p>
         <p>precio: {experienceId[0].price}€</p>
         <label>

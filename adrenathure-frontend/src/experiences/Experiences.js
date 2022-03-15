@@ -3,7 +3,6 @@ import { Suspense, useEffect } from 'react'
 import { Link } from "react-router-dom"
 import Loading from '../Loading'
 import './Experiences.css'
-import PunctuationPrintOut from './PunctuationPrintOut'
 
 function Experiences() {
   const experiences = useFetch('http://localhost:3000/experiences')
@@ -18,9 +17,8 @@ console.log(experiences)
               <Link to={'/experiences/' + experience.id} className='title-exp'>
                 {experience.experienceName}
               </Link>
-              <PunctuationPrintOut/>
+              {'★★★★★☆☆☆☆☆'.substring(5 - experience.avgVote, 10 - experience.avgVote)}
               <p className='description'>{experience.experienceDescription}</p>
-              <p className='vote'>puntuación: {experience.avgVote}</p>
               <Link to={'/experiences/' + experience.id} className='button-exp'>
                 descubrir mas
               </Link>
