@@ -2,7 +2,7 @@
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
 import Header from './Header'
-import Footer from './Footer'
+import Footer from './footer/Footer'
 import Experiences from './experiences/Experiences'
 import ExperienceId from './experiences/ExperienceId'
 import ExperienceIdReservar from './experiences/ExperienceIdReservar'
@@ -19,6 +19,9 @@ import Modal from './Modal'
 import About from './About'
 import Contact from './contact/Contact'
 import YourBooking from './bookings/YourBooking'
+import TerminosYCondiciones from './footer/TerminosYCondiciones'
+import PoliticaDePrivacidad from './footer/PoliticaDePrivacidad'
+import PoliticaDeCookies from './footer/PoliticaDeCookies'
 
 
 
@@ -41,6 +44,10 @@ function App() {
         <Route path="/:place&:lowPrice&:highPrice&:date" element={<><SearchBar /><SearchPage /></>} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/terminosYCondiciones" element={<TerminosYCondiciones />} />
+        <Route path="/politicaDePrivacidad" element={<PoliticaDePrivacidad />} />
+        <Route path="/politicaDeCookies" element={<PoliticaDeCookies />} />
+
         <Route path="*" element={<h2>404 - Not found</h2>} />
       </Routes>
       <Footer />
