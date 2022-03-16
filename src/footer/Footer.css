@@ -29,11 +29,25 @@
 #footerExperiences {
   display: flex;
   flex-direction: column;
+  padding-right: 25px;
 }
 
 #footerPlaces {
   display: flex;
   flex-direction: column;
+  padding-right: 25px;
+}
+
+#footerAbout {
+  display: flex;
+  flex-direction: column;
+  padding-right: 25px;
+}
+
+#footerContact {
+  display: flex;
+  flex-direction: column;
+  padding-right: 25px;
 }
 
 .footerLinks {
@@ -67,8 +81,36 @@
   color: white;
 }
 
+.footerEmail {
+  display: flex;
+  text-transform: normal;
+  flex-direction: column;
+  text-decoration: none;
+  color: white;
+}
+
+#email {
+  width: 3vh;
+  height: 1.5vw;
+}
+
+#phone {
+  width: 2vh;
+  height: 1vw;
+}
+
 .socialMedia {
   margin-top: 20px;
+}
+
+.footerEquipment {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.footerEffort {
+  justify-content:center;
 }
 
 

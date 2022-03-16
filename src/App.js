@@ -2,7 +2,7 @@
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
 import Header from './Header'
-import Footer from './Footer'
+import Footer from './footer/Footer'
 import Experiences from './experiences/Experiences'
 import ExperienceId from './experiences/ExperienceId'
 import ExperienceIdReservar from './experiences/ExperienceIdReservar'
