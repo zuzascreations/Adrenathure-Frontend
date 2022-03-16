@@ -18,12 +18,19 @@
   padding-right: 30px;
 }
 
+#footerHeader {
+  font-family: BioRhyme Expanded;
+  font-size:medium;
+  text-transform: lowercase;
+}
+
 .footerNavLinks {
   display: flex;
   justify-content: space-evenly;
   color: white;
   flex-wrap: nowrap;
   gap:10px;
+  text-transform: uppercase;
 }
 
 #footerExperiences {
@@ -55,7 +62,6 @@
   margin-top: 10px;
   color: white;
   text-decoration: none;
-  text-transform:uppercase;
 }
 
 .footerList {
@@ -64,6 +70,7 @@
   flex-direction: column;
   text-decoration: none;
   color: white;
+  text-transform: none;
 }
 
 .footerExperience {
@@ -106,12 +113,10 @@
 .footerEquipment {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content:space-between;
 }
 
-.footerEffort {
-  justify-content:center;
+#address {
+  text-transform: none;
 }
-
-
 
