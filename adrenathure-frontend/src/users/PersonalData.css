@@ -1,3 +1,33 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 .personalData {
   display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding: 30px;
+  gap: 10px;
 }
+
+button {
+  width: 150px;
+  height: 30px;
+  cursor: pointer;
+  border-radius: 3px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.email {
+  text-decoration: underline;
+  color: rgb(58, 58, 202);
+  font-size:small ;
+}
+/* button .editar-link {
+  text-decoration: none;
+  color: brown;
+} */

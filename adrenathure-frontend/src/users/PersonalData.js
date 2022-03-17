@@ -12,11 +12,11 @@ function PersonalData() {
     <div className="personalData">
       <Avatar />
       <div>
-        <h4>nombre: {personalData.firstName}</h4>
-        <h4>apellidos: {personalData.lastName}</h4>
-        <h4>e-mail: {personalData.email}</h4>
+        <h4>{personalData.firstName} {personalData.lastName}</h4>
+        {/* <h4>apellidos: {personalData.lastName}</h4> */}
+        <h4 className="email">{personalData.email}</h4>
       </div>
-      <button><Link to="/profile/editar">editar</Link></button>
+      <button><Link to="/profile/editar">editar perfil</Link></button>
     </div>
   )
 }

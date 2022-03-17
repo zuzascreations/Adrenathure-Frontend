@@ -3,7 +3,7 @@ import { Rating } from 'react-simple-star-rating'
 import { useSetModal, useUser } from '../hooks'
 import { useParams } from "react-router-dom"
 
-function Punctuation() {
+function PunctuationToRate() {
   // const [vote, setVote] = useState('')
   const setModal = useSetModal()
   const [rating, setRating] = useState(0)
@@ -44,4 +44,4 @@ function Punctuation() {
   )
 }
 
-export default Punctuation
+export default PunctuationToRate

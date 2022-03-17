@@ -1,6 +1,7 @@
 import emailjs from '@emailjs/browser'
 import { init } from '@emailjs/browser'
 import { useSetModal } from '../hooks'
+import '../Form.css'
 init("user_26UUVsLD3NfN5vGVKNa9G")
 
 function ContactUs() {
@@ -25,22 +26,23 @@ function ContactUs() {
   }
 
   return (
-    <>
-      <form className='contact-form' onSubmit={SenderForm}>
+    <form className='form' onSubmit={SenderForm}>
+      <fieldset className="form-section">
+        <legend>Contacta con nosotros</legend>
         <label>Nombre*</label>
-        <input required type='text' name='firstName' />
+        <input required type='text' name='firstName' placeholder="Introduce tu nombre..." />
         <label>Apellidos*</label>
-        <input required type='text' name='lastName' />
+        <input required type='text' name='lastName'  placeholder="Introduce tus apellidos..."/>
         <label>Email*</label>
-        <input required type='email' name='emailUser' />
+        <input required type='email' name='emailUser' placeholder="Introduce tu email..."/>
         <label>Teléfono</label>
-        <input type='phone' name='phoneUser' />
+        <input type='phone' name='phoneUser' placeholder="Introduce tu teléfono..."/>
         <label>Mensaje*</label>
-        <textarea required row='25' column='55' name='contactDetails' />
+        <textarea required row='25' column='55' name='contactDetails' placeholder="Cuenta nos..." />
+        <p>* campos obligatorios</p>
         <button>Enviar</button>
-      </form>
-
-    </>
+      </fieldset>
+    </form>
   )
 }
 

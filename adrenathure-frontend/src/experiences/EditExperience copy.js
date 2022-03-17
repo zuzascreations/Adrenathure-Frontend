@@ -4,7 +4,7 @@ import { useSetModal, useUser } from '../hooks'
 import Loading from '../Loading'
 import useFetch from '../useFetch'
 // import './EditExperience.css'
-import '../Form.css'
+import './PersonalDataEdit.css'
 
 
 function EditExperience() {
@@ -166,58 +166,58 @@ function EditExperience() {
   }
 
   return (
-    <div className="form">
-      <form onSubmit={handleSubmitEdit}>
-        <fieldset className='form-section'>
-          <legend>Editar experiencia</legend>
-          <label>
-            <img className='photo-edit' src={`http://localhost:3000/${experiences[0].experiencePhoto}`} alt="avatar" />
-          </label>
-          <label>
-            cambiar foto:
-            <input className="input" type='file' onChange={e => setFile(e.target.files[0])} />
-          </label>
-          <label>
-            <span>nombre experiencia</span>
-            <br/>
-            <input size='sm' required name="name" value={experienceName} onChange={e => setExperienceName(e.target.value)} />
-          </label>
-          <label>
-            <span>descripcion experiencia</span>
-            <br/>
-            <textarea required name="description" value={experienceDescription} onChange={e => setExperienceDescription(e.target.value)} />
-          </label>
-          <label>
-            <span>destino: {experiences[0].placeName}</span>
-            <br/>
-            <span>  cambiar destino:</span>
-            <select defaultValue={''} className='select' onChange={e => setPlace_id(e.target.value)} name='escoge destino'>
-              <option disabled></option>
-              {places &&
-                places.map(place =>
-                  <option key={place.id} required name="place" value={place.id} >{place.placeName}</option>
-                )
-              }
-            </select>
-          </label>
-          <label>
-            <span>precio</span>
-            <br/>
-            <input required name="price" value={price} onChange={e => setPrice(e.target.value)} />
-            <span>€</span>
-          </label>
-          <button>guardar</button>
-          <p>{message}</p>
-        </fieldset>
+    <>
+      <h2>editar experiencia : </h2>
+      <form className='editForms' onSubmit={handleSubmitEdit}>
+
+        <label>
+          <span>nombre experiencia:</span>
+          <input size='sm' required name="name" value={experienceName} onChange={e => setExperienceName(e.target.value)} />
+        </label>
+        <label>
+          <span>descripcion experiencia:</span>
+          <textarea required name="description" value={experienceDescription} onChange={e => setExperienceDescription(e.target.value)} />
+        </label>
+        <label>
+          <p>destino: {experiences[0].placeName}</p>
+          <span>  cambiar destino:</span>
+          <select defaultValue={''} className='select' onChange={e => setPlace_id(e.target.value)} name='escoge destino'>
+            <option disabled></option>
+            {places &&
+              places.map(place =>
+                <option key={place.id} required name="place" value={place.id} >{place.placeName}</option>
+              )
+            }
+          </select>
+        </label>
+
+        <label>
+          <span>precio:</span>
+          <input required name="price" value={price} onChange={e => setPrice(e.target.value)} />
+          <span>€</span>
+        </label>
+        <label>
+          <p>foto:</p>
+          <img className='experience-photo' src={`http://localhost:3000/${experiences[0].experiencePhoto}`} alt="avatar" />
+        </label>
+        <label>
+          cambiar foto:
+          <input className="input" type='file' onChange={e => setFile(e.target.files[0])} />
+        </label>
+        <button>guardar</button>
+       
+
+        <p>{message}</p>
       </form>
 
+      <h2>fechas : </h2>
       {experiences[0].experienceDate ?
-        <form onSubmit={handleSubmitEditDates}>
-          <fieldset className='form-section'>
-            <legend>Editar fechas</legend>
-            <label>
+        <form className='editForms' onSubmit={handleSubmitEditDates}>
+          <label>
+              <h3>editar fechas :</h3>
               <span>fechas existentes:</span>
-              <select defaultValue={'elige fecha para editar'} className='select' onChange={handleChangeSelectDate} name='escoge fecha'>
+
+               <select defaultValue={'elige fecha para editar'} className='select' onChange={handleChangeSelectDate} name='escoge fecha'>
                     <option disabled >elige fecha para editar</option>
                   {experiences &&
                     experiences.map(experience =>
@@ -227,65 +227,58 @@ function EditExperience() {
               </select>
               <div id='delete-date-button' onClick={handleDelete}>borrar fecha</div>
               <span>{messageDelete}</span>
-            </label>
-            {(!experiences[0].experienceDate || !experiences[0].experienceHour || !experiences[0].totalSeats) ?
-            <p>No hay fechas disponibles</p> :
-            <>
-              <label>
-                <span> cambiar hora de la experiencia</span>
-                <br/>
-                <input type='time' name="hour" value={experienceHour} onChange={e => {
-                  setExperienceHour(e.target.value)
-                }} />
-              </label>
-              <label>
-                <span> cambiar fecha de la experiencia</span>
-                <br/>
-                <input type='date' name="date" value={experienceDate} onChange={e => {
-                  setExperienceDate(e.target.value)
-                }} />
-              </label>
-              <label>
-                <span>plazas totales</span>
-                <br/>
-                <input max="20" min="1" type="number" name="seats" value={totalSeats} onChange={e => setTotalSeats(e.target.value)} />
-              </label>
-            </>
-            }
-            <button>guardar</button>
-            <p>{message}</p>
-          </fieldset>
-        </form>
-        : <p>no hay fechas</p>}
-
-      <form onSubmit={handleSubmitPost}>
-        <fieldset className='form-section'>
-          <legend>Añadir fechas nuevas</legend>
-          <label>
-            <span> añadir fecha de la experiencia:</span>
-            <br/>
-            <input required type='date' name="date" onChange={e => {
-              setExperienceDate(e.target.value)
-            }} />
           </label>
+          {(!experiences[0].experienceDate || !experiences[0].experienceHour || !experiences[0].totalSeats) ?
+          <p>No hay fechas disponibles</p> :
+        <>
           <label>
-            <span> añadir hora de la experiencia:</span>
-            <br/>
-            <input required type='time' name="hour" onChange={e => {
+            <p> cambiar hora de la experiencia:</p>
+            <input type='time' name="hour" value={experienceHour} onChange={e => {
               setExperienceHour(e.target.value)
             }} />
           </label>
           <label>
-            <span> añadir plazas totales:</span>
-            <br/>
-            <input type='number' min='1' max='20' placeholder="Introduce plazas totales..." required name="seats" onChange={e => setTotalSeats(e.target.value)} />
+            <p> cambiar fecha de la experiencia:</p>
+            <input type='date' name="date" value={experienceDate} onChange={e => {
+              setExperienceDate(e.target.value)
+            }} />
           </label>
-          <button>añadir</button>
-          <p>{messagePost}</p>
-          </fieldset>
+          <label>
+            <span>plazas totales:</span>
+            <input name="seats" value={totalSeats} onChange={e => setTotalSeats(e.target.value)} />
+          </label>
+        </>
+      }
+      <button>guardar</button>
+      <p>{message}</p>
+    </form>
+    : <p>no hay fechas</p>}
+
+      <h2>añadir nuevas fechas : </h2>
+
+      <form className='editForms' onSubmit={handleSubmitPost}>
+        <label>
+          <span> añadir fecha de la experiencia:</span>
+          <input required type='date' name="date" onChange={e => {
+            setExperienceDate(e.target.value)
+          }} />
+        </label>
+        <label>
+          <span> añadir hora de la experiencia:</span>
+          <input required type='time' name="hour" onChange={e => {
+            setExperienceHour(e.target.value)
+          }} />
+        </label>
+
+        <label>
+          <span> añadir plazas totales:</span>
+          <input type='number' min='1' max='20' required name="seats" onChange={e => setTotalSeats(e.target.value)} />
+        </label>
+        <button>añadir</button>
+        <p>{messagePost}</p>
       </form>
       <button><Link to={'/profile/admin'}>volver</Link></button>
-    </div>
+    </>
   )
 }
 

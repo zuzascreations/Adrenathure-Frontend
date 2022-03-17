@@ -4,7 +4,6 @@ import Loading from '../Loading'
 
 
 function UploadAvatar() {
-
   const [file, setFile] = useState(null)
   const [message, setMessage] = useState(null)
 
@@ -31,7 +30,7 @@ function UploadAvatar() {
       <p>{message}</p>
       <form onSubmit={handleSubmit}>
         <label>
-          upload avatar
+          <span>Escojer foto perfil</span>
           <input required className="input" type='file' onChange={e => setFile(e.target.files[0])} />
           <button className="subir">subir foto</button>
         </label>

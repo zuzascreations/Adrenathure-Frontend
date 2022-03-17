@@ -25,7 +25,6 @@ function SearchBar() {
 
   const placesData = useFetch('http://localhost:3000/places')
   const dates = useFetch('http://localhost:3000/dates')
-  
 
   const showDefault = () => {
     setValuePlace(initialValuePlace)
