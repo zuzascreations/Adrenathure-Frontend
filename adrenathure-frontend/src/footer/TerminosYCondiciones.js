@@ -20,7 +20,7 @@ function TerminosYCondiciones() {
           <div className='mainCookies'>Mediante el acceso a “adrenathure.com” se presume la aceptación del contenido de estos Términos y Condiciones, junto con la Política de Privacidad y Cookies, y se garantiza el compromiso a no utilizarlas para fines ilegales, ilícitos o contrarios a estos términos o condiciones.
           La edad mínima para el uso de “adrenathure.com” se establece en 16 años. En el caso de los menores de edad, serán responsables los padres, tutores o representantes legales.</div>
           <h3 id='header3'>3.- Finalidad de la web</h3>
-          <div className='mainCookies'>La web de adrenathure tiene la finalidad de informar a clientes y potenciales clientes de sus productos y/o servicios, datos de contacto, ubicación, etc. Además, en su caso, también tendrá la finalidad de divulgar información relacionada con el sector de actividad del Responsable.</div>
+          <div className='mainCookies'>La web de Adrenathure tiene la finalidad de informar a clientes y potenciales clientes de sus productos y/o servicios, datos de contacto, ubicación, etc. Además, en su caso, también tendrá la finalidad de divulgar información relacionada con el sector de actividad del Responsable.</div>
           <h3 id='header3'>4.- Marco Normativo</h3>
           <div className='mainCookies'>La actividad de esta web se encuentra sujeta al marco legal español y europeo, concretamente a las siguientes normas:
           Reglamento General de Protección de Datos (RGPD) (UE) 2016/679, de 27 de abril, que regula el tratamiento de datos personales en los países de la Unión Europea.
