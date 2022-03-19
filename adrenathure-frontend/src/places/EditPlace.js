@@ -3,6 +3,7 @@ import { useNavigate, Navigate, useParams } from 'react-router-dom'
 import { useSetModal, useUser } from '../hooks'
 import Loading from '../Loading'
 import useFetch from '../useFetch'
+import '../Form.css'
 
 
 function EditPlace() {
@@ -53,32 +54,38 @@ function EditPlace() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <label>
-          <span>nombre destino:</span>
-          <input name="name" value={placeName} onChange={e => setPlaceName(e.target.value)} />
-        </label>
-        <label>
-          <span>descripcion destino:</span>
-          <input name="description" value={placeDescription} onChange={e => setPlaceDescription(e.target.value)} />
-        </label>
-        <label>
-          <span>coordenadas longitude:</span>
-          <input name="coords" value={coordsLong} onChange={e => setCoordsLong(e.target.value)} />
-        </label>
-        <label>
-          <span>coordenadas latitude:</span>
-          <input name="coords" value={coordsLat} onChange={e => setCoordsLat(e.target.value)} />
-        </label>
-        <label>
-          <span>foto:</span>
-          <img className='experience-photo' src={`http://localhost:3000/${places.photo}`} alt="avatar" />
-        </label>
-        <label>
-          cambiar foto destino:
-          <input className="input" type='file' onChange={e => setFile(e.target.files[0])} />
-        </label>
-        <button>guardar</button>
+      <form className="form" onSubmit={handleSubmit}>
+        <fieldset className="form-section">
+          <legend>Editar destino</legend>
+          <label>
+            <img className='photo-edit' src={`http://localhost:3000/${places.photo}`} alt="avatar" />
+          </label>
+          <label>
+            <span>cambiar foto destino</span>
+            <input className="input" type='file' onChange={e => setFile(e.target.files[0])} />
+          </label>
+          <label>
+            <span>nombre destino</span>
+            <br/>
+            <input name="name" value={placeName} onChange={e => setPlaceName(e.target.value)} />
+          </label>
+          <label>
+            <span>descripcion destino</span>
+            <br/>
+            <textarea name="description" value={placeDescription} onChange={e => setPlaceDescription(e.target.value)} />
+          </label>
+          <label>
+            <span>coordenadas longitude</span>
+            <br/>
+            <input name="coords" value={coordsLong} onChange={e => setCoordsLong(e.target.value)} />
+          </label>
+          <label>
+            <span>coordenadas latitude</span>
+            <br/>
+            <input name="coords" value={coordsLat} onChange={e => setCoordsLat(e.target.value)} />
+          </label>
+          <button>guardar</button>
+        </fieldset>
       </form>
       <p>{error}</p>
     </>

@@ -29,18 +29,18 @@ function Header() {
               {user &&
                 <Link to={'/'} onClick={() => {
                   setRegistered(false)
-                  setUser(null)}}>Cerrar Sesion</Link>}
+                  setUser(null)}}>Cerrar sesion</Link>}
               {!user &&
-                <Link to={'/login'}>iniciar sesión</Link>
+                <Link to={'/login'}>Iniciar sesión</Link>
               }
             </div>
           </div>
         </div>
         <nav>
-          <Link to="/experiences" className='navLinks'>experiences </Link>
-          <Link to="/places" className='navLinks'>destinos</Link>
-          <Link to="/about" className='navLinks'>sobre nosotros</Link>
-          <Link to="/contact" className='navLinks'>contacto</Link>
+          <Link to="/experiences" className='navLinks'>EXPERIENCES </Link>
+          <Link to="/places" className='navLinks'>DESTINOS</Link>
+          <Link to="/about" className='navLinks'>SOBRE NOSOTROS</Link>
+          <Link to="/contact" className='navLinks'>CONTACTO</Link>
         </nav>
         <div id="carousel">
           <CarouselSlick />

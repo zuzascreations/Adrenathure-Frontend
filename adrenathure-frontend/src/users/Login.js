@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { useRegister, useSetUser } from "../hooks"
 import Loading from "../Loading"
 import './Login.css'
+import '../Form.css'
 
 function Login() {
   const [email, setEmail] = useState('')
@@ -48,21 +49,25 @@ function Login() {
       {registered &&
         <div>Enhorabuena tu cuenta ha sido creada con éxito. En breve recibirás un mensaje de correo electrónico con enlace para activarla.</div>
       }
-      <div>
-        <h1>acceso</h1>
-      </div>
-      <form onSubmit={handleSubmit}>
-        <label>email:
-          <input type='email' value={email} onChange={(e) => setEmail(e.target.value)}></input>
-        </label>
-        <label>password:
-          <input type='password' value={password} onChange={(e) => setPassword(e.target.value)}></input>
-        </label>
-        <button>acceso</button>
-        {error && <div className="error">{error}</div>}
+      <form className="form" onSubmit={handleSubmit}>
+        <fieldset className="form-section">
+          <legend>Acceso</legend>
+          <label>
+            <span>e-mail</span>
+            <br/>
+            <input type='email' placeholder="Introduce tu e-mail..." value={email} onChange={(e) => setEmail(e.target.value)}></input>
+          </label>
+          <label>
+            <span>password</span>
+            <br/>
+            <input type='password' placeholder="Introduce tu contraseña..." value={password} onChange={(e) => setPassword(e.target.value)}></input>
+          </label>
+          <button>acceso</button>
+          {error && <div className="error">{error}</div>}
+        </fieldset>
       </form>
       <nav>
-        <Link to="/register" className='linkRegister'>aun no te has registrado?</Link>
+        <p>Aún no te has registrado? <Link to="/register" className='linkRegister'> Registrar</Link></p>
       </nav>
     </div>
   )

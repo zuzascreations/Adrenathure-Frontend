@@ -29,7 +29,6 @@ function BookingId() {
       <div>
         <PunctuationToRate />
       </div>
-      <button><Link to='/profile/bookings'>Volver</Link></button>
     </>
   )
 }

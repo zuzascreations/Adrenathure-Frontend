@@ -35,19 +35,18 @@ function AllPlaces() {
     }
   }
   return places && (
-    <div>
+    <div className="all-places">
       <ul>
         {places.map(place =>
           <li key={place.id}>
             <img className='place-photo' src={`http://localhost:3000/${place.photo}`} alt="avatar" />
             <p>{place.placeName}</p>
-            <button><Link to={"/profile/admin/editPlace/" + place.id}>editar destino</Link></button>
+            <button><Link className="link" to={"/profile/admin/editPlace/" + place.id}>editar destino</Link></button>
             <button value={place.id} onClick={handleClick}>borrar destino</button>
           </li>
         )}
       </ul>
-      <button><Link to={"/profile/admin/newPlace"}>añadir nuevo destino</Link>
-      </button>
+      <button><Link className="link" to={"/profile/admin/newPlace"}>añadir nuevo destino</Link></button>
     </div>
   )
 }

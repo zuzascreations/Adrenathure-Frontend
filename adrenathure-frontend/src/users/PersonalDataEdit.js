@@ -5,6 +5,7 @@ import Loading from '../Loading'
 import useFetch from '../useFetch'
 import UploadAvatar from './UploadAvatar'
 import Avatar from './Avatar'
+import '../Form.css'
 
 function PersonalDataEdit() {
   const setModal = useSetModal()
@@ -52,31 +53,44 @@ function PersonalDataEdit() {
   }
 
   return (
-    <>
-      <Avatar />
-      <UploadAvatar />
-      <form className="page login" onSubmit={handleSubmit}>
-        <label>
-          <span>nombre*:</span>
-          <input name="firstName" value={firstName} onChange={e => setFirstName(e.target.value)} />
-        </label>
-        <label>
-          <span>apellidos*:</span>
-          <input name="lastName" value={lastName} onChange={e => setLastName(e.target.value)} />
-        </label>
-        <label>
-          <span>e-mail*:</span>
-          <input name="email" value={email} onChange={e => setEmail(e.target.value)} />
-        </label>
-        <label>
-          <span>contraseña*:</span>
-          <input required type="password" name="password" value={password} onChange={e => setPassword(e.target.value)} />
-        </label>
-        <p>* datos obligatorios</p>
-        <button>guardar</button>
-        <p>{message}</p>
+    <div className="form">
+      <fieldset className="form-section">
+        <legend>Editar foto</legend>
+        <div className="avatar-edit">
+            <Avatar />
+            <UploadAvatar />
+        </div>
+      </fieldset>
+      <form onSubmit={handleSubmit}>
+        <fieldset className="form-section">
+          <legend>Editar datos personales</legend>
+          <label>
+            <span>nombre*</span>
+            <br/>
+            <input name="firstName" value={firstName} onChange={e => setFirstName(e.target.value)} />
+          </label>
+          <label>
+            <span>apellidos*</span>
+            <br/>
+            <input name="lastName" value={lastName} onChange={e => setLastName(e.target.value)} />
+          </label>
+          <label>
+            <span>e-mail*</span>
+            <br/>
+            <input name="email" value={email} onChange={e => setEmail(e.target.value)} />
+          </label>
+          <label>
+            <span>contraseña*</span>
+            <br/>
+            <input required type="password" placeholder="Confirma tu contraseña..." name="password" value={password} onChange={e => setPassword(e.target.value)} />
+          </label>
+          <p>* campos obligatorios</p>
+          <br/>
+          <button>guardar</button>
+          <p>{message}</p>
+        </fieldset>
       </form>
-    </>
+    </div>
   )
 }
 

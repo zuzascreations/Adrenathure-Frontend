@@ -7,14 +7,22 @@ import ErrorBoundary from '../ErrorBoundary'
 function Bookings() {
   const bookings = useFetch('http://localhost:3000/bookings')
   return bookings && (
-    <div className="bookings">
+    <div>
         {bookings.map(booking =>
-          <article key={booking.id}>
-            <p>nº: {booking.bookingNumber}</p>
-            <p>fecha: {booking.bookingDate.substring(0,10)}</p>
-            <p>precio total: {booking.totalPrice}</p>
-            <p>plazas reservadas: {booking.reservedSeats}</p>
-            <Link to={'/profile/bookings/' + booking.id }>Ver</Link>
+          <article key={booking.id} className='articles'>
+            <div className='fila'>Nº de la reserva:
+              <div className='columna'>{booking.bookingNumber}</div>
+            </div>
+            <div className='fila'>Fecha:
+              <div className='columna'>{booking.bookingDate.substring(0,10)}</div>
+            </div>
+            <div className='fila'>Precio total:
+              <div className='columna'>{booking.totalPrice}</div>
+            </div>
+            <div className='fila'>Plazas reservadas:
+              <div className='columna'>{booking.reservedSeats}</div>
+            </div>
+            <Link className='button-link' to={'/profile/bookings/' + booking.id }>Ver</Link>
           </article>
         )}
     </div>
