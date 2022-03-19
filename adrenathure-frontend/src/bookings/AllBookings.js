@@ -49,23 +49,23 @@ function AllBookings() {
         {bookings.length ?
           bookings.map(booking =>
             <div key={booking.id} className='articles'>
-              <div className='fila'>experiencia :
-                <div className='columna'> {booking.experienceName}</div>
-              </div>
-              <div className='fila'>numero de reserva :
+              <div className='fila'>Nº de la reserva :
                 <div className='columna'> {booking.bookingNumber}</div>
               </div>
-              <div className='fila'>fecha
+              <div className='fila'>Experiencia :
+                <div className='columna'> {booking.experienceName}</div>
+              </div>
+              <div className='fila'>Fecha:
                 <div className='columna'> {booking.bookingDate}</div>
               </div>
-              <div className='fila'>precio total
+              <div className='fila'>Precio total:
                 <div className='columna'> {booking.totalPrice}</div>
               </div>
-              <div className='fila'>plazas reservadas :
+              <div className='fila'>Plazas reservadas :
                 <div className='columna'> {booking.reservedSeats}</div>
               </div>
               <div className='fila'>
-                <Link className='button-link' to={'/profile/bookings/' + booking.id}>Ver</Link>
+                <Link className='button-link' to={'/profile/admin/bookingId/' + booking.id}>Ver</Link>
                 <div className='columna'>
                   <button className="button-delete" value={booking.id} onClick={handleClick}>borrar reserva</button>
                 </div>

@@ -5,30 +5,39 @@
   padding: 10px;
   width: 100vw;
   display: flex;
-  justify-content: space-around;
+  justify-content:center;
+  gap: 150px;
 }
 
-.emergentSearch {
+.select {
+display: flex;
+gap: 100px;
+
+}
+
+
+.search {
+  display: flex;
+  gap: 40px;
+}
+/* .emergentSearch {
   width: 150px;
   height: 30px;
   cursor: pointer;
   border-radius: 3px;
   color: black;
   text-decoration: none;
-}
+  padding: 3px 5px;
+} */
 
-.resetSearch {
-  width: 150px;
+.lupa {
+  width:30px;
   height: 30px;
   cursor: pointer;
-  border-radius: 3px;
-  background-color: rgb(85, 81, 81);
-  color: white;
-  display:flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .contentSearch {
   display: block;
 }
+
+

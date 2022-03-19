@@ -63,7 +63,7 @@ function ExperienceIdReservar() {
   return (
       <form  className="form" onSubmit={handleSubmit}>
         <fieldset className="form-section">
-          <legend>Ya estás muy cerca de vivir una experiencia inolvidable! Reserva con nosotros.</legend>
+          <legend>Ya estás muy cerca de vivir una experiencia inolvidable!</legend>
           <label>
             <span>nombre experiencia</span>
             <br/>

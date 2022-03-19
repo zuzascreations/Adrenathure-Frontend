@@ -65,7 +65,7 @@ function Register() {
       <nav>
         <p>Ya te has registrado? <Link to="/login" className='linkLogin'> Acceder</Link></p>
       </nav>
-      <p>Al pulsar sobre “crear cuenta” confirmas haber leído y estar de acuerdo con el <Link to='privacidad' className="/privacidad">aviso de privacidad</Link>.</p>
+      <p>Al pulsar sobre “crear cuenta” confirmas haber leído y estar de acuerdo con la <Link to='privacidad' className="/privacidad">política de privacidad</Link>.</p>
     </div>
   )
 }

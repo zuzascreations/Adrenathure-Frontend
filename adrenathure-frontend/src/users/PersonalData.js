@@ -9,14 +9,15 @@ import ErrorBoundary from '../ErrorBoundary'
 function PersonalData() {
   const personalData = useFetch('http://localhost:3000/users/profile')
   return personalData && (
-    <div className="personalData">
-      <Avatar />
-      <div>
-        <h4>{personalData.firstName} {personalData.lastName}</h4>
-        {/* <h4>apellidos: {personalData.lastName}</h4> */}
-        <h4 className="email">{personalData.email}</h4>
+    <div className="data">
+      <div className="allPersonalData">
+        <Avatar />
+        <div className="personalData">
+          <h4>{personalData.firstName} {personalData.lastName}</h4>
+          <h4 className="email">{personalData.email}</h4>
+        </div>
+        <button><Link to="/profile/editar">editar perfil</Link></button>
       </div>
-      <button><Link to="/profile/editar">editar perfil</Link></button>
     </div>
   )
 }

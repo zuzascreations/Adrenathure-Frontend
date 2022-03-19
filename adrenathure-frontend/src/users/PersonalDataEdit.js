@@ -54,13 +54,13 @@ function PersonalDataEdit() {
 
   return (
     <div className="form">
-      <div>
-        <fieldset className="avatar-edit">
-          <legend>Editar foto</legend>
-          <Avatar />
-          <UploadAvatar />
-        </fieldset>
-      </div>
+      <fieldset className="form-section">
+        <legend>Editar foto</legend>
+        <div className="avatar-edit">
+            <Avatar />
+            <UploadAvatar />
+        </div>
+      </fieldset>
       <form onSubmit={handleSubmit}>
         <fieldset className="form-section">
           <legend>Editar datos personales</legend>

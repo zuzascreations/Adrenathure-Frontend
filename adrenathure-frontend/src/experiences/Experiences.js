@@ -20,7 +20,7 @@ console.log(experiences)
               {'★★★★★☆☆☆☆☆'.substring(5 - experience.avgVote, 10 - experience.avgVote)}
               <p className='description'>{experience.experienceDescription}</p>
               <Link to={'/experiences/' + experience.id} className='button-exp'>
-                descubrir mas
+                descubrir más
               </Link>
             </article>
           </div>
