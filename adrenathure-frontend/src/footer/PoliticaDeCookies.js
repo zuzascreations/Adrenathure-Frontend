@@ -36,9 +36,9 @@ function PoliticaDeCookies() {
           <h3 id='header3'>5.- ACTUALIZACIÓN DE LA POLÍTICA DE COOKIES</h3>
           <div className='mainCookies'>Adrenathure se reserva el derecho a actualizar la presente Política de Cookies en función de las exigencias legales o técnicas del momento. Por ello, aconseja a los usuarios mantenerse informados toda vez que accedan a esta página web o a su plataforma enlazada.</div>
           <h3 id='header3'>6.- POLÍTICA DE PRIVACIDAD</h3>
-          <div className='mainCookies'>Para obtener más información sobre el tratamiento de los datos personales, el usuario puede acceder a la <Link to="/politicaDeCookies" target='_blank' rel="noreferrer" id='cookies'>Política de Cookies</Link>.</div>
+          <div className='mainCookies'>Para obtener más información sobre el tratamiento de los datos personales, el usuario puede acceder a la <Link to="/politicaDePrivacidad" target='_blank' rel="noreferrer" id='cookies'>Política de Privacidad</Link>.</div>
           <h3 id='header3'>7.- CONTACTO</h3>
-          <div className='mainCookies'>En caso de duda o sugerencia sobre la presente Política de Cookies, el usuario puede ponerse en contacto con Greemko a través de la siguiente dirección de correo electrónico:</div>
+          <div className='mainCookies'>En caso de duda o sugerencia sobre la presente Política de Cookies, el usuario puede ponerse en contacto con Adrenathure a través de la siguiente dirección de correo electrónico:</div>
           <div className='mainCookies2'>adrenathure.info@gmail.com</div>
         </div>
       </div>

@@ -53,7 +53,7 @@ function Footer() {
               <div className='footerLegal'>
                 <div><Link to="/terminosYCondiciones" target='_blank' rel="noreferrer" className='footerLinks'>términos y condiciones</Link></div>
                 <div><Link to="/politicaDePrivacidad" target='_blank' rel="noreferrer" className='footerLinks'>política de privacidad</Link></div>
-                <div></div>
+                <div><Link to="/politicaDeCookies" target='_blank' rel="noreferrer" className='footerLinks'>Política de Cookies</Link></div>
               </div>
             </div>
           </article>
