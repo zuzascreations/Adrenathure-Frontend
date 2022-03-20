@@ -6,12 +6,12 @@ function NavProfile() {
   const user = useUser()
 
   return (
-    <div>
+    <div className="">
       <nav className="nav-profile">
-        <Link to="/profile">datos personales</Link>
-        <Link to="/profile/bookings">reservas</Link>
+        <Link className="link" to="/profile">datos personales</Link>
+        <Link className="link" to="/profile/bookings">reservas</Link>
         {user.role==='admin' &&
-          <Link to="/profile/admin">administración</Link>
+          <Link className="link" to="/profile/admin">administración</Link>
         }
       </nav>
     </div>

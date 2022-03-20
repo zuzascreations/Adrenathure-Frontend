@@ -37,17 +37,17 @@ function AllExperiences() {
       <ul>
         {experiences.map(experience =>
             <li key={experience.id}>
-              <img className='experience-photo' src={`http://localhost:3000/${experience.experiencePhoto}`} alt="avatar" />
+              <img className='photo-edit' src={`http://localhost:3000/${experience.experiencePhoto}`} alt="avatar" />
               <p>nombre: {experience.experienceName}</p>
               <p>precio: {experience.price}€</p>
               <p>destino: {experience.placeName}</p>
-              <button><Link to={"/profile/admin/editExperience/" + experience.id}>editar experiencia</Link></button>
+              <button><Link className="link" to={"/profile/admin/editExperience/" + experience.id}>editar experiencia</Link></button>
               <button value={experience.id} onClick={handleClick}>borrar experiencia</button>
             </li>
         )}
         {/* {error && <div className="error">{error}</div>} */}
       </ul>
-      <button><Link to={"/profile/admin/newExperience"}>añadir nueva experiencia</Link>
+      <button><Link className="link" to={"/profile/admin/newExperience"}>añadir nueva experiencia</Link>
       </button>
     </div>
   )

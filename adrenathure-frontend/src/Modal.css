@@ -10,8 +10,18 @@
   justify-content: center;
 }
 
-
 .modal-fg {
+  display: flex;
+  justify-content: baseline;
+  gap: 5px;
   background-color: white;
   padding: 20px;
+}
+
+select {
+  padding: 3px 5px;
+}
+
+.button-modal {
+  padding: 3px 5px;
 }

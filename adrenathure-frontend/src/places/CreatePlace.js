@@ -2,6 +2,7 @@ import { Suspense, useState } from 'react'
 import { useNavigate, Navigate } from 'react-router-dom'
 import { useUser } from '../hooks'
 import Loading from '../Loading'
+import '../Form.css'
 
 
 function CreatePlace() {
@@ -55,29 +56,36 @@ function CreatePlace() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <label>
-          <span>nombre destino:</span>
-          <input required name="name" value={placeName} onChange={e => setPlaceName(e.target.value)} />
-        </label>
-        <label>
-          <span>descripción destino:</span>
-          <input required name="description" value={placeDescription} onChange={e => setPlaceDescription(e.target.value)} />
-        </label>
-        <label>
-          <span>coords longitude:</span>
-          <input name="dates" value={coordsLong} onChange={e => setCoordsLong(e.target.value)} />
-        </label>
-        <label>
-          <span>coords latitude:</span>
-          <input name="hour" value={coordsLat} onChange={e => setCoordsLat(e.target.value)} />
-        </label>
-        <label>
-        escoge foto destino:
-        <input  className="input" type='file' onChange={e => setFile(e.target.files[0])} />
-      </label>
-        <button>guardar</button>
-        <p>{error}</p>
+      <form className="form" onSubmit={handleSubmit}>
+        <fieldset className="form-section">
+          <legend>Crear destino</legend>
+          <label>
+            <span>nombre destino</span>
+            <br/>
+            <input required name="name" placeholder="Introduce nombre del destino..." value={placeName} onChange={e => setPlaceName(e.target.value)} />
+          </label>
+          <label>
+            <span>descripción destino</span>
+            <br/>
+            <textarea required name="description" placeholder="Introduce descripción del destino..." value={placeDescription} onChange={e => setPlaceDescription(e.target.value)} />
+          </label>
+          <label>
+            <span>coords longitude</span>
+            <br/>
+            <input name="dates" placeholder="Introduce longitude del destino..." value={coordsLong} onChange={e => setCoordsLong(e.target.value)} />
+          </label>
+          <label>
+            <span>coords latitude</span>
+            <br/>
+            <input name="hour" placeholder="Introduce latitude del destino..." value={coordsLat} onChange={e => setCoordsLat(e.target.value)} />
+          </label>
+          <label>
+          <span>escojer foto destino</span>
+          <input  className="input" type='file' onChange={e => setFile(e.target.files[0])} />
+          </label>
+          <button>guardar</button>
+          <p>{error}</p>
+        </fieldset>
       </form>
     </>
   )

@@ -8,15 +8,14 @@ function SearchPage() {
 
   let { date, place, lowPrice, highPrice } = useParams()
 
-  if (date === 'Fechas') {
+  if (date === 'Fechas ⌄') {
     date = ''
   }
 
-  if (place === 'Destinos') {
+  if (place === 'Destino ⌄') {
     place = ''
   }
 
-  
   const conditions = []
 
   let url = ('http://localhost:3000/experiences?')
