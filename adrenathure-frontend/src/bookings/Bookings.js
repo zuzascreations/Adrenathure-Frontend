@@ -8,7 +8,8 @@ function Bookings() {
   const bookings = useFetch('http://localhost:3000/bookings')
   return bookings && (
     <div>
-        {bookings.map(booking =>
+        {bookings.length ?
+        bookings.map(booking =>
           <article key={booking.id} className='articles'>
             <div className='fila'>Nº de la reserva:
               <div className='columna'>{booking.bookingNumber}</div>
@@ -24,7 +25,7 @@ function Bookings() {
             </div>
             <Link className='button-link' to={'/profile/bookings/' + booking.id }>Ver</Link>
           </article>
-        )}
+        ): <p> aun no has realizado ninguna reserva</p>}
     </div>
   )
 }
