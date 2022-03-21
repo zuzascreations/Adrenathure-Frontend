@@ -44,6 +44,8 @@
 .articleExp:hover {
   background-color: rgb(219, 224, 218);
   transform: scale(1.05);
+  color: rgb(101, 104, 100);
+
 }
 
 .photoExperience {
@@ -71,3 +73,4 @@
   height: fit-content;
   margin-left: 30px;
 }
+

@@ -6,11 +6,12 @@ import './Experiences.css'
 
 function Experiences() {
   const experiences = useFetch('http://localhost:3000/experiences')
-console.log(experiences)
+
   return experiences && (
     <div className='experiences'>
       <div className='art'>
-        {experiences.map(experience =>
+        { experiences.length ?
+        experiences.map(experience =>
           <div key={experience.id} className='articleExp'>
             <img className='photoExperience' src={`http://localhost:3000/${experience.experiencePhoto}`} alt='foto experiencia'></img>
             <article key={experience.id} >
@@ -24,7 +25,7 @@ console.log(experiences)
               </Link>
             </article>
           </div>
-        )}
+        ): <p>aun no hay experiencias, disculpe las molestias</p>}
       </div>
     </div>
   )

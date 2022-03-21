@@ -9,13 +9,14 @@ function SidebarPlaces() {
   return places && (
     <aside className="places">
       <ul>
-        {places.map(place =>
+        { places.length ?
+        places.map(place =>
           <li key={place.id}>
             <Link to={'/places/' + place.id}>
               {place.placeName}
             </Link>
           </li>
-        )}
+        ): <p>aun no hay destinos disponibles, disculpa las molestias.</p>}
       </ul>
     </aside>
   )
