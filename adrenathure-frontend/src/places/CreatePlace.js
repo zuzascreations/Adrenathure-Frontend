@@ -58,7 +58,7 @@ function CreatePlace() {
     <>
       <form className="form" onSubmit={handleSubmit}>
         <fieldset className="form-section">
-          <legend>Crear destino</legend>
+          <legend>CREAR DESTINO</legend>
           <label>
             <span>nombre destino</span>
             <br/>
@@ -83,7 +83,7 @@ function CreatePlace() {
           <span>escojer foto destino</span>
           <input  className="input" type='file' onChange={e => setFile(e.target.files[0])} />
           </label>
-          <button>guardar</button>
+          <button>GUARDAR</button>
           <p>{error}</p>
         </fieldset>
       </form>

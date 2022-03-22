@@ -45,7 +45,7 @@ function ExperienceId() {
             : <p>No hay fechas disponibles</p>}
         </label>
         {experienceDate &&
-          <button><Link to={`/experiences/${experienceId[0].id}/${experienceDate}/book`}>reservar</Link></button>}
+          <button><Link to={`/experiences/${experienceId[0].id}/${experienceDate}/book`}>RESERVAR</Link></button>}
       </div>
     </div >
     </>

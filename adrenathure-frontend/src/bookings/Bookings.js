@@ -23,7 +23,7 @@ function Bookings() {
             <div className='fila'>Plazas reservadas:
               <div className='columna'>{booking.reservedSeats}</div>
             </div>
-            <Link className='button-link' to={'/profile/bookings/' + booking.id }>Ver</Link>
+            <Link className='button-link' to={'/profile/bookings/' + booking.id }>VER</Link>
           </article>
         ): <p> aun no has realizado ninguna reserva</p>}
     </div>

@@ -37,7 +37,7 @@ function Register() {
     <div className='divRegister'>
       <form className="form" onSubmit={handleSubmit}>
         <fieldset className="form-section ">
-          <legend>Crea tu cuenta adrenathure gratis y disfruta de nuestras exclusivas experiencias</legend>
+          <legend>Crea tu cuenta adrenathure y disfruta de nuestras exclusivas experiencias</legend>
           <label>
             <span>nombre</span>
             <br/>
@@ -58,7 +58,7 @@ function Register() {
             <br/>
             <input type='password' placeholder="Introduce tu password..." value={pass} onChange={(e) => setPass(e.target.value)}></input>
           </label>
-          <button>crear cuenta</button>
+          <button>CREAR CUENTA</button>
           {error && <div className="error">{error}</div>}
         </fieldset>
       </form>

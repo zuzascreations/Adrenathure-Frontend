@@ -56,7 +56,7 @@ function SearchBar() {
             )
           }
         </select>
-        <button className="button-modal" onClick={handleClick}>aplicar</button>
+        <button className="button-modal" onClick={handleClick}>APLICAR</button>
       </>)
   }
   function Modal2() {
@@ -78,7 +78,7 @@ function SearchBar() {
           <option className='price' value={1000} >1000</option>
           <option className='price' value={2000} >2000</option>
         </select>
-        <button className="button-modal" onClick={handleClick2}>aplicar</button>
+        <button className="button-modal" onClick={handleClick2}>APLICAR</button>
       </>)
   }
 
@@ -94,7 +94,7 @@ function SearchBar() {
           )
           }
         </select>
-        <button className="button-modal" onClick={handleClick3}>aplicar</button>
+        <button className="button-modal" onClick={handleClick3}>APLICAR</button>
       </>
     )
   }
@@ -132,7 +132,7 @@ function SearchBar() {
             // showDefault()
           }}><Link className='emergentSearch' to={`/${valuePlace}&${valueLowPrice}&${valueHighPrice}&${valueDate}`}><img className="lupa" src="https://img.icons8.com/ios-glyphs/30/000000/search--v1.png" alt="lupa"/></Link>
           </div>
-          <img className="lupa" img src="https://img.icons8.com/ios-glyphs/30/000000/clear-search.png" alt="clear" onClick={() => {
+          <img className="lupa" src="https://img.icons8.com/fluency-systems-regular/48/000000/cancel.png" alt="clear" onClick={() => {
             showDefault()
           }}></img>
           </div>

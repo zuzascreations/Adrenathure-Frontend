@@ -37,7 +37,7 @@
     text-align: justify;
 }
 
-span {
+.politica-cookies {
     font-style: italic;
     font-weight: bold;
     color:rgb(29, 15, 231);
@@ -54,5 +54,4 @@ span {
 #cookies {
     color:rgb(29, 15, 231);
     text-decoration: none;
-    
   }

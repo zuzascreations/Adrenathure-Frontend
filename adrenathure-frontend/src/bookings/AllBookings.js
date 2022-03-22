@@ -58,16 +58,16 @@ function AllBookings() {
               <div className='fila'>Fecha:
                 <div className='columna'> {booking.bookingDate}</div>
               </div>
-              <div className='fila'>Precio total:
-                <div className='columna'> {booking.totalPrice}</div>
-              </div>
               <div className='fila'>Plazas reservadas :
                 <div className='columna'> {booking.reservedSeats}</div>
               </div>
+              <div className='fila'>Precio total:
+                <div className='columna'> {booking.totalPrice}</div>
+              </div>
               <div className='fila'>
-                <Link className='button-link' to={'/profile/admin/bookingId/' + booking.id}>Ver</Link>
+                <Link className='button-link' to={'/profile/admin/bookingId/' + booking.id}>VER</Link>
                 <div className='columna'>
-                  <button className="button-delete" value={booking.id} onClick={handleClick}>borrar reserva</button>
+                  <button className="button-delete" value={booking.id} onClick={handleClick}>BORRAR RESERVA</button>
                 </div>
               </div>
             </div>

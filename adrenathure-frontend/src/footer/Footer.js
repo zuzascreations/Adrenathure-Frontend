@@ -53,7 +53,7 @@ function Footer() {
               <div className='footerLegal'>
                 <div><Link to="/terminosYCondiciones" target='_blank' rel="noreferrer" className='footerLinks'>términos y condiciones</Link></div>
                 <div><Link to="/politicaDePrivacidad" target='_blank' rel="noreferrer" className='footerLinks'>política de privacidad</Link></div>
-                <div><Link to="/politicaDeCookies" target='_blank' rel="noreferrer" className='footerLinks'>Política de Cookies</Link></div>
+                <div><Link to="/politicaDeCookies" target='_blank' rel="noreferrer" className='footerLinks'>política de cookies</Link></div>
               </div>
             </div>
           </article>
@@ -68,6 +68,7 @@ function Footer() {
       <section className='footerEquipment'>
         <div className='footerCopy'>&copy; Adrenathure 2022 - {update}</div>
         <div className='footerEffort'>Hecho con 💪 por Zu, Rubén, Carlos y Manuel de JSB08VI</div>
+        <div></div>
       </section>
     </div>
   )

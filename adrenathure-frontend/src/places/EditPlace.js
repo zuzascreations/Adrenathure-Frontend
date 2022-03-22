@@ -56,7 +56,7 @@ function EditPlace() {
     <>
       <form className="form" onSubmit={handleSubmit}>
         <fieldset className="form-section">
-          <legend>Editar destino</legend>
+          <legend>EDITAR DESTINO</legend>
           <label>
             <img className='photo-edit' src={`http://localhost:3000/${places.photo}`} alt="avatar" />
           </label>
@@ -84,7 +84,7 @@ function EditPlace() {
             <br/>
             <input name="coords" value={coordsLat} onChange={e => setCoordsLat(e.target.value)} />
           </label>
-          <button>guardar</button>
+          <button>GUARDAR</button>
         </fieldset>
       </form>
       <p>{error}</p>

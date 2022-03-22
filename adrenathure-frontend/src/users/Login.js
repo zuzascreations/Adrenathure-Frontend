@@ -51,7 +51,7 @@ function Login() {
       }
       <form className="form" onSubmit={handleSubmit}>
         <fieldset className="form-section">
-          <legend>Acceso</legend>
+          <legend>ACCESO</legend>
           <label>
             <span>e-mail</span>
             <br/>
@@ -62,7 +62,7 @@ function Login() {
             <br/>
             <input type='password' placeholder="Introduce tu contraseña..." value={password} onChange={(e) => setPassword(e.target.value)}></input>
           </label>
-          <button>acceso</button>
+          <button>ACCESO</button>
           {error && <div className="error">{error}</div>}
         </fieldset>
       </form>

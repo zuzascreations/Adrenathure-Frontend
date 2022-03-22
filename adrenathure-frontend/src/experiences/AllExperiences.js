@@ -42,12 +42,12 @@ function AllExperiences() {
               <p>precio: {experience.price}€</p>
               <p>destino: {experience.placeName}</p>
               <button><Link className="link" to={"/profile/admin/editExperience/" + experience.id}>editar experiencia</Link></button>
-              <button value={experience.id} onClick={handleClick}>borrar experiencia</button>
+              <button value={experience.id} onClick={handleClick}>BARRAR EXPERIENCIA</button>
             </li>
         )}
         {/* {error && <div className="error">{error}</div>} */}
       </ul>
-      <button><Link className="link" to={"/profile/admin/newExperience"}>añadir nueva experiencia</Link>
+      <button><Link className="link" to={"/profile/admin/newExperience"}>AÑADIR NUEVA EXPERIENCIA</Link>
       </button>
     </div>
   )

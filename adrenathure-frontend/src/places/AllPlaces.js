@@ -42,11 +42,11 @@ function AllPlaces() {
             <img className='place-photo' src={`http://localhost:3000/${place.photo}`} alt="avatar" />
             <p>{place.placeName}</p>
             <button><Link className="link" to={"/profile/admin/editPlace/" + place.id}>editar destino</Link></button>
-            <button value={place.id} onClick={handleClick}>borrar destino</button>
+            <button value={place.id} onClick={handleClick}>BORRAR DESTINO</button>
           </li>
         )}
       </ul>
-      <button><Link className="link" to={"/profile/admin/newPlace"}>añadir nuevo destino</Link></button>
+      <button><Link className="link" to={"/profile/admin/newPlace"}>AÑADIR NUEVO DESTINO</Link></button>
     </div>
   )
 }

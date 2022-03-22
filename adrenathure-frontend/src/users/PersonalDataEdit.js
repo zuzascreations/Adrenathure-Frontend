@@ -39,7 +39,7 @@ function PersonalDataEdit() {
             setModal(null)
             navigate('/Profile')
             window.location.reload(true)
-          }}>volver</button>
+          }}>VOLVER</button>
         </>
       )
 
@@ -55,7 +55,7 @@ function PersonalDataEdit() {
   return (
     <div className="form">
       <fieldset className="form-section">
-        <legend>Editar foto</legend>
+        <legend>EDITAR FOTO</legend>
         <div className="avatar-edit">
             <Avatar />
             <UploadAvatar />
@@ -63,7 +63,7 @@ function PersonalDataEdit() {
       </fieldset>
       <form onSubmit={handleSubmit}>
         <fieldset className="form-section">
-          <legend>Editar datos personales</legend>
+          <legend>EDITAR DATOS PERSONALES</legend>
           <label>
             <span>nombre*</span>
             <br/>
@@ -86,7 +86,7 @@ function PersonalDataEdit() {
           </label>
           <p>* campos obligatorios</p>
           <br/>
-          <button>guardar</button>
+          <button>GUARDAR</button>
           <p>{message}</p>
         </fieldset>
       </form>

@@ -169,7 +169,7 @@ function EditExperience() {
     <div className="form">
       <form onSubmit={handleSubmitEdit}>
         <fieldset className='form-section'>
-          <legend>Editar experiencia</legend>
+          <legend>EDITAR EXPERIENCIA</legend>
           <label>
             <img className='photo-edit' src={`http://localhost:3000/${experiences[0].experiencePhoto}`} alt="avatar" />
           </label>
@@ -206,7 +206,7 @@ function EditExperience() {
             <input required name="price" value={price} onChange={e => setPrice(e.target.value)} />
             <span>€</span>
           </label>
-          <button>guardar</button>
+          <button>GUARDAR</button>
           <p>{message}</p>
         </fieldset>
       </form>
@@ -214,11 +214,11 @@ function EditExperience() {
       {experiences[0].experienceDate ?
         <form onSubmit={handleSubmitEditDates}>
           <fieldset className='form-section'>
-            <legend>Editar fechas</legend>
+            <legend>EDITAR FECHAS</legend>
             <label>
               <span>fechas existentes:</span>
-              <select defaultValue={'elige fecha para editar'} className='select' onChange={handleChangeSelectDate} name='escoge fecha'>
-                    <option disabled >elige fecha para editar</option>
+              <select defaultValue={'Elige fecha para editar'} className='select' onChange={handleChangeSelectDate} name='escoge fecha'>
+                    <option disabled >Elige fecha para editar</option>
                   {experiences &&
                     experiences.map(experience =>
                     <option required key={experience.idDate} id={experience.idDate} name='date' value={experience.experienceDate} >{experience.experienceDate}</option>
@@ -252,7 +252,7 @@ function EditExperience() {
               </label>
             </>
             }
-            <button>guardar</button>
+            <button>GUARDAR</button>
             <p>{message}</p>
           </fieldset>
         </form>
@@ -260,7 +260,7 @@ function EditExperience() {
 
       <form onSubmit={handleSubmitPost}>
         <fieldset className='form-section'>
-          <legend>Añadir fechas nuevas</legend>
+          <legend>AÑADIR FECHAS NUEVAS</legend>
           <label>
             <span> añadir fecha de la experiencia:</span>
             <br/>
@@ -280,7 +280,7 @@ function EditExperience() {
             <br/>
             <input type='number' min='1' max='20' placeholder="Introduce plazas totales..." required name="seats" onChange={e => setTotalSeats(e.target.value)} />
           </label>
-          <button>añadir</button>
+          <button>AÑADIR</button>
           <p>{messagePost}</p>
           </fieldset>
       </form>

@@ -69,7 +69,7 @@ function CreateExperience() {
   return (
     <form className="form" onSubmit={handleSubmit}>
       <fieldset className="form-section">
-        <legend>Crear experiencia</legend>
+        <legend>CREAR EXPERIENCIA</legend>
         <label>
           <span>nombre experiencia</span>
           <br/>
@@ -120,7 +120,7 @@ function CreateExperience() {
           <span>Escojer foto experiencia</span>
           <input className="input" type='file' onChange={e => setFile(e.target.files[0])} />
         </label>
-        <button>guardar</button>
+        <button>GUARDAR</button>
       </fieldset>
     </form>
   )

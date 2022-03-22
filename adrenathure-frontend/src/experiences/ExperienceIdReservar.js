@@ -104,7 +104,7 @@ function ExperienceIdReservar() {
             <br/>
             <input name="total price" type="number" value={(price * reservedSeats)} onChange={e => setTotalPrice(e.target.value)} disabled/>€
           </label>
-          <button>enviar</button>
+          <button>ENVIAR</button>
         </fieldset>
       </form>
   )

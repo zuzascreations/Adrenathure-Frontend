@@ -28,7 +28,7 @@ function ContactUs() {
   return (
     <form className='form' onSubmit={SenderForm}>
       <fieldset className="form-section">
-        <legend>Contacta con nosotros</legend>
+        <legend>CONTACTA CON NOSOTROS</legend>
         <label>Nombre*</label>
         <input required type='text' name='firstName' placeholder="Introduce tu nombre..." />
         <label>Apellidos*</label>
@@ -40,7 +40,7 @@ function ContactUs() {
         <label>Mensaje*</label>
         <textarea required row='25' column='55' name='contactDetails' placeholder="Cuenta nos..." />
         <p>* campos obligatorios</p>
-        <button>Enviar</button>
+        <button>ENVIAR</button>
       </fieldset>
     </form>
   )
