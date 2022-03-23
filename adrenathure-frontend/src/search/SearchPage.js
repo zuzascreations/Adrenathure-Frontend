@@ -1,50 +1,25 @@
 import useFetch from 'fetch-suspense'
 import { Suspense } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import Loading from '../Loading'
 import './SearchPage.css'
 
 function SearchPage() {
 
-  let { date, place, lowPrice, highPrice } = useParams()
-
-  if (date === 'Fechas ⌄') {
-    date = ''
-  }
-
-  if (place === 'Destino ⌄') {
-    place = ''
-  }
-
-  const conditions = []
-
-  let url = ('http://localhost:3000/experiences?')
-  if (place.length) {
-    conditions.push(`place=${place}`)
-  }
-  if (date) {
-    conditions.push(`date=${date}`)
-  }
-  if (lowPrice) {
-    conditions.push(`lowPrice=${lowPrice}`)
-  }
-  if (highPrice) {
-    conditions.push(`highPrice=${highPrice}`)
-  }
-
-  url += conditions.join('&')
-  const experiences = useFetch(url)
-
+  let { search } = useLocation()
+  const experiences = useFetch(`http://localhost:3000/experiences${search}`)
+  
   return (
     <>
       <div className='errorSearch'>
+        <h2 id='title-searchPage'>Resultados de la busqueda:</h2>
         {!experiences.length &&
-          <p>no se han encontrado resultados</p>}
+          <p id='messageNoContent'>no se han encontrado resultados</p>}
       </div>
       <div className='experiences-searched'>
         {experiences &&
           experiences.map(experience =>
-            <div key={experience.id} className='bodyArticle'>
+            <div key={experience.experience_id} className='bodyArticle'>
               <img className='experience-photos' src={`http://localhost:3000/${experience.experiencePhoto}`} alt="avatar" />
               <Link to={'/experiences/' + experience.experience_id}>{experience.experienceName}:</Link>
               <p>Descripción: {experience.experienceDescription}</p>
