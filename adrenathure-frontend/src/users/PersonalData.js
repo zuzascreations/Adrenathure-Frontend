@@ -5,11 +5,13 @@ import { Link } from 'react-router-dom'
 import Avatar from './Avatar'
 import './PersonalData.css'
 import ErrorBoundary from '../ErrorBoundary'
+import Bookings from '../bookings/Bookings'
 
 function PersonalData() {
   const personalData = useFetch('http://localhost:3000/users/profile')
   return personalData && (
     <div className="data">
+      <div id='datos'>TUS DATOS</div>
       <div className="allPersonalData">
         <Avatar />
         <div className="personalData">
@@ -18,6 +20,8 @@ function PersonalData() {
         </div>
         <button><Link to="/profile/editar">EDITAR PERFIL</Link></button>
       </div>
+      <div id='bookingsTitleProfile'>RESERVAS</div>
+      <Bookings />
     </div>
   )
 }

@@ -5,7 +5,6 @@ import './Avatar.css'
 
 function Avatar() {
   const avatar = useFetch('http://localhost:3000/users/profile')
-  console.log(avatar)
   return (
     <div className="avatar">
       {avatar.avatar ?

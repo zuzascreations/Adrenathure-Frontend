@@ -1,36 +1,37 @@
 import { Suspense, useState } from 'react'
 import useFetch from 'fetch-suspense'
 import Loading from '../Loading'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useSetModal } from '../hooks'
 import '../Modal.css'
 import './SearchBar.css'
 
-function SearchBar() {
+function SearchBarCopy() {
   const setModal = useSetModal()
+  const navigate = useNavigate()
 
-  const initialValuePlace = 'Destino ⌄'
-  const initialValueLowPrice = '0'
-  const initialValueHighPrice = '10000'
-  const initialValueDate = 'Fechas ⌄'
 
   const [viewPlace, setViewPlace] = useState(false)
   const [viewPrice, setViewPrice] = useState(false)
+
   const [viewDate, setViewDate] = useState(false)
 
-  const [valuePlace, setValuePlace] = useState(initialValuePlace)
-  const [valueLowPrice, setValueLowPrice] = useState(initialValueLowPrice)
-  const [valueHighPrice, setValueHighPrice] = useState(initialValueHighPrice)
-  const [valueDate, setValueDate] = useState(initialValueDate)
+  const [valuePlace, setValuePlace] = useState('')
+  const [valueLowPrice, setValueLowPrice] = useState('')
+  const [valueHighPrice, setValueHighPrice] = useState('')
+  const [valueDateFrom, setValueDateFrom] = useState('')
+  const [valueDateTo, setValueDateTo] = useState('')
+
 
   const placesData = useFetch('http://localhost:3000/places')
-  const dates = useFetch('http://localhost:3000/dates')
 
   const showDefault = () => {
-    setValuePlace(initialValuePlace)
-    setValueLowPrice(initialValueLowPrice)
-    setValueHighPrice(initialValueHighPrice)
-    setValueDate(initialValueDate)
+    setValuePlace('')
+    setValueLowPrice('')
+    setValueHighPrice('')
+    setValueDateFrom('')
+    setValueDateTo('')
+
   }
   const handleClick = () => {
     setViewPlace(true)
@@ -44,10 +45,10 @@ function SearchBar() {
     setViewDate(true)
     setModal(null)
   }
+
   function Modal1() {
     return (
       <>
-        {/* <p className='emergentSearch'>Destinos</p> */}
         <select defaultValue={'Destino:'} onChange={(e) => setValuePlace(e.target.value)}>
           <option disabled  >Destino:</option>
           {
@@ -62,8 +63,6 @@ function SearchBar() {
   function Modal2() {
     return (
       <>
-        {/* <p className='emergentSearch'>precios</p> */}
-
         <select defaultValue={'Precio desde:'} onChange={(e) => setValueLowPrice(e.target.value)}>
           <option disabled >Precio desde:</option>
           <option className='price' value={100} >100</option>
@@ -84,18 +83,15 @@ function SearchBar() {
 
   function Modal3() {
     return (
-      <>
-        {/* <p className='emergentSearch'>fechas</p> */}
-        <select defaultValue={'Fecha:'} onChange={(e) => setValueDate(e.target.value)}>
-          <option disabled >Fecha:</option>
-          {
-          dates.map(date =>
-            <option key={date.idDate} className='date' value={date.experienceDate} >{date.experienceDate}</option>
-          )
-          }
-        </select>
-        <button className="button-modal" onClick={handleClick3}>APLICAR</button>
-      </>
+      <div id='calendarSearchBar'>
+        <label>Fecha Desde:
+        <input className='inputCalendarSearchBar' type='date' defaultValue={'Fecha Desde:'} onChange={(e) => setValueDateFrom(e.target.value)} />
+        </label>
+        <label>Fecha Hasta:
+        <input className='inputCalendarSearchBar' type='date' defaultValue={'Fecha Hasta:'} onChange={(e) => setValueDateTo(e.target.value)} />
+        </label>
+        <button className="button-modalDates" onClick={handleClick3}>aplicar</button>
+      </div>
     )
   }
 
@@ -103,34 +99,52 @@ function SearchBar() {
     <>
       <div className='searchBar'>
         <div className="select">
-          <div onClick={() => {
+          <div className='buttons-searchBar' onClick={() => {
             setModal(<Modal1 />)
             setViewPlace(false)
-            setValuePlace(initialValuePlace)
+            setValuePlace('')
           }}>
-            {viewPlace ? valuePlace : initialValuePlace}
+            {viewPlace && valuePlace ? valuePlace : 'Destino ⌄'}
           </div>
-          <div onClick={() => {
+          <div className='buttons-searchBar' onClick={() => {
             setModal(<Modal2 />)
             setViewPrice(false)
-            setValueHighPrice(initialValueHighPrice)
-            setValueLowPrice(initialValueLowPrice)
+            setValueHighPrice('')
+            setValueLowPrice('')
           }} >
-            {viewPrice ? ` ${valueLowPrice}€ - ${valueHighPrice}€` : 'Precio ⌄'}
+            {viewPrice && (valueLowPrice || valueHighPrice) ? ` desde: ${valueLowPrice}€ - hasta: ${valueHighPrice}€` : 'Precio ⌄'}
 
           </div>
-          <div onClick={() => {
+          <div className='buttons-searchBar' onClick={() => {
             setModal(<Modal3 />)
             setViewDate(false)
-            setValueDate(initialValueDate)
+            setValueDateFrom('')
+            setValueDateTo('')
           }}>
-            {viewDate ? valueDate.substring(0, 10) : 'Fecha ⌄'}
+            {viewDate && (valueDateFrom || valueDateTo )  ? <><p>Desde: {valueDateFrom}</p> <p>Hasta: {valueDateTo}</p></>: 'Fecha ⌄'}
           </div>
         </div>
         <div className="search">
           <div onClick={() => {
-            // showDefault()
-          }}><Link className='emergentSearch' to={`/${valuePlace}&${valueLowPrice}&${valueHighPrice}&${valueDate}`}><img className="lupa" src="https://img.icons8.com/ios-glyphs/30/000000/search--v1.png" alt="lupa"/></Link>
+          }}><img onClick={() => {
+            const searchUrl = new URLSearchParams()
+            if ( valuePlace ) {
+              searchUrl.set('place', valuePlace)
+            }
+            if ( valueLowPrice ) {
+              searchUrl.set('lowPrice', valueLowPrice)
+            }
+            if ( valueHighPrice ) {
+              searchUrl.set('highPrice', valueHighPrice)
+            }
+            if ( valueDateFrom ) {
+              searchUrl.set('dateFrom', valueDateFrom)
+            }
+            if ( valueDateTo ) {
+              searchUrl.set('dateTo', valueDateTo)
+            }
+            navigate(`/search?${searchUrl.toString()}`)
+          }} className="lupa" src="https://img.icons8.com/ios-glyphs/30/000000/search--v1.png" alt="lupa"/>
           </div>
           <img className="lupa" src="https://img.icons8.com/fluency-systems-regular/48/000000/cancel.png" alt="clear" onClick={() => {
             showDefault()
@@ -142,7 +156,7 @@ function SearchBar() {
 }
 const searchBarWrapper = () =>
   <Suspense fallback={<Loading className='page' />}>
-    <SearchBar />
+    <SearchBarCopy />
   </Suspense>
 
 export default searchBarWrapper

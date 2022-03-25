@@ -1,8 +1,4 @@
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
+
 
 .nav-profile {
   display: flex;
@@ -13,6 +9,10 @@
   padding-left: 30px;
 }
 
+#datosPersonales:link {
+  color: aquamarine;
+}
+
 .link {
   text-decoration: none;
   font-size: 20px;
@@ -21,6 +21,7 @@
   border-left: solid 2px black;
   padding-right: 10px;
   padding-left: 10px;
+  cursor: pointer;
 }
 
 .sublink {

@@ -6,7 +6,7 @@ function NavProfile() {
   const user = useUser()
 
   return (
-    <div className="">
+    <div className="all-navProfile">
       <nav className="nav-profile">
         <Link className="link" to="/profile">DATOS PERSONALES</Link>
         <Link className="link" to="/profile/bookings">RESERVAS</Link>
@@ -19,3 +19,9 @@ function NavProfile() {
 }
 
 export default NavProfile
+
+{/* <p  className="link" onClick={() => {
+          document.querySelector('#bookingsTitleProfile').scrollIntoView()
+        }}>reservas</p> */}
+
+        // <a className="link" href='#bookingsTitleProfile'>reservas</a>

@@ -20,7 +20,7 @@ function Footer() {
               <Link to="/experiences" className='footerLinks'>experiencias</Link>
               <div key={experiences.id} className='footerList'>
                 {experiences.map(experience =>
-                  <Link to={'/experiences/' + experience.id} className='footerList'>
+                  <Link key={experience.id} to={'/experiences/' + experience.id} className='footerList'>
                     {experience.experienceName}
                   </Link>)}
               </div>
@@ -29,7 +29,7 @@ function Footer() {
               <Link to="/places" className='footerLinks'>destinos</Link>
               <div className="footerList">
                 {placeId.map(place =>
-                  <Link to={'/places/' + place.id} className='footerList'>
+                  <Link key={place.id} to={'/places/' + place.id} className='footerList'>
                     {place.placeName}
                   </Link>)}
               </div>

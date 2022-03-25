@@ -36,13 +36,13 @@ function App() {
         <Route path="experiences/:id" element={<><SearchBar /><ExperienceId /></>}/>
         <Route path="experiences/:id/:date/book" element={<ExperienceIdReservar/>}/>
         <Route path="/login/" element={<Login />} />
-        <Route path="/" element={<><SearchBar/><Portada /></>} />
+        <Route path="/" element={<><SearchBar /><Portada /></>} />
         <Route path="/register/" element={<Register />} />
         <Route path="profile/*" element={<Profile />} />
         <Route path="places" element={<><SearchBar /><SidebarPlaces /></>} />
         <Route path="places/:id" element={<><SearchBar /><Place /></>} />
         <Route path="/yourBooking/:id" element={<YourBooking />} />
-        <Route path="/:place&:lowPrice&:highPrice&:date" element={<><SearchBar /><SearchPage /></>} />
+        <Route path="/search" element={<><SearchBar /><SearchPage /></>} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
 	<Route path="/emailValidatePage/:validateCode" element={<AccountActivated />} />

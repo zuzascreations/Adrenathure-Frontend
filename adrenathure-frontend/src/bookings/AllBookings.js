@@ -58,6 +58,9 @@ function AllBookings() {
               <div className='fila'>Fecha:
                 <div className='columna'> {booking.bookingDate}</div>
               </div>
+              <div className='fila'>Precio total:
+                <div className='columna'> {booking.totalPrice}€</div>
+              </div>
               <div className='fila'>Plazas reservadas :
                 <div className='columna'> {booking.reservedSeats}</div>
               </div>
@@ -71,7 +74,7 @@ function AllBookings() {
                 </div>
               </div>
             </div>
-        ) : <p>No hay ninguna reserva todavía</p>}
+        ) : <p id='messageNoBookings'>No hay ninguna reserva todavía</p>}
       </div>
     </>
   )

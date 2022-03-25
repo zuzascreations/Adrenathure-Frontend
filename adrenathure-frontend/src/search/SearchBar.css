@@ -7,6 +7,17 @@
   display: flex;
   justify-content:center;
   gap: 150px;
+  
+}
+
+.inputCalendarSearchBar {
+  width: fit-content;
+}
+
+
+.buttons-searchBar {
+  width: 250px;
+  cursor: pointer;
 }
 
 .select {
@@ -15,20 +26,15 @@ gap: 100px;
 
 }
 
-
+.button-modalDates {
+  width: fit-content;
+  padding: 3px 5px;
+}
 .search {
   display: flex;
   gap: 40px;
 }
-/* .emergentSearch {
-  width: 150px;
-  height: 30px;
-  cursor: pointer;
-  border-radius: 3px;
-  color: black;
-  text-decoration: none;
-  padding: 3px 5px;
-} */
+
 
 .lupa {
   width:30px;
@@ -40,4 +46,8 @@ gap: 100px;
   display: block;
 }
 
+#calendarSearchBar {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+}
 
