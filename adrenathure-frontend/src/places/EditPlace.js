@@ -42,9 +42,9 @@ function EditPlace() {
     })
     // const data = await res.json()
     if (res.ok) {
-      setModal(<><p>Destino editado con exito</p> <button onClick={() => window.location.reload(true)}>volver</button></>)
+      setModal(<><p>Destino editado con exito</p> <button onClick={() => window.location.reload(true)}>Volver</button></>)
     } else {
-      setModal(<><p>No se ha podido editar destino. Por favor, intenta de nuevo.</p> <button onClick={() => window.location.reload(true)}>volver</button></>)
+      setModal(<><p>No se ha podido editar destino. Por favor, intenta de nuevo.</p> <button onClick={() => window.location.reload(true)}>Volver</button></>)
     }
   }
 

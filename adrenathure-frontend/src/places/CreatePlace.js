@@ -1,5 +1,5 @@
 import { Suspense, useState } from 'react'
-import { useNavigate, Navigate } from 'react-router-dom'
+import { useNavigate, Navigate, Link } from 'react-router-dom'
 import { useUser } from '../hooks'
 import Loading from '../Loading'
 import '../Form.css'
@@ -41,11 +41,11 @@ function CreatePlace() {
 
     if (res.ok) {
       // const data = await res.json()
-      setError('Updated successfully')
+      setError('Nuevo destino creado con éxito.')
       navigate('/Places')
       window.location.reload(true)
     } else {
-      setError('Error desconocido')
+      setError('Error desconocido.')
     }
     setPlaceName('')
   }
@@ -86,6 +86,9 @@ function CreatePlace() {
           <button>GUARDAR</button>
           <p>{error}</p>
         </fieldset>
+        <div className="volver">
+          <button><Link className="link" to={'/profile/admin/allPlaces'}>VOLVER</Link></button>
+      </div>
       </form>
     </>
   )

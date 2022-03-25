@@ -60,18 +60,18 @@ function EditExperience() {
     })
     // const data = await res.json()
     if (res.ok) {
-      setModal('Updated successfully')
+      setModal('Los cambios a la experiencia se han guardado con éxito.')
       window.location.reload(true)
 
     } else {
       if (res.status === 400) {
-        setModal('rellena los campos')
+        setModal('Por favor, revisa si todos los campos están rellenados.')
       }
       if (res.status === 404) {
-        setModal('Formato incorrecto, sigue las indicaciones en cada campo a cubrir')
+        setModal('Formato incorrecto, sigue las indicaciones en cada campo a cubrir.')
       }
       if (res.status === 500) {
-        setModal('Database Error')
+        setModal('Database Error.')
       }
 
     }
@@ -88,18 +88,18 @@ function EditExperience() {
     })
     // const data = await res.json()
     if (res.ok) {
-      setModal('Updated successfully')
+      setModal('El cambio de la fecha de la experiencia se ha guardado con éxito.')
       window.location.reload(true)
 
     } else {
       if (res.status === 400) {
-        setModal('rellena los campos')
+        setModal('Por favor, revisa si todos los campos están rellenados.')
       }
       if (res.status === 404) {
-        setModal('Formato incorrecto, sigue las indicaciones en cada campo a cubrir')
+        setModal('Formato incorrecto, sigue las indicaciones en cada campo a cubrir.')
       }
       if (res.status === 500) {
-        setModal('Database Error')
+        setModal('Database Error.')
       }
 
     }
@@ -121,12 +121,12 @@ function EditExperience() {
     })
     // const data = await res.json()
     if (res.ok) {
-      setModal('Updated DATE successfully')
+      setModal('La fecha ha sido añadida con éxito.')
       window.location.reload(true)
     } else {
 
       if (res.status === 500) {
-        setModal('Database Error')
+        setModal('Database Error.')
       }
 
     }
@@ -144,11 +144,11 @@ function EditExperience() {
     })
     if (res.ok) {
       // const data = await res.json()
-      setModal('Deleted date successfully')
+      setModal('La fecha ha sido borrada con éxito.')
       window.location.reload(true)
     } else {
       if (res.status === 404) {
-        setModal('No se ha podido borrar date//Error desconocido')
+        setModal('No se ha podido borrar la fecha./Error desconocido.')
 
       }
     }

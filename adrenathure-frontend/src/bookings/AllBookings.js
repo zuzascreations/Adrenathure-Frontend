@@ -4,6 +4,7 @@ import Loading from '../Loading'
 import { Link } from 'react-router-dom'
 import { useSetModal, useUser } from '../hooks'
 import { Navigate } from 'react-router-dom'
+// import './AllBookings.css'
 import '../List.css'
 
 
@@ -25,7 +26,7 @@ function AllBookings() {
       }
     })
     if (res.ok) {
-      setModal(<p>Deleted successfully</p>)
+      setModal(<p>La reserva ha sido borrada con éxito.</p>)
       setTimeout(() => {
         setModal(null)
         window.location.reload(true)
@@ -35,7 +36,7 @@ function AllBookings() {
         setModal(<p>No se ha podido borrar/ error desconocido.</p>)
       }
       if (res.status === 500) {
-        setModal(<p>Database error</p>)
+        setModal(<p>Database error.</p>)
       }
     }
   }

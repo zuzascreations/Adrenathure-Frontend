@@ -1,5 +1,5 @@
 import { Suspense, useState } from 'react'
-import { useNavigate, Navigate } from 'react-router-dom'
+import { useNavigate, Navigate, Link } from 'react-router-dom'
 import { useSetModal, useUser } from '../hooks'
 import Loading from '../Loading'
 import useFetch from '../useFetch'
@@ -122,6 +122,9 @@ function CreateExperience() {
         </label>
         <button>GUARDAR</button>
       </fieldset>
+      <div className="volver">
+          <button><Link className="link" to={'/profile/admin'}>VOLVER</Link></button>
+      </div>
     </form>
   )
 }

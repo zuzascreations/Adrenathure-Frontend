@@ -23,14 +23,14 @@ function AllPlaces() {
     })
     if (res.ok) {
       // const data = await res.json()
-      setModal('Deleted successfully')
+      setModal('El destino ha sido borrado con éxito.')
       window.location.reload(true)
     } else {
       if (res.status === 404) {
-        setModal('No se ha podido borrar//Error desconocido')
+        setModal('No se ha podido borrar el destino/Error desconocido.')
       }
       if (res.status === 500) {
-        setModal('Hay una experiencia existente en este destino, por favor borra primero la experiencia')
+        setModal('Hay una experiencia existente en este destino, por favor borra primero la experiencia.')
       }
     }
   }

@@ -3,6 +3,7 @@ import Loading from '../Loading'
 import useFetch from "../useFetch"
 import { Link } from "react-router-dom"
 import ErrorBoundary from '../ErrorBoundary'
+import './AllBookings.css'
 
 function Bookings() {
   const bookings = useFetch('http://localhost:3000/bookings')
