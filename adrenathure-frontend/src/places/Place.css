@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@200&family=Indie+Flower&family=Merriweather:ital,wght@1,300&display=swap');
+
+
+.place {
+  margin: 0 auto;
+  display: grid;
+  background-color: rgb(250, 240, 240);
+  border-top: solid 1px black;
+}
+
+/* sidebar */
+.sidebar {
+  display: flex;
+  justify-content: center;
+  border-bottom: solid 1px black;
+  padding: 70px 0px;
+  background-color: white;
+}
+
+.link-sidebar {
+  color: black;
+  font-size: large;
+}
+
+.ul-sidebar-exp-place {
+  margin: 0 auto;
+  display: grid;
+  list-style: none;
+  gap: 15px;
+}
+
+.sidebar-experience-place-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+/* place */
+.space-place-expside {
+  display: flex;
+  flex-direction: column;
+}
+
+.space-place {
+  margin: 0 auto;
+  display: grid;
+  gap: 20px;
+  border-bottom: solid 1px black;
+  padding: 20px;
+}
+
+.space-photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.photo-place {
+  max-width: 500px;
+  min-width: 200px;
+  height: auto;
+  border: solid 10px white;
+}
+
+.space-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 0px 200px 0px;
+}
+
+.place-title {
+  text-align: center;
+  padding: 0px 0px 20px 0px;
+  font-family: Merriweather, 'Amatic Sc', Arial, Helvetica, sans-serif ;
+  padding: 20px;
+}
+
+.place-text {
+  font-family: Merriweather, 'Amatic Sc', Arial, Helvetica, sans-serif ;
+  line-height: 190%;
+  font-size: medium;
+  font-weight:300;
+  padding: 50px;
+}
+
+
+
+/* media query */
+
+@media (min-width: 600px) {
+  .place { grid-template-columns: 1fr}
+}
+
+@media (min-width: 900px) {
+  .place { grid-template-columns: 1fr 9fr}
+}
+
+@media (min-width: 900px) {
+  .space-place { grid-template-columns: 1fr}
+
+}
+
+@media (min-width: 1400px) {
+  .space-place { grid-template-columns: 1fr 3fr}
+}
+
+@media (min-width: 400px) {
+  .experience-content > p {text-align: center;}
+  .ul-sidebar-exp-place {grid-template-columns: 1fr}
+  .sidebar-experience-place-link {justify-content: center}
+}
+
+
+@media (min-width: 1400px) {
+  .experience-content > p {text-align: left;}
+  .ul-sidebar-exp-place {grid-template-columns: repeat(3, 1fr); justify-content: center}
+  .sidebar-experience-place-link {justify-content: center}
+}
