@@ -68,7 +68,6 @@ function Footer() {
       <section className='footerEquipment'>
         <div className='footerCopy'>&copy; Adrenathure 2022 - {update}</div>
         <div className='footerEffort'>Hecho con 💪 por Zu, Rubén, Carlos y Manuel de JSB08VI</div>
-        <div></div>
       </section>
     </div>
   )
