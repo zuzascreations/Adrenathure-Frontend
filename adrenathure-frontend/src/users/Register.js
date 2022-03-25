@@ -39,25 +39,26 @@ function Register() {
         <fieldset className="form-section ">
           <legend>Crea tu cuenta adrenathure y disfruta de nuestras exclusivas experiencias</legend>
           <label>
-            <span>nombre</span>
+            <span>Nombre*</span>
             <br/>
             <input name="nombre" type='text' placeholder="Introduce tu nombre..." value={firstName} onChange={(e) => setFirstName(e.target.value)}></input>
           </label>
           <label>
-            <span>apellidos</span>
+            <span>Apellidos*</span>
             <br/>
             <input name="apellidos" type='text' placeholder="Introduce tus apellidos..." value={lastName} onChange={(e) => setLastName(e.target.value)}></input>
           </label>
           <label>
-            <span>email</span>
+            <span>E-mail*</span>
             <br/>
             <input type='email' placeholder="Introduce tu e-mail..." value={email} onChange={(e) => setEmail(e.target.value)}></input>
           </label>
           <label>
-            <span>password</span>
+            <span>Contraseña*</span>
             <br/>
             <input type='password' placeholder="Introduce tu password..." value={pass} onChange={(e) => setPass(e.target.value)}></input>
           </label>
+          <p>* campos obligatorios</p>
           <button>CREAR CUENTA</button>
           {error && <div className="error">{error}</div>}
         </fieldset>

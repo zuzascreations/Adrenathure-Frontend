@@ -27,6 +27,7 @@ function BookingId() {
         <h4>precio total: {bookingId.totalPrice} €</h4>
       </div>
       <div>
+        <p>¡Esperamos para tu voto después de vivir la aventura!</p>
         <PunctuationToRate />
       </div>
     </>

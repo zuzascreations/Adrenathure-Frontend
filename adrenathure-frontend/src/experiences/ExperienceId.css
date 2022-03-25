@@ -1,11 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@200&family=Indie+Flower&family=Merriweather:ital,wght@1,300&display=swap');
+
+
 .experience {
-  padding: 20px;
+  margin: 0 auto;
+  display: grid;
+  background-color: rgb(250, 240, 240);
+  border-top: solid 1px black;
+}
+
+/* sidebar */
+.sidebar {
   display: flex;
+  justify-content: center;
+  border-bottom: solid 1px black;
+  padding: 70px 0px;
+  background-color: white;
 }
-.exp-inside {
- padding: 30px;
+
+.ul-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
-.titExp {
+
+.link-sidebar {
+  color: black;
+  font-size: large;
+}
+
+/* experience */
+.space-experience {
+  margin: 0 auto;
+  display: grid;
+  gap: 20px;
+  border-bottom: solid 1px black;
+  padding: 20px;
+}
+
+.space-photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.photo-experience {
+  max-width: 500px;
+  min-width: 200px;
+  height: auto;
+  border: solid 10px white;
+}
+
+.space-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 0px 200px 0px;
+}
+
+.experience-title {
   text-align: center;
-  text-transform: uppercase;
+  padding: 0px 0px 20px 0px;
+}
+
+.experience-title > h2 {
+  padding: 20px;
+  font-family: Merriweather, 'Amatic Sc', Arial, Helvetica, sans-serif ;
+}
+
+.experience-title > div {
+  padding: 0px 20px 20px 20px;
+}
+
+.experience-text {
+  font-family: Merriweather, 'Amatic Sc', Arial, Helvetica, sans-serif ;
+  line-height: 190%;
+  font-size: medium;
+  font-weight:300;
+  padding: 50px;
+}
+
+.price-date {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 20px;
+}
+
+.experience-price {
+  font-family: Merriweather, 'Amatic Sc', Arial, Helvetica, sans-serif ;
+  font-weight:bold ;
+  padding-left: 50px;
+}
+
+.select-date {
+  border: none;
+  background-color: rgb(250, 240, 240);
+  width: fit-content;
+  font-family: Merriweather, 'Amatic Sc', Arial, Helvetica, sans-serif ;
+  font-weight: bold;
+}
+
+.reservar {
+  background-color: white;
+}
+
+
+/* media query */
+
+@media (min-width: 600px) {
+  .experience { grid-template-columns: 1fr}
+}
+
+@media (min-width: 900px) {
+  .experience { grid-template-columns: 1fr 9fr}
+}
+
+@media (min-width: 900px) {
+  .space-experience { grid-template-columns: 1fr}
+
+}
+
+@media (min-width: 1400px) {
+  .space-experience { grid-template-columns: 1fr 3fr}
+}
+
+@media (min-width: 400px) {
+  .price-date { grid-template-columns: 1fr; place-items: center}
+  .experience-content > p {text-align: center;}
+}
+
+
+@media (min-width: 1400px) {
+  .price-date { grid-template-columns: 2fr 3fr 3fr; justify-items: start}
+  .experience-content > p {text-align: left;}
 }

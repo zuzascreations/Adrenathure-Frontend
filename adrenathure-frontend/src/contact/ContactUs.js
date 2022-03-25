@@ -33,7 +33,7 @@ function ContactUs() {
         <input required type='text' name='firstName' placeholder="Introduce tu nombre..." />
         <label>Apellidos*</label>
         <input required type='text' name='lastName'  placeholder="Introduce tus apellidos..."/>
-        <label>Email*</label>
+        <label>E-mail*</label>
         <input required type='email' name='emailUser' placeholder="Introduce tu email..."/>
         <label>Teléfono</label>
         <input type='phone' name='phoneUser' placeholder="Introduce tu teléfono..."/>

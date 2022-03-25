@@ -6,8 +6,8 @@ function NavAdmin() {
     <div>
       <nav className="nav-profile">
         <Link className="sublink" to="/profile/admin">TODAS LAS EXPERIENCIAS</Link>
-        <Link className="sublink" to="/profile/admin/allBookings">TODAS LAS RESERVAS</Link>
         <Link className="sublink" to="/profile/admin/allPlaces">TODOS LOS DESTINOS</Link>
+        <Link className="sublink" to="/profile/admin/allBookings">TODAS LAS RESERVAS</Link>
       </nav>
     </div>
   )

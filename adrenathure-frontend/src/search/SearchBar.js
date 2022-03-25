@@ -146,8 +146,7 @@ function SearchBarCopy() {
             navigate(`/search?${searchUrl.toString()}`)
           }} className="lupa" src="https://img.icons8.com/ios-glyphs/30/000000/search--v1.png" alt="lupa"/>
           </div>
-          <img className="lupa" src="https://img.icons8.com/fluency-systems-regular/48/000000/cancel.png" alt="clear" onClick={() => {
-            showDefault()
+          <img className="lupa" src="https://img.icons8.com/fluency-systems-regular/48/000000/cancel.png" alt="clear" onClick={() => {showDefault()
           }}></img>
           </div>
         </div>

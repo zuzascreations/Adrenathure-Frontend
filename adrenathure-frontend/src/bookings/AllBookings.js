@@ -4,7 +4,7 @@ import Loading from '../Loading'
 import { Link } from 'react-router-dom'
 import { useSetModal, useUser } from '../hooks'
 import { Navigate } from 'react-router-dom'
-import './AllBookings.css'
+import '../List.css'
 
 
 function AllBookings() {
@@ -15,6 +15,7 @@ function AllBookings() {
   const handleClick = async (e) => {
     e.preventDefault()
     const bookingId = e.target.value
+
     const res = await fetch('http://localhost:3000/bookings/admin', {
       method: 'DELETE',
       body: JSON.stringify({ bookingId }),
@@ -31,7 +32,7 @@ function AllBookings() {
       }, 2000)
     } else {
       if (res.status === 404) {
-        setModal(<p>No se ha podido borrar/ error desconocido</p>)
+        setModal(<p>No se ha podido borrar/ error desconocido.</p>)
       }
       if (res.status === 500) {
         setModal(<p>Database error</p>)
@@ -44,39 +45,58 @@ function AllBookings() {
   }
 
   return (
-    <>
-      <div>
+      <div className="list">
+        <h2 className="list-title">LAS RESERVAS</h2>
+        <div className='grid-list-bookings'>
+          <span>
+            <strong>Nº RESERVA</strong>
+          </span>
+          <span>
+            <strong>FECHA RESERVA</strong>
+          </span>
+          <span>
+            <strong>EXPERIENCIA</strong>
+          </span>
+          <span>
+            <strong>DESTINO</strong>
+          </span>
+          <span>
+            <strong>FECHA EXPERIENCIA</strong>
+          </span>
+          <span>
+            <strong>HORA EXPERIENCIA</strong>
+          </span>
+          <span>
+            <strong>PLAZAS RESERVADAS</strong>
+          </span>
+          <span>
+            <strong>PRECIO TOTAL</strong>
+          </span>
+          <span>
+            <strong>USER ID</strong>
+          </span>
+        </div>
         {bookings.length ?
           bookings.map(booking =>
-            <div key={booking.id} className='articles'>
-              <div className='fila'>Nº de la reserva :
-                <div className='columna'> {booking.bookingNumber}</div>
+            <>
+              <div key={booking.id} className='grid-list-bookings' >
+                  <span>{booking.bookingNumber}</span>
+                  <span>{booking.bookingDate}</span>
+                  <span>{booking.experienceName}</span>
+                  <span>{booking.placeName}</span>
+                  <span>{booking.experienceDate}</span>
+                  <span>{booking.experienceHour}</span>
+                  <span>{booking.reservedSeats}</span>
+                  <span>{booking.totalPrice}</span>
+                  <span>{booking.user_id}</span>
               </div>
-              <div className='fila'>Experiencia :
-                <div className='columna'> {booking.experienceName}</div>
+              <div class="section-buttons">
+                {/* <button className="button-link"><Link className='link' to={'/profile/admin/bookingId/' + booking.id}>VER</Link></button> */}
+                <button className="bin" value={booking.id} onClick={handleClick}>BORRAR</button>
               </div>
-              <div className='fila'>Fecha:
-                <div className='columna'> {booking.bookingDate}</div>
-              </div>
-              <div className='fila'>Precio total:
-                <div className='columna'> {booking.totalPrice}€</div>
-              </div>
-              <div className='fila'>Plazas reservadas :
-                <div className='columna'> {booking.reservedSeats}</div>
-              </div>
-              <div className='fila'>Precio total:
-                <div className='columna'> {booking.totalPrice}</div>
-              </div>
-              <div className='fila'>
-                <Link className='button-link' to={'/profile/admin/bookingId/' + booking.id}>VER</Link>
-                <div className='columna'>
-                  <button className="button-delete" value={booking.id} onClick={handleClick}>BORRAR RESERVA</button>
-                </div>
-              </div>
-            </div>
-        ) : <p id='messageNoBookings'>No hay ninguna reserva todavía</p>}
+            </>
+        ) : <p>No hay ninguna reserva todavía</p>}
       </div>
-    </>
   )
 }
 

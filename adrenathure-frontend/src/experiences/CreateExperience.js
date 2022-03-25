@@ -71,24 +71,24 @@ function CreateExperience() {
       <fieldset className="form-section">
         <legend>CREAR EXPERIENCIA</legend>
         <label>
-          <span>nombre experiencia</span>
+          <span>Nombre experiencia</span>
           <br/>
           <input required name="name" placeholder="Introduce el nombre de la experiencia..." value={experienceName} onChange={e => setExperienceName(e.target.value)} />
         </label>
         <label>
-          <span>descripción experiencia</span>
+          <span>Descripción experiencia</span>
           <br/>
           <textarea required name="description" placeholder="Introduce la descripción de la experiencia..." value={experienceDescription} onChange={e => setExperienceDescription(e.target.value)} />
         </label>
         <label>
-          <span>precio</span>
+          <span>Precio</span>
           <br/>
           <input required name="price" placeholder="Introduce el precio de la experiencia..." value={price} onChange={e => setPrice(e.target.value)} />
         </label>
         <label>
-          <span>destino</span>
+          <span>Destino </span>
           <select defaultValue={'elige'} onChange={e => setPlace_id(e.target.value)} name='escoge destino'>
-            <option disabled >elige</option>
+            <option disabled >Elige</option>
             {places &&
               places.map(place =>
                 <option key={place.id} required name="place" value={place.id} >{place.placeName}</option>
@@ -97,14 +97,14 @@ function CreateExperience() {
           </select>
         </label>
         <label>
-          <span>fecha de la experiencia</span>
+          <span>Fecha experiencia</span>
           <br/>
           <input type='date' name="date" value={experienceDate} onChange={e => {
             setExperienceDate(e.target.value)
           }} />
         </label>
         <label>
-          <span>hora de la experiencia</span>
+          <span>Hora experiencia</span>
           <br/>
           <input type='time' name="hour" value={experienceHour} onChange={e => {
             setExperienceHour(e.target.value)
@@ -112,7 +112,7 @@ function CreateExperience() {
           }} />
         </label>
         <label>
-          <span>plazas totales</span>
+          <span>Plazas totales</span>
           <br/>
           <input type='number' min='1' max='20' placeholder="Introduce plazas totales..." required name="seats" value={totalSeats} onChange={e => setTotalSeats(e.target.value)} />
         </label>

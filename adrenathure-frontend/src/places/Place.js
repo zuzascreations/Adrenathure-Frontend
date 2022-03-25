@@ -1,21 +1,20 @@
 import SidebarPlaces from "./SidebarPlaces"
-import SidebarExperiencesPlaceId from './SidebarExperiencesPlaceId'
 import PlaceId from "./PlaceId"
 import ErrorBoundary from "../ErrorBoundary"
+import './Place.css'
 
 
 function Place() {
   return (
     <div className="place">
       <ErrorBoundary fallback="SidebarPlaces in Place is failing">
-        <SidebarPlaces />
+        <SidebarPlaces className="sidebar"/>
       </ErrorBoundary>
-      <ErrorBoundary fallback="PlaceId in Place is failing">
-        <PlaceId />
-      </ErrorBoundary>
-      <ErrorBoundary fallback="SidebarExperiencesPlace in Place is failing">
-        <SidebarExperiencesPlaceId />
-      </ErrorBoundary>
+      <div >
+        <ErrorBoundary className="space-place" fallback="PlaceId in Place is failing">
+          <PlaceId />
+        </ErrorBoundary>
+      </div>
     </div>
   )
 }

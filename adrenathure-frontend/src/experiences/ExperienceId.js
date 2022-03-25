@@ -18,36 +18,47 @@ function ExperienceId() {
 
   return experienceId && (
     <>
-    <h2 className="titExp">{experienceId[0].experienceName}</h2>
-    <div className="experience">
-      <Sidebar />
-      <img className='photoExperience' src={`http://localhost:3000/${experienceId[0].experiencePhoto}`} alt='foto experiencia'></img>
-      <div className="exp-inside">
-        <h2>destino: {experienceId[0].placeName}</h2>
-        {'★★★★★☆☆☆☆☆'.substring(5 - experienceId[0].avgVote, 10 - experienceId[0].avgVote)}
-        <p>{experienceId[0].experienceDescription}</p>
-        <p>precio: {experienceId[0].price}€</p>
-        <label>
-          {(experienceId[0].experienceDate && experienceId[0].availableSeats > 0) ?
-            <>
-              <span>fechas disponibles:</span>
-              <select defaultValue={'escoge fecha'} onChange={e => {
-                setExperienceDate(e.target.value)
-              }} name='escoge fecha'>
-                <option disabled >escoge fecha</option>
-                {experienceId.map(experience =>
-                  (experience.availableSeats > 0) &&
-                  <option required key={experience.id} name="date" value={experience.experienceDate} >{experience.experienceDate}</option>
-                )
-                }
-              </select>
-            </>
-            : <p>No hay fechas disponibles</p>}
-        </label>
-        {experienceDate &&
-          <button><Link to={`/experiences/${experienceId[0].id}/${experienceDate}/book`}>RESERVAR</Link></button>}
-      </div>
-    </div >
+      <div className="experience">
+
+        <Sidebar className="sidebar" />
+        <div className="space-experience">
+
+          <div className="space-photo">
+            <img className='photo-experience' src={`http://localhost:3000/${experienceId[0].experiencePhoto}`} alt='foto experiencia'></img>
+          </div>
+
+          <div className="space-content">
+            <div className="experience-title">
+              <h2>{experienceId[0].experienceName} en {experienceId[0].placeName}</h2>
+              <div>{'★★★★★☆☆☆☆☆'.substring(5 - experienceId[0].avgVote, 10 - experienceId[0].avgVote)}</div>
+            </div>
+            <div className="experience-content">
+              <p className="experience-text">{experienceId[0].experienceDescription}</p>
+              <div className="price-date">
+                <p className="experience-price">Precio: {experienceId[0].price}€</p>
+                {/* <label> */}
+                {(experienceId[0].experienceDate && experienceId[0].availableSeats > 0) ?
+                  <>
+                    <select className="select-date" defaultValue={'Escoje una de las fechas disponibles y vive la experiencia!'} onChange={e => {
+                      setExperienceDate(e.target.value)
+                    }} name='Escoje una de las fechas disponibles y vive la experiencia!'>
+                      <option className="select-date" disabled >Escoje una de las fechas disponibles y vive la experiencia!</option>
+                      {experienceId.map(experience =>
+                        (experience.availableSeats > 0) &&
+                        <option required key={experience.id} name="date" value={experience.experienceDate} >{experience.experienceDate}</option>
+                      )
+                      }
+                    </select>
+                  </>
+                  : <p>No hay fechas disponibles</p>}
+                {/* </label> */}
+                {experienceDate &&
+                  <button className="reservar"><Link className="link" to={`/experiences/${experienceId[0].id}/${experienceDate}/book`}>RESERVAR</Link></button>}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div >
     </>
   )
 }

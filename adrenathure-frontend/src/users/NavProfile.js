@@ -8,10 +8,10 @@ function NavProfile() {
   return (
     <div className="all-navProfile">
       <nav className="nav-profile">
-        <Link className="link" to="/profile">DATOS PERSONALES</Link>
-        <Link className="link" to="/profile/bookings">RESERVAS</Link>
+        <Link className="nav-link" to="/profile">DATOS PERSONALES</Link>
+        <Link className="nav-link" to="/profile/bookings">RESERVAS</Link>
         {user.role==='admin' &&
-          <Link className="link" to="/profile/admin">ADMINISTRACIÓN</Link>
+          <Link className="nav-link" to="/profile/admin">ADMINISTRACIÓN</Link>
         }
       </nav>
     </div>

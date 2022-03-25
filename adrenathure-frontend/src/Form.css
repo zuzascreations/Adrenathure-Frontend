@@ -21,14 +21,14 @@
   background-color: rgba(244,244,244,255);
 }
 
-span {
+/* span {
   display: inline-block;
   text-transform: lowercase;
 }
 
 span:first-letter {
   text-transform: uppercase;
-}
+} */
 
 input {
   padding:7px;

@@ -65,42 +65,42 @@ function ExperienceIdReservar() {
         <fieldset className="form-section">
           <legend>Ya estás muy cerca de vivir una experiencia inolvidable!</legend>
           <label>
-            <span>nombre experiencia</span>
+            <span>Nombre experiencia</span>
             <br/>
             <input name="name" value={experienceName} onChange={e => setExperienceName(e.target.value)} disabled/>
           </label>
           <label>
-            <span>destino</span>
+            <span>Destino</span>
             <br/>
             <input name="place_id" value={place_id} onChange={e => setPlace_id(e.target.value)} disabled/>
           </label>
           <label>
-            <span>fecha</span>
+            <span>Fecha</span>
             <br/>
             <input name="fecha" type="date" value={experienceDate} onChange={e => setExperienceDate(e.target.value)} disabled/>
           </label>
           <label>
-            <span>hora</span>
+            <span>Hora</span>
             <br/>
             <input name="hour" type="time" value={experienceHour} onChange={e => setExperienceHour(e.target.value)} disabled/>
           </label>
           <label>
-            <span>plazas libres</span>
+            <span>Llazas libres</span>
             <br/>
             <input name="availableSeats" type="number" value={availableSeats} onChange={e => setAvailableSeats(e.target.value)} disabled/>
           </label>
           <label>
-            <span>plazas reservadas</span>
+            <span>Llazas reservadas</span>
             <br/>
             <input name="reservedSeats" type="number" min="0" max={availableSeats} placeholder="Cuantas plazas te gustaría reservar?" value={reservedSeats} onChange={e => setReservedSeats(e.target.value)} />
           </label>
           <label>
-            <span>precio/plaza</span>
+            <span>Precio/plaza</span>
             <br/>
             <input name="price" type="number" value={price} onChange={e => setPrice(e.target.value)} disabled/>€
           </label>
           <label>
-            <span>precio total</span>
+            <span>Precio total</span>
             <br/>
             <input name="total price" type="number" value={(price * reservedSeats)} onChange={e => setTotalPrice(e.target.value)} disabled/>€
           </label>

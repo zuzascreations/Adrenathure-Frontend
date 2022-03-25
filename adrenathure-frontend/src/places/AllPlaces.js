@@ -3,7 +3,7 @@ import Loading from '../Loading'
 import useFetch from "../useFetch"
 import { Link } from "react-router-dom"
 import { useSetModal, useUser } from '../hooks'
-import './Allplaces.css'
+import '../List.css'
 
 function AllPlaces() {
   const user = useUser()
@@ -35,18 +35,46 @@ function AllPlaces() {
     }
   }
   return places && (
-    <div className="all-places">
-      <ul>
-        {places.map(place =>
-          <li key={place.id}>
-            <img className='place-photo' src={`http://localhost:3000/${place.photo}`} alt="avatar" />
-            <p>{place.placeName}</p>
-            <button><Link className="link" to={"/profile/admin/editPlace/" + place.id}>editar destino</Link></button>
-            <button value={place.id} onClick={handleClick}>BORRAR DESTINO</button>
-          </li>
-        )}
-      </ul>
-      <button><Link className="link" to={"/profile/admin/newPlace"}>AÑADIR NUEVO DESTINO</Link></button>
+    <div className="list">
+      <h2 className="list-title">LOS DESTINOS</h2>
+      <div className='grid-list-places'>
+        <span>
+          <strong>NOMBRE DESTINO</strong>
+        </span>
+        <span>
+          <strong>DESCRIPCIÓN</strong>
+        </span>
+        <span>
+          <strong>COORDS-LONG</strong>
+        </span>
+        <span>
+          <strong>COORDS-LAT</strong>
+        </span>
+        <span>
+          <strong>FOTO</strong>
+        </span>
+      </div>
+      {places.map(place =>
+        <>
+          <div key={place.id} className='grid-list-places'>
+            <span className='columna'>{place.placeName}</span>
+            <span className='columna'>{place.placeDescription}</span>
+            <span className='columna'>{place.coordsLong}</span>
+            <span className='columna'>{place.coordsLat}</span>
+            <span><img className='photo-edit' src={`http://localhost:3000/${place.photo}`} alt="avatar" /></span>
+          </div>
+          <div class="section-buttons">
+            <button className="button-link"><Link className="link" to={"/profile/admin/editPlace/" + place.id}>EDITAR DESTINO</Link></button>
+            <button className="bin" value={place.id} onClick={handleClick}>BORRAR</button>
+          </div>
+        </>
+      )}
+      <div class="button-anadir">
+        <button><Link className="link" to={"/profile/admin/newPlace"}>AÑADIR NUEVO DESTINO</Link></button>
+      </div>
+      <div className="volver">
+          <button><Link className="link" to={'/profile/admin'}>VOLVER</Link></button>
+      </div>
     </div>
   )
 }

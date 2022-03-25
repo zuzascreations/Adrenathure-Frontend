@@ -4,19 +4,18 @@ import { useSetModal, useUser } from '../hooks'
 import { useParams } from "react-router-dom"
 
 function PunctuationToRate() {
-  // const [vote, setVote] = useState('')
   const setModal = useSetModal()
   const [rating, setRating] = useState(0)
-  const [error, setError] = useState(null)
   const user = useUser()
   const { id } = useParams()
 
   const handleRating = async rate => {
-    //e.preventDefault()
     setRating(rate)
+    const date = new Date()
+    console.log(date)
     const res = await fetch('http://localhost:3000/reviews/' + id, {
       method: 'POST',
-      body: JSON.stringify({ rate }),
+      body: JSON.stringify({ rate, date }),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + user.token
@@ -25,8 +24,10 @@ function PunctuationToRate() {
 
     if (res.ok) {
       setModal('Gracias por tu voto')
-      //window.location.reload(true)
     } else {
+      if (res.status === 400) {
+        setModal('Por favor, vota después de vivir la experiencia.')
+      }
       if (res.status === 403) {
         setModal('Ya votaste')
       }
@@ -39,7 +40,6 @@ function PunctuationToRate() {
   return (
     <div className='App'>
       <Rating onClick={handleRating} ratingValue={rating}/>
-      <p>{error}</p>
     </div>
   )
 }

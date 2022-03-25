@@ -7,12 +7,12 @@ import { Link } from "react-router-dom"
 function SidebarPlaces() {
   const places = useFetch('http://localhost:3000/places')
   return places && (
-    <aside className="places">
-      <ul>
+    <aside className="sidebar">
+      <ul className="ul-sidebar">
         { places.length ?
         places.map(place =>
           <li key={place.id}>
-            <Link to={'/places/' + place.id}>
+            <Link className="link-sidebar" to={'/places/' + place.id}>
               {place.placeName}
             </Link>
           </li>

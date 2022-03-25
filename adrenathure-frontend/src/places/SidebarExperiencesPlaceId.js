@@ -10,22 +10,24 @@ function SidebarExperiencesPlaceId() {
   const experiencesPlaceId = useFetch('http://localhost:3000/experiences/place/' + id)
 
   return experiencesPlaceId && (
-    <aside className="experience">
+    <aside className="sidebar-experience-place">
       {experiencesPlaceId.length ?
-      <>
-      <h3>experiencias en este destino: {experiencesPlaceId.placeName}</h3>
-      <ul>
-        {experiencesPlaceId.map(i =>
-          <li key={i.id}>
-            <Link to={'/experiences/' + i.id}>
-              {i.experienceName}
-            </Link>
-          </li>
-        )}
-      </ul>
-      </>
-      : <p className='error'>en este momento no hay experiencias asociadas a este destino</p>
-    }
+        <>
+          <ul className="ul-sidebar-exp-place">
+            {experiencesPlaceId.map(i =>
+              <li key={i.id}>
+                <div className="sidebar-experience-place-link">
+                <Link className="link-sidebar" to={'/experiences/' + i.id}>
+                  {i.experienceName}
+                </Link>
+                {'★★★★★☆☆☆☆☆'.substring(5 - i.avgVote, 10 - i.avgVote)}
+                </div>
+              </li>
+            )}
+          </ul>
+        </>
+        : <p className='error'>En este momento no hay experiencias asociadas a este destino.</p>
+      }
     </aside>
   )
 }
