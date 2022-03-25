@@ -12,7 +12,7 @@ function PunctuationToRate() {
   const handleRating = async rate => {
     setRating(rate)
     const date = new Date()
-    console.log(date)
+
     const res = await fetch('http://localhost:3000/reviews/' + id, {
       method: 'POST',
       body: JSON.stringify({ rate, date }),
