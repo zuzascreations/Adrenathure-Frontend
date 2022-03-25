@@ -1,0 +1,112 @@
+.list {
+  padding: 20px 70px 40px 70px;
+}
+
+.list-title {
+  text-align: center;
+  margin: 10px 0px 40px 0px;
+}
+
+.grid-list-experiences {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  border-top: solid 1px black;
+  border-right: solid 1px black;
+  margin: 25px 0px 10px 0px;
+  background-color: rgba(244,244,244,255);
+}
+
+.grid-list-places {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border-top: solid 1px black;
+  border-right: solid 1px black;
+  margin: 25px 0px 10px 0px;
+  background-color: rgba(244,244,244,255);
+}
+
+.grid-list-bookings {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  border-top: solid 1px black;
+  border-right: solid 1px black;
+  margin: 25px 0px 10px 0px;
+  background-color: rgba(244,244,244,255);
+}
+
+.grid-list-experiences > span {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  padding: 8px 4px;
+  border-left: solid 1px black;
+  border-bottom: solid 1px black;
+  font-family: monospace;
+  padding: 15px;
+}
+
+.grid-list-places > span {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  padding: 8px 4px;
+  border-left: solid 1px black;
+  border-bottom: solid 1px black;
+  font-family: monospace;
+  padding: 15px;
+}
+
+.grid-list-bookings > span {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  padding: 8px 4px;
+  border-left: solid 1px black;
+  border-bottom: solid 1px black;
+  font-family: monospace;
+  padding: 15px;
+}
+
+strong {
+  text-transform: uppercase;
+}
+
+.section-buttons {
+  display: flex;
+  justify-content:space-between;
+  gap: 20px;
+}
+
+.button-anadir {
+  margin-top: 30px;
+}
+
+.button-link {
+  background-color: white;
+  margin-left: 20px;
+}
+
+.button-link:hover {
+  cursor: pointer;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.bin {
+  margin-right: 20px;
+  margin-left: 20px;
+  background-color: white;
+}
+
+.bin:hover {
+  cursor: pointer;
+}
+
+.volver {
+  display: flex;
+  justify-content: center;
+  margin: 30px;
+}

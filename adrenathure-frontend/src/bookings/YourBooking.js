@@ -22,8 +22,8 @@ function YourBooking() {
       <p>Hora: {booking.experienceHour.substring(0, 5)}</p>
       <p>Número de personas: {booking.reservedSeats}</p>
       <p>Precio total: {booking.totalPrice} €</p>
-      <button><Link to='/experiences'>Seguir comprando</Link></button>
-      <button><Link to='/'>Página de inicio</Link></button>
+      <button><Link to='/experiences'>SEGUIR COMPRANDO</Link></button>
+      <button><Link to='/'>PÁGINA DE INICIO</Link></button>
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import { Suspense, useState } from 'react'
-import { useNavigate, Navigate, useParams } from 'react-router-dom'
+import { useNavigate, Navigate, useParams, Link } from 'react-router-dom'
 import { useSetModal, useUser } from '../hooks'
 import Loading from '../Loading'
 import useFetch from '../useFetch'
@@ -42,9 +42,9 @@ function EditPlace() {
     })
     // const data = await res.json()
     if (res.ok) {
-      setModal(<><p>destino editado con exito</p> <button onClick={() => window.location.reload(true)}>volver</button></>)
+      setModal(<><p>Destino editado con exito</p> <button onClick={() => window.location.reload(true)}>Volver</button></>)
     } else {
-      setModal(<><p>No se ha podido editar destino/ error desconocido</p> <button onClick={() => window.location.reload(true)}>volver</button></>)
+      setModal(<><p>No se ha podido editar destino. Por favor, intenta de nuevo.</p> <button onClick={() => window.location.reload(true)}>Volver</button></>)
     }
   }
 
@@ -56,37 +56,40 @@ function EditPlace() {
     <>
       <form className="form" onSubmit={handleSubmit}>
         <fieldset className="form-section">
-          <legend>Editar destino</legend>
+          <legend>EDITAR DESTINO</legend>
           <label>
             <img className='photo-edit' src={`http://localhost:3000/${places.photo}`} alt="avatar" />
           </label>
           <label>
-            <span>cambiar foto destino</span>
+            <span>Cambiar foto destino</span>
             <input className="input" type='file' onChange={e => setFile(e.target.files[0])} />
           </label>
           <label>
-            <span>nombre destino</span>
+            <span>Nombre destino</span>
             <br/>
             <input name="name" value={placeName} onChange={e => setPlaceName(e.target.value)} />
           </label>
           <label>
-            <span>descripcion destino</span>
+            <span>Descripción destino</span>
             <br/>
             <textarea name="description" value={placeDescription} onChange={e => setPlaceDescription(e.target.value)} />
           </label>
           <label>
-            <span>coordenadas longitude</span>
+            <span>Coordenadas longitude</span>
             <br/>
             <input name="coords" value={coordsLong} onChange={e => setCoordsLong(e.target.value)} />
           </label>
           <label>
-            <span>coordenadas latitude</span>
+            <span>Coordenadas latitude</span>
             <br/>
             <input name="coords" value={coordsLat} onChange={e => setCoordsLat(e.target.value)} />
           </label>
-          <button>guardar</button>
+          <button>GUARDAR</button>
         </fieldset>
       </form>
+      <div className="volver">
+          <button><Link className="link" to={'/profile/admin/allPlaces'}>VOLVER</Link></button>
+      </div>
       <p>{error}</p>
     </>
   )

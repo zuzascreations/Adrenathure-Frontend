@@ -18,16 +18,17 @@
   padding: 20px 100px 20px;
   width: 900px;
   border: 1px solid black;
+  background-color: rgba(244,244,244,255);
 }
 
-span {
+/* span {
   display: inline-block;
   text-transform: lowercase;
 }
 
 span:first-letter {
   text-transform: uppercase;
-}
+} */
 
 input {
   padding:7px;
@@ -53,6 +54,9 @@ p {
 }
 
 button {
-  text-transform: uppercase;
   font-size: 15px;
+  font-weight:bold;
+  background-color:rgba(222,224,230,255);
+  width: fit-content;
+  padding: 2px 5px;
 }

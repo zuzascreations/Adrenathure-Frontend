@@ -51,18 +51,18 @@ function Login() {
       }
       <form className="form" onSubmit={handleSubmit}>
         <fieldset className="form-section">
-          <legend>Acceso</legend>
+          <legend>ACCESO</legend>
           <label>
-            <span>e-mail</span>
+            <span>E-mail</span>
             <br/>
             <input type='email' placeholder="Introduce tu e-mail..." value={email} onChange={(e) => setEmail(e.target.value)}></input>
           </label>
           <label>
-            <span>password</span>
+            <span>Contraseña</span>
             <br/>
             <input type='password' placeholder="Introduce tu contraseña..." value={password} onChange={(e) => setPassword(e.target.value)}></input>
           </label>
-          <button>acceso</button>
+          <button>ACCESO</button>
           {error && <div className="error">{error}</div>}
         </fieldset>
       </form>

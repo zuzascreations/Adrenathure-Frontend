@@ -1,5 +1,5 @@
 import { Suspense, useState } from 'react'
-import { useNavigate, Navigate } from 'react-router-dom'
+import { useNavigate, Navigate, Link } from 'react-router-dom'
 import { useUser } from '../hooks'
 import Loading from '../Loading'
 import '../Form.css'
@@ -41,11 +41,11 @@ function CreatePlace() {
 
     if (res.ok) {
       // const data = await res.json()
-      setError('Updated successfully')
+      setError('Nuevo destino creado con éxito.')
       navigate('/Places')
       window.location.reload(true)
     } else {
-      setError('Error desconocido')
+      setError('Error desconocido.')
     }
     setPlaceName('')
   }
@@ -58,34 +58,37 @@ function CreatePlace() {
     <>
       <form className="form" onSubmit={handleSubmit}>
         <fieldset className="form-section">
-          <legend>Crear destino</legend>
+          <legend>CREAR DESTINO</legend>
           <label>
-            <span>nombre destino</span>
+            <span>Nombre destino</span>
             <br/>
             <input required name="name" placeholder="Introduce nombre del destino..." value={placeName} onChange={e => setPlaceName(e.target.value)} />
           </label>
           <label>
-            <span>descripción destino</span>
+            <span>Descripción destino</span>
             <br/>
             <textarea required name="description" placeholder="Introduce descripción del destino..." value={placeDescription} onChange={e => setPlaceDescription(e.target.value)} />
           </label>
           <label>
-            <span>coords longitude</span>
+            <span>Coords longitude</span>
             <br/>
             <input name="dates" placeholder="Introduce longitude del destino..." value={coordsLong} onChange={e => setCoordsLong(e.target.value)} />
           </label>
           <label>
-            <span>coords latitude</span>
+            <span>Coords latitude</span>
             <br/>
             <input name="hour" placeholder="Introduce latitude del destino..." value={coordsLat} onChange={e => setCoordsLat(e.target.value)} />
           </label>
           <label>
-          <span>escojer foto destino</span>
+          <span>Escojer foto destino</span>
           <input  className="input" type='file' onChange={e => setFile(e.target.files[0])} />
           </label>
-          <button>guardar</button>
+          <button>GUARDAR</button>
           <p>{error}</p>
         </fieldset>
+        <div className="volver">
+          <button><Link className="link" to={'/profile/admin/allPlaces'}>VOLVER</Link></button>
+      </div>
       </form>
     </>
   )

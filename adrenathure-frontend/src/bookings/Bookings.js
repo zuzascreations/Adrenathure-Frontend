@@ -3,6 +3,7 @@ import Loading from '../Loading'
 import useFetch from "../useFetch"
 import { Link } from "react-router-dom"
 import ErrorBoundary from '../ErrorBoundary'
+import './AllBookings.css'
 
 function Bookings() {
   const bookings = useFetch('http://localhost:3000/bookings')
@@ -26,7 +27,7 @@ function Bookings() {
             <div className='fila'>Plazas reservadas:
               <div className='columna'>{booking.reservedSeats}</div>
             </div>
-            <Link className='button-link' to={'/profile/bookings/' + booking.id }>Ver</Link>
+            <Link className='button-link' to={'/profile/bookings/' + booking.id }>VER</Link>
           </article>
         ): <p id='messageNoBookings'> Aún no has realizado ninguna reserva.</p>}
     </div>

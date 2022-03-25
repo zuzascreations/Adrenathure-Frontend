@@ -3,11 +3,11 @@ import Loading from '../Loading'
 import useFetch from "../useFetch"
 import { Link } from "react-router-dom"
 import { useSetModal, useUser } from '../hooks'
+import '../List.css'
 
 function AllExperiences() {
   const setModal = useSetModal()
   const user = useUser()
-  const [error, setError] = useState(null)
   const experiences = useFetch('http://localhost:3000/experiences')
 
   const handleClick = async (e) => {
@@ -21,7 +21,6 @@ function AllExperiences() {
       }
     })
     if (res.ok) {
-      // const data = await res.json()
       setModal('Deleted successfully')
       window.location.reload(true)
     } else {
@@ -33,22 +32,47 @@ function AllExperiences() {
   }
 
   return experiences && (
-    <div>
-      <ul>
-        {experiences.map(experience =>
-            <li key={experience.id}>
-              <img className='photo-edit' src={`http://localhost:3000/${experience.experiencePhoto}`} alt="avatar" />
-              <p>nombre: {experience.experienceName}</p>
-              <p>precio: {experience.price}€</p>
-              <p>destino: {experience.placeName}</p>
-              <button><Link className="link" to={"/profile/admin/editExperience/" + experience.id}>editar experiencia</Link></button>
-              <button value={experience.id} onClick={handleClick}>borrar experiencia</button>
-            </li>
-        )}
-        {/* {error && <div className="error">{error}</div>} */}
-      </ul>
-      <button><Link className="link" to={"/profile/admin/newExperience"}>añadir nueva experiencia</Link>
-      </button>
+    <div className="list">
+      <h2 className="list-title">LAS EXPERIENCIAS</h2>
+      <div className='grid-list-experiences'>
+        <span>
+          <strong>NOMBRE EXPERIENCIA</strong>
+        </span>
+        <span>
+          <strong>DESTINO</strong>
+        </span>
+        <span>
+          <strong>PRICE</strong>
+        </span>
+        <span>
+          <strong>DESCRIPCIÓN</strong>
+        </span>
+        <span>
+          <strong>FOTO</strong>
+        </span>
+        <span>
+          <strong>VALUACIÓN</strong>
+        </span>
+      </div>
+      {experiences.map(experience =>
+        <>
+          <div key={experience.id} className='grid-list-experiences'>
+            <span className='columna'>{experience.experienceName}</span>
+            <span className='columna'>{experience.placeName}</span>
+            <span className='columna'>{experience.price}€</span>
+            <span className='columna'>{experience.experienceDescription}</span>
+            <span><img className='photo-edit' src={`http://localhost:3000/${experience.experiencePhoto}`} alt="avatar" /></span>
+            <span className='columna'>{'★★★★★☆☆☆☆☆'.substring(5 - experience.avgVote, 10 - experience.avgVote)}</span>
+          </div>
+          <div className="section-buttons">
+            <button className="button-link"><Link className="link" to={"/profile/admin/editExperience/" + experience.id}>EDITAR</Link></button>
+            <button className="bin" value={experience.id} onClick={handleClick}>BORRAR</button>
+          </div>
+        </>
+      )}
+      <div className="button-anadir">
+        <button><Link className="link" to={"/profile/admin/newExperience"}>AÑADIR NUEVA EXPERIENCIA</Link></button>
+      </div>
     </div>
   )
 }

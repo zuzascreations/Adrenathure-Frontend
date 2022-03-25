@@ -21,15 +21,15 @@ function Header() {
           <Link to='/' className="title">adrenathure</Link>
           <div className="dropdown">
             {!user &&
-              <button className='buttonUsername'>espacio cliente</button>}
+              <button className='buttonUsername'>ESPACIO CLIENTE</button>}
             {user &&
               <button className='buttonUsername'>{user.user}</button>}
             <div className="dropdown-content">
-              <Link to={'/Profile'}>Mi Perfil</Link>
+              <Link to={'/Profile'}>Perfil</Link>
               {user &&
                 <Link to={'/'} onClick={() => {
                   setRegistered(false)
-                  setUser(null)}}>Cerrar sesion</Link>}
+                  setUser(null)}}>Salir</Link>}
               {!user &&
                 <Link to={'/login'}>Iniciar sesión</Link>
               }

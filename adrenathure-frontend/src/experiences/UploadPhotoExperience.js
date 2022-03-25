@@ -22,7 +22,7 @@ function UploadPhotoExperience() {
       <label>
         escoge foto experiencia
         <input className="input" type='file' onChange={e => setFile(e.target.files[0])} />
-        <button className="subir">subir foto</button>
+        <button className="subir">SUBIR FOTO</button>
       </label>
     </form>
   )

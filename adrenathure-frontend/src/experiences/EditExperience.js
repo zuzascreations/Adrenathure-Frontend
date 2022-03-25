@@ -60,18 +60,18 @@ function EditExperience() {
     })
     // const data = await res.json()
     if (res.ok) {
-      setModal('Updated successfully')
+      setModal('Los cambios a la experiencia se han guardado con éxito.')
       window.location.reload(true)
 
     } else {
       if (res.status === 400) {
-        setModal('rellena los campos')
+        setModal('Por favor, revisa si todos los campos están rellenados.')
       }
       if (res.status === 404) {
-        setModal('Formato incorrecto, sigue las indicaciones en cada campo a cubrir')
+        setModal('Formato incorrecto, sigue las indicaciones en cada campo a cubrir.')
       }
       if (res.status === 500) {
-        setModal('Database Error')
+        setModal('Database Error.')
       }
 
     }
@@ -88,18 +88,18 @@ function EditExperience() {
     })
     // const data = await res.json()
     if (res.ok) {
-      setModal('Updated successfully')
+      setModal('El cambio de la fecha de la experiencia se ha guardado con éxito.')
       window.location.reload(true)
 
     } else {
       if (res.status === 400) {
-        setModal('rellena los campos')
+        setModal('Por favor, revisa si todos los campos están rellenados.')
       }
       if (res.status === 404) {
-        setModal('Formato incorrecto, sigue las indicaciones en cada campo a cubrir')
+        setModal('Formato incorrecto, sigue las indicaciones en cada campo a cubrir.')
       }
       if (res.status === 500) {
-        setModal('Database Error')
+        setModal('Database Error.')
       }
 
     }
@@ -121,12 +121,12 @@ function EditExperience() {
     })
     // const data = await res.json()
     if (res.ok) {
-      setModal('Updated DATE successfully')
+      setModal('La fecha ha sido añadida con éxito.')
       window.location.reload(true)
     } else {
 
       if (res.status === 500) {
-        setModal('Database Error')
+        setModal('Database Error.')
       }
 
     }
@@ -144,11 +144,11 @@ function EditExperience() {
     })
     if (res.ok) {
       // const data = await res.json()
-      setModal('Deleted date successfully')
+      setModal('La fecha ha sido borrada con éxito.')
       window.location.reload(true)
     } else {
       if (res.status === 404) {
-        setModal('No se ha podido borrar date//Error desconocido')
+        setModal('No se ha podido borrar la fecha./Error desconocido.')
 
       }
     }
@@ -169,28 +169,28 @@ function EditExperience() {
     <div className="form">
       <form onSubmit={handleSubmitEdit}>
         <fieldset className='form-section'>
-          <legend>Editar experiencia</legend>
+          <legend>EDITAR EXPERIENCIA</legend>
           <label>
             <img className='photo-edit' src={`http://localhost:3000/${experiences[0].experiencePhoto}`} alt="avatar" />
           </label>
           <label>
-            cambiar foto:
+            Cambiar foto experiencia
             <input className="input" type='file' onChange={e => setFile(e.target.files[0])} />
           </label>
           <label>
-            <span>nombre experiencia</span>
+            <span>Nombre experiencia</span>
             <br/>
             <input size='sm' required name="name" value={experienceName} onChange={e => setExperienceName(e.target.value)} />
           </label>
           <label>
-            <span>descripcion experiencia</span>
+            <span>Descripcion experiencia</span>
             <br/>
             <textarea required name="description" value={experienceDescription} onChange={e => setExperienceDescription(e.target.value)} />
           </label>
           <label>
-            <span>destino: {experiences[0].placeName}</span>
+            <span>Destino: {experiences[0].placeName}</span>
             <br/>
-            <span>  cambiar destino:</span>
+            <span>  Cambiar destino</span>
             <select defaultValue={''} className='select' onChange={e => setPlace_id(e.target.value)} name='escoge destino'>
               <option disabled></option>
               {places &&
@@ -201,12 +201,12 @@ function EditExperience() {
             </select>
           </label>
           <label>
-            <span>precio</span>
+            <span>Precio</span>
             <br/>
             <input required name="price" value={price} onChange={e => setPrice(e.target.value)} />
             <span>€</span>
           </label>
-          <button>guardar</button>
+          <button>GUARDAR</button>
           <p>{message}</p>
         </fieldset>
       </form>
@@ -214,77 +214,77 @@ function EditExperience() {
       {experiences[0].experienceDate ?
         <form onSubmit={handleSubmitEditDates}>
           <fieldset className='form-section'>
-            <legend>Editar fechas</legend>
+            <legend>EDITAR FECHAS</legend>
             <label>
-              <span>fechas existentes:</span>
-              <select defaultValue={'elige fecha para editar'} className='select' onChange={handleChangeSelectDate} name='escoge fecha'>
-                    <option disabled >elige fecha para editar</option>
+              <span>Fechas existentes</span>
+              <select defaultValue={'Elige fecha para editar'} className='select' onChange={handleChangeSelectDate} name='escoge fecha'>
+                    <option disabled >Elige fecha para editar</option>
                   {experiences &&
                     experiences.map(experience =>
                     <option required key={experience.idDate} id={experience.idDate} name='date' value={experience.experienceDate} >{experience.experienceDate}</option>
                     )
                   }
               </select>
-              <div id='delete-date-button' onClick={handleDelete}>borrar fecha</div>
+              <div id='delete-date-button' onClick={handleDelete}>BORRAR FECHA</div>
               <span>{messageDelete}</span>
             </label>
             {(!experiences[0].experienceDate || !experiences[0].experienceHour || !experiences[0].totalSeats) ?
             <p>No hay fechas disponibles</p> :
             <>
               <label>
-                <span> cambiar hora de la experiencia</span>
+                <span> Cambiar hora</span>
                 <br/>
                 <input type='time' name="hour" value={experienceHour} onChange={e => {
                   setExperienceHour(e.target.value)
                 }} />
               </label>
               <label>
-                <span> cambiar fecha de la experiencia</span>
+                <span> Cambiar fecha</span>
                 <br/>
                 <input type='date' name="date" value={experienceDate} onChange={e => {
                   setExperienceDate(e.target.value)
                 }} />
               </label>
               <label>
-                <span>plazas totales</span>
+                <span>Plazas totales</span>
                 <br/>
                 <input max="20" min="1" type="number" name="seats" value={totalSeats} onChange={e => setTotalSeats(e.target.value)} />
               </label>
             </>
             }
-            <button>guardar</button>
+            <button>GUARDAR</button>
             <p>{message}</p>
           </fieldset>
         </form>
-        : <p>no hay fechas</p>}
+        : <p>No hay fechas existentes</p>}
 
       <form onSubmit={handleSubmitPost}>
         <fieldset className='form-section'>
-          <legend>Añadir fechas nuevas</legend>
+          <legend>AÑADIR FECHAS NUEVAS</legend>
           <label>
-            <span> añadir fecha de la experiencia:</span>
+            <span>Añadir fecha</span>
             <br/>
             <input required type='date' name="date" onChange={e => {
               setExperienceDate(e.target.value)
             }} />
           </label>
           <label>
-            <span> añadir hora de la experiencia:</span>
+            <span>Añadir hora</span>
             <br/>
             <input required type='time' name="hour" onChange={e => {
               setExperienceHour(e.target.value)
             }} />
           </label>
           <label>
-            <span> añadir plazas totales:</span>
+            <span>Añadir plazas totales</span>
             <br/>
             <input type='number' min='1' max='20' placeholder="Introduce plazas totales..." required name="seats" onChange={e => setTotalSeats(e.target.value)} />
           </label>
-          <button>añadir</button>
+          <button>AÑADIR</button>
           <p>{messagePost}</p>
           </fieldset>
       </form>
-      <button><Link to={'/profile/admin'}>volver</Link></button>
+      <button><Link className="link" to={'/profile/admin'}>VOLVER</Link></button>
     </div>
   )
 }

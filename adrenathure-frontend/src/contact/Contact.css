@@ -1,5 +1,6 @@
 .contact {
     display: flex;
+    justify-content: center;
 }
 
 .contact-header {
@@ -10,8 +11,8 @@
 
 .left-side {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    padding: 30px;
 }
 
 .formulario {
@@ -30,6 +31,12 @@
     flex-direction: column;
     align-content: left;
     justify-content: left;
-    padding: 10px;
+    padding: 30px 0px;
     list-style: none;
+    line-height: 150%;
+    font-weight:lighter;
+}
+
+.map {
+  border: solid 0.5px rgba(47,60,56,255);
 }
