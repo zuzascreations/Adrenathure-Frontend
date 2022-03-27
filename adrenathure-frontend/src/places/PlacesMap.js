@@ -3,13 +3,10 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import Loading from '../Loading'
 import './PlacesMap.css'
 import useFetch from 'fetch-suspense'
-import { useParams } from "react-router-dom"
 import { Link } from "react-router-dom"
 
 function PlacesMap() {
-  const { id } = useParams()
   const places = useFetch('http://localhost:3000/places/')
-  const position = ""
 
   return (
     <MapContainer id="placesMap"center={[40.4310754, -3.7028892]} zoom={6}>
@@ -19,7 +16,7 @@ function PlacesMap() {
       {places.map(place =>
         <Marker key={place.id} position={ [place.coordsLong, place.coordsLat] }>
           <Popup>
-            <Link to= {'/places/' + id}>{place.placeName}</Link>
+            <Link to= {'/places/' + place.id}>{place.placeName}</Link>
           </Popup>
         </Marker>)}
     </MapContainer>
