@@ -114,3 +114,123 @@
   text-transform: none;
 }
 
+/* media query */
+
+@media (min-width: 600px) and (max-width: 1400px) {
+
+  .footer {
+    color: white;
+    background-color: rgb(50, 59, 56);
+  }
+  
+  .headerFooter {
+    padding-top: 10px;
+    height: 200px;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  
+  #footerHeader {
+    font-family: BioRhyme Expanded;
+    font-size:medium;
+    text-transform: lowercase;
+  }
+  
+  .footerNavLinks {
+    display: flex;
+    justify-content: space-evenly;
+    color: white;
+    flex-wrap: nowrap;
+    gap:10px;
+    text-transform: uppercase;
+  }
+  
+  #footerExperiences {
+    display: none;
+    flex-direction: column;
+    padding-right: 25px;
+  }
+  
+  #footerPlaces {
+    display: none;
+    flex-direction: column;
+    padding-right: 25px;
+  }
+  
+  #footerAbout {
+    display: none;
+    flex-direction: column;
+    padding-right: 25px;
+  }
+  
+  #footerContact {
+    display: flex;
+    flex-direction: column;
+    padding-right: 25px;
+  }
+  
+  .footerLinks {
+    display: flex;
+    margin-top: 10px;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .footerList {
+    display: flex;
+    text-transform: normal;
+    flex-direction: column;
+    text-decoration: none;
+    color: white;
+    text-transform: none;
+  }
+  
+  .footerExperience {
+    display: flex;
+    text-transform: normal;
+    flex-direction: column;
+    text-decoration: none;
+    color: white;
+  
+  }
+  
+  #FooterSocialMedia {
+    display: flex;
+    justify-content: space-evenly;
+    color: white;
+  }
+  
+  .footerEmail {
+    display: flex;
+    text-transform: normal;
+    flex-direction: column;
+    text-decoration: none;
+    color: white;
+  }
+  
+  #email {
+    width: 3vh;
+    height: 1.5vw;
+  }
+  
+  #phone {
+    width: 2vh;
+    height: 1vw;
+  }
+  
+  .socialMedia {
+    margin-top: 20px;
+  }
+  
+  .footerEquipment {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+  }
+  
+  #address {
+    text-transform: none;
+  }
+}
