@@ -22,10 +22,14 @@ function AllExperiences() {
     })
     if (res.ok) {
       setModal('Deleted successfully')
-      window.location.reload(true)
+      setTimeout(() => {
+        setModal(null)
+        window.location.reload(true)
+      }, 2000)
+
     } else {
       if (res.status === 404) {
-        setModal(<><p>'No se ha podido borrar//Error desconocido'</p><button onClick={() => setModal(null)}>volver</button></>)
+        setModal(<p>'No se ha podido borrar//Error desconocido'</p>)
 
       }
     }

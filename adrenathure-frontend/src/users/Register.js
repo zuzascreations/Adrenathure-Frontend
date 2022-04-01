@@ -1,6 +1,6 @@
 import { Suspense, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { useSetRegister } from "../hooks"
+import { useSetModal, useSetRegister } from "../hooks"
 import Loading from "../Loading"
 import '../Form.css'
 
@@ -9,9 +9,9 @@ function Register() {
   const [pass, setPass] = useState('')
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
-  const [error, setError] = useState(null)
   const navigate = useNavigate()
   const setRegistered = useSetRegister()
+  const setModal = useSetModal()
 
   const handleSubmit = async e => {
     e.preventDefault()
@@ -22,15 +22,18 @@ function Register() {
         'Content-Type': 'application/json'
       }
     })
-    const data = await res.json()
+    // const data = await res.json()
     if (res.ok) {
-      setError('Subido con éxito.')
+      setModal('Usuario registrado con éxito.')
       setRegistered(true)
-      navigate('/login/')
+      setTimeout(() => {
+        navigate('/login/')
+        setModal(null)
+        window.location.reload(true)
+      }, 2000)
 
     } else {
-      setError(data?.error || 'Error desconocido')
-    }
+      setModal('Error desconocido')    }
   }
 
   return (
@@ -60,7 +63,6 @@ function Register() {
           </label>
           <p>* campos obligatorios</p>
           <button>CREAR CUENTA</button>
-          {error && <div className="error">{error}</div>}
         </fieldset>
       </form>
       <nav>

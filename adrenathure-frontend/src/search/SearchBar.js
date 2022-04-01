@@ -10,7 +10,6 @@ function SearchBarCopy() {
   const setModal = useSetModal()
   const navigate = useNavigate()
 
-
   const [viewPlace, setViewPlace] = useState(false)
   const [viewPrice, setViewPrice] = useState(false)
 
@@ -22,7 +21,6 @@ function SearchBarCopy() {
   const [valueDateFrom, setValueDateFrom] = useState('')
   const [valueDateTo, setValueDateTo] = useState('')
 
-
   const placesData = useFetch('http://localhost:3000/places')
 
   const showDefault = () => {
@@ -31,7 +29,6 @@ function SearchBarCopy() {
     setValueHighPrice('')
     setValueDateFrom('')
     setValueDateTo('')
-
   }
   const handleClick = () => {
     setViewPlace(true)
@@ -85,72 +82,70 @@ function SearchBarCopy() {
     return (
       <div id='calendarSearchBar'>
         <label>Fecha Desde:
-        <input className='inputCalendarSearchBar' type='date' defaultValue={'Fecha Desde:'} onChange={(e) => setValueDateFrom(e.target.value)} />
+          <input className='inputCalendarSearchBar' type='date' defaultValue={'Fecha Desde:'} onChange={(e) => setValueDateFrom(e.target.value)} />
         </label>
         <label>Fecha Hasta:
-        <input className='inputCalendarSearchBar' type='date' defaultValue={'Fecha Hasta:'} onChange={(e) => setValueDateTo(e.target.value)} />
+          <input className='inputCalendarSearchBar' type='date' defaultValue={'Fecha Hasta:'} onChange={(e) => setValueDateTo(e.target.value)} />
         </label>
         <button className="button-modalDates" onClick={handleClick3}>aplicar</button>
       </div>
     )
   }
-
   return (
-    <>
-      <div className='searchBar'>
-        <div className="select">
-          <div className='buttons-searchBar' onClick={() => {
-            setModal(<Modal1 />)
-            setViewPlace(false)
-            setValuePlace('')
-          }}>
-            {viewPlace && valuePlace ? valuePlace : 'Destino ⌄'}
-          </div>
-          <div className='buttons-searchBar' onClick={() => {
-            setModal(<Modal2 />)
-            setViewPrice(false)
-            setValueHighPrice('')
-            setValueLowPrice('')
-          }} >
-            {viewPrice && (valueLowPrice || valueHighPrice) ? ` desde: ${valueLowPrice}€ - hasta: ${valueHighPrice}€` : 'Precio ⌄'}
+    <div className='searchBar'>
+      <div className='selectSearchBar'>
+        <div className='buttons-searchBar' onClick={() => {
+          setModal(<Modal1 />)
+          setViewPlace(false)
+          setValuePlace('')
+        }}>
+          {viewPlace && valuePlace ? valuePlace : 'Destino ⌄'}
+        </div>
+        <div className='buttons-searchBar' onClick={() => {
+          setModal(<Modal2 />)
+          setViewPrice(false)
+          setValueHighPrice('')
+          setValueLowPrice('')
+        }} >
+          {viewPrice && (valueLowPrice || valueHighPrice) ? ` desde: ${valueLowPrice}€ - hasta: ${valueHighPrice}€` : 'Precio ⌄'}
 
-          </div>
-          <div className='buttons-searchBar' onClick={() => {
-            setModal(<Modal3 />)
-            setViewDate(false)
-            setValueDateFrom('')
-            setValueDateTo('')
-          }}>
-            {viewDate && (valueDateFrom || valueDateTo )  ? <><p>Desde: {valueDateFrom}</p> <p>Hasta: {valueDateTo}</p></>: 'Fecha ⌄'}
-          </div>
         </div>
-        <div className="search">
-          <div onClick={() => {
-          }}><img onClick={() => {
-            const searchUrl = new URLSearchParams()
-            if ( valuePlace ) {
-              searchUrl.set('place', valuePlace)
-            }
-            if ( valueLowPrice ) {
-              searchUrl.set('lowPrice', valueLowPrice)
-            }
-            if ( valueHighPrice ) {
-              searchUrl.set('highPrice', valueHighPrice)
-            }
-            if ( valueDateFrom ) {
-              searchUrl.set('dateFrom', valueDateFrom)
-            }
-            if ( valueDateTo ) {
-              searchUrl.set('dateTo', valueDateTo)
-            }
-            navigate(`/search?${searchUrl.toString()}`)
-          }} className="lupa" src="https://img.icons8.com/ios-glyphs/30/000000/search--v1.png" alt="lupa"/>
-          </div>
-          <img className="lupa" src="https://img.icons8.com/fluency-systems-regular/48/000000/cancel.png" alt="clear" onClick={() => {showDefault()
-          }}></img>
-          </div>
+        <div className='buttons-searchBar' onClick={() => {
+          setModal(<Modal3 />)
+          setViewDate(false)
+          setValueDateFrom('')
+          setValueDateTo('')
+        }}>
+          {viewDate && (valueDateFrom || valueDateTo) ? <><p>Desde: {valueDateFrom}</p> <p>Hasta: {valueDateTo}</p></> : 'Fecha ⌄'}
         </div>
-    </>
+      </div>
+      <div className="search">
+        <div onClick={() => {
+        }}><img onClick={() => {
+          const searchUrl = new URLSearchParams()
+          if (valuePlace) {
+            searchUrl.set('place', valuePlace)
+          }
+          if (valueLowPrice) {
+            searchUrl.set('lowPrice', valueLowPrice)
+          }
+          if (valueHighPrice) {
+            searchUrl.set('highPrice', valueHighPrice)
+          }
+          if (valueDateFrom) {
+            searchUrl.set('dateFrom', valueDateFrom)
+          }
+          if (valueDateTo) {
+            searchUrl.set('dateTo', valueDateTo)
+          }
+          navigate(`/search?${searchUrl.toString()}`)
+        }} className="lupa" src="https://img.icons8.com/ios-glyphs/30/000000/search--v1.png" alt="lupa" />
+        </div>
+        <img className="lupa" src="https://img.icons8.com/fluency-systems-regular/48/000000/cancel.png" alt="clear" onClick={() => {
+          showDefault()
+        }}></img>
+      </div>
+    </div>
   )
 }
 const searchBarWrapper = () =>

@@ -19,14 +19,11 @@ function ExperienceId() {
   return experienceId && (
     <>
       <div className="experience">
-
         <Sidebar className="sidebar" />
         <div className="space-experience">
-
           <div className="space-photo">
             <img className='photo-experience' src={`http://localhost:3000/${experienceId[0].experiencePhoto}`} alt='foto experiencia'></img>
           </div>
-
           <div className="space-content">
             <div className="experience-title">
               <h2>{experienceId[0].experienceName} en {experienceId[0].placeName}</h2>
@@ -36,7 +33,6 @@ function ExperienceId() {
               <p className="experience-text">{experienceId[0].experienceDescription}</p>
               <div className="price-date">
                 <p className="experience-price">Precio: {experienceId[0].price}€</p>
-                {/* <label> */}
                 {(experienceId[0].experienceDate && experienceId[0].availableSeats > 0) ?
                   <>
                     <select className="select-date" defaultValue={'Escoje una de las fechas disponibles y vive la experiencia!'} onChange={e => {
@@ -51,7 +47,6 @@ function ExperienceId() {
                     </select>
                   </>
                   : <p>No hay fechas disponibles</p>}
-                {/* </label> */}
                 {experienceDate &&
                   <button className="reservar"><Link className="link" to={`/experiences/${experienceId[0].id}/${experienceDate}/book`}>RESERVAR</Link></button>}
               </div>

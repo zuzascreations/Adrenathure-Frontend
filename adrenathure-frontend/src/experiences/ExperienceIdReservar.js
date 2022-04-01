@@ -4,7 +4,6 @@ import { useSetModal, useUser } from '../hooks'
 import Loading from '../Loading'
 import useFetch from '../useFetch'
 
-
 function ExperienceIdReservar() {
   const navigate = useNavigate()
   const setModal = useSetModal()
@@ -23,7 +22,6 @@ function ExperienceIdReservar() {
 
   const user = useUser()
 
-
   const handleSubmit = async e => {
 
     let totalPrice = price * reservedSeats
@@ -37,22 +35,23 @@ function ExperienceIdReservar() {
         'Authorization': 'Bearer ' + user.token
       }
     })
-
     if (res.ok) {
       const data = await res.json()
       setModal('Reservado con éxito')
-      navigate('/yourBooking/'+ data.bookingId)
-       window.location.reload(true)
+      setTimeout(() => {
+        navigate('/yourBooking/'+ data.bookingId)
+        setModal(null)
+        window.location.reload(true)
+      }, 2000)
     } else {
       if (res.status === 404) {
-        setModal(<><p>No se puede reservar más plazas de las que tenemos libres</p><button onClick={() => setModal(null)}>volver</button></>)
+        setModal(<p>No se puede reservar más plazas de las que tenemos libres</p>)
       }
       if (res.status === 400) {
-        setModal(<><p>Por favor, revisa si todos los campos están rellenos correctamente o si hay suficientes plazas libres.</p><button onClick={()=> setModal(null)}>volver</button></>)
+        setModal(<p>Por favor, revisa si todos los campos están rellenos correctamente o si hay suficientes plazas libres.</p>)
       }
     }
   }
-
   if (!user) {
     return <Navigate to="/login" />
   }

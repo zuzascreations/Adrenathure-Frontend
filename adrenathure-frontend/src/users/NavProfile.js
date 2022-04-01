@@ -9,8 +9,8 @@ function NavProfile() {
     <div className="all-navProfile">
       <nav className="nav-profile">
         <Link className="nav-link" to="/profile">DATOS PERSONALES</Link>
-        <Link className="nav-link" to="/profile/bookings">RESERVAS</Link>
-        {user.role==='admin' &&
+        <a className="nav-link" href='/profile#bookingsTitleProfile'>RESERVAS</a>
+        {user.role === 'admin' &&
           <Link className="nav-link" to="/profile/admin">ADMINISTRACIÓN</Link>
         }
       </nav>
@@ -19,9 +19,3 @@ function NavProfile() {
 }
 
 export default NavProfile
-
-{/* <p  className="link" onClick={() => {
-          document.querySelector('#bookingsTitleProfile').scrollIntoView()
-        }}>reservas</p> */}
-
-        // <a className="link" href='#bookingsTitleProfile'>reservas</a>

@@ -1,6 +1,6 @@
 import { Suspense, useState } from 'react'
 import { useNavigate, Navigate, Link } from 'react-router-dom'
-import { useUser } from '../hooks'
+import { useSetModal, useUser } from '../hooks'
 import Loading from '../Loading'
 import '../Form.css'
 
@@ -11,8 +11,8 @@ function CreatePlace() {
   const [coordsLong, setCoordsLong] = useState('')
   const [coordsLat, setCoordsLat] = useState('')
   const [file, setFile] = useState(null)
+  const setModal = useSetModal()
 
-  const [error, setError] = useState(null)
   const navigate = useNavigate()
   const user = useUser()
 
@@ -41,11 +41,15 @@ function CreatePlace() {
 
     if (res.ok) {
       // const data = await res.json()
-      setError('Nuevo destino creado con éxito.')
-      navigate('/Places')
-      window.location.reload(true)
+      setModal('Nuevo destino creado con éxito.')
+      setTimeout(() => {
+        navigate('/Places')
+        setModal(null)
+        window.location.reload(true)
+      }, 2000)
+      
     } else {
-      setError('Error desconocido.')
+      setModal('Error desconocido.')
     }
     setPlaceName('')
   }
@@ -84,7 +88,6 @@ function CreatePlace() {
           <input  className="input" type='file' onChange={e => setFile(e.target.files[0])} />
           </label>
           <button>GUARDAR</button>
-          <p>{error}</p>
         </fieldset>
         <div className="volver">
           <button><Link className="link" to={'/profile/admin/allPlaces'}>VOLVER</Link></button>

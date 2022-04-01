@@ -12,7 +12,6 @@ function Profile() {
   if (!user) {
     return <Navigate to="/login" />
   }
-
   return (
     <section className="profile">
       <NavProfile />

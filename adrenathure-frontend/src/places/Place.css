@@ -44,11 +44,14 @@
 }
 
 .space-place {
+  position: sticky;
+  top: 100px;
+  left: -200px;
   margin: 0 auto;
   display: grid;
   gap: 20px;
   border-bottom: solid 1px black;
-  padding: 20px;
+  /* padding: 20px; */
 }
 
 .space-photo {

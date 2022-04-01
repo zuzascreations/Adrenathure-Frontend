@@ -1,6 +1,7 @@
 .contact {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    /* justify-content: center; */
 }
 
 .contact-header {
@@ -39,4 +40,10 @@
 
 .map {
   border: solid 0.5px rgba(47,60,56,255);
+}
+
+@media (max-width: 1300px) {
+  .contact {
+    grid-template-columns: 1fr;
+  }
 }

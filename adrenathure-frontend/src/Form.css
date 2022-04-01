@@ -21,21 +21,13 @@
   background-color: rgba(244,244,244,255);
 }
 
-/* span {
-  display: inline-block;
-  text-transform: lowercase;
-}
-
-span:first-letter {
-  text-transform: uppercase;
-} */
 
 input {
   padding:7px;
   margin-top: 7px;
   margin-bottom: 10px;
   font-family: monospace;
-  width: 450px;
+  width: 350px;
 }
 
 textarea {
@@ -43,7 +35,7 @@ textarea {
   margin-top: 7px;
   margin-bottom: 10px;
   font-family: monospace;
-  width: 700px;
+  width: 450px;
   height: 200px;
 }
 
@@ -59,4 +51,37 @@ button {
   background-color:rgba(222,224,230,255);
   width: fit-content;
   padding: 2px 5px;
+}
+
+@media (max-width: 900px) {
+  .form-section {
+    width: 400px;
+  }
+  textarea {
+    width: 350px;
+    height: 100px;
+  }
+}
+@media (max-width: 600px) {
+  .form-section {
+    width: 300px;
+    padding: 20px 20px ;
+  }
+  textarea {
+    width: 250px;
+    height: 100px;
+  }
+}
+@media (max-width: 400px) {
+  .form-section {
+    padding: 10px 10px;
+  }
+  input {
+    width: 200px;
+ 
+  }
+  textarea {
+    width: 250px;
+    height: 100px;
+  }
 }
