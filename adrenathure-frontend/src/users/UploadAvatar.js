@@ -1,12 +1,11 @@
 import { Suspense, useState } from 'react'
-import { useUser } from '../hooks'
+import { useSetModal, useUser } from '../hooks'
 import Loading from '../Loading'
 
 
 function UploadAvatar() {
   const [file, setFile] = useState(null)
-  const [message, setMessage] = useState(null)
-
+  const setModal = useSetModal()
   const user = useUser()
 
   const handleSubmit = e => {
@@ -21,13 +20,14 @@ function UploadAvatar() {
       headers: fd
     })
     if (res) {
-      setMessage('file uploaded succesfully')
-      window.location.reload(true)
+      setModal('file uploaded succesfully')
+      setTimeout(() => {
+        setModal(null)
+        window.location.reload(true)
+      }, 2000)
     }
   }
   return (
-    <>
-      <p>{message}</p>
       <form onSubmit={handleSubmit}>
         <label>
           <span>Escojer foto perfil</span>
@@ -35,7 +35,6 @@ function UploadAvatar() {
           <button className="subir">SUBIR FOTO</button>
         </label>
       </form>
-    </>
   )
 }
 

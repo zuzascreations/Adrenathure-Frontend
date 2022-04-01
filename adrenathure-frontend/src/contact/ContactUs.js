@@ -4,7 +4,7 @@ import { useSetModal } from '../hooks'
 import '../Form.css'
 init("user_26UUVsLD3NfN5vGVKNa9G")
 
-function ContactUs() {
+function  ContactUs() {
   const setModal = useSetModal()
 
   const SenderForm = (e) => {

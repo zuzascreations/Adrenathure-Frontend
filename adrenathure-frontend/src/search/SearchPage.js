@@ -8,7 +8,7 @@ function SearchPage() {
 
   let { search } = useLocation()
   const experiences = useFetch(`http://localhost:3000/experiences${search}`)
-  
+
   return (
     <>
       <div className='errorSearch'>
@@ -16,17 +16,24 @@ function SearchPage() {
         {!experiences.length &&
           <p id='messageNoContent'>no se han encontrado resultados</p>}
       </div>
-      <div className='experiences-searched'>
-        {experiences &&
-          experiences.map(experience =>
-            <div key={experience.experience_id} className='bodyArticle'>
-              <img className='experience-photos' src={`http://localhost:3000/${experience.experiencePhoto}`} alt="avatar" />
-              <Link to={'/experiences/' + experience.experience_id}>{experience.experienceName}:</Link>
-              <p>Descripción: {experience.experienceDescription}</p>
-              <p>Destino: {experience.placeName}</p>
-              <p>Precio: {experience.price}</p>
-            </div>
-          )}
+      <div className='experiences'>
+        <div className='art'>
+          {experiences &&
+            experiences.map(experience =>
+              <div key={experience.experience_id} className='articleExp'>
+                <img className='photoExperience' src={`http://localhost:3000/${experience.experiencePhoto}`} alt="avatar" />
+                <article key={experience.id} >
+                <Link className='title-exp' to={'/experiences/' + experience.experience_id}>{experience.experienceName}:</Link>
+                <p className='description'>Descripción: {experience.experienceDescription}</p>
+                <p className='searchData'>Destino: {experience.placeName}</p>
+                <p className='searchData'>Precio: {experience.price} €</p>
+                <Link to={'/experiences/' + experience.id} className='button-exp'>
+                descubrir más
+              </Link>
+                </article>
+              </div>
+            )}
+        </div>
       </div>
     </>
   )

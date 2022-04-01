@@ -1,17 +1,18 @@
 import SidebarPlaces from './SidebarPlaces'
 import PlacesMap from './PlacesMap'
 import ErrorBoundary from '../ErrorBoundary'
+import './Places.css'
 
 
 function Places() {
   return (
-    <div>
-      <section className="places">
+    <div className='placesPage'>
+      <div className="experiences">
         <ErrorBoundary fallback="SidebarPlaces in Places is failing">
           <SidebarPlaces />
         </ErrorBoundary>
-      </section>
-      <div>
+      </div>
+      <div className='mapPlaces'>
         <ErrorBoundary fallback="PlacesMap in Places is failing">
           <PlacesMap />
         </ErrorBoundary>

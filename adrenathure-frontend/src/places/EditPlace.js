@@ -17,7 +17,6 @@ function EditPlace() {
   const [coordsLat, setCoordsLat] = useState((places.coordsLat) || '')
   const [file, setFile] = useState(null)
 
-  const [error, setError] = useState(null)
   const navigate = useNavigate()
   const user = useUser()
 
@@ -42,9 +41,13 @@ function EditPlace() {
     })
     // const data = await res.json()
     if (res.ok) {
-      setModal(<><p>Destino editado con exito</p> <button onClick={() => window.location.reload(true)}>Volver</button></>)
+      setModal(<p>Destino editado con exito</p>)
+      setTimeout(() => {
+        setModal(null)
+        window.location.reload(true)
+      }, 2000)
     } else {
-      setModal(<><p>No se ha podido editar destino. Por favor, intenta de nuevo.</p> <button onClick={() => window.location.reload(true)}>Volver</button></>)
+      setModal(<p>No se ha podido editar destino. Por favor, intenta de nuevo.</p>)
     }
   }
 
@@ -90,7 +93,7 @@ function EditPlace() {
       <div className="volver">
           <button><Link className="link" to={'/profile/admin/allPlaces'}>VOLVER</Link></button>
       </div>
-      <p>{error}</p>
+      
     </>
   )
 }

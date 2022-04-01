@@ -22,9 +22,11 @@ function AllPlaces() {
       }
     })
     if (res.ok) {
-      // const data = await res.json()
       setModal('El destino ha sido borrado con éxito.')
-      window.location.reload(true)
+      setTimeout(() => {
+        setModal(null)
+        window.location.reload(true)
+      }, 2000)
     } else {
       if (res.status === 404) {
         setModal('No se ha podido borrar el destino/Error desconocido.')

@@ -10,7 +10,7 @@ import Login from './users/Login'
 import Register from './users/Register'
 import Portada from './Portada'
 import Profile from './users/Profile'
-import SidebarPlaces from './places/Places'
+import Places from './places/Places'
 import Place from './places/Place'
 import SearchBar from './search/SearchBar'
 import SearchPage from './search/SearchPage'
@@ -30,22 +30,22 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Modal/>
+      <Modal />
       <Routes>
         <Route path="/experiences/*" element={<><SearchBar /><Experiences /></>} />
-        <Route path="experiences/:id" element={<><SearchBar /><ExperienceId /></>}/>
-        <Route path="experiences/:id/:date/book" element={<ExperienceIdReservar/>}/>
+        <Route path="experiences/:id" element={<><SearchBar /><ExperienceId /></>} />
+        <Route path="experiences/:id/:date/book" element={<ExperienceIdReservar />} />
         <Route path="/login/" element={<Login />} />
         <Route path="/" element={<><SearchBar /><Portada /></>} />
         <Route path="/register/" element={<Register />} />
         <Route path="profile/*" element={<Profile />} />
-        <Route path="places" element={<><SearchBar /><SidebarPlaces /></>} />
+        <Route path="places" element={<><SearchBar /><Places /></>} />
         <Route path="places/:id" element={<><SearchBar /><Place /></>} />
         <Route path="/yourBooking/:id" element={<YourBooking />} />
         <Route path="/search" element={<><SearchBar /><SearchPage /></>} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-	<Route path="/emailValidatePage/:validateCode" element={<AccountActivated />} />
+        <Route path="/emailValidatePage/:validateCode" element={<AccountActivated />} />
         <Route path="/terminosYCondiciones" element={<TerminosYCondiciones />} />
         <Route path="/politicaDePrivacidad" element={<PoliticaDePrivacidad />} />
         <Route path="/politicaDeCookies" element={<PoliticaDeCookies />} />

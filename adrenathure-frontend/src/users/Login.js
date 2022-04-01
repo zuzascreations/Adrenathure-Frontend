@@ -22,7 +22,6 @@ function Login() {
         'Content-Type': 'application/json'
       }
     })
-
     if (res.ok) {
       const data = await res.json()
       setUser(data)
@@ -42,12 +41,10 @@ function Login() {
       }
     }
   }
-
   return (
-
     <div className='divLogin'>
       {registered &&
-        <div>Enhorabuena tu cuenta ha sido creada con éxito. En breve recibirás un mensaje de correo electrónico con enlace para activarla.</div>
+        <div id="loginRegisteredMessage">Enhorabuena tu cuenta ha sido creada con éxito. En breve recibirás un mensaje de correo electrónico con enlace para activarla.</div>
       }
       <form className="form" onSubmit={handleSubmit}>
         <fieldset className="form-section">
@@ -72,11 +69,9 @@ function Login() {
     </div>
   )
 }
-
 const LoginWrapper = () =>
   <Suspense fallback={<Loading className='page' />}>
     <Login />
   </Suspense>
-
 
 export default LoginWrapper

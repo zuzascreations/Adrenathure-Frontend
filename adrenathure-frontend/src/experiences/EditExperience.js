@@ -122,7 +122,10 @@ function EditExperience() {
     // const data = await res.json()
     if (res.ok) {
       setModal('La fecha ha sido añadida con éxito.')
-      window.location.reload(true)
+      setTimeout(() => {
+        setModal(null)
+        window.location.reload(true)
+      }, 2000)
     } else {
 
       if (res.status === 500) {

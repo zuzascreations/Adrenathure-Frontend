@@ -1,5 +1,5 @@
 import useFetch from 'fetch-suspense'
-import { Suspense, useEffect } from 'react'
+import { Suspense } from 'react'
 import { Link } from "react-router-dom"
 import Loading from '../Loading'
 import './Experiences.css'
@@ -9,24 +9,24 @@ function Experiences() {
 
   return experiences && (
     <div className='experiences'>
-      <div className='art'>
-        { experiences.length ?
+      {experiences.length ?
         experiences.map(experience =>
           <div key={experience.id} className='articleExp'>
-            <img className='photoExperience' src={`http://localhost:3000/${experience.experiencePhoto}`} alt='foto experiencia'></img>
-            <article key={experience.id} >
+            <div className='photoArticle'>
+              <img className='photoExperience' src={`http://localhost:3000/${experience.experiencePhoto}`} alt='foto experiencia'></img>
+            </div>
+            <div key={experience.id} >
               <Link to={'/experiences/' + experience.id} className='title-exp'>
                 {experience.experienceName}
               </Link>
-              {'★★★★★☆☆☆☆☆'.substring(5 - experience.avgVote, 10 - experience.avgVote)}
-              <p className='description'>{experience.experienceDescription}</p>
+              <p>{'★★★★★☆☆☆☆☆'.substring(5 - experience.avgVote, 10 - experience.avgVote)}</p>
+              <p className='experience-description'>{experience.experienceDescription}</p>
               <Link to={'/experiences/' + experience.id} className='button-exp'>
                 descubrir más
               </Link>
-            </article>
+            </div>
           </div>
-        ): <p>aun no hay experiencias, disculpe las molestias</p>}
-      </div>
+        ) : <p>aun no hay experiencias, disculpe las molestias</p>}
     </div>
   )
 }

@@ -20,7 +20,6 @@ function Sidebar() {
     </aside>
   )
 }
-
 const SidebarWrapper = () =>
   <Suspense fallback={<Loading className="page" />}>
     <Sidebar />

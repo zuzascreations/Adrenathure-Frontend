@@ -1,10 +1,8 @@
 import useFetch from '../useFetch'
 import { Suspense } from 'react'
 import Loading from '../Loading'
-import { Link } from 'react-router-dom'
 import { useSetModal, useUser } from '../hooks'
 import { Navigate } from 'react-router-dom'
-// import './AllBookings.css'
 import '../List.css'
 
 
@@ -74,13 +72,13 @@ function AllBookings() {
             <strong>PRECIO TOTAL</strong>
           </span>
           <span>
-            <strong>USER ID</strong>
+            <strong>USUARIO</strong>
           </span>
         </div>
         {bookings.length ?
           bookings.map(booking =>
-            <>
-              <div key={booking.id} className='grid-list-bookings' >
+            <div key={booking.id}>
+              <div  className='grid-list-bookings' >
                   <span>{booking.bookingNumber}</span>
                   <span>{booking.bookingDate}</span>
                   <span>{booking.experienceName}</span>
@@ -89,13 +87,12 @@ function AllBookings() {
                   <span>{booking.experienceHour}</span>
                   <span>{booking.reservedSeats}</span>
                   <span>{booking.totalPrice}</span>
-                  <span>{booking.user_id}</span>
+                  <span>{booking.firstName} {booking.lastName}</span>
               </div>
-              <div class="section-buttons">
-                {/* <button className="button-link"><Link className='link' to={'/profile/admin/bookingId/' + booking.id}>VER</Link></button> */}
+              <div className="section-buttons">
                 <button className="bin" value={booking.id} onClick={handleClick}>BORRAR</button>
               </div>
-            </>
+            </div>
         ) : <p>No hay ninguna reserva todavía</p>}
       </div>
   )

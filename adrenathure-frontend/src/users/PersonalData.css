@@ -63,3 +63,23 @@ button {
 .articles-bookings-profile {
   text-align: center;
 }
+
+@media (max-width: 600px) {
+  .allPersonalData {
+    width: 400px;
+  }
+  .data {
+    margin: 20px;
+  }
+  #bookingsProfiledata {
+    border: none;
+  }
+}
+@media (max-width: 400px) {
+  .allPersonalData {
+    width: 300px;
+  }
+  .data {
+    margin: 20px;
+  }
+}

@@ -29,20 +29,14 @@ function PersonalDataEdit() {
       }
     })
     // const data = await res.json()
-
     if (res.ok) {
       setMessage('Updated successfully')
-      setModal(
-        <>
-          <span>perfil actualizado correctamente</span>
-          <button onClick={() => {
-            setModal(null)
-            navigate('/Profile')
-            window.location.reload(true)
-          }}>VOLVER</button>
-        </>
-      )
-
+      setModal(<span>Perfil actualizado correctamente</span>)
+      setTimeout(() => {
+        navigate('/Profile')
+        setModal(null)
+        window.location.reload(true)
+      }, 2000)
     } else {
       setMessage('Error desconocido')
     }
@@ -57,8 +51,8 @@ function PersonalDataEdit() {
       <fieldset className="form-section">
         <legend>EDITAR FOTO</legend>
         <div className="avatar-edit">
-            <Avatar />
-            <UploadAvatar />
+          <Avatar />
+          <UploadAvatar />
         </div>
       </fieldset>
       <form onSubmit={handleSubmit}>
@@ -66,26 +60,26 @@ function PersonalDataEdit() {
           <legend>EDITAR DATOS PERSONALES</legend>
           <label>
             <span>nombre*</span>
-            <br/>
+            <br />
             <input name="firstName" value={firstName} onChange={e => setFirstName(e.target.value)} />
           </label>
           <label>
             <span>apellidos*</span>
-            <br/>
+            <br />
             <input name="lastName" value={lastName} onChange={e => setLastName(e.target.value)} />
           </label>
           <label>
             <span>e-mail*</span>
-            <br/>
+            <br />
             <input name="email" value={email} onChange={e => setEmail(e.target.value)} />
           </label>
           <label>
             <span>contraseña*</span>
-            <br/>
+            <br />
             <input required type="password" placeholder="Confirma tu contraseña..." name="password" value={password} onChange={e => setPassword(e.target.value)} />
           </label>
           <p>* campos obligatorios</p>
-          <br/>
+          <br />
           <button>GUARDAR</button>
           <p>{message}</p>
         </fieldset>

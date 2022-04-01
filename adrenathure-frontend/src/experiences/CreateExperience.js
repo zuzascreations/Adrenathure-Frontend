@@ -52,7 +52,7 @@ function CreateExperience() {
       }, 2000)
     } else {
       if (res.status === 404) {
-        setModal(<><p>Por favor, revisa si todo los campos están cubiertos y correctos </p><button onClick={() => setModal(null)}>volver</button></>)
+        setModal(<p>Por favor, revisa si todo los campos están cubiertos y correctos </p>)
       }
       if (res.status === 500) {
         setModal('Database error')

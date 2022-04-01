@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import Loading from '../Loading'
-import './PlacesMap.css'
+import './Places.css'
 import useFetch from 'fetch-suspense'
 import { Link } from "react-router-dom"
 

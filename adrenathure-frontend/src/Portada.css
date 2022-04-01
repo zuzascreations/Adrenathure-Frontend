@@ -1,12 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=BioRhyme+Expanded:wght@300&family=BioRhyme:wght@200&family=Montserrat:wght@300;700&family=Open+Sans:wght@400;700&family=Roboto:ital,wght@0,700;1,400;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@200&family=Indie+Flower&family=Merriweather:ital,wght@1,300&display=swap');
 
-.portada-body {
-  padding:0px 80px 50px 80px;
-}
 
 .idPortada {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   align-items: center;
   padding: 20px;
 }
@@ -14,7 +12,7 @@
 .imgPortada {
   border: solid 2px black;
   padding: 10px;
-  width: 650px;
+  width: fit-content;
   height: 350px
 }
 
@@ -23,11 +21,32 @@
   display: flex;
   flex-direction: column;
   padding: 50px;
-  font-family: Merriweather, 'Amatic Sc', Arial, Helvetica, sans-serif ;
+  font-family: Merriweather, 'Amatic Sc', Arial, Helvetica, sans-serif;
 }
 
 .description-landing {
   font-weight: 400;
-  line-height:180%;
+  line-height: 180%;
   padding: 0;
+}
+
+@media (max-width: 1300px) {
+  .idPortada {
+    grid-template-columns: repeat(1, 1fr);
+    place-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .imgPortada {
+    width: 400px;
+  }
+}
+
+@media (max-width: 400px) {
+  .imgPortada {
+    width: 250px;
+    height: auto;
+  }
 }
