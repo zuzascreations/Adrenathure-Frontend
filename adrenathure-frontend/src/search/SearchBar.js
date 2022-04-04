@@ -83,13 +83,11 @@ function SearchBarCopy() {
   function Modal3() {
     return (
       <div id='calendarSearchBar'>
-        <label>Fecha Desde:
-          <input className='inputCalendarSearchBar' type='date' defaultValue={'Fecha Desde:'} onChange={(e) => setValueDateFrom(e.target.value)} />
-        </label>
-        <label>Fecha Hasta:
-          <input className='inputCalendarSearchBar' type='date' defaultValue={'Fecha Hasta:'} onChange={(e) => setValueDateTo(e.target.value)} />
-        </label>
-        <button className="button-modalDates" onClick={handleClick3}>aplicar</button>
+        <label className="modal-element">Fecha desde</label>
+          <input className='inputCalendarSearchBar' placeholder="Fecha desde" type='date' defaultValue={'Fecha desde:'} onChange={(e) => setValueDateFrom(e.target.value)} />
+        <label className="modal-element">Fecha hasta</label>
+          <input className='inputCalendarSearchBar' type='date' defaultValue={'Fecha hasta:'} onChange={(e) => setValueDateTo(e.target.value)} />
+        <button className="button-modalDates" onClick={handleClick3}>APLICAR</button>
       </div>
     )
   }

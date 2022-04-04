@@ -3,35 +3,35 @@ import Loading from '../Loading'
 import useFetch from "../useFetch"
 import { useParams } from "react-router-dom"
 import PunctuationToRate from '../users/PunctuationToRate'
-const BASE_URL  = process.env.REACT_APP_URL
+import './BookingId.css'
 
 function BookingId() {
   const { id } = useParams()
-  const bookingId = useFetch(`http://${BASE_URL}/bookings/${id}`)
+  const bookingId = useFetch('http://localhost:3000/bookings/' + id)
+  console.log(bookingId)
 
   return bookingId && (
-    <>
-      <div>
-        <img className='experience-photo' src={`http://${BASE_URL}/${bookingId.experiencePhoto}`} alt="avatar" />
-      </div>
-      <div className="booking-id">
-        <h4>nº reserva: {bookingId.bookingNumber}</h4>
-        <h4>fecha reserva: {bookingId.bookingDate}</h4>
-        <h4>nombre usuario: {bookingId.firstName}</h4>
-        <h4>apellido usuario: {bookingId.lastName}</h4>
+    <div className="booking-space">
+      <div className="booking-description">
+      <h3 className="header-booking-id">DATOS DE TU RESERVA</h3>
+        <span><strong>Nº reserva:</strong> {bookingId.bookingNumber}</span>
+        <span><strong>Fecha reserva:</strong> {bookingId.bookingDate}</span>
+        <span><strong>Nombre:</strong> {bookingId.firstName} {bookingId.lastName}</span>
         <br></br>
-        <h4>experiencia name: {bookingId.experienceName}</h4>
-        <h4>destino: {bookingId.placeName}</h4>
-        <h4>fecha experience: {bookingId.experienceDate}</h4>
-        <h4>hora experience: {bookingId.experienceHour}</h4>
-        <h4>asientos reservados: {bookingId.reservedSeats}</h4>
-        <h4>precio total: {bookingId.totalPrice} €</h4>
+        <span><strong>Experiencia:</strong> {bookingId.experienceName}</span>
+        <span><strong>Destino:</strong> {bookingId.placeName}</span>
+        <span><strong>Fecha experiencia:</strong> {bookingId.experienceDate}</span>
+        <span><strong>Hora experiencia:</strong> {bookingId.experienceHour}</span>
+        <span><strong>Plazas reservadas:</strong> {bookingId.reservedSeats}</span>
+        <br></br>
+        <span><strong>Precio total:</strong> {bookingId.totalPrice} €</span>
       </div>
-      <div>
-        <p>¡Esperamos para tu voto después de vivir la aventura!</p>
+      <div className="booking-photo-section">
+        <span>¡Esperamos para tu voto después de vivir la aventura!</span>
         <PunctuationToRate />
+        <img className='experience-photo' src={`http://localhost:3000/${bookingId.experiencePhoto}`} alt="avatar" />  
       </div>
-    </>
+    </div>
   )
 }
 

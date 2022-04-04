@@ -10,21 +10,33 @@ function YourBooking() {
   const booking = useFetch(`http://${BASE_URL}/bookings/${id}`)
 
   return booking && (
-    <div className="booking">
-      <h1>Datos de tu reserva:</h1>
-      <h2>Tu experiencia: {booking.experienceName}</h2>
-      <img className='experience-photo' src={`http://${BASE_URL}/${booking.experiencePhoto}`} alt="avatar" />
-      <p>Número de reserva: {booking.bookingNumber}</p>
-      <p>Fecha de la reserva: {booking.bookingDate.substring(0, 10)}</p>
-      <p>Usuario: {booking.firstName} {booking.lastName}</p>
-      <p>Destino: {booking.placeName}</p>
-      <p>Fecha de la experiencia: {booking.experienceDate.substring(0, 10)}</p>
-      <p>Hora: {booking.experienceHour.substring(0, 5)}</p>
-      <p>Número de personas: {booking.reservedSeats}</p>
-      <p>Precio total: {booking.totalPrice} €</p>
-      <button><Link to='/experiences'>SEGUIR COMPRANDO</Link></button>
-      <button><Link to='/'>PÁGINA DE INICIO</Link></button>
+    <div>
+      <div className="booking-space">
+        <div className="booking-description">
+          <h2 className="header-booking-id">DATOS DE TU RESERVA</h2>
+          <span><strong>Nº reserva:</strong> {booking.bookingNumber}</span>
+          <span><strong>Fecha reserva:</strong> {booking.bookingDate.substring(0, 10)}</span>
+          <span><strong>Nombre:</strong> {booking.firstName} {booking.lastName}</span>
+          <br></br>
+          <span><strong>Tu experiencia:</strong> {booking.experienceName}</span>
+          <span><strong>Destino:</strong> {booking.placeName}</span>
+          <span><strong>Fecha experiencia:</strong> {booking.experienceDate.substring(0, 10)}</span>
+          <span><strong>Hora experiencia:</strong> {booking.experienceHour.substring(0, 5)}</span>
+          <span><strong>Plazas reservadas:</strong> {booking.reservedSeats}</span>
+          <br></br>
+          <span><strong>Precio total:</strong> {booking.totalPrice} €</span>
+        </div>
+        <div className="booking-photo-section">
+          <h2>¡Gracias por confiar en nosotros!</h2>
+          <img className='experience-photo' src={`http://localhost:3000/${booking.experiencePhoto}`} alt="avatar" />
+        </div>
+      </div>
+      <div className="button-space">
+        <button><Link className="link" to='/experiences'>SEGUIR COMPRANDO</Link></button>
+        <button><Link className="link" to='/'>PÁGINA DE INICIO</Link></button>
+      </div>
     </div>
+
   )
 }
 

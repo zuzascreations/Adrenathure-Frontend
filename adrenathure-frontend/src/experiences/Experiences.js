@@ -28,7 +28,7 @@ function Experiences() {
               </Link>
             </div>
           </div>
-        ) : <p>aun no hay experiencias, disculpe las molestias</p>}
+        ) : <p>Aún no hay experiencias existentes, disculpe las molestias.</p>}
     </div>
   )
 }
