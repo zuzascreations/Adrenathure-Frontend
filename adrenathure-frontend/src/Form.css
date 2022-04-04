@@ -9,7 +9,8 @@
 .photo-edit {
   padding: 10px;
   border: 1px solid black;
-  height: 150px;
+  max-width: 200px;
+  background-color: white;
 }
 
 .form-section {
@@ -21,6 +22,17 @@
   background-color: rgba(244,244,244,255);
 }
 
+.false-input {
+  border: solid 1px black;
+  background-color: white;
+  padding: 3px 10px;
+  font-family: monospace;
+}
+
+.form-line {
+  display: flex;
+  gap: 10px;
+}
 
 input {
   padding:7px;

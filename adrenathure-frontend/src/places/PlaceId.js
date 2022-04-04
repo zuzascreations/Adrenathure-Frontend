@@ -19,6 +19,7 @@ function PlaceId() {
       <div className="space-content">
         <h2 className="place-title">{placeId.placeName}</h2>
         <p className="place-text">{placeId.placeDescription}</p>
+        <p className="place-text">Escoje alguna de las experiencias que realizamos en {placeId.placeName}:</p>
         <SidebarExperiencesPlaceIdWrapper />
       </div>
     </div>

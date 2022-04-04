@@ -51,8 +51,8 @@
 }
 
 #calendarSearchBar {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 300px);
+  display: flex;
+  flex-direction: column;
 }
 
 @media (max-width: 600px) {

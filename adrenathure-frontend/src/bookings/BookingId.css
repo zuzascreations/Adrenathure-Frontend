@@ -1,0 +1,84 @@
+.booking-space {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 100px 0px 100px 0px;
+  background-color: rgb(248, 234, 234);
+}
+
+.header-booking-id {
+  padding: 0px 0px 60px 0px;
+}
+
+.booking-description {
+  display: grid;
+  gap: 3px;
+  justify-content: center;
+  align-content:flex-start;
+  padding-left: 250px;
+  font-family: monospace;
+}
+
+.booking-photo-section {
+  gap: 20px;
+  display: grid;
+  justify-content: center;
+  place-items: center;
+  padding-right: 300px;
+  font-family: monospace;
+  font-weight: 700;
+  text-align: center;
+}
+
+.experience-photo {
+  border: solid 8px white;
+  max-width: 370px;
+  height: auto;
+  align-content: center;
+}
+
+.button-space {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  background-color: rgb(248, 234, 234);
+  justify-content: center;
+  place-items: center;
+  padding: 50px 200px;
+}
+
+
+/*media query*/
+
+@media (max-width: 1300px) {
+  .experience-photo {
+    width: 270px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .booking-space {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .booking-description {
+    justify-content: center;
+    align-content:center;
+    padding: 0px;
+
+  text-align: center;
+  }
+
+  .booking-photo-section {
+    justify-content: center;
+    place-items: center;
+    padding: 0px;
+  }
+}
+
+@media (max-width: 800px) {
+  .button-space {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0px 200px 50px 200px;
+  }
+}

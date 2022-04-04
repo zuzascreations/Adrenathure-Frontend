@@ -153,8 +153,8 @@ function EditExperience() {
       if (res.status === 404) {
         setModal('No se ha podido borrar la fecha./Error desconocido.')
 
+        }
       }
-    }
     } else {
       setModal('escoge fecha primero')
     }
@@ -182,17 +182,17 @@ function EditExperience() {
           </label>
           <label>
             <span>Nombre experiencia</span>
-            <br/>
+            <br />
             <input size='sm' required name="name" value={experienceName} onChange={e => setExperienceName(e.target.value)} />
           </label>
           <label>
             <span>Descripcion experiencia</span>
-            <br/>
+            <br />
             <textarea required name="description" value={experienceDescription} onChange={e => setExperienceDescription(e.target.value)} />
           </label>
-          <label>
-            <span>Destino: {experiences[0].placeName}</span>
-            <br/>
+          <div className="form-line">
+            <span>Destino actual  <span className="false-input">{experiences[0].placeName}</span></span>
+            <br />
             <span>  Cambiar destino</span>
             <select defaultValue={''} className='select' onChange={e => setPlace_id(e.target.value)} name='escoge destino'>
               <option disabled></option>
@@ -202,10 +202,10 @@ function EditExperience() {
                 )
               }
             </select>
-          </label>
+          </div>
           <label>
             <span>Precio</span>
-            <br/>
+            <br />
             <input required name="price" value={price} onChange={e => setPrice(e.target.value)} />
             <span>€</span>
           </label>
@@ -218,42 +218,42 @@ function EditExperience() {
         <form onSubmit={handleSubmitEditDates}>
           <fieldset className='form-section'>
             <legend>EDITAR FECHAS</legend>
-            <label>
+            <div className="form-line">
               <span>Fechas existentes</span>
               <select defaultValue={'Elige fecha para editar'} className='select' onChange={handleChangeSelectDate} name='escoge fecha'>
-                    <option disabled >Elige fecha para editar</option>
-                  {experiences &&
-                    experiences.map(experience =>
+                <option disabled >Elige fecha para editar</option>
+                {experiences &&
+                  experiences.map(experience =>
                     <option required key={experience.idDate} id={experience.idDate} name='date' value={experience.experienceDate} >{experience.experienceDate}</option>
-                    )
-                  }
+                  )
+                }
               </select>
-              <div id='delete-date-button' onClick={handleDelete}>BORRAR FECHA</div>
+              <button id='delete-date-button' className="link" onClick={handleDelete}>BORRAR FECHA</button>
               <span>{messageDelete}</span>
-            </label>
+            </div>
             {(!experiences[0].experienceDate || !experiences[0].experienceHour || !experiences[0].totalSeats) ?
-            <p>No hay fechas disponibles</p> :
-            <>
-              <label>
-                <span> Cambiar hora</span>
-                <br/>
-                <input type='time' name="hour" value={experienceHour} onChange={e => {
-                  setExperienceHour(e.target.value)
-                }} />
-              </label>
-              <label>
-                <span> Cambiar fecha</span>
-                <br/>
-                <input type='date' name="date" value={experienceDate} onChange={e => {
-                  setExperienceDate(e.target.value)
-                }} />
-              </label>
-              <label>
-                <span>Plazas totales</span>
-                <br/>
-                <input max="20" min="1" type="number" name="seats" value={totalSeats} onChange={e => setTotalSeats(e.target.value)} />
-              </label>
-            </>
+              <p>No hay fechas disponibles</p> :
+              <>
+                <label>
+                  <span> Cambiar hora</span>
+                  <br />
+                  <input type='time' name="hour" value={experienceHour} onChange={e => {
+                    setExperienceHour(e.target.value)
+                  }} />
+                </label>
+                <label>
+                  <span> Cambiar fecha</span>
+                  <br />
+                  <input type='date' name="date" value={experienceDate} onChange={e => {
+                    setExperienceDate(e.target.value)
+                  }} />
+                </label>
+                <label>
+                  <span>Plazas totales</span>
+                  <br />
+                  <input max="20" min="1" type="number" name="seats" value={totalSeats} onChange={e => setTotalSeats(e.target.value)} />
+                </label>
+              </>
             }
             <button>GUARDAR</button>
             <p>{message}</p>
@@ -266,26 +266,26 @@ function EditExperience() {
           <legend>AÑADIR FECHAS NUEVAS</legend>
           <label>
             <span>Añadir fecha</span>
-            <br/>
+            <br />
             <input required type='date' name="date" onChange={e => {
               setExperienceDate(e.target.value)
             }} />
           </label>
           <label>
             <span>Añadir hora</span>
-            <br/>
+            <br />
             <input required type='time' name="hour" onChange={e => {
               setExperienceHour(e.target.value)
             }} />
           </label>
           <label>
             <span>Añadir plazas totales</span>
-            <br/>
+            <br />
             <input type='number' min='1' max='20' placeholder="Introduce plazas totales..." required name="seats" onChange={e => setTotalSeats(e.target.value)} />
           </label>
           <button>AÑADIR</button>
           <p>{messagePost}</p>
-          </fieldset>
+        </fieldset>
       </form>
       <button><Link className="link" to={'/profile/admin'}>VOLVER</Link></button>
     </div>
