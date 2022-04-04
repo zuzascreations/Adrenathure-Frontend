@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { useUser } from '../hooks'
+const BASE_URL  = process.env.REACT_APP_URL
+
 
 function UploadPhotoExperience() {
   const [file, setFile] = useState(null)
@@ -11,7 +13,7 @@ function UploadPhotoExperience() {
     fd.append('avatar', file)
     fd.append('Authorization', 'Bearer ' + user.token)
 
-    fetch('http://localhost:3000/experiences', {
+    fetch(`http://${BASE_URL}/experiences`, {
       method: 'POST',
       body: fd,
       headers: fd

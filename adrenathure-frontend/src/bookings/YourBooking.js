@@ -2,18 +2,18 @@ import useFetch from '../useFetch'
 import { Link, useParams } from "react-router-dom"
 import { Suspense } from 'react'
 import Loading from '../Loading'
-
+const BASE_URL  = process.env.REACT_APP_URL
 
 
 function YourBooking() {
   const { id } = useParams()
-  const booking = useFetch('http://localhost:3000/bookings/' + id)
+  const booking = useFetch(`http://${BASE_URL}/bookings/${id}`)
 
   return booking && (
     <div className="booking">
       <h1>Datos de tu reserva:</h1>
       <h2>Tu experiencia: {booking.experienceName}</h2>
-      <img className='experience-photo' src={`http://localhost:3000/${booking.experiencePhoto}`} alt="avatar" />
+      <img className='experience-photo' src={`http://${BASE_URL}/${booking.experiencePhoto}`} alt="avatar" />
       <p>Número de reserva: {booking.bookingNumber}</p>
       <p>Fecha de la reserva: {booking.bookingDate.substring(0, 10)}</p>
       <p>Usuario: {booking.firstName} {booking.lastName}</p>

@@ -4,9 +4,11 @@ import Loading from '../Loading'
 import './Places.css'
 import useFetch from 'fetch-suspense'
 import { Link } from "react-router-dom"
+const BASE_URL  = process.env.REACT_APP_URL
+
 
 function PlacesMap() {
-  const places = useFetch('http://localhost:3000/places/')
+  const places = useFetch(`http://${BASE_URL}/places/`)
 
   return (
     <MapContainer id="placesMap"center={[40.4310754, -3.7028892]} zoom={6}>

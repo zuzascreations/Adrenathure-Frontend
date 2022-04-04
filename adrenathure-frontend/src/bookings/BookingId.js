@@ -1,17 +1,18 @@
 import { Suspense } from 'react'
 import Loading from '../Loading'
 import useFetch from "../useFetch"
-import { Link, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import PunctuationToRate from '../users/PunctuationToRate'
+const BASE_URL  = process.env.REACT_APP_URL
 
 function BookingId() {
   const { id } = useParams()
-  const bookingId = useFetch('http://localhost:3000/bookings/' + id)
+  const bookingId = useFetch(`http://${BASE_URL}/bookings/${id}`)
 
   return bookingId && (
     <>
       <div>
-        <img className='experience-photo' src={`http://localhost:3000/${bookingId.experiencePhoto}`} alt="avatar" />
+        <img className='experience-photo' src={`http://${BASE_URL}/${bookingId.experiencePhoto}`} alt="avatar" />
       </div>
       <div className="booking-id">
         <h4>nº reserva: {bookingId.bookingNumber}</h4>

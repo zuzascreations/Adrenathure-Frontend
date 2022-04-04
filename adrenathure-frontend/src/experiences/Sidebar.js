@@ -3,9 +3,11 @@ import { Link } from "react-router-dom"
 import Loading from "../Loading"
 import useFetch from "../useFetch"
 import './Sidebar.css'
+const BASE_URL  = process.env.REACT_APP_URL
+
 
 function Sidebar() {
-  const experiences = useFetch('http://localhost:3000/experiences')
+  const experiences = useFetch(`http://${BASE_URL}/experiences`)
   return experiences && (
     <aside className="sidebar">
       <ul className="ul-sidebar">

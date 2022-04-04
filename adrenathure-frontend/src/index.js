@@ -8,6 +8,7 @@ import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux';
 import rootReducer from './reducer';
 
+
 const localStorageMiddleware = store => next => action => {
   let result = next(action)
   localStorage.setItem('session', JSON.stringify(store.getState().user))

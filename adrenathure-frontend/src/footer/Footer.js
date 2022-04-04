@@ -3,10 +3,12 @@ import { Suspense } from 'react'
 import { Link } from "react-router-dom"
 import Loading from '../Loading'
 import './Footer.css'
+const BASE_URL  = process.env.REACT_APP_URL
+
 
 function Footer() {
-  const experiences = useFetch('http://localhost:3000/experiences')
-  const placeId = useFetch('http://localhost:3000/places/')
+  const experiences = useFetch(`http://${BASE_URL}/experiences`)
+  const placeId = useFetch(`http://${BASE_URL}/places/`)
   const update = new Date().getFullYear()
   return (
     <div className='footer'>

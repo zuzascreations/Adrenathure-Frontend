@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom'
 import { useSetModal } from '../hooks'
 import '../Modal.css'
 import './SearchBar.css'
+const BASE_URL  = process.env.REACT_APP_URL
+
 
 function SearchBarCopy() {
   const setModal = useSetModal()
@@ -21,7 +23,7 @@ function SearchBarCopy() {
   const [valueDateFrom, setValueDateFrom] = useState('')
   const [valueDateTo, setValueDateTo] = useState('')
 
-  const placesData = useFetch('http://localhost:3000/places')
+  const placesData = useFetch(`http://${BASE_URL}/places`)
 
   const showDefault = () => {
     setValuePlace('')

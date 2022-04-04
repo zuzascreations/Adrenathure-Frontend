@@ -8,7 +8,7 @@
 
 .headerFooter {
   padding-top: 10px;
-  height: 200px;
+  height: 250px;
   display: flex;
   justify-content: space-between;
   padding-left: 30px;
@@ -132,6 +132,7 @@
     grid-template-columns:115px 120px 60px;
     grid-template-rows: 20px 120px 120px;
     padding-left: 10px;
+    height: 200px;
 }
 
   #footerHeader {

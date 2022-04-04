@@ -6,23 +6,27 @@ import useFetch from '../useFetch'
 import UploadAvatar from './UploadAvatar'
 import Avatar from './Avatar'
 import '../Form.css'
+const BASE_URL  = process.env.REACT_APP_URL
+
 
 function PersonalDataEdit() {
   const setModal = useSetModal()
-  const personalData = useFetch('http://localhost:3000/users/profile')
+  const personalData = useFetch(`http://${BASE_URL}/users/profile`)
   const [firstName, setFirstName] = useState(personalData.firstName || '')
   const [lastName, setLastName] = useState(personalData.lastName || '')
   const [email, setEmail] = useState(personalData.email || '')
   const [password, setPassword] = useState('')
+  const [password2, setPassword2] = useState('')
   const [message, setMessage] = useState(null)
   const navigate = useNavigate()
   const user = useUser()
 
   const handleSubmit = async e => {
     e.preventDefault()
-    const res = await fetch('http://localhost:3000/users', {
+
+    const res = await fetch(`http://${BASE_URL}/users`, {
       method: 'PUT',
-      body: JSON.stringify({ firstName, lastName, email, password }),
+      body: JSON.stringify({ firstName, lastName, email  }),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + user.token
@@ -41,7 +45,36 @@ function PersonalDataEdit() {
       setMessage('Error desconocido')
     }
   }
-
+  
+  const handleSubmitPass = async e => {
+    e.preventDefault()
+    if (password === password2 ) {
+    const res = await fetch(`http://${BASE_URL}/users`, {
+      method: 'PUT',
+      body: JSON.stringify({ password }),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + user.token
+      }
+    })
+    // const data = await res.json()
+    if (res.ok) {
+      setMessage('Updated successfully')
+      setModal(<span>Contraseña actualizada correctamente</span>)
+      setTimeout(() => {
+        navigate('/Profile')
+        setModal(null)
+        window.location.reload(true)
+      }, 2000)
+    } else {
+      setMessage('Error desconocido')
+    }
+  }else {
+    setModal(<p>Las contraseñas deben ser iguales</p>)
+    setPassword('')
+    setPassword2('')
+  }
+  }
   if (!user) {
     return <Navigate to="/login" />
   }
@@ -73,10 +106,24 @@ function PersonalDataEdit() {
             <br />
             <input name="email" value={email} onChange={e => setEmail(e.target.value)} />
           </label>
+          <p>* campos obligatorios</p>
+          <br />
+          <button>GUARDAR</button>
+          <p>{message}</p>
+        </fieldset>
+      </form>
+      <form onSubmit={handleSubmitPass}>
+        <fieldset className="form-section">
+          <legend>CAMBIAR CONTRASEÑA</legend>
           <label>
-            <span>contraseña*</span>
+            <span>Nueva contraseña*</span>
             <br />
             <input required type="password" placeholder="Confirma tu contraseña..." name="password" value={password} onChange={e => setPassword(e.target.value)} />
+          </label>
+          <label>
+            <span>Confirma la nueva contraseña*</span>
+            <br />
+            <input required type="password" placeholder="Confirma tu contraseña..." name="password" value={password2} onChange={e => setPassword2(e.target.value)} />
           </label>
           <p>* campos obligatorios</p>
           <br />

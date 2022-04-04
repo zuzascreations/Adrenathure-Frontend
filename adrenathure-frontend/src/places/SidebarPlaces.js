@@ -3,11 +3,12 @@ import Loading from '../Loading'
 import useFetch from 'fetch-suspense'
 import { Link } from "react-router-dom"
 import '../experiences/Experiences.css'
-import PlacesMap from './PlacesMap'
+const BASE_URL  = process.env.REACT_APP_URL
+
 
 
 function SidebarPlaces() {
-  const places = useFetch('http://localhost:3000/places')
+  const places = useFetch(`http://${BASE_URL}/places`)
   
   return places && (
     
@@ -16,7 +17,7 @@ function SidebarPlaces() {
         places.map(place =>
           <div key={place.id} className='articleExp'>
             <div className='photoArticle'>
-              <img className='photoExperience' src={`http://localhost:3000/${place.photo}`} alt='foto experiencia'></img>
+              <img className='photoExperience' src={`http://${BASE_URL}/${place.photo}`} alt='foto experiencia'></img>
             </div>
             <div key={place.id} >
               <Link to={'/places/' + place.id} className='title-exp'>

@@ -3,11 +3,13 @@ import Loading from '../Loading'
 import useFetch from '../useFetch'
 import { Link } from "react-router-dom"
 import { useParams } from "react-router-dom"
+const BASE_URL  = process.env.REACT_APP_URL
+
 
 function SidebarExperiencesPlaceId() {
   const { id } = useParams()
 
-  const experiencesPlaceId = useFetch('http://localhost:3000/experiences/place/' + id)
+  const experiencesPlaceId = useFetch(`http://${BASE_URL}/experiences/place/${id}`)
 
   return experiencesPlaceId && (
     <aside className="sidebar-experience-place">
