@@ -1,4 +1,4 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=BioRhyme+Expanded:wght@300&family=BioRhyme:wght@200&family=Montserrat:wght@300;700&family=Open+Sans:wght@400;700&family=Roboto:ital,wght@0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=BioRhyme+Expanded:wght@300&family=BioRhyme:wght@200&family=Montserrat:wght@300;700&family=Open+Sans:wght@400;700&family=Roboto:ital,wght@0,700;1,400;1,700&display=swap');
 
 .title {
   font-family: BioRhyme Expanded;
@@ -6,9 +6,7 @@
   font-weight: normal;
   text-decoration: none;
   color: rgb(0, 0, 0);
-  display: flex;
-  align-items: top;
-  justify-content: center;
+  height: fit-content;
 }
 
 .transparencia {
@@ -16,33 +14,85 @@
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 0px;
-  height: 130px;
-  display: flex;
-  padding-left: 30px;
-  padding-right: 30px;
+  height: 150px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
 }
 
-.clientSpace {
-  padding-top: 50px;
-  padding-right: 75px;
-  text-decoration: none;
-  color: black;
+
+.ulMenu{
+  display: none;
+}
+
+#menu:checked  ~ ul{
+  display:block;
+}
+
+
+#menu {
+  display: none;
+}
+
+.menuLabel {
+  box-sizing: border-box;
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  font-weight: bold;
+  text-align: center;
+  user-select: none;
+}
+
+/* Estilo del boton cuando se pasa el mouse por encima*/
+.menuLabel:hover{
+  background: rgb(255, 254, 254);
+}
+
+/* Estilo del boton cuando el menú está expandido*/
+input:checked ~ .menuLabel {
+  background: lightgrey; 
+}
+
+.ulMenu{
+  margin-top:0;
+  padding: 0;
+  width: fit-content;
+  border-radius: 10px;
+  background: rgb(71, 71, 71);
+}
+#navMenu {
+  margin-top: 10px;
+  width: 200px;
+}
+
+.liMenu {
+  display: block;
+  margin: 0;
+  padding: 5px;
+  list-style: none;
+  width: 100px;
+}
+
+/*Estilo cuando el mouse pasa encima de cada link del menu*/
+.liMenu:hover {
+  filter: brightness(110%);
 }
 
 .logout {
-  padding-top: 50px;
-  padding-right: 75px;
   text-decoration: none;
-  color: black;
+  color: rgb(255, 255, 255);
+  font-style: italic;
 }
 
-nav {
-  margin-bottom: 0px;
+#header-nav {
+  padding: 0px 30px;
   height: 50px;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   justify-content: space-around;
   align-items: center;
   border-top: 1px solid black;
@@ -50,60 +100,28 @@ nav {
 }
 
 .navLinks {
-  padding-right: 50px;
+  text-align: center;
   text-decoration: none;
   color: black;
   border-right: solid 2px black;
   border-left: solid 2px black;
-  padding-right: 10px;
   padding-left: 10px;
-  font-size: 23px;
 }
 
 .buttonUsername {
-  margin-top: 50px;
+  margin-top: 10px;
   border: none;
   background-color: white;
   background-color: rgba(247, 247, 247, 0.5);
   font-size: 17px;
 }
 
-.dropdown {
-  display: inline-block;
-  position: relative;
-  min-width: 120px;
-}
-
-.dropdown-content {
-  background-color: white;
-  display: none;
-  position: absolute;
-  width: 100%;
-  overflow: auto;
-  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.4);
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-.dropdown-content a {
-  display: block;
-  color: #000000;
-  padding: 5px;
-  text-decoration: none;
-}
-
-.dropdown-content a:hover {
-  color: #FFFFFF;
-  background-color: #ddd;
-}
-
 .rrss {
-  padding: 20px;
+  padding-top: 20px;
+  height: fit-content;
 }
 
-.rrss-selector {
+.rrss-header {
   width: 25px;
   margin-right: 10px;
   margin-left: 0px;
@@ -121,4 +139,49 @@ nav {
   width: 100%;
   height: 400px;
   object-fit: cover;
-} */
+}
+
+@media (max-width: 600px) {
+  .header {
+    height: 150px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 2fr;
+  }
+  #navMenu {
+    place-items: right;
+    padding-left: 10px;
+  }
+  .buttonUsername {
+    font-size: small;
+    font-style: normal;
+  }
+  .title {
+    font-family: BioRhyme Expanded;
+    font-size: x-large;
+    font-weight: 500;
+    color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  #header-nav {
+    height: 130px;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .dropdown {
+    display: flex;
+    justify-content: right;
+    padding-right: 5px;
+  }
+  .dropdown-content {
+    display: none;
+  }
+}
+
+@media (max-width: 800px) {
+
+  .navLinks {
+    border: none;
+  }
+}

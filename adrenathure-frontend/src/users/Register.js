@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom"
 import { useSetModal, useSetRegister } from "../hooks"
 import Loading from "../Loading"
 import '../Form.css'
+const BASE_URL  = process.env.REACT_APP_URL
+
 
 function Register() {
   const [email, setEmail] = useState('')
@@ -15,7 +17,7 @@ function Register() {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    const res = await fetch('http://localhost:3000/users', {
+    const res = await fetch(`http://${BASE_URL}/users`, {
       method: 'POST',
       body: JSON.stringify({ email, password: pass, firstName, lastName }),
       headers: {

@@ -3,15 +3,15 @@ import { useNavigate, Navigate, useParams, Link } from 'react-router-dom'
 import { useSetModal, useUser } from '../hooks'
 import Loading from '../Loading'
 import useFetch from '../useFetch'
-// import './EditExperience.css'
 import '../Form.css'
+const BASE_URL  = process.env.REACT_APP_URL
 
 
 function EditExperience() {
   const { id } = useParams()
   const setModal = useSetModal()
-  const experiences = useFetch('http://localhost:3000/experiences/' + id)
-  const places = useFetch('http://localhost:3000/places')
+  const experiences = useFetch(`http://${BASE_URL}/experiences/${id}`)
+  const places = useFetch(`http://${BASE_URL}/places`)
 
 
 
@@ -51,7 +51,7 @@ function EditExperience() {
 
   const handleSubmitEdit = async e => {
     e.preventDefault()
-    const res = await fetch('http://localhost:3000/experiences/admin/' + id, {
+    const res = await fetch(`http://${BASE_URL}/experiences/admin/${id}`, {
       method: 'PUT',
       body: fd,
       headers: {
@@ -79,7 +79,7 @@ function EditExperience() {
 
   const handleSubmitEditDates = async e => {
     e.preventDefault()
-    const res = await fetch('http://localhost:3000/dates/' + id, {
+    const res = await fetch(`http://${BASE_URL}/dates/${id}`, {
       method: 'PUT',
       body: fdDate,
       headers: {
@@ -111,7 +111,7 @@ function EditExperience() {
 
   const handleSubmitPost = async e => {
     e.preventDefault()
-    const res = await fetch('http://localhost:3000/dates/' + id, {
+    const res = await fetch(`http://${BASE_URL}/dates/${id}`, {
       method: 'POST',
       body: JSON.stringify({ experienceDate, experienceHour, totalSeats }),
       headers: {
@@ -137,7 +137,7 @@ function EditExperience() {
 
   const handleDelete = async () => {
     if (dateId) {
-      const res = await fetch('http://localhost:3000/dates', {
+      const res = await fetch(`http://${BASE_URL}/dates`, {
       method: 'DELETE',
       body: JSON.stringify({ dateId }),
       headers: {
@@ -174,7 +174,7 @@ function EditExperience() {
         <fieldset className='form-section'>
           <legend>EDITAR EXPERIENCIA</legend>
           <label>
-            <img className='photo-edit' src={`http://localhost:3000/${experiences[0].experiencePhoto}`} alt="avatar" />
+            <img className='photo-edit' src={`http://${BASE_URL}/${experiences[0].experiencePhoto}`} alt="avatar" />
           </label>
           <label>
             Cambiar foto experiencia

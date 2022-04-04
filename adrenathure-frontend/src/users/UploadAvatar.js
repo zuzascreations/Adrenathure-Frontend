@@ -1,6 +1,8 @@
 import { Suspense, useState } from 'react'
 import { useSetModal, useUser } from '../hooks'
 import Loading from '../Loading'
+const BASE_URL  = process.env.REACT_APP_URL
+
 
 
 function UploadAvatar() {
@@ -14,7 +16,7 @@ function UploadAvatar() {
     fd.append('avatar', file)
     fd.append('Authorization', 'Bearer ' + user.token)
 
-    const res = fetch('http://localhost:3000/users/uploads', {
+    const res = fetch(`http://${BASE_URL}/users/uploads`, {
       method: 'POST',
       body: fd,
       headers: fd

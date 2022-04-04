@@ -4,6 +4,8 @@ import { useRegister, useSetUser } from "../hooks"
 import Loading from "../Loading"
 import './Login.css'
 import '../Form.css'
+const BASE_URL  = process.env.REACT_APP_URL
+
 
 function Login() {
   const [email, setEmail] = useState('')
@@ -15,7 +17,7 @@ function Login() {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    const res = await fetch('http://localhost:3000/users/login', {
+    const res = await fetch(`http://${BASE_URL}/users/login`, {
       method: 'POST',
       body: JSON.stringify({ email, password }),
       headers: {

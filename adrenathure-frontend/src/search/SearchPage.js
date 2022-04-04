@@ -3,11 +3,13 @@ import { Suspense } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import Loading from '../Loading'
 import './SearchPage.css'
+const BASE_URL  = process.env.REACT_APP_URL
+
 
 function SearchPage() {
 
   let { search } = useLocation()
-  const experiences = useFetch(`http://localhost:3000/experiences${search}`)
+  const experiences = useFetch(`http://${BASE_URL}/experiences${search}`)
 
   return (
     <>
@@ -21,7 +23,7 @@ function SearchPage() {
           {experiences &&
             experiences.map(experience =>
               <div key={experience.experience_id} className='articleExp'>
-                <img className='photoExperience' src={`http://localhost:3000/${experience.experiencePhoto}`} alt="avatar" />
+                <img className='photoExperience' src={`http://${BASE_URL}/${experience.experiencePhoto}`} alt="avatar" />
                 <article key={experience.id} >
                 <Link className='title-exp' to={'/experiences/' + experience.experience_id}>{experience.experienceName}:</Link>
                 <p className='description'>Descripción: {experience.experienceDescription}</p>

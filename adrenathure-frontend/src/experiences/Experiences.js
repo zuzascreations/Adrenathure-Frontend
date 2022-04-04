@@ -3,9 +3,11 @@ import { Suspense } from 'react'
 import { Link } from "react-router-dom"
 import Loading from '../Loading'
 import './Experiences.css'
+const BASE_URL  = process.env.REACT_APP_URL
+
 
 function Experiences() {
-  const experiences = useFetch('http://localhost:3000/experiences')
+  const experiences = useFetch(`http://${BASE_URL}/experiences`)
 
   return experiences && (
     <div className='experiences'>
@@ -13,7 +15,7 @@ function Experiences() {
         experiences.map(experience =>
           <div key={experience.id} className='articleExp'>
             <div className='photoArticle'>
-              <img className='photoExperience' src={`http://localhost:3000/${experience.experiencePhoto}`} alt='foto experiencia'></img>
+              <img className='photoExperience' src={`http://${BASE_URL}/${experience.experiencePhoto}`} alt='foto experiencia'></img>
             </div>
             <div key={experience.id} >
               <Link to={'/experiences/' + experience.id} className='title-exp'>

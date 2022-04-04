@@ -63,20 +63,20 @@
   padding: 0px 0px 20px 0px;
 }
 
-.experience-title > h2 {
+.experience-title>h2 {
   padding: 20px;
-  font-family: Merriweather, 'Amatic Sc', Arial, Helvetica, sans-serif ;
+  font-family: Merriweather, 'Amatic Sc', Arial, Helvetica, sans-serif;
 }
 
-.experience-title > div {
+.experience-title>div {
   padding: 0px 20px 20px 20px;
 }
 
 .experience-text {
-  font-family: Merriweather, 'Amatic Sc', Arial, Helvetica, sans-serif ;
+  font-family: Merriweather, 'Amatic Sc', Arial, Helvetica, sans-serif;
   line-height: 190%;
   font-size: medium;
-  font-weight:300;
+  font-weight: 300;
   padding: 50px;
 }
 
@@ -87,8 +87,8 @@
 }
 
 .experience-price {
-  font-family: Merriweather, 'Amatic Sc', Arial, Helvetica, sans-serif ;
-  font-weight:bold ;
+  font-family: Merriweather, 'Amatic Sc', Arial, Helvetica, sans-serif;
+  font-weight: bold;
   padding-left: 50px;
 }
 
@@ -96,7 +96,7 @@
   border: none;
   background-color: rgb(250, 240, 240);
   width: fit-content;
-  font-family: Merriweather, 'Amatic Sc', Arial, Helvetica, sans-serif ;
+  font-family: Merriweather, 'Amatic Sc', Arial, Helvetica, sans-serif;
   font-weight: bold;
 }
 
@@ -108,46 +108,76 @@
 /* media query */
 
 @media (min-width: 600px) {
-  .experience { grid-template-columns: 1fr}
-  
+  .experience {
+    grid-template-columns: 1fr
+  }
+
 }
 
 @media (min-width: 900px) {
-  .experience { grid-template-columns: 1fr 9fr}
+  .experience {
+    grid-template-columns: 1fr 9fr
+  }
 }
 
 @media (min-width: 900px) {
-  .space-experience { grid-template-columns: 1fr}
+  .space-experience {
+    grid-template-columns: 1fr
+  }
 
 }
 
 @media (min-width: 1400px) {
-  .space-experience { grid-template-columns: 1fr 3fr}
+  .space-experience {
+    grid-template-columns: 1fr 3fr
+  }
 }
 
 @media (min-width: 400px) {
-  .price-date { grid-template-columns: 1fr; place-items: center}
-  .experience-content > p {text-align: center;}
+  .price-date {
+    grid-template-columns: 1fr;
+    place-items: center
+  }
+
+  .experience-content>p {
+    text-align: center;
+  }
 }
 
 
 @media (min-width: 1400px) {
-  .price-date { grid-template-columns: 2fr 3fr 3fr; justify-items: start}
-  .experience-content > p {text-align: left;}
+  .price-date {
+    grid-template-columns: 2fr 3fr 3fr;
+    justify-items: start
+  }
+
+  .experience-content>p {
+    text-align: left;
+  }
 }
 
 @media (max-width: 600px) {
   .space-content {
     width: 300px;
   }
+
   .space-photo {
     width: 300px;
     height: 300px;
     padding: 0;
   }
+
   .space-place {
     padding: 0;
     place-items: center;
   }
-  
+
+  .experience-text {
+    font-size: small;
+  }
+
+  .select-date {
+    width: 300px;
+    font-size: x-small;
+  }
 }

@@ -4,16 +4,18 @@ import useFetch from "../useFetch"
 import { Link } from "react-router-dom"
 import { useSetModal, useUser } from '../hooks'
 import '../List.css'
+const BASE_URL  = process.env.REACT_APP_URL
+
 
 function AllPlaces() {
   const user = useUser()
   const setModal = useSetModal()
 
-  const places = useFetch('http://localhost:3000/places')
+  const places = useFetch(`http://${BASE_URL}/places`)
 
   const handleClick = async (e) => {
     const placeId = e.target.value
-    const res = await fetch('http://localhost:3000/places/admin', {
+    const res = await fetch(`http://${BASE_URL}/places/admin`, {
       method: 'DELETE',
       body: JSON.stringify({ placeId }),
       headers: {
@@ -63,7 +65,7 @@ function AllPlaces() {
             <span className='columna'>{place.placeDescription}</span>
             <span className='columna'>{place.coordsLong}</span>
             <span className='columna'>{place.coordsLat}</span>
-            <span><img className='photo-edit' src={`http://localhost:3000/${place.photo}`} alt="avatar" /></span>
+            <span><img className='photo-edit' src={`http://${BASE_URL}/${place.photo}`} alt="avatar" /></span>
           </div>
           <div class="section-buttons">
             <button className="button-link"><Link className="link" to={"/profile/admin/editPlace/" + place.id}>EDITAR DESTINO</Link></button>

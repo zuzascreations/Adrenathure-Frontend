@@ -2,11 +2,13 @@ import { Suspense } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Loading from './Loading'
 import useFetch from './useFetch'
+const BASE_URL  = process.env.REACT_APP_URL
+
 
 function AccountActivated() {
   let { validateCode }= useParams()
 
-  const emailValidate = useFetch('http://localhost:3000/users/validate/' + validateCode)
+  const emailValidate = useFetch(`http://${BASE_URL}/users/validate/${validateCode}`)
 
   return (
     <div id='activatedPage'>

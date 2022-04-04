@@ -4,12 +4,15 @@ import { useSetModal, useUser } from '../hooks'
 import Loading from '../Loading'
 import useFetch from '../useFetch'
 import '../Form.css'
+const BASE_URL  = process.env.REACT_APP_URL
+
+
 
 
 function EditPlace() {
   const { id } = useParams()
   const setModal = useSetModal()
-  const places = useFetch('http://localhost:3000/places/' + id)
+  const places = useFetch(`http://${BASE_URL}/places/${id}`)
 
   const [placeName, setPlaceName] = useState(places.placeName || '')
   const [placeDescription, setPlaceDescription] = useState(places.placeDescription || '')
@@ -32,7 +35,7 @@ function EditPlace() {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    const res = await fetch('http://localhost:3000/places/admin/' + id, {
+    const res = await fetch(`http://${BASE_URL}/places/admin/${id}`, {
       method: 'PUT',
       body: fd,
       headers: {
@@ -61,7 +64,7 @@ function EditPlace() {
         <fieldset className="form-section">
           <legend>EDITAR DESTINO</legend>
           <label>
-            <img className='photo-edit' src={`http://localhost:3000/${places.photo}`} alt="avatar" />
+            <img className='photo-edit' src={`http://${BASE_URL}/${places.photo}`} alt="avatar" />
           </label>
           <label>
             <span>Cambiar foto destino</span>

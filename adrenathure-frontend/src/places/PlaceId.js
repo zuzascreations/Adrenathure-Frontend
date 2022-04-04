@@ -5,14 +5,16 @@ import { useParams } from "react-router-dom"
 import ErrorBoundary from '../ErrorBoundary'
 import './Place.css'
 import SidebarExperiencesPlaceIdWrapper from './SidebarExperiencesPlaceId'
+const BASE_URL  = process.env.REACT_APP_URL
+
 
 function PlaceId() {
   const { id } = useParams()
-  const placeId = useFetch('http://localhost:3000/places/' + id)
+  const placeId = useFetch(`http://${BASE_URL}/places/${id}`)
   return placeId && (
     <div className="space-place">
       <div className="space-photo">
-        <img className='photo-place' src={`http://localhost:3000/${placeId.photo}`} alt='foto experiencia'></img>
+        <img className='photo-place' src={`http://${BASE_URL}/${placeId.photo}`} alt='foto experiencia'></img>
       </div>
       <div className="space-content">
         <h2 className="place-title">{placeId.placeName}</h2>

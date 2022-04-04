@@ -6,9 +6,11 @@ import Avatar from './Avatar'
 import './PersonalData.css'
 import ErrorBoundary from '../ErrorBoundary'
 import Bookings from '../bookings/Bookings'
+const BASE_URL  = process.env.REACT_APP_URL
+
 
 function PersonalData() {
-  const personalData = useFetch('http://localhost:3000/users/profile')
+  const personalData = useFetch(`http://${BASE_URL}/users/profile`)
   return personalData && (
     <div className="data">
       <div id='datos'>TUS DATOS</div>

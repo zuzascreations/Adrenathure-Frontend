@@ -3,14 +3,16 @@ import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import { useSetModal, useUser } from '../hooks'
 import Loading from '../Loading'
 import useFetch from '../useFetch'
+const BASE_URL  = process.env.REACT_APP_URL
+
 
 function ExperienceIdReservar() {
   const navigate = useNavigate()
   const setModal = useSetModal()
   const { id, date } = useParams()
-  const experiences = useFetch('http://localhost:3000/experiences/' + id + '/' + date)
+  const experiences = useFetch(`http://${BASE_URL}/experiences/${id}/${date}`)
 
-  const [experiencePhoto, setExperiencePhoto] = useState(experiences[0].experiencePhoto)
+  const [experiencePhoto ] = useState(experiences[0].experiencePhoto)
   const [experienceName, setExperienceName] = useState(experiences[0].experienceName)
   const [place_id, setPlace_id] = useState(experiences[0].placeName)
   const [experienceDate, setExperienceDate] = useState(date)
@@ -18,7 +20,7 @@ function ExperienceIdReservar() {
   const [availableSeats, setAvailableSeats] = useState(experiences[0].availableSeats)
   const [reservedSeats, setReservedSeats] = useState('')
   const [price, setPrice] = useState(experiences[0].price || '')
-  const [totalPrice, setTotalPrice] = useState(0)
+
 
   const user = useUser()
 
@@ -27,7 +29,7 @@ function ExperienceIdReservar() {
     let totalPrice = price * reservedSeats
     let availableSeats = experiences[0].availableSeats - reservedSeats
     e.preventDefault()
-    const res = await fetch('http://localhost:3000/bookings/' + id , {
+    const res = await fetch(`http://${BASE_URL}/bookings/${id}` , {
       method: 'POST',
       body: JSON.stringify({ experiencePhoto, experienceName, place_id, experienceDate, experienceHour, availableSeats, reservedSeats, price, totalPrice }),
       headers: {
@@ -101,7 +103,7 @@ function ExperienceIdReservar() {
           <label>
             <span>Precio total</span>
             <br/>
-            <input name="total price" type="number" value={(price * reservedSeats)} onChange={e => setTotalPrice(e.target.value)} disabled/>€
+            <input name="total price" type="number" value={(price * reservedSeats)}  disabled/>€
           </label>
           <button>ENVIAR</button>
         </fieldset>

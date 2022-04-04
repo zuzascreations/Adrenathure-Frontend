@@ -4,18 +4,19 @@ import Loading from '../Loading'
 import { useSetModal, useUser } from '../hooks'
 import { Navigate } from 'react-router-dom'
 import '../List.css'
+const BASE_URL  = process.env.REACT_APP_URL
 
 
 function AllBookings() {
   const setModal = useSetModal()
   const user = useUser()
-  const bookings = useFetch('http://localhost:3000/bookings/admin/bookings')
+  const bookings = useFetch(`http://${BASE_URL}/bookings/admin/bookings`)
 
   const handleClick = async (e) => {
     e.preventDefault()
     const bookingId = e.target.value
 
-    const res = await fetch('http://localhost:3000/bookings/admin', {
+    const res = await fetch(`http://${BASE_URL}/bookings/admin`, {
       method: 'DELETE',
       body: JSON.stringify({ bookingId }),
       headers: {

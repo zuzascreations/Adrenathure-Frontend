@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Rating } from 'react-simple-star-rating'
 import { useSetModal, useUser } from '../hooks'
 import { useParams } from "react-router-dom"
+const BASE_URL  = process.env.REACT_APP_URL
+
 
 function PunctuationToRate() {
   const setModal = useSetModal()
@@ -13,7 +15,7 @@ function PunctuationToRate() {
     setRating(rate)
     const date = new Date()
 
-    const res = await fetch('http://localhost:3000/reviews/' + id, {
+    const res = await fetch(`http://${BASE_URL}/reviews/${id}`, {
       method: 'POST',
       body: JSON.stringify({ rate, date }),
       headers: {

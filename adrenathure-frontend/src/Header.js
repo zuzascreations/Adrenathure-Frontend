@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { useSetRegister, useSetUser, useUser } from "./hooks"
-import './Header2.css'
+import './Header.css'
 import CarouselSlick from "./CarouselSlick"
 
 
@@ -13,13 +13,13 @@ function Header() {
       <div className="transparencia">
         <div className="header">
           <div className="rrss">
-            <a href='http://www.twitter.com' target='_blank' rel="noreferrer"><img src="https://global-uploads.webflow.com/5f3108520188e7588ef687b1/5f58a208666f7b5d1a711143_twitter-circular-logo.svg" alt="logo twitter" className="rrss-selector" /></a>
-            <a href='http://www.instagram.com' target='_blank' rel="noreferrer"><img src="https://global-uploads.webflow.com/5f3108520188e7588ef687b1/5f58a21b3b98e1679a71fb14_instagram-circular-logo.svg" alt="logo instagram" className="rrss-selector" /></a>
-            <a href='http://www.facebook.com' target='_blank' rel="noreferrer"><img src="https://global-uploads.webflow.com/5f3108520188e7588ef687b1/5f58a2361e897958db045d2e_facebook-circular-logo.svg" alt="logo facebook" className="rrss-selector" /></a>
-            <a href='http://www.linkedin.com' target='_blank' rel="noreferrer"><img src="https://global-uploads.webflow.com/5f3108520188e7588ef687b1/5f58a2299a0e417966e9013d_linkedin-circular-logo.svg" alt="logo linkedin" className="rrss-selector" /></a>
+            <a href='http://www.twitter.com' target='_blank' rel="noreferrer"><img src="https://global-uploads.webflow.com/5f3108520188e7588ef687b1/5f58a208666f7b5d1a711143_twitter-circular-logo.svg" alt="logo twitter" className="rrss-header" /></a>
+            <a href='http://www.instagram.com' target='_blank' rel="noreferrer"><img src="https://global-uploads.webflow.com/5f3108520188e7588ef687b1/5f58a21b3b98e1679a71fb14_instagram-circular-logo.svg" alt="logo instagram" className="rrss-header" /></a>
+            <a href='http://www.facebook.com' target='_blank' rel="noreferrer"><img src="https://global-uploads.webflow.com/5f3108520188e7588ef687b1/5f58a2361e897958db045d2e_facebook-circular-logo.svg" alt="logo facebook" className="rrss-header" /></a>
+            <a href='http://www.linkedin.com' target='_blank' rel="noreferrer"><img src="https://global-uploads.webflow.com/5f3108520188e7588ef687b1/5f58a2299a0e417966e9013d_linkedin-circular-logo.svg" alt="logo linkedin" className="rrss-header" /></a>
           </div>
-          <div><Link to='/' className="title">adrenathure</Link></div>
-          <div className="dropdown">
+          <div className="title"><Link to='/' className="title">adrenathure</Link></div>
+          {/* <div className="dropdown">
             {!user &&
               <button className='buttonUsername'>ESPACIO CLIENTE</button>}
             {user &&
@@ -35,7 +35,27 @@ function Header() {
                 <Link to={'/login'}>Iniciar sesión</Link>
               }
             </div>
-          </div>
+          </div> */}
+          <nav id="navMenu">
+            <input type="checkbox" id="menu" />
+            <label className="menuLabel" for="menu"> ☰ </label>
+            {!user &&
+              <span className='buttonUsername'> ESPACIO CLIENTE </span>}
+            {user &&
+              <span className='buttonUsername'> {user.user} </span>}
+            <ul className="ulMenu">
+              <li className="liMenu"><Link className="logout" to={'/Profile'}>Perfil</Link></li>
+              <li className="liMenu">{user &&
+                <Link className="logout" to={'/'} onClick={() => {
+                  setRegistered(false)
+                  setUser(null)
+                }}>Salir</Link>}
+                {!user &&
+                  <Link className="logout" to={'/login'}>Iniciar sesión</Link>
+                }
+              </li>
+            </ul>
+          </nav>
         </div>
         <nav id="header-nav">
           <Link to="/experiences" className='navLinks'>EXPERIENCES </Link>

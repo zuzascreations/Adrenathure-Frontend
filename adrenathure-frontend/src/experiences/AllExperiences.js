@@ -4,15 +4,16 @@ import useFetch from "../useFetch"
 import { Link } from "react-router-dom"
 import { useSetModal, useUser } from '../hooks'
 import '../List.css'
+const BASE_URL  = process.env.REACT_APP_URL
 
 function AllExperiences() {
   const setModal = useSetModal()
   const user = useUser()
-  const experiences = useFetch('http://localhost:3000/experiences')
+  const experiences = useFetch(`http://${BASE_URL}/experiences`)
 
   const handleClick = async (e) => {
     const expId = e.target.value
-    const res = await fetch('http://localhost:3000/experiences/admin', {
+    const res = await fetch(`http://${BASE_URL}/experiences/admin`, {
       method: 'DELETE',
       body: JSON.stringify({ expId }),
       headers: {
@@ -65,7 +66,7 @@ function AllExperiences() {
             <span className='columna'>{experience.placeName}</span>
             <span className='columna'>{experience.price}€</span>
             <span className='columna'>{experience.experienceDescription}</span>
-            <span><img className='photo-edit' src={`http://localhost:3000/${experience.experiencePhoto}`} alt="avatar" /></span>
+            <span><img className='photo-edit' src={`http://${BASE_URL}/${experience.experiencePhoto}`} alt="avatar" /></span>
             <span className='columna'>{'★★★★★☆☆☆☆☆'.substring(5 - experience.avgVote, 10 - experience.avgVote)}</span>
           </div>
           <div className="section-buttons">

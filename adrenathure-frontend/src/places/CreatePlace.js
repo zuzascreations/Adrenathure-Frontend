@@ -3,6 +3,8 @@ import { useNavigate, Navigate, Link } from 'react-router-dom'
 import { useSetModal, useUser } from '../hooks'
 import Loading from '../Loading'
 import '../Form.css'
+const BASE_URL  = process.env.REACT_APP_URL
+
 
 
 function CreatePlace() {
@@ -31,7 +33,7 @@ function CreatePlace() {
           fd.append('coordsLat', coordsLat)
     }
 
-    const res = await fetch('http://localhost:3000/places/admin', {
+    const res = await fetch(`http://${BASE_URL}/places/admin`, {
       method: 'POST',
       body: fd,
       headers: {
