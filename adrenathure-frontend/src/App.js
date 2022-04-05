@@ -1,6 +1,6 @@
 
 import './App.css'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import Header from './Header'
 import Footer from './footer/Footer'
 import Experiences from './experiences/Experiences'
@@ -23,10 +23,28 @@ import AccountActivated from './AccountActivated'
 import TerminosYCondiciones from './footer/TerminosYCondiciones'
 import PoliticaDePrivacidad from './footer/PoliticaDePrivacidad'
 import PoliticaDeCookies from './footer/PoliticaDeCookies'
+import { useEffect } from 'react'
 
 
 
 function App() {
+
+  const location = useLocation();
+
+
+  useEffect(() => {
+    if(location.hash) {
+
+      const element = document.querySelector(location.hash);
+
+      if(element) {
+        element.scrollIntoView();
+      }
+    } else {
+      window.scrollTo(0,0);
+    }
+  }, [location])
+
   return (
     <div className="App">
       <Header />

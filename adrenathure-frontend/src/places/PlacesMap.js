@@ -18,7 +18,7 @@ function PlacesMap() {
       {places.map(place =>
         <Marker key={place.id} position={ [place.coordsLong, place.coordsLat] }>
           <Popup>
-            <Link to= {'/places/' + place.id}>{place.placeName}</Link>
+            <Link to= {`/places/${place.id}#placeId`}>{place.placeName}</Link>
           </Popup>
         </Marker>)}
     </MapContainer>

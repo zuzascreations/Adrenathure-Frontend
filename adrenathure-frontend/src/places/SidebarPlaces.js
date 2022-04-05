@@ -11,8 +11,8 @@ function SidebarPlaces() {
   const places = useFetch(`http://${BASE_URL}/places`)
   
   return places && (
-    
     <div className="experiences">
+      <div id='places'></div>
         { places.length ?
         places.map(place =>
           <div key={place.id} className='articleExp'>
@@ -20,19 +20,18 @@ function SidebarPlaces() {
               <img className='photoExperience' src={`http://${BASE_URL}/${place.photo}`} alt='foto experiencia'></img>
             </div>
             <div key={place.id} >
-              <Link to={'/places/' + place.id} className='title-exp'>
+              <Link to={`/places/${place.id}#placeId`} className='title-exp'>
                 {place.placeName}
               </Link>
               <p className='experience-description'>{place.placeDescription}</p>
-              <Link to={'/places/' + place.id} className='button-exp'>
+              <Link to={`/places/${place.id}#placeId`} className='button-exp'>
                 DESCUBRIR MÁS
               </Link>
             </div>
           </div>
-       
         ): <p>aun no hay destinos disponibles, disculpa las molestias.</p>}
     </div>
-   
+
   )
 }
 

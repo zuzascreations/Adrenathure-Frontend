@@ -286,7 +286,7 @@ function EditExperience() {
           <p>{messagePost}</p>
         </fieldset>
       </form>
-      <button><Link className="link" to={'/profile/admin'}>VOLVER</Link></button>
+      <button><Link className="link" to={'/profile/admin#allexperiences'}>VOLVER</Link></button>
     </div>
   )
 }

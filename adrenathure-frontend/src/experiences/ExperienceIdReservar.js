@@ -62,7 +62,9 @@ function ExperienceIdReservar() {
   }
 
   return (
-      <form  className="form" onSubmit={handleSubmit}>
+    <>
+      <div id='reservar'></div>
+      <form id className="form" onSubmit={handleSubmit}>
         <fieldset className="form-section">
           <legend>Ya estás muy cerca de vivir una experiencia inolvidable!</legend>
           <label>
@@ -108,6 +110,7 @@ function ExperienceIdReservar() {
           <button>ENVIAR</button>
         </fieldset>
       </form>
+      </>
   )
 }
 

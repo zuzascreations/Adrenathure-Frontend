@@ -19,28 +19,28 @@ function Footer() {
         <section className="bodyFooter">
           <article className='footerNavLinks'>
             <div id='footerExperiences'>
-              <Link to="/experiences" className='footerLinks'>experiencias</Link>
+              <Link to="/experiences#experiences" className='footerLinks'>experiencias</Link>
               <div key={experiences.id} className='footerList'>
                 {experiences.map(experience =>
-                  <Link key={experience.id} to={'/experiences/' + experience.id} className='footerList'>
+                  <Link key={experience.id} to={`/experiences/${experience.id}#experienceId`} className='footerList'>
                     {experience.experienceName}
                   </Link>)}
               </div>
             </div>
             <div id='footerPlaces'>
-              <Link to="/places" className='footerLinks'>destinos</Link>
+              <Link to="/places#places" className='footerLinks'>destinos</Link>
               <div className="footerList">
                 {placeId.map(place =>
-                  <Link key={place.id} to={'/places/' + place.id} className='footerList'>
+                  <Link key={place.id} to={`/places/${place.id}#placeId`} className='footerList'>
                     {place.placeName}
                   </Link>)}
               </div>
             </div>
             <div id='footerAbout'>
-              <Link to="/about" className='footerLinks'>sobre nosotros</Link>
+              <Link to="/about#portada-body" className='footerLinks'>sobre nosotros</Link>
             </div>
             <div id='footerContact'>
-              <Link to="/contact" className='footerLinks'>contacto</Link>
+              <Link to="/contact#contact" className='footerLinks'>contacto</Link>
               <div className='footerEmail'>
                 <div><a href='mailto:adrenathure.info@gmail.com?subject=Consulta Experiencias' className='footerList' target='_blank' rel="noreferrer">
                   <img id='email' src="https://img.icons8.com/external-xnimrodx-blue-xnimrodx/64/000000/external-email-customer-service-xnimrodx-blue-xnimrodx-2.png" alt="email" />adrenathure.info@gmail.com</a></div>
@@ -51,11 +51,11 @@ function Footer() {
               </div>
             </div>
             <div id='footerLegal'>
-              <Link to="/terminosYCondiciones" target='_blank' rel="noreferrer" className='footerLinks'>términos legales</Link>
+              <Link to="/terminosYCondiciones#terminos" target='_blank' rel="noreferrer" className='footerLinks'>términos legales</Link>
               <div className='footerLegal'>
-                <div><Link to="/terminosYCondiciones" target='_blank' rel="noreferrer" className='footerLinks'>términos y condiciones</Link></div>
-                <div><Link to="/politicaDePrivacidad" target='_blank' rel="noreferrer" className='footerLinks'>política de privacidad</Link></div>
-                <div><Link to="/politicaDeCookies" target='_blank' rel="noreferrer" className='footerLinks'>política de cookies</Link></div>
+                <div><Link to="/terminosYCondiciones#terminos" target='_blank' rel="noreferrer" className='footerLinks'>términos y condiciones</Link></div>
+                <div><Link to="/politicaDePrivacidad#privacidad" target='_blank' rel="noreferrer" className='footerLinks'>política de privacidad</Link></div>
+                <div><Link to="/politicaDeCookies#cookies" target='_blank' rel="noreferrer" className='footerLinks'>política de cookies</Link></div>
               </div>
             </div>
           </article>

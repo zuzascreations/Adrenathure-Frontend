@@ -37,6 +37,8 @@ function AllExperiences() {
   }
 
   return experiences && (
+    <>
+    <div id='allexperiences'></div>
     <div className="list">
       <h2 className="list-title">LAS EXPERIENCIAS</h2>
       <div className='grid-list-experiences'>
@@ -79,6 +81,7 @@ function AllExperiences() {
         <button><Link className="link" to={"/profile/admin/newExperience"}>AÑADIR NUEVA EXPERIENCIA</Link></button>
       </div>
     </div>
+    </>
   )
 }
 

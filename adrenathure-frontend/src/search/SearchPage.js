@@ -25,11 +25,11 @@ function SearchPage() {
               <div key={experience.experience_id} className='articleExp'>
                 <img className='photoExperience' src={`http://${BASE_URL}/${experience.experiencePhoto}`} alt="avatar" />
                 <article key={experience.id} >
-                <Link className='title-exp' to={'/experiences/' + experience.experience_id}>{experience.experienceName}:</Link>
+                <Link className='title-exp' to={`/experiences/${experience.experience_id}#experienceId`}>{experience.experienceName}:</Link>
                 <p className='description'>Descripción: {experience.experienceDescription}</p>
                 <p className='searchData'>Destino: {experience.placeName}</p>
                 <p className='searchData'>Precio: {experience.price} €</p>
-                <Link to={'/experiences/' + experience.id} className='button-exp'>
+                <Link to={`/experiences/${experience.id}#experienceId`} className='button-exp'>
                 descubrir más
               </Link>
                 </article>

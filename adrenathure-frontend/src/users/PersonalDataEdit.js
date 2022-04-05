@@ -6,7 +6,7 @@ import useFetch from '../useFetch'
 import UploadAvatar from './UploadAvatar'
 import Avatar from './Avatar'
 import '../Form.css'
-const BASE_URL  = process.env.REACT_APP_URL
+const BASE_URL = process.env.REACT_APP_URL
 
 
 function PersonalDataEdit() {
@@ -26,7 +26,7 @@ function PersonalDataEdit() {
 
     const res = await fetch(`http://${BASE_URL}/users`, {
       method: 'PUT',
-      body: JSON.stringify({ firstName, lastName, email  }),
+      body: JSON.stringify({ firstName, lastName, email }),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + user.token
@@ -45,93 +45,96 @@ function PersonalDataEdit() {
       setMessage('Error desconocido')
     }
   }
-  
+
   const handleSubmitPass = async e => {
     e.preventDefault()
-    if (password === password2 ) {
-    const res = await fetch(`http://${BASE_URL}/users`, {
-      method: 'PUT',
-      body: JSON.stringify({ password }),
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + user.token
+    if (password === password2) {
+      const res = await fetch(`http://${BASE_URL}/users`, {
+        method: 'PUT',
+        body: JSON.stringify({ password }),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + user.token
+        }
+      })
+      // const data = await res.json()
+      if (res.ok) {
+        setMessage('Updated successfully')
+        setModal(<span>Contraseña actualizada correctamente</span>)
+        setTimeout(() => {
+          navigate('/Profile')
+          setModal(null)
+          window.location.reload(true)
+        }, 2000)
+      } else {
+        setMessage('Error desconocido')
       }
-    })
-    // const data = await res.json()
-    if (res.ok) {
-      setMessage('Updated successfully')
-      setModal(<span>Contraseña actualizada correctamente</span>)
-      setTimeout(() => {
-        navigate('/Profile')
-        setModal(null)
-        window.location.reload(true)
-      }, 2000)
     } else {
-      setMessage('Error desconocido')
+      setModal(<p>Las contraseñas deben ser iguales</p>)
+      setPassword('')
+      setPassword2('')
     }
-  }else {
-    setModal(<p>Las contraseñas deben ser iguales</p>)
-    setPassword('')
-    setPassword2('')
-  }
   }
   if (!user) {
     return <Navigate to="/login" />
   }
 
   return (
-    <div className="form">
-      <fieldset className="form-section">
-        <legend>EDITAR FOTO</legend>
-        <div className="avatar-edit">
-          <Avatar />
-          <UploadAvatar />
-        </div>
-      </fieldset>
-      <form onSubmit={handleSubmit}>
+    <>
+      <div id='editarPerfil' />
+      <div className="form">
         <fieldset className="form-section">
-          <legend>EDITAR DATOS PERSONALES</legend>
-          <label>
-            <span>Nombre*</span>
-            <br />
-            <input name="firstName" value={firstName} onChange={e => setFirstName(e.target.value)} />
-          </label>
-          <label>
-            <span>Apellidos*</span>
-            <br />
-            <input name="lastName" value={lastName} onChange={e => setLastName(e.target.value)} />
-          </label>
-          <label>
-            <span>E-mail*</span>
-            <br />
-            <input name="email" value={email} onChange={e => setEmail(e.target.value)} />
-          </label>
-          <p>* campos obligatorios</p>
-          <br />
-          <button>GUARDAR</button>
-          <p>{message}</p>
+          <legend>EDITAR FOTO</legend>
+          <div className="avatar-edit">
+            <Avatar />
+            <UploadAvatar />
+          </div>
         </fieldset>
-      </form>
-      <form onSubmit={handleSubmitPass}>
-        <fieldset className="form-section">
-          <legend>CAMBIAR CONTRASEÑA</legend>
-          <label>
-            <span>Nueva contraseña*</span>
+        <form onSubmit={handleSubmit}>
+          <fieldset className="form-section">
+            <legend>EDITAR DATOS PERSONALES</legend>
+            <label>
+              <span>nombre*</span>
+              <br />
+              <input name="firstName" value={firstName} onChange={e => setFirstName(e.target.value)} />
+            </label>
+            <label>
+              <span>apellidos*</span>
+              <br />
+              <input name="lastName" value={lastName} onChange={e => setLastName(e.target.value)} />
+            </label>
+            <label>
+              <span>e-mail*</span>
+              <br />
+              <input name="email" value={email} onChange={e => setEmail(e.target.value)} />
+            </label>
+            <p>* campos obligatorios</p>
             <br />
-            <input required type="password" placeholder="Introduce tu nueva contraseña..." name="password" value={password} onChange={e => setPassword(e.target.value)} />
-          </label>
-          <label>
-            <span>Confirma la nueva contraseña*</span>
+            <button>GUARDAR</button>
+            <p>{message}</p>
+          </fieldset>
+        </form>
+        <form onSubmit={handleSubmitPass}>
+          <fieldset className="form-section">
+            <legend>CAMBIAR CONTRASEÑA</legend>
+            <label>
+              <span>Nueva contraseña*</span>
+              <br />
+              <input required type="password" placeholder="Confirma tu contraseña..." name="password" value={password} onChange={e => setPassword(e.target.value)} />
+            </label>
+            <label>
+              <span>Confirma la nueva contraseña*</span>
+              <br />
+              <input required type="password" placeholder="Confirma tu contraseña..." name="password" value={password2} onChange={e => setPassword2(e.target.value)} />
+            </label>
+            <p>* campos obligatorios</p>
             <br />
-            <input required type="password" placeholder="Confirma tu contraseña..." name="password" value={password2} onChange={e => setPassword2(e.target.value)} />
-          </label>
-          <p>* campos obligatorios</p>
-          <br />
-          <button>GUARDAR</button>
-          <p>{message}</p>
-        </fieldset>
-      </form>
-    </div>
+            <button>GUARDAR</button>
+            <p>{message}</p>
+          </fieldset>
+        </form>
+      </div>
+    </>
   )
 }
 

@@ -19,7 +19,7 @@ function SidebarExperiencesPlaceId() {
             {experiencesPlaceId.map(i =>
               <li key={i.id}>
                 <div className="sidebar-experience-place-link">
-                <Link className="link-sidebar" to={'/experiences/' + i.id}>
+                <Link className="link-sidebar" to={`/experiences/${i.id}#experienceId`}>
                   {i.experienceName}
                 </Link>
                 {'★★★★★☆☆☆☆☆'.substring(5 - i.avgVote, 10 - i.avgVote)}

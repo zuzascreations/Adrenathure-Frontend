@@ -59,7 +59,7 @@ function EditPlace() {
   }
 
   return (
-    <>
+    <div id='editarDestino'>
       <form className="form" onSubmit={handleSubmit}>
         <fieldset className="form-section">
           <legend>EDITAR DESTINO</legend>
@@ -94,10 +94,10 @@ function EditPlace() {
         </fieldset>
       </form>
       <div className="volver">
-          <button><Link className="link" to={'/profile/admin/allPlaces'}>VOLVER</Link></button>
+          <button><Link className="link" to={'/profile/admin/allPlaces#allPlaces'}>VOLVER</Link></button>
       </div>
       
-    </>
+    </div>
   )
 }
 

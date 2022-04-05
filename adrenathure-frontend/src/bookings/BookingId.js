@@ -4,10 +4,11 @@ import useFetch from "../useFetch"
 import { useParams } from "react-router-dom"
 import PunctuationToRate from '../users/PunctuationToRate'
 import './BookingId.css'
+const BASE_URL  = process.env.REACT_APP_URL
 
 function BookingId() {
   const { id } = useParams()
-  const bookingId = useFetch('http://localhost:3000/bookings/' + id)
+  const bookingId = useFetch(`http://${BASE_URL}/bookings/${id}`)
 
   return bookingId && (
     <div className="booking-space">
