@@ -8,7 +8,6 @@ import './BookingId.css'
 function BookingId() {
   const { id } = useParams()
   const bookingId = useFetch('http://localhost:3000/bookings/' + id)
-  console.log(bookingId)
 
   return bookingId && (
     <div className="booking-space">

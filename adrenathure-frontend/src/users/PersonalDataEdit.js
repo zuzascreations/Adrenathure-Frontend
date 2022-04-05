@@ -92,17 +92,17 @@ function PersonalDataEdit() {
         <fieldset className="form-section">
           <legend>EDITAR DATOS PERSONALES</legend>
           <label>
-            <span>nombre*</span>
+            <span>Nombre*</span>
             <br />
             <input name="firstName" value={firstName} onChange={e => setFirstName(e.target.value)} />
           </label>
           <label>
-            <span>apellidos*</span>
+            <span>Apellidos*</span>
             <br />
             <input name="lastName" value={lastName} onChange={e => setLastName(e.target.value)} />
           </label>
           <label>
-            <span>e-mail*</span>
+            <span>E-mail*</span>
             <br />
             <input name="email" value={email} onChange={e => setEmail(e.target.value)} />
           </label>
@@ -118,7 +118,7 @@ function PersonalDataEdit() {
           <label>
             <span>Nueva contraseña*</span>
             <br />
-            <input required type="password" placeholder="Confirma tu contraseña..." name="password" value={password} onChange={e => setPassword(e.target.value)} />
+            <input required type="password" placeholder="Introduce tu nueva contraseña..." name="password" value={password} onChange={e => setPassword(e.target.value)} />
           </label>
           <label>
             <span>Confirma la nueva contraseña*</span>

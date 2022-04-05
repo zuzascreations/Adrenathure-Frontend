@@ -34,6 +34,10 @@
   gap: 10px;
 }
 
+.select-destino {
+  width: fit-content;
+}
+
 input {
   padding:7px;
   margin-top: 7px;
@@ -97,3 +101,13 @@ button {
     height: 100px;
   }
 }
+
+@media (max-width: 1024px) {
+  .form-line {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0px;
+  }
+}
+
+

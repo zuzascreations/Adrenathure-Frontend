@@ -28,7 +28,6 @@
     /* padding: 30px; */
     width: fit-content;
     height: fit-content;
-    
   }
   #placesMap {
     width: 300px;
@@ -36,8 +35,8 @@
    text-align: center;
    padding: 10px;
   }
-  .sidebar {
-    width: fit-content;
-  }
+  /* .sidebar {
+    max-width: 600px;
+  } */
 
 }
