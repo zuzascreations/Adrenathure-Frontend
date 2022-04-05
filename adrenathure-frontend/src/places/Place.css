@@ -98,7 +98,7 @@
   .place { grid-template-columns: 1fr}
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1000px) {
   .place { grid-template-columns: 1fr 9fr}
 }
 
@@ -107,11 +107,17 @@
 
 }
 
-@media (min-width: 1400px) {
+@media (min-width: 1500px) {
   .space-place { grid-template-columns: 1fr 3fr}
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1300px) {
+  .place-text { font-size: 17px;}
+  .place-title {font-size: 25px;}
+  .photo-place {max-width: 250px;}
+}
+
+@media (max-width: 1500px) {
   .experience-content > p {text-align: center;}
   .place-text {text-align: center;}
   .ul-sidebar-exp-place {grid-template-columns: 1fr}
