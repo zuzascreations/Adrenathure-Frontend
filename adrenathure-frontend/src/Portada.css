@@ -48,5 +48,6 @@
   .imgPortada {
     width: 250px;
     height: auto;
+    place-items: center;
   }
 }

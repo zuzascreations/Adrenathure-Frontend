@@ -9,7 +9,7 @@
 
 .grid-list-experiences {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(6, minmax(150px, 1fr));
   border-top: solid 1px black;
   border-right: solid 1px black;
   margin: 25px 0px 10px 0px;
@@ -99,6 +99,7 @@ strong {
   margin-right: 20px;
   margin-left: 20px;
   background-color: white;
+  border-radius: 5px;
 }
 
 .bin:hover {
@@ -116,10 +117,17 @@ strong {
 @media (max-width: 1600px) {
   .grid-list-experiences {
     font-size: 15px;
+    overflow-x: auto;
   }
 
   .grid-list-places {
     font-size: 15px;
+    overflow-x: auto;
+  }
+
+  .grid-list-bookings {
+    font-size: 15px;
+    overflow-x: auto;
   }
 
   .photo-edit {
@@ -127,13 +135,17 @@ strong {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .grid-list-experiences {
-    font-size: 10px;
+    overflow-x: auto;
   }
 
   .grid-list-places {
-    font-size: 10px;
+    overflow-x: auto;
+  }
+
+  .grid-list-bookings {
+    overflow-x: auto;
   }
 
   .photo-edit {
@@ -141,46 +153,24 @@ strong {
   }
 }
 
-@media (max-width: 425px) {
+@media (max-width: 768px) {
   .grid-list-experiences {
-    font-size: 3px;
+    font-size: 10px;
+    overflow-x: auto;
   }
 
   .grid-list-places {
-    font-size: 3px;
+    font-size: 10px;
+    overflow-x: auto;
   }
 
-  .photo-edit {
-    max-width: 10px;
-  }
-}
-
-@media (max-width: 1300px) {
   .grid-list-bookings {
     font-size: 10px;
+    overflow-x: auto;
   }
 
   .photo-edit {
-    max-width: 10px;
-  }
-}
-
-@media (max-width: 1000px) {
-  .grid-list-bookings {
-    font-size: 7px;
-  }
-
-  .photo-edit {
-    max-width: 10px;
-  }
-}
-
-@media (max-width: 800px) {
-  .grid-list-bookings {
-    font-size: 5px;
-  }
-
-  .photo-edit {
-    max-width: 10px;
+    max-width: 40px;
+    padding: 5px;
   }
 }

@@ -192,9 +192,8 @@ function EditExperience() {
           </label>
           <div className="form-line">
             <span>Destino actual  <span className="false-input">{experiences[0].placeName}</span></span>
-            <br />
             <span>  Cambiar destino</span>
-            <select defaultValue={''} className='select' onChange={e => setPlace_id(e.target.value)} name='escoge destino'>
+            <select defaultValue={''} className="select-destino" onChange={e => setPlace_id(e.target.value)} name='escoge destino'>
               <option disabled></option>
               {places &&
                 places.map(place =>
