@@ -32,7 +32,7 @@ function YourBooking() {
         </div>
       </div>
       <div className="button-space">
-        <button><Link className="link" to='/experiences'>SEGUIR COMPRANDO</Link></button>
+        <button><Link className="link" to='/experiences#experiences'>SEGUIR COMPRANDO</Link></button>
         <button><Link className="link" to='/'>PÁGINA DE INICIO</Link></button>
       </div>
     </div>

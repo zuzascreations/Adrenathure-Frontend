@@ -20,7 +20,7 @@ function PersonalData() {
           <h4>{personalData.firstName} {personalData.lastName}</h4>
           <h4 className="email">{personalData.email}</h4>
         </div>
-        <button><Link to="/profile/editar">EDITAR PERFIL</Link></button>
+        <button><Link to="/profile/editar#editarPerfil">EDITAR PERFIL</Link></button>
       </div>
       <div id='bookingsTitleProfile'>RESERVAS</div>
       <Bookings />

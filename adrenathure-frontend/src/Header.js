@@ -44,24 +44,24 @@ function Header() {
             {user &&
               <span className='buttonUsername'> {user.user} </span>}
             <ul className="ulMenu">
-              <li className="liMenu"><Link className="logout" to={'/Profile'}>Perfil</Link></li>
+              <li className="liMenu"><Link className="logout" to={'/Profile#datos'}>Perfil</Link></li>
               <li className="liMenu">{user &&
                 <Link className="logout" to={'/'} onClick={() => {
                   setRegistered(false)
                   setUser(null)
                 }}>Salir</Link>}
                 {!user &&
-                  <Link className="logout" to={'/login'}>Iniciar sesión</Link>
+                  <Link className="logout" to={'/login#divLogin'}>Iniciar sesión</Link>
                 }
               </li>
             </ul>
           </nav>
         </div>
         <nav id="header-nav">
-          <Link to="/experiences" className='navLinks'>EXPERIENCES </Link>
-          <Link to="/places" className='navLinks'>DESTINOS</Link>
-          <Link to="/about" className='navLinks'>SOBRE NOSOTROS</Link>
-          <Link to="/contact" className='navLinks'>CONTACTO</Link>
+          <Link to="/experiences#experiences" className='navLinks'>EXPERIENCIAS </Link>
+          <Link to="/places#places" className='navLinks'>DESTINOS</Link>
+          <Link to="/about#portada-body" className='navLinks'>SOBRE NOSOTROS</Link>
+          <Link to="/contact#contact" className='navLinks'>CONTACTO</Link>
         </nav>
         <div id="carousel">
           <CarouselSlick />

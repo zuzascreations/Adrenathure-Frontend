@@ -12,12 +12,7 @@ function  ContactUs() {
     emailjs.sendForm('service_3i6elr4', 'template_huflrva', e.target, 'user_26UUVsLD3NfN5vGVKNa9G')
       .then((result) => {
         console.log(result.text)
-        setModal(
-          <>
-            <span>Gracias por contactar con nosotros. En breve nos pondremos en contacto contigo</span>
-            <button onClick={() => setModal(null)}>volver</button>
-          </>
-        )
+        setModal(<span>Gracias por contactar con nosotros. En breve nos pondremos en contacto contigo</span>)
       }, (error) => {
         console.log(error.text)
         setModal(<span>Error al enviar el formulario</span>)

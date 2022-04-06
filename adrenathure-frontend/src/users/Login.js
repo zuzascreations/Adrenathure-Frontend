@@ -44,7 +44,7 @@ function Login() {
     }
   }
   return (
-    <div className='divLogin'>
+    <div id='divLogin'>
       {registered &&
         <div id="loginRegisteredMessage">Enhorabuena tu cuenta ha sido creada con éxito. En breve recibirás un mensaje de correo electrónico con enlace para activarla.</div>
       }

@@ -13,7 +13,7 @@ function Sidebar() {
       <ul className="ul-sidebar">
         {experiences.map(experience =>
           <li key={experience.id}>
-            <Link className="link-sidebar" to={'/experiences/' + experience.id}>
+            <Link className="link-sidebar" to={`/experiences/${experience.id}#experienceId`}>
               {experience.experienceName}
             </Link>
           </li>

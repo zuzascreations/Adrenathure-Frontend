@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 function PoliticaDePrivacidad() {
 
     return(
-      <div>
+      <div id='privacidad'>
         <h1 id='header1'>Política de privacidad</h1>
         <div className='bodyCookies'>
           <h3 id='header3'>1.- Identificación y datos de contacto del responsable</h3>

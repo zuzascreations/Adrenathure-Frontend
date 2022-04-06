@@ -10,7 +10,7 @@ function Experiences() {
   const experiences = useFetch(`http://${BASE_URL}/experiences`)
 
   return experiences && (
-    <div className='experiences'>
+    <div id='experiences'>
       {experiences.length ?
         experiences.map(experience =>
           <div key={experience.id} className='articleExp'>
@@ -18,12 +18,12 @@ function Experiences() {
               <img className='photoExperience' src={`http://${BASE_URL}/${experience.experiencePhoto}`} alt='foto experiencia'></img>
             </div>
             <div key={experience.id} >
-              <Link to={'/experiences/' + experience.id} className='title-exp'>
+              <Link to={`/experiences/${experience.id}#experienceId`} className='title-exp'>
                 {experience.experienceName}
               </Link>
               <p>{'★★★★★☆☆☆☆☆'.substring(5 - experience.avgVote, 10 - experience.avgVote)}</p>
               <p className='experience-description'>{experience.experienceDescription}</p>
-              <Link to={'/experiences/' + experience.id} className='button-exp'>
+              <Link to={`/experiences/${experience.id}#experienceId`} className='button-exp'>
                 descubrir más
               </Link>
             </div>

@@ -61,7 +61,7 @@ function CreatePlace() {
   }
 
   return (
-    <>
+    <div id='crearDestino'>
       <form className="form" onSubmit={handleSubmit}>
         <fieldset className="form-section">
           <legend>CREAR DESTINO</legend>
@@ -92,10 +92,10 @@ function CreatePlace() {
           <button>GUARDAR</button>
         </fieldset>
         <div className="volver">
-          <button><Link className="link" to={'/profile/admin/allPlaces'}>VOLVER</Link></button>
+          <button><Link className="link" to={'/profile/admin/allPlaces#allPlaces'}>VOLVER</Link></button>
       </div>
       </form>
-    </>
+    </div>
   )
 }
 

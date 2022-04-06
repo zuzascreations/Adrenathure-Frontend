@@ -4,7 +4,7 @@ import Loading from '../Loading'
 import { useSetModal, useUser } from '../hooks'
 import { Navigate } from 'react-router-dom'
 import '../List.css'
-const BASE_URL  = process.env.REACT_APP_URL
+const BASE_URL = process.env.REACT_APP_URL
 
 
 function AllBookings() {
@@ -45,6 +45,7 @@ function AllBookings() {
   }
 
   return (
+    <div id='todasReservas'>
       <div className="list">
         <h2 className="list-title">LAS RESERVAS</h2>
         <div className='grid-list-bookings'>
@@ -79,23 +80,24 @@ function AllBookings() {
         {bookings.length ?
           bookings.map(booking =>
             <div key={booking.id}>
-              <div  className='grid-list-bookings' >
-                  <span>{booking.bookingNumber}</span>
-                  <span>{booking.bookingDate}</span>
-                  <span>{booking.experienceName}</span>
-                  <span>{booking.placeName}</span>
-                  <span>{booking.experienceDate}</span>
-                  <span>{booking.experienceHour}</span>
-                  <span>{booking.reservedSeats}</span>
-                  <span>{booking.totalPrice}</span>
-                  <span>{booking.firstName} {booking.lastName}</span>
+              <div className='grid-list-bookings' >
+                <span>{booking.bookingNumber}</span>
+                <span>{booking.bookingDate}</span>
+                <span>{booking.experienceName}</span>
+                <span>{booking.placeName}</span>
+                <span>{booking.experienceDate}</span>
+                <span>{booking.experienceHour}</span>
+                <span>{booking.reservedSeats}</span>
+                <span>{booking.totalPrice}</span>
+                <span>{booking.firstName} {booking.lastName}</span>
               </div>
               <div className="section-buttons">
                 <button className="bin" value={booking.id} onClick={handleClick}>BORRAR</button>
               </div>
             </div>
-        ) : <p>No hay ninguna reserva todavía</p>}
+          ) : <p>No hay ninguna reserva todavía</p>}
       </div>
+    </div>
   )
 }
 

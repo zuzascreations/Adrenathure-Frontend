@@ -5,7 +5,7 @@ import ContactUs from './ContactUs'
 
 function Contact() {
     return(
-        <div className='contact'>
+        <div id='contact'>
           {<ContactUs />}
           <aside className="left-side">
               <ul className='address'>

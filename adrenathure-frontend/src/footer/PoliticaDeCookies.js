@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 function PoliticaDeCookies() {
 
     return(
-      <div>
+      <div id='cookies'>
         <h1 id='header1'>Política de Cookies</h1>
         <div className='bodyCookies'>
           <div className='mainCookies'>En cumplimiento de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico (en adelante, “LSSI”), que se refiere a la utilización de cookies, Adrenathure informa a los usuarios que la web utiliza cookies para poder medir y analizar el tráfico, con el fin de facilitar la experiencia y ofrecer un mejor servicio. El usuario puede configurar su navegador para ser avisado en pantalla de la recepción de cookies, o bien para impedir su instalación, en cuyo caso, cabe la posibilidad de que deje de tener acceso a ciertas funciones en Internet.</div>

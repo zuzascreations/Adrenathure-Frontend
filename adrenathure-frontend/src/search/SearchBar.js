@@ -8,7 +8,7 @@ import './SearchBar.css'
 const BASE_URL  = process.env.REACT_APP_URL
 
 
-function SearchBarCopy() {
+function SearchBar() {
   const setModal = useSetModal()
   const navigate = useNavigate()
 
@@ -150,7 +150,7 @@ function SearchBarCopy() {
 }
 const searchBarWrapper = () =>
   <Suspense fallback={<Loading className='page' />}>
-    <SearchBarCopy />
+    <SearchBar />
   </Suspense>
 
 export default searchBarWrapper

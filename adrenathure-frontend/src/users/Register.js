@@ -68,7 +68,7 @@ function Register() {
         </fieldset>
       </form>
       <nav>
-        <p>Ya te has registrado? <Link to="/login" className='linkLogin'> Acceder</Link></p>
+        <p>Ya te has registrado? <Link to="/login#divLogin" className='linkLogin'> Acceder</Link></p>
       </nav>
       <p>Al pulsar sobre “crear cuenta” confirmas haber leído y estar de acuerdo con la <Link to="/politicaDePrivacidad" target='_blank' rel="noreferrer" id='cookies'>Política de Privacidad</Link>.</p>
     </div>

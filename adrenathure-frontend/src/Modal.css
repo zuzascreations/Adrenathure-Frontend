@@ -8,6 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 5;
 }
 
 .modal-fg {
@@ -16,6 +17,7 @@
   gap: 5px;
   background-color: white;
   padding: 20px;
+  z-index: 6;
 }
 
 select {

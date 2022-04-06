@@ -2,7 +2,7 @@ import './About.css'
 
 function About() {
     return(
-        <div className='portada-body'>
+        <div id='portada-body'>
             <div className='idPortada'>
                 <div className='texto-portada'>
                     <h2 className='secondHeader'>Adrenathure</h2>
@@ -22,7 +22,7 @@ function About() {
                             reservar una actividad al aire libre y al dusfrutar de la misma.</p>
                 </div>
             </div>
-        </div>
+        </div>      
     )
 }
 export default About

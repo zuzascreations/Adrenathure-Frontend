@@ -1,4 +1,4 @@
-.contact {
+#contact {
     display: grid;
     grid-template-columns: 2fr 1fr;
     /* justify-content: center; */
@@ -40,10 +40,11 @@
 
 .map {
   border: solid 0.5px rgba(47,60,56,255);
+  z-index: 1;
 }
 
 @media (max-width: 1300px) {
-  .contact {
+  #contact {
     grid-template-columns: 1fr;
   }
 }

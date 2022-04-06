@@ -19,7 +19,7 @@ function ExperienceId() {
   }, [experienceId])
 
   return experienceId && (
-    <>
+    <div id="experienceId">
       <div className="experience">
         <Sidebar className="sidebar" />
         <div className="space-experience">
@@ -50,13 +50,13 @@ function ExperienceId() {
                   </>
                   : <p>No hay fechas disponibles</p>}
                 {experienceDate &&
-                  <button className="reservar"><Link className="link" to={`/experiences/${experienceId[0].id}/${experienceDate}/book`}>RESERVAR</Link></button>}
+                  <button className="reservar"><Link className="link" to={`/experiences/${experienceId[0].id}/${experienceDate}/book#reservar`}>RESERVAR</Link></button>}
               </div>
             </div>
           </div>
         </div>
       </div >
-    </>
+    </div>
   )
 }
 
