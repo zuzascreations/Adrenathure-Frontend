@@ -51,10 +51,10 @@ function AllPlaces() {
             <strong>DESCRIPCIÓN</strong>
           </span>
           <span>
-            <strong>COORDS-LONG</strong>
+            <strong>COORDS-LAT</strong>
           </span>
           <span>
-            <strong>COORDS-LAT</strong>
+            <strong>COORDS-LONG</strong>
           </span>
           <span>
             <strong>FOTO</strong>
@@ -79,7 +79,7 @@ function AllPlaces() {
           <button><Link className="link" to={`/profile/admin/newPlace#crearDestino`}>AÑADIR NUEVO DESTINO</Link></button>
         </div>
         <div className="volver">
-          <button><Link className="link" to={'/profile/admin'}>VOLVER</Link></button>
+          <button><Link className="link" to={'/profile/admin#administracion'}>VOLVER</Link></button>
         </div>
       </div>
     </>

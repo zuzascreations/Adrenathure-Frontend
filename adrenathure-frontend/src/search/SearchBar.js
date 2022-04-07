@@ -138,7 +138,7 @@ function SearchBar() {
           if (valueDateTo) {
             searchUrl.set('dateTo', valueDateTo)
           }
-          navigate(`/search?${searchUrl.toString()}`)
+          navigate(`/search?${searchUrl.toString()}#title-searchPage`)
         }} className="lupa" src="https://img.icons8.com/ios-glyphs/30/000000/search--v1.png" alt="lupa" />
         </div>
         <img className="lupa" src="https://img.icons8.com/fluency-systems-regular/48/000000/cancel.png" alt="clear" onClick={() => {

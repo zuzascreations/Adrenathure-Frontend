@@ -66,7 +66,7 @@ function Login() {
         </fieldset>
       </form>
       <nav>
-        <p>Aún no te has registrado? <Link to="/register" className='linkRegister'> Registrar</Link></p>
+        <p>Aún no te has registrado? <Link to="/register#divRegister" className='linkRegister'> Registrar</Link></p>
       </nav>
     </div>
   )
