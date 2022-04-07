@@ -45,7 +45,7 @@ function CreatePlace() {
       // const data = await res.json()
       setModal('Nuevo destino creado con éxito.')
       setTimeout(() => {
-        navigate('/Places')
+        navigate('/Places#places')
         setModal(null)
         window.location.reload(true)
       }, 2000)
@@ -57,7 +57,7 @@ function CreatePlace() {
   }
 
   if (!user) {
-    return <Navigate to="/login" />
+    return <Navigate to="/login#divLogin" />
   }
 
   return (
@@ -76,12 +76,12 @@ function CreatePlace() {
             <textarea required name="description" placeholder="Introduce descripción del destino..." value={placeDescription} onChange={e => setPlaceDescription(e.target.value)} />
           </label>
           <label>
-            <span>Coords longitude</span>
+            <span>Coordenadas latitud</span>
             <br/>
             <input name="dates" placeholder="Introduce longitude del destino..." value={coordsLong} onChange={e => setCoordsLong(e.target.value)} />
           </label>
           <label>
-            <span>Coords latitude</span>
+            <span>Coordenadas longitud</span>
             <br/>
             <input name="hour" placeholder="Introduce latitude del destino..." value={coordsLat} onChange={e => setCoordsLat(e.target.value)} />
           </label>

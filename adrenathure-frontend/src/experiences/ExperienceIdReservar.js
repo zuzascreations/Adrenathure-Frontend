@@ -41,7 +41,7 @@ function ExperienceIdReservar() {
       const data = await res.json()
       setModal('Reservado con éxito')
       setTimeout(() => {
-        navigate('/yourBooking/'+ data.bookingId)
+        navigate(`/yourBooking/${data.bookingId}#yourBooking`)
         setModal(null)
         window.location.reload(true)
       }, 2000)
@@ -55,7 +55,7 @@ function ExperienceIdReservar() {
     }
   }
   if (!user) {
-    return <Navigate to="/login" />
+    return <Navigate to="/login#divLogin" />
   }
   if (experiences[0].availableSeats === 0) {
     return <p>No quedan plazas libres</p>

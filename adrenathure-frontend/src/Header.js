@@ -19,23 +19,6 @@ function Header() {
             <a href='http://www.linkedin.com' target='_blank' rel="noreferrer"><img src="https://global-uploads.webflow.com/5f3108520188e7588ef687b1/5f58a2299a0e417966e9013d_linkedin-circular-logo.svg" alt="logo linkedin" className="rrss-header" /></a>
           </div>
           <div className="title"><Link to='/' className="title">adrenathure</Link></div>
-          {/* <div className="dropdown">
-            {!user &&
-              <button className='buttonUsername'>ESPACIO CLIENTE</button>}
-            {user &&
-              <button className='buttonUsername'>{user.user}</button>}
-            <div className="dropdown-content">
-              <Link to={'/Profile'}>Perfil</Link>
-              {user &&
-                <Link to={'/'} onClick={() => {
-                  setRegistered(false)
-                  setUser(null)
-                }}>Salir</Link>}
-              {!user &&
-                <Link to={'/login'}>Iniciar sesión</Link>
-              }
-            </div>
-          </div> */}
           <nav id="navMenu">
             <input type="checkbox" id="menu" />
             <label className="menuLabel" for="menu"> ☰ </label>

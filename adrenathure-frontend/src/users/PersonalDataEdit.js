@@ -37,7 +37,7 @@ function PersonalDataEdit() {
       setMessage('Updated successfully')
       setModal(<span>Perfil actualizado correctamente</span>)
       setTimeout(() => {
-        navigate('/Profile')
+        navigate('/Profile#datos')
         setModal(null)
         window.location.reload(true)
       }, 2000)
@@ -62,7 +62,7 @@ function PersonalDataEdit() {
         setMessage('Updated successfully')
         setModal(<span>Contraseña actualizada correctamente</span>)
         setTimeout(() => {
-          navigate('/Profile')
+          navigate('/Profile#datos')
           setModal(null)
           window.location.reload(true)
         }, 2000)

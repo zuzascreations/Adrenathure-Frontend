@@ -11,7 +11,7 @@ function PlacesMap() {
   const places = useFetch(`http://${BASE_URL}/places/`)
 
   return (
-    <MapContainer id="placesMap"center={[40.4310754, -3.7028892]} zoom={6}>
+    <MapContainer id="placesMap"center={[40.4310754, -3.7028892]} zoom={5}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png"/>

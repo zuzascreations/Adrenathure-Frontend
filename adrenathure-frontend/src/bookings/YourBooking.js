@@ -10,7 +10,7 @@ function YourBooking() {
   const booking = useFetch(`http://${BASE_URL}/bookings/${id}`)
 
   return booking && (
-    <div>
+    <div id='yourBooking'>
       <div className="booking-space">
         <div className="booking-description">
           <h2 className="header-booking-id">DATOS DE TU RESERVA</h2>

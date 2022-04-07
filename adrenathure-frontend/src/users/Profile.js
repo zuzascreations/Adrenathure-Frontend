@@ -10,7 +10,7 @@ import Admin from './admin/Admin'
 function Profile() {
   const user = useUser()
   if (!user) {
-    return <Navigate to="/login" />
+    return <Navigate to="/login#divLogin" />
   }
   return (
     <section className="profile">

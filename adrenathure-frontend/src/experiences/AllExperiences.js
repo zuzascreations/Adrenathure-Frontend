@@ -22,7 +22,7 @@ function AllExperiences() {
       }
     })
     if (res.ok) {
-      setModal('Deleted successfully')
+      setModal('Experiencia borrada con éxito')
       setTimeout(() => {
         setModal(null)
         window.location.reload(true)
@@ -72,13 +72,13 @@ function AllExperiences() {
             <span className='columna'>{'★★★★★☆☆☆☆☆'.substring(5 - experience.avgVote, 10 - experience.avgVote)}</span>
           </div>
           <div className="section-buttons">
-            <button className="button-link"><Link className="link" to={"/profile/admin/editExperience/" + experience.id}>EDITAR</Link></button>
+            <button className="button-link"><Link className="link" to={`/profile/admin/editExperience/${experience.id}#editarDestino`}>EDITAR</Link></button>
             <button className="bin" value={experience.id} onClick={handleClick}>BORRAR</button>
           </div>
         </>
       )}
       <div className="button-anadir">
-        <button><Link className="link" to={"/profile/admin/newExperience"}>AÑADIR NUEVA EXPERIENCIA</Link></button>
+        <button><Link className="link" to={"/profile/admin/newExperience#crearExperiencia"}>AÑADIR NUEVA EXPERIENCIA</Link></button>
       </div>
     </div>
     </>

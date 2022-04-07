@@ -32,16 +32,20 @@ function AllBookings() {
       }, 2000)
     } else {
       if (res.status === 404) {
-        setModal(<p>No se ha podido borrar/ error desconocido.</p>)
+        setModal(<p>No hay datos que borrar/ error desconocido.</p>)
       }
       if (res.status === 500) {
-        setModal(<p>Database error.</p>)
+        setModal(<p> Reserva borrada /Database error.(causas posibles: que ya no haya experiencia)</p>)
+        setTimeout(() => {
+          setModal(null)
+          window.location.reload(true)
+        }, 4000)
       }
     }
   }
 
   if (!user) {
-    return <Navigate to="/login" />
+    return <Navigate to="/login#divLogin" />
   }
 
   return (

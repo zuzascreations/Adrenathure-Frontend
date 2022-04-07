@@ -8,12 +8,21 @@ const BASE_URL  = process.env.REACT_APP_URL
 
 function Sidebar() {
   const experiences = useFetch(`http://${BASE_URL}/experiences`)
+
+  const handleClick = () => {
+    setTimeout(() => {
+      window.location.reload(true)
+    }, 100)
+    
+  }
+
+
   return experiences && (
     <aside className="sidebar">
       <ul className="ul-sidebar">
         {experiences.map(experience =>
           <li key={experience.id}>
-            <Link className="link-sidebar" to={`/experiences/${experience.id}#experienceId`}>
+            <Link onClick={handleClick} className="link-sidebar" to={`/experiences/${experience.id}#experienceId`}>
               {experience.experienceName}
             </Link>
           </li>

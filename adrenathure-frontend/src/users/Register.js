@@ -29,17 +29,22 @@ function Register() {
       setModal('Usuario registrado con éxito.')
       setRegistered(true)
       setTimeout(() => {
-        navigate('/login/')
+        navigate('/login#divLogin')
         setModal(null)
         window.location.reload(true)
       }, 2000)
 
     } else {
-      setModal('Error desconocido')    }
+      if (res.status === 500 ){
+        setModal('Database error')
+      }
+      if (res.status === 409 ){
+        setModal('El usuario ya existe')
+      }  }
   }
 
   return (
-    <div className='divRegister'>
+    <div id='divRegister'>
       <form className="form" onSubmit={handleSubmit}>
         <fieldset className="form-section ">
           <legend>Crea tu cuenta adrenathure y disfruta de nuestras exclusivas experiencias</legend>
@@ -70,7 +75,7 @@ function Register() {
       <nav>
         <p>Ya te has registrado? <Link to="/login#divLogin" className='linkLogin'> Acceder</Link></p>
       </nav>
-      <p>Al pulsar sobre “crear cuenta” confirmas haber leído y estar de acuerdo con la <Link to="/politicaDePrivacidad" target='_blank' rel="noreferrer" id='cookies'>Política de Privacidad</Link>.</p>
+      <p>Al pulsar sobre “crear cuenta” confirmas haber leído y estar de acuerdo con la <Link to="/politicaDePrivacidad#privacidad" target='_blank' rel="noreferrer" id='cookies'>Política de Privacidad</Link>.</p>
     </div>
   )
 }

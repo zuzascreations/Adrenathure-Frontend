@@ -3,7 +3,7 @@ import '../NavProfile.css'
 
 function NavAdmin() {
   return (
-    <div>
+    <div id='administracion'>
       <nav className="nav-profile">
         <Link className="sublink" to="/profile/admin#allexperiences">TODAS LAS EXPERIENCIAS</Link>
         <Link className="sublink" to="/profile/admin/allPlaces#allPlaces">TODOS LOS DESTINOS</Link>

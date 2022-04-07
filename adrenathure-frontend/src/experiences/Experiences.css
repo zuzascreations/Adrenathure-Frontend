@@ -3,6 +3,11 @@
   border: 1px solid black;
   border-radius: 3px;
 }
+.experiences {
+  padding: 50px;
+  border: 1px solid black;
+  border-radius: 3px;
+}
 
 .articleExp {
   display: grid;
@@ -65,6 +70,9 @@
 
 @media (max-width: 800px) {
   #experiences {
+    padding: 0px;
+  }
+  .experiences {
     padding: 0px;
   }
 
