@@ -13,7 +13,6 @@ function Sidebar() {
     setTimeout(() => {
       window.location.reload(true)
     }, 100)
-    
   }
 
 

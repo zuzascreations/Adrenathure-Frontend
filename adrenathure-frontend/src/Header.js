@@ -27,7 +27,8 @@ function Header() {
             {user &&
               <span className='buttonUsername'> {user.user} </span>}
             <ul className="ulMenu">
-              <li className="liMenu"><Link className="logout" to={'/Profile#datos'}>Perfil</Link></li>
+            {user &&
+              <li className="liMenu"><Link className="logout" to={'/Profile#datos'}>Perfil</Link></li>}
               <li className="liMenu">{user &&
                 <Link className="logout" to={'/'} onClick={() => {
                   setRegistered(false)

@@ -36,22 +36,22 @@ function Footer() {
                   </Link>)}
               </div>
             </div>
-            <div id='footerAbout'>
+            {/* <div id='footerAbout'>
               <Link to="/about#portada-body" className='footerLinks'>sobre nosotros</Link>
-            </div>
+            </div> */}
             <div id='footerContact'>
-              <Link to="/contact#contact" className='footerLinks'>contacto</Link>
+              {/* <Link to="/contact#contact" className='footerLinks'>contacto</Link> */}
               <div className='footerEmail'>
-                <div><a href='mailto:adrenathure.info@gmail.com?subject=Consulta Experiencias' className='footerList' target='_blank' rel="noreferrer">
-                  <img id='email' src="https://img.icons8.com/external-xnimrodx-blue-xnimrodx/64/000000/external-email-customer-service-xnimrodx-blue-xnimrodx-2.png" alt="email" />adrenathure.info@gmail.com</a></div>
-                <div><img id='phone' src="https://img.icons8.com/emoji/48/000000/telephone.png" alt="teléfono" />986 123 456</div>
-                <div id='address'>
-                  <img src="https://img.icons8.com/office/16/000000/building.png" alt="office" />Avda. de García Barbón, 27<br />36201Vigo (Pontevedra)
+                <div><a href='mailto:adrenathure.info@gmail.com?subject=Consulta Experiencias' className='footerList' target='_blank' rel="noreferrer">✉adrenathure.info@gmail.com</a></div>
+                  {/* <img id='email' src="https://img.icons8.com/external-xnimrodx-blue-xnimrodx/64/000000/external-email-customer-service-xnimrodx-blue-xnimrodx-2.png" alt="email" /> */}
+                <div className='footerList'><img id='phone' src="https://img.icons8.com/emoji/48/000000/telephone.png" alt="teléfono" />986 123 456</div>
+                <div className='footerList' id='address'>🏡<br />Avda. de García Barbón, 27<br />36201Vigo (Pontevedra)
+                  {/* <img src="https://img.icons8.com/office/16/000000/building.png" alt="office" />Avda. de García Barbón, 27<br />36201Vigo (Pontevedra) */}
                 </div>
               </div>
             </div>
             <div id='footerLegal'>
-              <Link to="/terminosYCondiciones#terminos" target='_blank' rel="noreferrer" className='footerLinks'>términos legales</Link>
+              {/* <Link to="/terminosYCondiciones#terminos" target='_blank' rel="noreferrer" className='footerLinks'>términos legales</Link> */}
               <div className='footerLegal'>
                 <div><Link to="/terminosYCondiciones#terminos" target='_blank' rel="noreferrer" className='footerLinks'>términos y condiciones</Link></div>
                 <div><Link to="/politicaDePrivacidad#privacidad" target='_blank' rel="noreferrer" className='footerLinks'>política de privacidad</Link></div>
@@ -68,8 +68,8 @@ function Footer() {
         </section>
       </div>
       <section className='footerEquipment'>
-        <div className='footerCopy'>&copy; Adrenathure 2022 - {update}</div>
-        <div className='footerEffort'>Hecho con 💪 por Zuzana, Rubén, Carlos y Manuel de JSB08VI</div>
+        <div className='footerList'>&copy; Adrenathure 2022 - {update}</div>
+        <div className='footerList'>Hecho con 💪 por Zuzana, Rubén, Carlos y Manuel de JSB08VI</div>
       </section>
     </div>
   )
