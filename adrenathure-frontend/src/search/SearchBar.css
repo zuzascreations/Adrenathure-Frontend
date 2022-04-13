@@ -7,13 +7,15 @@
   border-top: 1px solid black;
   border-bottom: 1px solid black;
   padding: 10px;
+  align-items: center;
 
 }
+
 .selectSearchBar {
- display: grid;
- grid-template-columns: repeat(3, 1fr);
- justify-content: right;
- /* gap: 50px; */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: right;
+  align-items: center;
 }
 
 .inputCalendarSearchBar {
@@ -24,26 +26,27 @@
 .buttons-searchBar {
   display: flex;
   justify-content: center;
-  /* width: 250px; */
   cursor: pointer;
-  /* min-width: 100px; */
 }
 
 .button-modalDates {
   width: fit-content;
   padding: 3px 5px;
 }
+
 .search {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 40px;
 }
 
 
 .lupa {
-  width:30px;
+  width: 30px;
   height: 30px;
   cursor: pointer;
+  display: flex;
 }
 
 .contentSearch {
@@ -60,6 +63,7 @@
   .searchBar {
     display: block;
   }
+
   .selectSearchBar {
     padding-bottom: 20px;
   }

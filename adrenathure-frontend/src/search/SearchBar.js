@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { useSetModal } from '../hooks'
 import '../Modal.css'
 import './SearchBar.css'
-const BASE_URL  = process.env.REACT_APP_URL
+const BASE_URL = process.env.REACT_APP_URL
 
 
 function SearchBar() {
@@ -84,9 +84,9 @@ function SearchBar() {
     return (
       <div id='calendarSearchBar'>
         <label className="modal-element">Fecha desde</label>
-          <input className='inputCalendarSearchBar' placeholder="Fecha desde" type='date' defaultValue={'Fecha desde:'} onChange={(e) => setValueDateFrom(e.target.value)} />
+        <input className='inputCalendarSearchBar' placeholder="Fecha desde" type='date' defaultValue={'Fecha desde:'} onChange={(e) => setValueDateFrom(e.target.value)} />
         <label className="modal-element">Fecha hasta</label>
-          <input className='inputCalendarSearchBar' type='date' defaultValue={'Fecha hasta:'} onChange={(e) => setValueDateTo(e.target.value)} />
+        <input className='inputCalendarSearchBar' type='date' defaultValue={'Fecha hasta:'} onChange={(e) => setValueDateTo(e.target.value)} />
         <button className="button-modalDates" onClick={handleClick3}>APLICAR</button>
       </div>
     )

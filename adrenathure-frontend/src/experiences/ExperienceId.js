@@ -33,6 +33,7 @@ function ExperienceId() {
             </div>
             <div className="experience-content">
               <p className="experience-text">{experienceId[0].experienceDescription}</p>
+              <p className="experience-price">Hora de la Experiencia: {experienceId[0].experienceHour}</p>
               <div className="price-date">
                 <p className="experience-price">Precio: {experienceId[0].price}€</p>
                 {(experienceId[0].experienceDate && experienceId[0].availableSeats > 0) ?
