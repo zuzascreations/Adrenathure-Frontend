@@ -31,7 +31,6 @@ function Register() {
       setTimeout(() => {
         navigate('/login#divLogin')
         setModal(null)
-        window.location.reload(true)
       }, 2000)
 
     } else {
