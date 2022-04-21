@@ -12,7 +12,7 @@ function AccountActivated() {
 
   return (
     <div id='activatedPage'>
-      <p>Bienvenido a Adrenathure , Tu Cuenta ha sido activada correctamente</p>
+      <div className='loginRegisteredMessage'>Bienvenido a Adrenathure , Tu Cuenta ha sido activada correctamente</div>
       <Link to='/login#divLogin'>Login</Link>
     </div>
   )
